@@ -37,6 +37,7 @@ jobs:
       - name: Push the documentation in a branch
         uses: s0/git-publish-subdir-action@develop
         env:
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
           REPO: self
           BRANCH: gh-pages # The branch name where you want to push the assets
           FOLDER: site # The directory where your assets are generated
