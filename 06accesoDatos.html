@@ -1,0 +1,1756 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jssdocente.github.io/dwes2425/06accesoDatos.html">
+      
+      
+        <link rel="prev" href="05herramientas.html">
+      
+      
+        <link rel="next" href="07frameworks.html">
+      
+      
+      <link rel="icon" href="imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+    
+    
+      
+        <title>6.- Acceso a Datos - Desarrollo Web en Entorno Servidor</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.35f28582.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#acceso-a-datos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Desarrollo Web en Entorno Servidor" class="md-header__button md-logo" aria-label="Desarrollo Web en Entorno Servidor" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Desarrollo Web en Entorno Servidor
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6.- Acceso a Datos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="Teal"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Desarrollo Web en Entorno Servidor" class="md-nav__button md-logo" aria-label="Desarrollo Web en Entorno Servidor" data-md-component="logo">
+      
+  <img src="imagenes/logofp.png" alt="logo">
+
+    </a>
+    Desarrollo Web en Entorno Servidor
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01arquitecturas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02php.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.- El lenguaje PHP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03phpoo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.- PHP Orientado a Objetos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04web.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.- Programación Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.- Herramientas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    6.- Acceso a Datos
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="06accesoDatos.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    6.- Acceso a Datos
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-una-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura de una base de datos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chollosevero" class="md-nav__link">
+    <span class="md-ellipsis">
+      CholloSevero
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phpmyadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      phpMyAdmin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="phpMyAdmin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creando-una-base-de-datos-dentro-de-phpmyadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creando una base de datos dentro de phpMyAdmin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opciones-en-phpmyadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opciones en phpMyAdmin
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysqli" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQLi
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MySQLi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recuperando-datos-de-una-bd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recuperando datos de una BD
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-data-objects-pdo" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHP Data Objects :: PDO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PHP Data Objects :: PDO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fichero-de-configuracion-de-la-bd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fichero de configuración de la BD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentencias-preparadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sentencias preparadas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo parámetros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-bindparam" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo bindParam
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bindparam-vs-bindvalue" class="md-nav__link">
+    <span class="md-ellipsis">
+      bindParam VS bindValue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertando-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insertando registros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consultando-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consultando registros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consultas-con-modelos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consultas con modelos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consultas-con-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consultas con LIKE
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#login-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login &amp; Password
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceso-a-ficheros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceso a ficheros
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Acceso a ficheros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modos-de-apertura-de-ficheros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modos de apertura de ficheros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operaciones-con-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operaciones con archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informacion-de-un-fichero" class="md-nav__link">
+    <span class="md-ellipsis">
+      Información de un fichero
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archivos-pdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos PDF
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividades
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Actividades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysqli_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQLi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtros-y-comodines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtros y comodines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdo" class="md-nav__link">
+    <span class="md-ellipsis">
+      PDO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ficheros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ficheros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proyecto-chollosevero" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proyecto CholloSevero
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07frameworks.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7.- Frameworks PHP - Laravel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09rest.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8.- Servicios REST
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<style>
+    img { margin: 20px 0; border-radius: 8px; }
+
+    .alert { color: #BD1550; }
+    .warning { color: #E97F02; }
+    .success { color: #8A9B0F; }
+
+    .center { text-align: center; }
+    .right { text-align: right; }
+
+    .img-small { max-width: 200px; margin: auto; }
+    .img-medium { max-width: 400px; margin: auto; }
+    .img-large { max-width: 800px; margin: auto; }
+
+    .leyenda {
+        font-size: small;
+        margin: 10px 0;
+    }
+</style>
+
+<h1 id="acceso-a-datos">Acceso a datos<a class="headerlink" href="#acceso-a-datos" title="Permanent link">&para;</a></h1>
+<!-- 
+> Duración estimada: 26 sesiones
+ -->
+<p>En esta unidad vamos a aprender a acceder a datos que se encuentran en un servidor; recuperando, editando y creando dichos datos a través de una base de datos.</p>
+<p>A través de las distintas capas o niveles, de las cuales 2 de ellas ya conocemos (<em>Apache</em>, <em>PHP</em>) y <em>MySQL</em> la que vamos a estudiar en este tema.</p>
+<div class="center img-large">
+    <img src="imagenes/06/06-bbdd-arquitectura-3-niveles.png">
+</div>
+
+<h2 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h2>
+<p>A través de <strong><em>XAMPP</em></strong> es muy sencillo, simplemente nos descargaríamos el programa y lo activaríamos. Para descargar XAMPP <a href="https://www.apachefriends.org/es/download.html">pulsa aquí</a>.</p>
+<p>Con <strong><em>Docker</em></strong> nos descargaremos <a href="recursos/plantilla-APCM.zip">esta imagen de docker</a> y lanzamos </p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+<p>Si todo ha salido bien y el contenedor está en marcha, podremos visitar la página de phpMyAdmin de la siguiente manera</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>http://localhost:8000
+</code></pre></div>
+<div class="center img-medium">
+    <img src="imagenes/06/06-bbdd-phpMyAdmin-login.png">
+</div>
+
+<p>Para acceder debemos utilizar las siguientes credenciales que vienen configuradas en el alrchivo <code>docker-compose.yml</code> </p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>usuario: root
+<span class="linenos" data-linenos="2 "></span>contraseña: 1234
+</code></pre></div>
+<h2 id="estructura-de-una-base-de-datos">Estructura de una base de datos<a class="headerlink" href="#estructura-de-una-base-de-datos" title="Permanent link">&para;</a></h2>
+<p>Sabemos que una base de datos tiene muchos campos con sus nombres y valores, pero además sabemos que la base de datos debe tener un nombre. por tanto tendríamos la siguiente estructura para una base de datos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>NombreBaseDeDatos
+<span class="linenos" data-linenos=" 2 "></span>    |__Tabla-#1
+<span class="linenos" data-linenos=" 3 "></span>    |       |__DatosTabla-#1
+<span class="linenos" data-linenos=" 4 "></span>    |
+<span class="linenos" data-linenos=" 5 "></span>    |__Tabla-#2
+<span class="linenos" data-linenos=" 6 "></span>    |       |__DatosTabla-#2
+<span class="linenos" data-linenos=" 7 "></span>    |
+<span class="linenos" data-linenos=" 8 "></span>    |__Tabla-#3
+<span class="linenos" data-linenos=" 9 "></span>    |       |__DatosTabla-#3
+<span class="linenos" data-linenos="10 "></span>    [...]
+</code></pre></div>
+<p>Veámoslo en un ejemplo real</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>Ryanair
+<span class="linenos" data-linenos=" 2 "></span>    |__pasajero
+<span class="linenos" data-linenos=" 3 "></span>    |    |__id[*]
+<span class="linenos" data-linenos=" 4 "></span>    |    |__nombre
+<span class="linenos" data-linenos=" 5 "></span>    |    |__apellidos
+<span class="linenos" data-linenos=" 6 "></span>    |    |__edad
+<span class="linenos" data-linenos=" 7 "></span>    |    |__id_vuelo[^]
+<span class="linenos" data-linenos=" 8 "></span>    |
+<span class="linenos" data-linenos=" 9 "></span>    |__vuelo
+<span class="linenos" data-linenos="10 "></span>    |    |__id[*]
+<span class="linenos" data-linenos="11 "></span>    |    |__n_plazas
+<span class="linenos" data-linenos="12 "></span>    |    |__disponible
+<span class="linenos" data-linenos="13 "></span>    |    |__id_pais[^]
+<span class="linenos" data-linenos="14 "></span>    |
+<span class="linenos" data-linenos="15 "></span>    |__pais
+<span class="linenos" data-linenos="16 "></span>         |__id[*]
+<span class="linenos" data-linenos="17 "></span>         |__nombre
+</code></pre></div>
+<div class="leyenda">
+    [*] Clave primaria [^] Clave Foránea
+</div>
+
+<div class="center img-large">
+    <img src="imagenes/06/06-bbdd-estructura.png">
+</div>
+
+<h2 id="chollosevero">CholloSevero<a class="headerlink" href="#chollosevero" title="Permanent link">&para;</a></h2>
+<p>Como muy bien habéis elegido, a lo largo de esta unidad vamos a trabajar con una base de datos que iremos confeccionando conforme avancemos, donde almacenaremos la información relacionada con ofertas que publiquen los usuarios y los listaremos en función de varios filtros; nuevos, más votados, más vistos, más comentados entre otros, al más puro estilo <strong><em><a href="https://www.chollometro.com">Chollometro</a></em></strong>.</p>
+<div class="center img-large">
+    <img src="imagenes/06/06-chollometro.gif">
+</div>
+
+<h2 id="sql">SQL<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h2>
+<p>Este lenguaje de consulta estructurada (<em>Structured Query Language</em>) es el que vamos a utilizar para realizar las consultas a nuestras bases de datos para mostrar el contenido en las distintas interfaces web que creemos a lo largo de la unidad. Si quieres saber más detalles visita <a href="https://es.wikipedia.org/wiki/SQL">Wiki SQL</a></p>
+<p>Ejemplo de una sentencia SQL donde seleccionamos todas las filas y columnas de nuestra tabla llamada <strong>'pais'</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pais</span>
+</code></pre></div>
+<p>Estas sentencias pueden invocarse desde la consola de comandos mediante el intérprete <em>mysql</em> (previamente instalado en el sistema) o a través de la herramienta phpMyAdmin.</p>
+<p>Las sentencias SQL también las podemos usar dentro de nuestro código php, de tal manera que cuando se cargue nuestra interfaz web, lance una sentecia SQL para mostrar los datos que queramos.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="c1">// Listado de clientes, ordenados por DNI de manera ASCendente</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="nv">$clientesOrdenadosPorDNI</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM `pasajero` ORDER BY `dni`&quot;</span> <span class="nx">ASC</span><span class="p">;</span>
+<span class="linenos" data-linenos="4 "></span><span class="cp">?&gt;</span>
+</code></pre></div>
+<h2 id="phpmyadmin">phpMyAdmin<a class="headerlink" href="#phpmyadmin" title="Permanent link">&para;</a></h2>
+<div class="center img-medium">
+    <img src="imagenes/06/06-bbdd-phpMyAdmin-logo.png">
+</div>
+
+<p>Este software funciona bajo Apache y PHP y es más que nada una interfaz web para gestionar las bases de datos que tengamos disponibles en nuestro servidor local. Muchos <em>hostings</em> ofrecen esta herramienta por defecto para poder gestionar las BBDD que tengamos configuradas bajo nuestra cuenta.</p>
+<h3 id="creando-una-base-de-datos-dentro-de-phpmyadmin">Creando una base de datos dentro de phpMyAdmin<a class="headerlink" href="#creando-una-base-de-datos-dentro-de-phpmyadmin" title="Permanent link">&para;</a></h3>
+<div class="center img-large">
+    <img src="imagenes/06/06-bbdd-phpMyAdmin.gif">
+</div>
+
+<ol>
+<li>
+<p>Para crear una nueva base de datos debemos entrar en phpMyAdmin como <strong>usuario root</strong> y pinchar en la opción <span class="warning"><strong><em>Nueva</em></strong></span> del menú de la izquierda.</p>
+</li>
+<li>
+<p>En la nueva ventana de creación pondremos un <strong>nombre</strong> a nuestra bbdd.</p>
+</li>
+<li>
+<p>También estableceremos el <strong>cotejamiento</strong> <span class="warning"><strong><em>utf8m4_unicode_ci</em></strong></span> para que nuestra bbdd soporte todo tipo de caracteres (como los asiáticos) e incluso emojis ;)</p>
+</li>
+<li>
+<p>Le damos al botón de <strong>Crear</strong> para crear la bbdd y empezar a escribir las distintas tablas que vayamos a introducir en ella.</p>
+</li>
+</ol>
+<p>El sistema generará el código SQL para crear todo lo que le hemos puesto y creará la base de datos con las tablas que le hayamos metido.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">`</span><span class="n">persona</span><span class="o">`</span><span class="p">.</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">nombre</span><span class="o">`</span><span class="w"> </span><span class="n">TINYTEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">apellidos</span><span class="o">`</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">telefono</span><span class="o">`</span><span class="w"> </span><span class="n">TINYTEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">))</span><span class="w"> </span><span class="n">ENGINE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InnoDB</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="opciones-en-phpmyadmin">Opciones en phpMyAdmin<a class="headerlink" href="#opciones-en-phpmyadmin" title="Permanent link">&para;</a></h3>
+<p>Cuando seleccionamos una base de datos de la lista, el sistema nos muestra varias pestañas con las cuales interactuar con la base de datos en cuestión:</p>
+<ul>
+<li>
+<p><code>Estructura</code>: Podemos ver las distintas tablas que consolidan nuestra base de datos</p>
+</li>
+<li>
+<p><code>SQL</code>: Por si queremos inyectar código SQL para que el sistema lo interprete</p>
+</li>
+<li>
+<p><code>Buscar</code>: Sirve para buscar por términos, en nuestra base de datos, aplicando distintos filtros de búsqueda</p>
+</li>
+<li>
+<p><code>Generar consulta</code>: parecido a SQL pero de una manera más gráfica, sin tener que saber nada del lenguaje</p>
+</li>
+<li>
+<p><code>Exportar e importar</code>: Como su nombre indica, para hacer cualquiera de las 2 operaciones sobre la base de datos</p>
+</li>
+<li>
+<p><code>Operaciones</code>: Distintas opciones avanzadas para realizar en nuestra base de datos, de la cual destacaremos la opción <strong><em>Cotejamiento</em></strong> donde podremos cambiar el cotejamiento de nuestra tabla pero <span class="alert"><strong><em>OJO CON ÉSTO</em></strong> porque podemos eliminar datos sin querer, ya que al cambiar el cotejamiento podemos suprimir caracteres no soportados por el nuevo cotejamiento</span></p>
+</li>
+</ul>
+<p>No vamos a profundizar en el resto de opciones pero, en la pestaña <strong>Más</strong> existe la opción <strong><em>Diseñador</em></strong> para poder editar las relaciones entre tablas de una manera gráfica (pinchando y arrastrando) que veremos más adelante.</p>
+<h2 id="mysqli">MySQLi<a class="headerlink" href="#mysqli" title="Permanent link">&para;</a></h2>
+<p>PHP hace uso de esta extensión mejorada para poder comunicarse con las bases de datos, ya sean MySQL (4.1 o superior) o MariaDB.</p>
+<p>Cualquier consulta que queramos hacer a una base de datos necesitaremos hacer uso de la extensión mysqli()</p>
+<p>Veamos como conectarnos con una base de datos a través del código PHP</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="c1">// ▒▒▒▒▒▒▒▒ pruebas.php ▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="c1">// &quot;SERVIDOR&quot;, &quot;USUARIO&quot;, &quot;CONTRASEÑA&quot;, &quot;BASE DE DATOS&quot;</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="nv">$conexion</span> <span class="o">=</span> <span class="nb">mysqli_connect</span><span class="p">(</span><span class="s2">&quot;d939ebf6a741&quot;</span><span class="p">,</span><span class="s2">&quot;tuUsuario&quot;</span><span class="p">,</span><span class="s2">&quot;1234&quot;</span><span class="p">,</span><span class="s2">&quot;pruebas&quot;</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="c1">// COMPROBAMOS LA CONEXIÓN</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="k">if</span><span class="p">(</span><span class="nx">mysqli_connect_errno</span><span class="p">())</span> <span class="p">{</span>
+<span class="linenos" data-linenos=" 9 "></span>        <span class="k">echo</span> <span class="s2">&quot;Failed to connect to MySQL: &quot;</span> <span class="o">.</span> <span class="nx">mysqli_connect_error</span><span class="p">();</span>
+<span class="linenos" data-linenos="10 "></span>        <span class="k">exit</span><span class="p">();</span>
+<span class="linenos" data-linenos="11 "></span>    <span class="p">}</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span>    <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Bienvenid@ a MySQL !!&lt;/h1&gt;&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span><span class="cp">?&gt;</span>
+</code></pre></div>
+<ul>
+<li><code>servidor</code>: El servidor donde se encuentra la base de datos que queremos usar suele ser <strong>localhost</strong>, pero en nuestro caso, al utilizar Docker será el nombre de la imagen <span class="warning"><strong><em>mysql:8.0</em></strong></span> que aparece al dejar el ratón encima en el Visual Studio Code</li>
+</ul>
+<div class="center img-large">
+    <img src="imagenes/06/06-mysql-servidor-docker.gif">
+</div>
+
+<ul>
+<li><code>usuarioDB</code>: El usuario de la base de datos</li>
+<li><code>passwordDB</code>: La contraseña para ese usuario de la base de datos</li>
+<li><code>baseDeDatos</code>: Nombre de la base de datos que queramos usar</li>
+</ul>
+<p>Si todo ha salido bien habréis visto un mensaje diciendo <span class="success"><strong><em>Bienvenid@ a MySQL !!</em></strong></span></p>
+<h3 id="recuperando-datos-de-una-bd">Recuperando datos de una BD<a class="headerlink" href="#recuperando-datos-de-una-bd" title="Permanent link">&para;</a></h3>
+<p>Ahora que ya sabemos cómo conectarnos a una base de datos alojada en nuestro servidor, lo que necesitamos saber es cómo recuperar datos almacenados en la base de datos.</p>
+<p>Durante la instalación de la imagen de Docker, se ha creado una tabla llamada <strong>Pruebas</strong> que contiene varios registros de distintas personas.</p>
+<p>Vamos a recuperar esos datos para ver de qué forma se hace con PHP.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="c1">// ▒▒▒▒▒▒▒▒ pruebas.php ▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="nv">$conexion</span> <span class="o">=</span> <span class="nb">mysqli_connect</span><span class="p">(</span><span class="s2">&quot;d939ebf6a741&quot;</span><span class="p">,</span> <span class="s2">&quot;lupa&quot;</span><span class="p">,</span> <span class="s2">&quot;1234&quot;</span><span class="p">,</span> <span class="s2">&quot;pruebas&quot;</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="c1">// COMPROBAMOS LA CONEXIÓN</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_connect_errno</span><span class="p">())</span> <span class="p">{</span>
+<span class="linenos" data-linenos=" 8 "></span>        <span class="k">echo</span> <span class="s2">&quot;Failed to connect to MySQL: &quot;</span> <span class="o">.</span> <span class="nx">mysqli_connect_error</span><span class="p">();</span>
+<span class="linenos" data-linenos=" 9 "></span>        <span class="k">exit</span><span class="p">();</span>
+<span class="linenos" data-linenos="10 "></span>    <span class="p">}</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span>    <span class="c1">// CONSULTA A LA BASE DE DATOS</span>
+<span class="linenos" data-linenos="13 "></span>    <span class="nv">$consulta</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM `Person`&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span>    <span class="nv">$listaUsuarios</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$conexion</span><span class="p">,</span> <span class="nv">$consulta</span><span class="p">);</span>
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span>    <span class="c1">// COMPROBAMOS SI EL SERVIDOR NOS HA DEVUELTO RESULTADOS</span>
+<span class="linenos" data-linenos="17 "></span>    <span class="k">if</span><span class="p">(</span><span class="nv">$listaUsuarios</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span>        <span class="c1">// RECORREMOS CADA RESULTADO QUE NOS DEVUELVE EL SERVIDOR</span>
+<span class="linenos" data-linenos="20 "></span>        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$listaUsuarios</span> <span class="k">as</span> <span class="nv">$usuario</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos="21 "></span>            <span class="k">echo</span> <span class="s2">&quot;</span>
+<span class="linenos" data-linenos="22 "></span><span class="s2">                </span><span class="si">$usuario[id]</span>
+<span class="linenos" data-linenos="23 "></span><span class="s2">                </span><span class="si">$usuario[name]</span>
+<span class="linenos" data-linenos="24 "></span><span class="s2">                &lt;br&gt;</span>
+<span class="linenos" data-linenos="25 "></span><span class="s2">            &quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="26 "></span>        <span class="p">}</span>
+<span class="linenos" data-linenos="27 "></span>    <span class="p">}</span>
+<span class="linenos" data-linenos="28 "></span><span class="cp">?&gt;</span>
+</code></pre></div>
+<p>Si todo ha salido bien, por pantalla verás el siguiente listado</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>▒▒▒▒▒▒▒▒ http://localhost/pruebas.php ▒▒▒▒▒▒▒▒
+<span class="linenos" data-linenos="2 "></span>
+<span class="linenos" data-linenos="3 "></span>1 William
+<span class="linenos" data-linenos="4 "></span>2 Marc
+<span class="linenos" data-linenos="5 "></span>3 John
+<span class="linenos" data-linenos="6 "></span>4 Antonio Moreno
+</code></pre></div>
+<h2 id="php-data-objects-pdo">PHP Data Objects :: PDO<a class="headerlink" href="#php-data-objects-pdo" title="Permanent link">&para;</a></h2>
+<p>De la misma manera que hemos visto con mysqli, PHP Data Objects (o PDO) es un driver de PHP que se utiliza para trabajar bajo una interfaz de objetos con la base de datos. A día de hoy es lo que más se utiliza para manejar información desde una base de datos, ya sea relacional o no relacional.</p>
+<p>De igual manera que pasaba con los objetos en PHP nativos, en la interfaz de MySQL la cosa cambia la hora de conectarnos con una base de datos.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="nv">$conexion</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="s1">&#39;mysql:host=localhost; dbname=dwes&#39;</span><span class="p">,</span> <span class="s1">&#39;dwes&#39;</span><span class="p">,</span> <span class="s1">&#39;abc123&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>Además, con PDO podemos usar las excepciones con try catch para gestionar los errores que se produzcan en nuestra aplicación, para ello, como hacíamos antes, debemos encapsular el código entre bloques try / catch.</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span>    <span class="nv">$dsn</span> <span class="o">=</span> <span class="s1">&#39;mysql:dbname=prueba;host=127.0.0.1&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="nv">$usuario</span> <span class="o">=</span> <span class="s1">&#39;usuario&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="nv">$contraseña</span> <span class="o">=</span> <span class="s1">&#39;contraseña&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="k">try</span> <span class="p">{</span>
+<span class="linenos" data-linenos=" 8 "></span>        <span class="nv">$mbd</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="nv">$dsn</span><span class="p">,</span> <span class="nv">$usuario</span><span class="p">,</span> <span class="nv">$contraseña</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 9 "></span>        <span class="nv">$mbd</span><span class="o">-&gt;</span><span class="na">setAttribute</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span><span class="p">,</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">);</span>
+<span class="linenos" data-linenos="10 "></span>    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos="11 "></span>        <span class="k">echo</span> <span class="s1">&#39;Falló la conexión: &#39;</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+<span class="linenos" data-linenos="12 "></span>    <span class="p">}</span>
+</code></pre></div>
+En primer lugar, creamos la conexión con la base de datos a través del constructor PDO pasándole la información de la base de datos.</p>
+<p>En segundo lugar, establecemos los parámetros para manejar las excepciones, en este caso hemos utilizado:</p>
+<ul>
+<li><code>PDO::ATTR_ERRMODE</code> indicándole a PHP que queremos un reporte de errores.</li>
+<li><code>PDO::ERRMODE_EXCEPTION</code> con este atributo obligamos a que lance excepciones, además de ser la opción más humana y legible que hay a la hora de controlar errores.</li>
+</ul>
+<p>Cualquier error que se lance a través de PDO, el sistema lanzará una <span class="alert"><strong>PDOException</strong></span>.</p>
+<h3 id="fichero-de-configuracion-de-la-bd">Fichero de configuración de la BD<a class="headerlink" href="#fichero-de-configuracion-de-la-bd" title="Permanent link">&para;</a></h3>
+<p>De la misma manera que creamos nuestro archivo de funciones <code>funciones-php</code> y albergamos todas las funciones que se usan de manera global en la aplicación, podemos establecer un archivo de constantes donde definamos los parámetros de conexión con la base de datos.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span>    <span class="c1">//  ▒▒▒▒▒▒▒▒ conexion.php ▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="nx">constDSN</span> <span class="o">=</span> <span class="s2">&quot;mysql:host=localhost;dbname=dwes&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="nx">constUSUARIO</span> <span class="o">=</span> <span class="s2">&quot;dwes&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="nx">constPASSWORD</span> <span class="o">=</span> <span class="s2">&quot;abc123&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="cm">/*  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="cm">        ▒▒▒▒▒▒▒▒ NO SUBAS ESTE ARCHIVO A git ▒▒▒▒▒</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="cm">        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ */</span>
+</code></pre></div>
+<p>Este archivo contiene información <span class="alert"><strong>muy sensible</strong></span> así que no es recomendable que subas este archivo a git.</p>
+<h3 id="sentencias-preparadas">Sentencias preparadas<a class="headerlink" href="#sentencias-preparadas" title="Permanent link">&para;</a></h3>
+<p>Se trata de sentencias que se establecen como si fueran plantillas de la SQL que vamos a lanzar, aceptando parámetros que son establecidos a posteriori de la declaración de la sentencia preparada.</p>
+<p>Las sentencias preparadas evitan la injección de SQL (SQL Injection) y mejoran el rendimiento de nuestras aplicaciónes o páginas web.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO Clientes VALUES (?, ?, ?, ?)&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p>Cada interrogante es un parámetro que estableceremos después, unas cuantas líneas más abajo.</p>
+<p>Una vez tenemos la plantilla de nuestra consulta, debemos seguir con la preparación junto con 3 métodos más de PHP para su completa ejecución:</p>
+<ul>
+<li><code>prepare:</code> prepara la sentencián antes de ser ejecutada</li>
+<li><code>bind</code>: el tipo de unión (bind) de dato que puede ser mediante ' ? ' o ' :parametro '</li>
+<li><code>execute</code> se ejecuta la consulta uniendo la plantilla con las bariables o parámetros que hemos establecido.</li>
+</ul>
+<h3 id="ejemplo-parametros">Ejemplo parámetros<a class="headerlink" href="#ejemplo-parametros" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="c1">//  ▒▒▒▒▒▒▒▒ Borrando con parámetros ▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="k">include</span> <span class="s2">&quot;config/database.inc.php&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="nv">$conexion</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="k">try</span> <span class="p">{</span> 
+<span class="linenos" data-linenos=" 9 "></span>        <span class="nv">$cantidad</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;cantidad&quot;</span><span class="p">];</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span>        <span class="nv">$conexion</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="nx">DSN</span><span class="p">,</span> <span class="nx">USUARIO</span><span class="p">,</span> <span class="nx">PASSWORD</span><span class="p">);</span>
+<span class="linenos" data-linenos="12 "></span>        <span class="nv">$conexion</span> <span class="o">-&gt;</span> <span class="na">setAttribute</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span><span class="p">,</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">);</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span>        <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;DELETE FROM stock WHERE unidades = ?&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="15 "></span>        <span class="nv">$sentencia</span> <span class="o">=</span> <span class="nv">$conexion</span> <span class="o">-&gt;</span> <span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span>        <span class="nv">$isOk</span> <span class="o">=</span> <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">execute</span><span class="p">([</span><span class="nv">$cantidad</span><span class="p">]);</span>
+<span class="linenos" data-linenos="18 "></span>        <span class="nv">$cantidadAfectada</span> <span class="o">=</span> <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">rowCount</span><span class="p">();</span>
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span>        <span class="k">echo</span> <span class="nv">$cantidadAfectada</span><span class="p">;</span>
+<span class="linenos" data-linenos="21 "></span>    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos="22 "></span>        <span class="k">echo</span> <span class="nv">$e</span> <span class="o">-&gt;</span> <span class="na">getMessage</span><span class="p">();</span>
+<span class="linenos" data-linenos="23 "></span>    <span class="p">}</span>
+<span class="linenos" data-linenos="24 "></span>
+<span class="linenos" data-linenos="25 "></span>    <span class="nv">$conexion</span> <span class="o">=</span> <span class="k">null</span>
+</code></pre></div>
+<h3 id="ejemplo-bindparam">Ejemplo bindParam<a class="headerlink" href="#ejemplo-bindparam" title="Permanent link">&para;</a></h3>
+<p>Muy parecido a utilizar parámetros pero esta vez la variable está dentro de la sentencia SQL, en este caso la hemos llamado <code>:cant</code></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="k">include</span> <span class="s2">&quot;config/database.inc.php&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="nv">$conexion</span><span class="o">=</span><span class="k">null</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="k">try</span> <span class="p">{</span>
+<span class="linenos" data-linenos=" 7 "></span>        <span class="nv">$cantidad</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;cantidad&quot;</span><span class="p">]</span> <span class="o">??</span> <span class="mi">0</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span>        <span class="nv">$conexion</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="nx">DSN</span><span class="p">,</span> <span class="nx">USUARIO</span><span class="p">,</span> <span class="nx">PASSWORD</span><span class="p">);</span>
+<span class="linenos" data-linenos="10 "></span>        <span class="nv">$conexion</span> <span class="o">-&gt;</span> <span class="na">setAttribute</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span><span class="p">,</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">);</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span>        <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;DELETE FROM stock WHERE unidades = :cant&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span>        <span class="nv">$sentencia</span> <span class="o">=</span> <span class="nv">$conexion</span> <span class="o">-&gt;</span> <span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="linenos" data-linenos="15 "></span>        <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">bindParam</span><span class="p">(</span><span class="s2">&quot;:cant&quot;</span><span class="p">,</span> <span class="nv">$cantidad</span><span class="p">);</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span>        <span class="nv">$isOk</span> <span class="o">=</span> <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">execute</span><span class="p">();</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span>        <span class="nv">$cantidadAfectada</span> <span class="o">=</span> <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">rowCount</span><span class="p">();</span>
+<span class="linenos" data-linenos="20 "></span>
+<span class="linenos" data-linenos="21 "></span>        <span class="k">echo</span> <span class="nv">$cantidadAfectada</span><span class="p">;</span>
+<span class="linenos" data-linenos="22 "></span>    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos="23 "></span>        <span class="k">echo</span> <span class="nv">$e</span> <span class="o">-&gt;</span> <span class="na">getMessage</span><span class="p">();</span>
+<span class="linenos" data-linenos="24 "></span>    <span class="p">}</span>
+<span class="linenos" data-linenos="25 "></span>
+<span class="linenos" data-linenos="26 "></span>    <span class="nv">$conexion</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="bindparam-vs-bindvalue">bindParam VS bindValue<a class="headerlink" href="#bindparam-vs-bindvalue" title="Permanent link">&para;</a></h3>
+<p>Utilizaremos <code>bindValue()</code> cuando tengamos que insertar datos sólo una vez, en cambio, deberemos usar <code>bindParam()</code> cuando tengamos que pasar datos múltiples, como por ejemplo, un array.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="c1">// se asignan nombre a los parámetros</span>
+<span class="linenos" data-linenos=" 3 "></span>    <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;DELETE FROM stock WHERE unidades = :cant&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="nv">$sentencia</span> <span class="o">=</span> <span class="nv">$conexion</span> <span class="o">-&gt;</span> <span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="c1">// bindParam enlaza por referencia</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="nv">$cantidad</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">bindParam</span><span class="p">(</span><span class="s2">&quot;:cant&quot;</span><span class="p">,</span> <span class="nv">$cantidad</span><span class="p">);</span>
+<span class="linenos" data-linenos="10 "></span>    <span class="nv">$cantidad</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span>    <span class="c1">// se eliminan con cant = 1</span>
+<span class="linenos" data-linenos="13 "></span>    <span class="nv">$isOk</span> <span class="o">=</span> <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">execute</span><span class="p">();</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span>    <span class="c1">// bindValue enlaza por valor</span>
+<span class="linenos" data-linenos="16 "></span>    <span class="nv">$cantidad</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span>    <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">bindValue</span><span class="p">(</span><span class="s2">&quot;:cant&quot;</span><span class="p">,</span> <span class="nv">$cantidad</span><span class="p">);</span>
+<span class="linenos" data-linenos="19 "></span>    <span class="nv">$cantidad</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="linenos" data-linenos="20 "></span>
+<span class="linenos" data-linenos="21 "></span>    <span class="c1">// se eliminan con cant = 0</span>
+<span class="linenos" data-linenos="22 "></span>    <span class="nv">$isOk</span> <span class="o">=</span> <span class="nv">$sentencia</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+</code></pre></div>
+<p>Para más información y uso de las variables PDO <a href="https://www.php.net/manual/es/pdo.constants.php">consulta el manual de PHP</a>.</p>
+<h3 id="insertando-registros">Insertando registros<a class="headerlink" href="#insertando-registros" title="Permanent link">&para;</a></h3>
+<p>A la hora de insertar registros en una base de datos, debemos tener en cuenta que en la tabla puede haber valores autoincrementados. Para salvaguardar ésto, lo que debemos hacer es dejar ese cambpo autoincrementado vacío, pero a la hora de hacer la conexión, debemos recuperarlo con el método <code>lastInsertId()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">]</span> <span class="o">??</span> <span class="s2">&quot;SUCURSAL X&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 3 "></span>    <span class="nv">$telefono</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;telefono&quot;</span><span class="p">]</span> <span class="o">??</span> <span class="s2">&quot;636123456&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="nv">$sql</span><span class="o">=</span><span class="s2">&quot;INSERT INTO tienda(nombre, tlf) VALUES (:nombre, :telefono)&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="nv">$sentencia</span> <span class="o">=</span> <span class="nv">$conexion</span> <span class="o">-&gt;</span> <span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">bindParam</span><span class="p">(</span><span class="s2">&quot;:nombre&quot;</span><span class="p">,</span> <span class="nv">$nombre</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">bindParam</span><span class="p">(</span><span class="s2">&quot;:telefono&quot;</span><span class="p">,</span> <span class="nv">$telefono</span><span class="p">);</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span>    <span class="nv">$isOk</span> <span class="o">=</span> <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">execute</span><span class="p">();</span>
+<span class="linenos" data-linenos="12 "></span>    <span class="nv">$idGenerado</span> <span class="o">=</span> <span class="nv">$conexion</span> <span class="o">-&gt;</span> <span class="na">lastInsertId</span><span class="p">();</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span>    <span class="k">echo</span> <span class="nv">$idGenerado</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="consultando-registros">Consultando registros<a class="headerlink" href="#consultando-registros" title="Permanent link">&para;</a></h3>
+<p>A la hora de recuperar los resultados de una consulta, bastará con invocar al método <code>PDOStatement::fetch</code> para listar las filas generadas por la consulta.</p>
+<p>Pero debemos elegir el tipo de dato que queremos recibir entre los 3 que hay disponibles:</p>
+<ul>
+<li><code>PDO::FETCH_ASSOC:</code> array indexado cuyos keys son el nombre de las columnas.</li>
+<li><code>PDO::FETCH_NUM:</code> array indexado cuyos keys son números.</li>
+<li><code>PDO::FETCH_BOTH:</code> valor por defecto. Devuelve un array indexado cuyos keys son tanto el nombre de las columnas como números.</li>
+</ul>
+<div class="center img-large">
+    <img src="imagenes/06/06-pdo-listado-fetch.png">
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="c1">//  ▒▒▒▒▒▒▒▒ consulta con array asociativo.php ▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="k">include</span> <span class="s2">&quot;config/database.inc.php&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="nv">$conexion</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="k">try</span><span class="p">{</span>
+<span class="linenos" data-linenos=" 9 "></span>        <span class="nv">$conexion</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="nx">DSN</span><span class="p">,</span> <span class="nx">USUARIO</span><span class="p">,</span> <span class="nx">PASSWORD</span><span class="p">);</span>
+<span class="linenos" data-linenos="10 "></span>        <span class="nv">$conexion</span> <span class="o">-&gt;</span> <span class="na">setAttribute</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span><span class="p">,</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">);</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span>        <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;select * from tienda&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span>        <span class="nv">$sentencia</span> <span class="o">=</span> <span class="nv">$conexion</span> <span class="o">-&gt;</span> <span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="linenos" data-linenos="15 "></span>        <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">setFetchMode</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">);</span>
+<span class="linenos" data-linenos="16 "></span>        <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">execute</span><span class="p">();</span>
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span>        <span class="k">while</span><span class="p">(</span><span class="nv">$fila</span> <span class="o">=</span> <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">fetch</span><span class="p">()){</span>
+<span class="linenos" data-linenos="19 "></span>            <span class="k">echo</span> <span class="s2">&quot;Codigo:&quot;</span> <span class="o">.</span> <span class="nv">$fila</span><span class="p">[</span><span class="s2">&quot;cod&quot;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="20 "></span>            <span class="k">echo</span> <span class="s2">&quot;Nombre:&quot;</span> <span class="o">.</span> <span class="nv">$fila</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="21 "></span>            <span class="k">echo</span> <span class="s2">&quot;Teléfono:&quot;</span> <span class="o">.</span> <span class="nv">$fila</span><span class="p">[</span><span class="s2">&quot;tlf&quot;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="22 "></span>        <span class="p">}</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span>    <span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos="25 "></span>        <span class="k">echo</span> <span class="nv">$e</span> <span class="o">-&gt;</span> <span class="na">getMessage</span><span class="p">();</span>
+<span class="linenos" data-linenos="26 "></span>    <span class="p">}</span>
+<span class="linenos" data-linenos="27 "></span>
+<span class="linenos" data-linenos="28 "></span>    <span class="nv">$conexion</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+</code></pre></div>
+<p>Recuperando datos con una matriz como resultado de nuestra consulta</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="c1">//  ▒▒▒▒▒▒▒▒ consulta con array asociativo ▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="nv">$sql</span><span class="o">=</span><span class="s2">&quot;SELECT * FROM tienda&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="nv">$sentencia</span> <span class="o">=</span> <span class="nv">$conexion</span> <span class="o">-&gt;</span> <span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">setFetchMode</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">execute</span><span class="p">();</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span>    <span class="nv">$tiendas</span> <span class="o">=</span> <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">fetchAll</span><span class="p">();</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span>    <span class="k">foreach</span><span class="p">(</span><span class="nv">$tiendasas$tienda</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos" data-linenos="13 "></span>        <span class="k">echo</span><span class="s2">&quot;Codigo:&quot;</span> <span class="o">.</span> <span class="nv">$tienda</span><span class="p">[</span><span class="s2">&quot;cod&quot;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span>        <span class="k">echo</span><span class="s2">&quot;Nombre:&quot;</span> <span class="o">.</span> <span class="nv">$tienda</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="15 "></span>    <span class="p">}</span>
+</code></pre></div>
+Pero si lo que queremos es leer datos con forma de objeto utilizando <code>PDO::FETCH_OBJ</code>, debemos crear un objeto con propiedades públicas con el mismo nombre que las columnas de la tabla que vayamos a consultar.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="c1">//  ▒▒▒▒▒▒▒▒ consulta con formato de objeto ▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="nv">$sql</span><span class="o">=</span><span class="s2">&quot;SELECT * FROM tienda&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="nv">$sentencia</span> <span class="o">=</span> <span class="nv">$conexion</span> <span class="o">-&gt;</span> <span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">setFetchMode</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_OBJ</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">execute</span><span class="p">();</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span>    <span class="k">while</span><span class="p">(</span><span class="nv">$t</span> <span class="o">=</span> <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">fetch</span><span class="p">())</span> <span class="p">{</span>
+<span class="linenos" data-linenos="11 "></span>        <span class="k">echo</span><span class="s2">&quot;Codigo:&quot;</span> <span class="o">.</span> <span class="nv">$t</span> <span class="o">-&gt;</span> <span class="na">cod</span> <span class="o">.</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="12 "></span>        <span class="k">echo</span><span class="s2">&quot;Nombre:&quot;</span> <span class="o">.</span> <span class="nv">$t</span> <span class="o">-&gt;</span> <span class="na">nombre</span> <span class="o">.</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span>        <span class="k">echo</span><span class="s2">&quot;Teléfono:&quot;</span> <span class="o">.</span> <span class="nv">$t</span> <span class="o">-&gt;</span> <span class="na">tlf</span> <span class="o">.</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span>    <span class="p">}</span>
+</code></pre></div>
+<h3 id="consultas-con-modelos">Consultas con modelos<a class="headerlink" href="#consultas-con-modelos" title="Permanent link">&para;</a></h3>
+<p>Llevamos tiempo creando clases en PHP y las consultas también admiten este tipo de datos mediante el uso de <code>PDO::FETCH_CLASS</code></p>
+<p>Si usamos este método, debemos tener en cuenta que los nombres de los atributos privados deben coincidir con los nombres de las columnas de la tabla que vayamos a manejar.</p>
+<p>Así pues, si por lo que sea cambiamos la estructura de la tabla <span class="alert"><strong>DEBEMOS CAMBIAR</strong></span> nuestra clase para que todo siga funcionando.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="c1">//  ▒▒▒▒▒▒▒▒ clase Tienda ▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="nx">classTienda</span> <span class="p">{</span>
+<span class="linenos" data-linenos=" 5 "></span>        <span class="k">private</span> <span class="nx">int</span> <span class="nv">$cod</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 6 "></span>        <span class="k">private</span> <span class="nx">string</span> <span class="nv">$nombre</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span>        <span class="k">private</span> <span class="o">?</span> <span class="nx">string</span> <span class="nv">$tlf</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span>        <span class="k">public</span> <span class="k">function</span> <span class="nf">getCodigo</span><span class="p">()</span> <span class="o">:</span> <span class="nx">int</span> <span class="p">{</span>
+<span class="linenos" data-linenos="10 "></span>            <span class="k">return</span> <span class="nv">$this</span> <span class="o">-&gt;</span> <span class="na">cod</span><span class="p">;</span>
+<span class="linenos" data-linenos="11 "></span>        <span class="p">}</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span>        <span class="k">public</span> <span class="k">function</span> <span class="nf">getNombre</span><span class="p">()</span> <span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+<span class="linenos" data-linenos="14 "></span>            <span class="k">return</span> <span class="nv">$this</span> <span class="o">-&gt;</span> <span class="na">nombre</span><span class="p">;</span>
+<span class="linenos" data-linenos="15 "></span>        <span class="p">}</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span>        <span class="k">public</span> <span class="k">function</span> <span class="nf">getTelefono</span><span class="p">()</span> <span class="o">:</span> <span class="o">?</span><span class="nx">string</span> <span class="p">{</span>
+<span class="linenos" data-linenos="18 "></span>            <span class="k">return</span> <span class="nv">$this</span> <span class="o">-&gt;</span> <span class="na">tlf</span><span class="p">;</span>
+<span class="linenos" data-linenos="19 "></span>        <span class="p">}</span>
+<span class="linenos" data-linenos="20 "></span>    <span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="c1">//  ▒▒▒▒▒▒▒▒ Consultando a través de la clase Tienda ▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM tienda&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="nv">$sentencia</span> <span class="o">=</span> <span class="nv">$conexion</span> <span class="o">-&gt;</span> <span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="c1">// Aquí &#39;Tienda&#39; es el nombre de nuestra clase</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">setFetchMode</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_CLASS</span><span class="p">,</span> <span class="s2">&quot;Tienda&quot;</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">execute</span><span class="p">();</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span>    <span class="k">while</span><span class="p">(</span><span class="nv">$t</span> <span class="o">=</span> <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">fetch</span><span class="p">())</span> <span class="p">{</span>
+<span class="linenos" data-linenos="12 "></span>        <span class="k">echo</span> <span class="s2">&quot;Codigo: &quot;</span> <span class="o">.</span> <span class="nv">$t</span> <span class="o">-&gt;</span> <span class="na">getCodigo</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span>        <span class="k">echo</span> <span class="s2">&quot;Nombre: &quot;</span> <span class="o">.</span> <span class="nv">$t</span> <span class="o">-&gt;</span> <span class="na">getNombre</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span>        <span class="k">echo</span> <span class="s2">&quot;Teléfono: &quot;</span> <span class="o">.</span> <span class="nv">$t</span> <span class="o">-&gt;</span> <span class="na">getTelefono</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span>        <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$t</span><span class="p">);</span>
+<span class="linenos" data-linenos="17 "></span>    <span class="p">}</span>
+</code></pre></div>
+<p>Pero ¿qué pasa si nuestras clases tienen constructor? pues que debemos indicarle, al método FECTH, que rellene las propiedades después de llamar al constructor y para ello hacemos uso de <code>PDO::FETCH_PROPS_LATE</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="c1">//  ▒▒▒▒▒▒▒▒ Consulta para una clase con constructor ▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM tienda&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="nv">$sentencia</span> <span class="o">=</span> <span class="nv">$conexion</span> <span class="o">-&gt;</span> <span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">setFetchMode</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_CLASS</span> <span class="o">|</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_PROPS_LATE</span><span class="p">,</span> <span class="nx">Tienda</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">execute</span><span class="p">();</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span>    <span class="nv">$tiendas</span> <span class="o">=</span> <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">fetchAll</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="consultas-con-like">Consultas con LIKE<a class="headerlink" href="#consultas-con-like" title="Permanent link">&para;</a></h3>
+<p>Para utilizar el comodín LIKE u otros comodines, debemos asociarlo al dato y NUNCA en la propia consulta.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="c1">//  ▒▒▒▒▒▒▒▒ Utilizando comodines :: LIKE ▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM tienda where nombre like :nombre or tlf like :tlf&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="nv">$sentencia</span> <span class="o">=</span> <span class="nv">$conexion</span> <span class="o">-&gt;</span> <span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">setFetchMode</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_CLASS</span> <span class="o">|</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_PROPS_LATE</span><span class="p">,</span> <span class="nx">Tienda</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="nv">$cadBuscar</span> <span class="o">=</span> <span class="s2">&quot;%&quot;</span> <span class="o">.</span> <span class="nv">$busqueda</span> <span class="o">.</span> <span class="s2">&quot;%&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span>    <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">execute</span><span class="p">([</span><span class="s2">&quot;nombre&quot;</span> <span class="o">=&gt;</span> <span class="nv">$cadBuscar</span><span class="p">,</span><span class="s2">&quot;tlf&quot;</span> <span class="o">=&gt;</span> <span class="nv">$cadBuscar</span><span class="p">]);</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span>    <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">fetchAll</span><span class="p">();</span>
+</code></pre></div>
+<p>Tenéis una lista de ejemplos muy completa en la <a href="https://phpdelusions.net/pdo/objects">documentación oficial</a>.</p>
+<h2 id="login-password">Login &amp; Password<a class="headerlink" href="#login-password" title="Permanent link">&para;</a></h2>
+<div class="center img-medium">
+    <img src="imagenes/06/06-login-password.gif">
+</div>
+
+<p>Para manejar un sistema completo de login y password con contraseñas cifradas, necesitamos un método que cifre esos strings que el usuario introduce como contraseña; tanto en el formulario de registro como en el del login, ya que al codificar una contraseña, después tenemos que decodificarla para comprobar que ambas contrasñeas (la que instroduce el usuario en el login y la que tenemos en la base de datos) coincidan.</p>
+<p>Necesitamos pues:</p>
+<ul>
+<li>
+<p><code>password_hash()</code> para almacenar la contraseña en la base de datos a la hora de hacer el INSERT</p>
+<ul>
+<li>
+<p><code>PASSWORD_DEFAULT</code> almacenamos la contraseña usando el método de encriptación bcrypt</p>
+</li>
+<li>
+<p><code>PASSWORD_BCRYPT</code> almacenamos la contraseña usando el algoritmo CRYPT_BLOWFISH compatible con crypt()</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>password_verify()</code> para verificar el usuario y la contraseña</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="c1">//  ▒▒▒▒▒▒▒▒ Almacenando usuario y password en BD ▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="nv">$usu</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">&quot;usuario&quot;</span><span class="p">];</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="nv">$pas</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">];</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO usuarios(usuario, password) VALUES (:usuario, :password)&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="nv">$sentencia</span> <span class="o">=</span> <span class="nv">$conexion</span> <span class="o">-&gt;</span> <span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span>    <span class="nv">$isOk</span> <span class="o">=</span> <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">execute</span><span class="p">([</span>
+<span class="linenos" data-linenos="12 "></span>        <span class="s2">&quot;usuario&quot;</span> <span class="o">=&gt;</span> <span class="nv">$usu</span><span class="p">,</span>
+<span class="linenos" data-linenos="13 "></span>        <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="nb">password_hash</span><span class="p">(</span><span class="nv">$pas</span><span class="p">,</span><span class="nx">PASSWORD_DEFAULT</span><span class="p">)</span>
+<span class="linenos" data-linenos="14 "></span>    <span class="p">]);</span>
+</code></pre></div>
+<p>Ahora que tenemos el usuario codificado y guardado en la base de datos, vamos a recuperarlo para poder loguearlo correctamente.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="c1">//  ▒▒▒▒▒▒▒▒ Recuperando usuario y password en BD ▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="nv">$usu</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">&quot;login&quot;</span><span class="p">]</span> <span class="o">??</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;select * from usuarios where usuario = ?&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="nv">$sentencia</span> <span class="o">=</span> <span class="nv">$conexion</span> <span class="o">-&gt;</span> <span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">execute</span><span class="p">([</span><span class="nv">$usu</span><span class="p">]);</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span>    <span class="nv">$usuario</span> <span class="o">=</span> <span class="nv">$sentencia</span> <span class="o">-&gt;</span> <span class="na">fetch</span><span class="p">();</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span>    <span class="k">if</span><span class="p">(</span><span class="nv">$usuario</span> <span class="o">&amp;&amp;</span> <span class="nb">password_verify</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;pass&#39;</span><span class="p">],</span> <span class="nv">$usuario</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="linenos" data-linenos="14 "></span>        <span class="k">echo</span><span class="s2">&quot;OK!&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="15 "></span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="linenos" data-linenos="16 "></span>        <span class="k">echo</span><span class="s2">&quot;KO&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="17 "></span>    <span class="p">}</span>
+</code></pre></div>
+<h2 id="acceso-a-ficheros">Acceso a ficheros<a class="headerlink" href="#acceso-a-ficheros" title="Permanent link">&para;</a></h2>
+<p>Gracias a la funcion fopen() desde PHP podemos abrir archivos que se encuentren en nuestros servidor o una URL.</p>
+<p>A esta función hay que pasarle 2 parámetros; el nombre del archivo que queremos abrir y el modo en el que se abrirá</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="x">$fp = fopen(&quot;miarchivo.txt&quot;, &quot;r&quot;);</span>
+</code></pre></div>
+<p>Muchas veces no podemos abrir el archivo porque éste no se encuentra o no tenemos acceso a él, por eso es recomendable comprobar que podemos hacerlo</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="x">if (!$fp = fopen(&quot;miarchivo.txt&quot;, &quot;r&quot;)){</span>
+<span class="linenos" data-linenos="2 "></span><span class="x">    echo &quot;No se ha podido abrir el archivo&quot;;</span>
+<span class="linenos" data-linenos="3 "></span><span class="x">}</span>
+</code></pre></div>
+<h3 id="modos-de-apertura-de-ficheros">Modos de apertura de ficheros<a class="headerlink" href="#modos-de-apertura-de-ficheros" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>r</code>:  Modo lectura. Puntero al principio del archivo.</li>
+<li><code>r+</code>: Apertura para lectura y escritura. Puntero al principio del archivo</li>
+<li><code>w</code>: Apertura para escritura. Puntero al principio del archivo y lo sobreescribe. Si no existe se intenta crear.</li>
+<li><code>w+</code>: Apertura para lectura y escritura. Puntero al principio del archivo y lo sobreescribe. Si no existe se intenta crear.</li>
+<li><code>a</code>: Apertura para escritura. Puntero al final del archivo. Si no existe se intenta crear.</li>
+<li><code>a+</code>: Apertura para lectura y escritura. Puntero al final del archivo. Si no existe se intenta crear.</li>
+<li><code>x</code>: Creación y apertura para sólo escritura. Puntero al principio del archivo. Si el archivo ya existe dará error E_WARNING. Si no existe se intenta crear.</li>
+<li><code>x+</code>: Creación y apertura para lectura y escritura. Mismo comportamiento que x.</li>
+<li><code>c</code>: Apertura para escritura. Si no existe se crea. Si existe no se sobreescribe ni da ningún error. Puntero al principio del archivo.</li>
+<li><code>c+</code>: Apertura para lectura y escritura. Mismo comportamiento que C.</li>
+<li><code>b</code>: Cuando se trabaja con archivos binarios como jpg, pdf, png y demás. Se suele colocar al final del modo, es decir rb, r+b, x+b, wb...</li>
+</ul>
+<h3 id="operaciones-con-archivos">Operaciones con archivos<a class="headerlink" href="#operaciones-con-archivos" title="Permanent link">&para;</a></h3>
+<p>Para poder <strong>leer</strong> un archivo necesitamos usar la función fread() de PHP</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="x">//  ▒▒▒▒▒▒▒▒ Abriendo un archivo y leyendo su contenido ▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="x">$file = &quot;miarchivo.txt&quot;;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="x">$fp = fopen($file, &quot;r&quot;);</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="x">// filesize() nos devuelve el tamaño del archivo en cuestión</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="x">$contents = fread($fp, filesize($file));</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="x">// Cerramos la conexión con el archivo</span>
+<span class="linenos" data-linenos="10 "></span><span class="x">fclose();</span>
+</code></pre></div>
+<p>Si lo que queremos es <strong>escribir</strong> en un archivo, deberemos hacer uso de la función fwrite()</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="x">//  ▒▒▒▒▒▒▒▒ Escribiendo en un archivo ▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos="2 "></span>
+<span class="linenos" data-linenos="3 "></span><span class="x">$file = &quot;miarchivo.txt&quot;;</span>
+<span class="linenos" data-linenos="4 "></span><span class="x">$texto = &quot;Hola que tal&quot;;</span>
+<span class="linenos" data-linenos="5 "></span>
+<span class="linenos" data-linenos="6 "></span><span class="x">$fp = fopen($file, &quot;w&quot;);</span>
+<span class="linenos" data-linenos="7 "></span>
+<span class="linenos" data-linenos="8 "></span><span class="x">fwrite($fp, $texto);</span>
+<span class="linenos" data-linenos="9 "></span><span class="x">fclose($fp);</span>
+</code></pre></div>
+<h3 id="informacion-de-un-fichero">Información de un fichero<a class="headerlink" href="#informacion-de-un-fichero" title="Permanent link">&para;</a></h3>
+<p>Con PHP y su método stat() podemos obtener información sobre los archivos que le indiquemos. Este método devuelve hasta un total de 12 elementos con ifnormación acerca de nuestro archivo.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>0   dev         número de dispositivo
+<span class="linenos" data-linenos=" 2 "></span>1   ino         número de i-nodo
+<span class="linenos" data-linenos=" 3 "></span>2   mode        modo de protección del i-nodo
+<span class="linenos" data-linenos=" 4 "></span>3   nlink       número de enlaces
+<span class="linenos" data-linenos=" 5 "></span>4   uid         ID de usuario del propietario
+<span class="linenos" data-linenos=" 6 "></span>5   gid         ID de grupo del propietario
+<span class="linenos" data-linenos=" 7 "></span>6   rdev        tipo de dispositivo, si es un dispositivo i-nodo
+<span class="linenos" data-linenos=" 8 "></span>7   size        tamaño en bytes
+<span class="linenos" data-linenos=" 9 "></span>8   atime       momento del último acceso (tiempo Unix)
+<span class="linenos" data-linenos="10 "></span>9   mtime       momento de la última modificación (tiempo Unix)
+<span class="linenos" data-linenos="11 "></span>10  ctime       momento de la última modificación del i-nodo (tiempo Unix)
+<span class="linenos" data-linenos="12 "></span>11  blksize     tamaño del bloque E/S del sistema de ficheros
+<span class="linenos" data-linenos="13 "></span>12  blocks      número de bloques de 512 bytes asignados
+</code></pre></div>
+<p>Unos ejemplos...</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">//  ▒▒▒▒▒▒▒▒ Información del archivo ▒▒▒▒▒▒▒▒</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nv">$file</span> <span class="o">=</span> <span class="s2">&quot;miarchivo.txt&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="nv">$texto</span> <span class="o">=</span> <span class="s2">&quot;Todos somos muy ignorantes, lo que ocurre es que no todos ignoramos las mismas cosas.&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="nb">fwrite</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="nv">$texto</span><span class="p">);</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="nv">$datos</span> <span class="o">=</span> <span class="nb">stat</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="k">echo</span> <span class="nv">$datos</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span> <span class="c1">// Número de enlaces, 1</span>
+<span class="linenos" data-linenos="14 "></span><span class="k">echo</span> <span class="nv">$datos</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span> <span class="c1">// Tamaño en bytes, 85</span>
+<span class="linenos" data-linenos="15 "></span><span class="k">echo</span> <span class="nv">$datos</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span> <span class="c1">// Momento de último acceso, 1444138104</span>
+<span class="linenos" data-linenos="16 "></span><span class="k">echo</span> <span class="nv">$datos</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span> <span class="c1">// Momento de última modificación, 1444138251</span>
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span><span class="cp">?&gt;</span>
+</code></pre></div>
+<p>Echa un vistazo a <a href="https://www.php.net/manual/es/book.dir.php">las funciones de directorios</a> que tiene PHP, es muy interesante.</p>
+<h3 id="archivos-pdf">Archivos PDF<a class="headerlink" href="#archivos-pdf" title="Permanent link">&para;</a></h3>
+<p>Con PHP podemos manejar todo tipo de archivos como ya hemos visto pero, ¿qué pasa si queremos generar ficheros PDF con datos sacados de una base de datos?</p>
+<div class="center img-small">
+    <img src="imagenes/06/06-pdf.png">
+</div>
+
+<p>Gracias a una clase escrita en PHP, podemos generar archivos PDF sin necesidad de instalar librerías adicionales en nuestro servidor.</p>
+<p>Para ello, como tenemos composer dentro de nuestra imagen de Docker, usaremos composer para instalar esta dependencia.</p>
+<p>Acuérdate que debemes haber hecho <code>composer init</code> para empezar un proyecto con composer, de lo contrario no podrás añadir ningún paquete.</p>
+<p>Veamos un ejemplo de Hello World convertido a PDF</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nb">ob_end_clean</span><span class="p">();</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">require</span><span class="p">(</span><span class="s1">&#39;fpdf/fpdf.php&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">// Instanciamos la clase</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">// P = Portrait | mm = unidades en milímetros | A4 = formato</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="nv">$pdf</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FPDF</span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">,</span><span class="s1">&#39;mm&#39;</span><span class="p">,</span><span class="s1">&#39;A4&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">// Añadimos una página</span>
+<span class="linenos" data-linenos="11 "></span><span class="nv">$pdf</span><span class="o">-&gt;</span><span class="na">AddPage</span><span class="p">();</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">// Establecemos la fuente y el tamaño de letra</span>
+<span class="linenos" data-linenos="14 "></span><span class="nv">$pdf</span><span class="o">-&gt;</span><span class="na">SetFont</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">// Imprimimos una celda con el texto que nosotros queramos</span>
+<span class="linenos" data-linenos="17 "></span><span class="nv">$pdf</span><span class="o">-&gt;</span><span class="na">Cell</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">// Terminamos el PDF</span>
+<span class="linenos" data-linenos="20 "></span><span class="nv">$pdf</span><span class="o">-&gt;</span><span class="na">Output</span><span class="p">();</span>
+<span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span><span class="cp">?&gt;</span>
+</code></pre></div>
+Hay muchos ejemplos y tutoriales, así como documentación de la clase FPDF en la página oficial.</p>
+<p>Visita <a href="http://www.fpdf.org/">la sección de tutoriales y el manual</a> para sacar mayor partido a esta clase.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">require</span><span class="p">(</span><span class="s1">&#39;fpdf/fpdf.php&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">class</span> <span class="nc">PDF</span> <span class="k">extends</span> <span class="nx">FPDF</span> <span class="p">{</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="c1">// Cabecera</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="k">function</span> <span class="nf">Header</span><span class="p">()</span> <span class="p">{</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span>        <span class="c1">// Añadimos un logotipo</span>
+<span class="linenos" data-linenos="11 "></span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Image</span><span class="p">(</span><span class="s1">&#39;logo.png&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">33</span><span class="p">);</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span>        <span class="c1">// establecemos la fuente y el tamaño</span>
+<span class="linenos" data-linenos="14 "></span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">SetFont</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span>
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span>        <span class="c1">// Movemos el contenido un poco a la derecha</span>
+<span class="linenos" data-linenos="17 "></span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Cell</span><span class="p">(</span><span class="mi">80</span><span class="p">);</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span>        <span class="c1">// Pintamos la celda</span>
+<span class="linenos" data-linenos="20 "></span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Cell</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="s1">&#39;Cabecera&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span>        <span class="c1">// Pasamos a la siguiente línea</span>
+<span class="linenos" data-linenos="23 "></span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Ln</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="linenos" data-linenos="24 "></span>    <span class="p">}</span>
+<span class="linenos" data-linenos="25 "></span>
+<span class="linenos" data-linenos="26 "></span>    <span class="c1">// Pie de página</span>
+<span class="linenos" data-linenos="27 "></span>    <span class="k">function</span> <span class="nf">Footer</span><span class="p">()</span> <span class="p">{</span>
+<span class="linenos" data-linenos="28 "></span>
+<span class="linenos" data-linenos="29 "></span>        <span class="c1">// Nos posicionamos a 1.5 cm  desde abajo del todo de la página</span>
+<span class="linenos" data-linenos="30 "></span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">SetY</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">);</span>
+<span class="linenos" data-linenos="31 "></span>
+<span class="linenos" data-linenos="32 "></span>        <span class="c1">// Arial italic 8</span>
+<span class="linenos" data-linenos="33 "></span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">SetFont</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span><span class="s1">&#39;I&#39;</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span>
+<span class="linenos" data-linenos="34 "></span>
+<span class="linenos" data-linenos="35 "></span>        <span class="c1">// Número de página</span>
+<span class="linenos" data-linenos="36 "></span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Cell</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="s1">&#39;Página &#39;</span> <span class="o">.</span> 
+<span class="linenos" data-linenos="37 "></span>            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">PageNo</span><span class="p">()</span> <span class="o">.</span> <span class="s1">&#39;/{nb}&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="38 "></span>    <span class="p">}</span>
+<span class="linenos" data-linenos="39 "></span><span class="p">}</span>
+<span class="linenos" data-linenos="40 "></span>
+<span class="linenos" data-linenos="41 "></span><span class="c1">// Instanciamos la clase</span>
+<span class="linenos" data-linenos="42 "></span><span class="nv">$pdf</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDF</span><span class="p">();</span>
+<span class="linenos" data-linenos="43 "></span>
+<span class="linenos" data-linenos="44 "></span><span class="c1">// Definimos un alias para la numeración de páginas</span>
+<span class="linenos" data-linenos="45 "></span><span class="nv">$pdf</span><span class="o">-&gt;</span><span class="na">AliasNbPages</span><span class="p">();</span>
+<span class="linenos" data-linenos="46 "></span>
+<span class="linenos" data-linenos="47 "></span><span class="nv">$pdf</span><span class="o">-&gt;</span><span class="na">AddPage</span><span class="p">();</span>
+<span class="linenos" data-linenos="48 "></span><span class="nv">$pdf</span><span class="o">-&gt;</span><span class="na">SetFont</span><span class="p">(</span><span class="s1">&#39;Times&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="mi">14</span><span class="p">);</span>
+<span class="linenos" data-linenos="49 "></span>
+<span class="linenos" data-linenos="50 "></span><span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">30</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span>
+<span class="linenos" data-linenos="51 "></span>    <span class="nv">$pdf</span><span class="o">-&gt;</span><span class="na">Cell</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;Número de línea &#39;</span> 
+<span class="linenos" data-linenos="52 "></span>            <span class="o">.</span> <span class="nv">$i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="linenos" data-linenos="53 "></span><span class="nv">$pdf</span><span class="o">-&gt;</span><span class="na">Output</span><span class="p">();</span>
+<span class="linenos" data-linenos="54 "></span>
+<span class="linenos" data-linenos="55 "></span><span class="cp">?&gt;</span>
+</code></pre></div>
+<div class="center img-large">
+    <img src="imagenes/06/06-pdf-output.gif">
+</div>
+
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<h3 id="mysqli_1">MySQLi<a class="headerlink" href="#mysqli_1" title="Permanent link">&para;</a></h3>
+<ol start="601">
+<li>
+<p>Crea una nueva base de datos con el nombre <code>lol</code> y cotejamiento de datos <code>utf8mb4_unicode_ci</code>.</p>
+</li>
+<li>
+<p>En nuestra base de datos <code>lol</code> que acabamos de crear,  vamos a crear la tabla <code>campeon</code> con los siguientes campos.</p>
+</li>
+</ol>
+<ul>
+<li>id [*]</li>
+<li>nombre</li>
+<li>rol</li>
+<li>dificultad</li>
+<li>
+<p>descripcion</p>
+<p>Acuérdate que [*] significa que es clave primaria y no olvides poner el tipo de datos de cada uno de los campos.</p>
+</li>
+</ul>
+<ol start="603">
+<li>
+<p>Rellena la tabla <code>campeon</code> con, al menos 5 registros, con los datos que tú quieras o si lo prefieres, puedes basarte en la <a href="https://www.leagueoflegends.com/es-es/champions">página oficial del juego</a> pero <span class="alert"><strong>¡¡ NO TE PONGAS A JUGAR !!</strong></span></p>
+</li>
+<li>
+<p>Crea el archivo <code>604campeones.php</code> donde listes todos los campeones del LOL que has metido en tu base de datos. Acuérdate que para ello deberas hacer una conexión con la base de datos y un <code>foreach</code> para cada campeón que tengas albergado en la tabla <code>campeon</code>.</p>
+</li>
+<li>
+<p>Modifica el archivo <code>604campeones.php</code> y guárdalo como <code>606campeones.php</code> pero pon al lado de cada uno de los campeones listados un botón para <code>editar</code> y otro para <code>borrar</code>. Cada uno de esos botones hará la correspondiente función dependiendo del id del campeón seleccionado.</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>Al pinchar en editar, el usuario será redirigido al archivo <code>605editando.php</code> donde mostrará un formulario con los campos rellenos por los datos del campeón seleccionado. Al darle al botón de <code>guardar</code> los datos se guardarán en la base de datos y el usuario será redirigido a la lista de campones para poder ver los cambios.</p>
+</li>
+<li>
+<p>Al pinchar en borrar, el usuario será preguntado a través de un mensaje de JavaScript (prompt) si está seguro de que quiere borrar al campeón seleccionado. En el mensaje de confirmación debe aparecer el <strong>nombre del campeón seleccionado</strong>. Si el usuario pincha en <code>Aceptar</code> el campeón será eliminado de la base de datos y el usuario será redirigido nuevamente al listado de campeones para comprobar que, efectivamente dicho campeón se ha eliminado de la lista.</p>
+</li>
+</ul>
+<h3 id="filtros-y-comodines">Filtros y comodines<a class="headerlink" href="#filtros-y-comodines" title="Permanent link">&para;</a></h3>
+<ol start="606">
+<li>modifica el archivo <code>604campeones.php</code> y guárdalo como <code>606campeones.php</code> para que se muestre como una tabla con las columnas de la propia tabla de la base de datos, es decir; id, nombre, rol, dificultad, descripción. Al lado de cada nombre de cada columna, pon 2 iconos que sean ˄ ˅ y que cada uno de ellos ordene el listado en función de cuál se haya pinchado.</li>
+</ol>
+<ul>
+<li>
+<p>Si se ha pulsado en Nombre el icono de ˄, el listado debe aparecer ordenado por nombre ascendente. Si por el contrario se ha pulsado ˅ tendrá que ordenarse por nombre descendente.</p>
+</li>
+<li>
+<p>Ten en cuenta que cada icono debe llevar consigo un enlace al listado que contenga parámetros en la URL que satisfagan las opciones seleccionadas así que haced uso de $_GET para poder capturarlos y escribid las consultas SQL que sean necesarias para hacer cada uno de los filtros.</p>
+</li>
+<li>
+<p>Puedes usar <a href="https://fontawesome.com">Font Awesome</a> para los iconos pero es algo opcional</p>
+</li>
+</ul>
+<h3 id="pdo">PDO<a class="headerlink" href="#pdo" title="Permanent link">&para;</a></h3>
+<ol start="607">
+<li>
+<p>Aprovecha lo que hiciste de los ejercicios 601 al 604 pero esta vez utilizando <code>PDO::FETCH_ASSOC</code>.</p>
+</li>
+<li>
+<p>Crea una tabla nueva dentro de la base de datos <code>lol</code> que ya tienes y crea un sistema de login con usuarios. Introduce en la base de datos al menos 3 usuarios diferentes con sus contraseñas distintas. Recuerda que:</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>La tabla nueva ha de llamarse <code>usuario</code></p>
+</li>
+<li>
+<p>Los campos a crear en la nueva tabla deben ser</p>
+<ul>
+<li><code>id</code> [*]</li>
+<li><code>nombre</code></li>
+<li><code>usuario</code></li>
+<li><code>password</code></li>
+<li><code>email</code></li>
+</ul>
+</li>
+<li>
+<p>Las contraseñas deben ser cifradas antes de guardar el datos en la base de datos.</p>
+</li>
+<li>
+<p>Crea el formulario <code>608registro.php</code> donde el usuario introduzca los datos de registro y vincúlalo con <code>608nuevoUsuario.php</code> para que recoja los datos mediante POST y los inserte en la base de datos si todo ha ido bien.</p>
+</li>
+<li>
+<p>Queda <span class="alert"><strong>PROHIBIDÍSIMO</strong></span> acceder a <code>608nuevoUsuario.php</code> sin el formulario rellenado.</p>
+</li>
+<li>
+<p>La sentencia de INSERT debe estar controlada para que no pueda introducirse ningún dato en blanco. Ten en cuenta que estás modificando la base de datos y no queremos campos mal rellenados.</p>
+</li>
+<li>
+<p>Si todo ha ido bien, muestra un mensaje por pantalla diciendo <code>El usuario XXX ha sido introducido en el sistema con la contraseña YYY</code>.</p>
+</li>
+</ul>
+<h3 id="ficheros">Ficheros<a class="headerlink" href="#ficheros" title="Permanent link">&para;</a></h3>
+<ol start="609">
+<li>
+<p>Métete en <a href="https://www.lipsum.com/">loremipsum.com</a> y genera un texto de 3 párrafos. Copia el texto generado y guárdalo en un archivo nuevo llamado <code>609loremIpsum.txt</code>. Genera un archivo php llamado <code>609loremIpsum.php</code> y muestra por pantalla el texto del archivo txt que acabas de crear, su tamaño en <strong>Kilobytes</strong> , la fecha de su última modificación y el ID de usuario que creó el archivo.</p>
+</li>
+<li>
+<p>Vuelve a cargar el archivo <code>606campeones.php</code> y renómbralo a <code>610campeones.php</code> pero en vez de mostrar la tabla por pantalla, genera un archivo CSV <code>610campeones.csv</code> y otro <code>610campeonesCSV.php</code> donde saques por pantalla el contenido del archivo <code>610campeones.csv</code>.</p>
+</li>
+</ol>
+<h3 id="proyecto-chollosevero">Proyecto CholloSevero<a class="headerlink" href="#proyecto-chollosevero" title="Permanent link">&para;</a></h3>
+<ol start="615">
+<li>
+<p>Estructura el proyecto y piensa en las tablas y bases de datos que necesitéis para crear el proyecto. Crea los UML necesarios con nombres como <code>615UMLnombreTabla</code> metiendo todos los campos que se necesiten así como las relaciones que creas necesarias. Establece un sistema de archivos para el proyecto, teniendo en cuenta que van a haber imágenes, css, funciones php, constantes e incluso javaScript (pero algo básico) para controlar los eventos del usuario a lo largo de la interfaz.</p>
+</li>
+<li>
+<p>Crea un sistema de login/password con los roles <code>administrador</code> y <code>usuario</code>. De momento que se validen los usuarios correctamente utilizando encriptación en la contraseña.</p>
+</li>
+</ol>
+<ul>
+<li>
+<p><code>Administrador</code>: Puede ver todos los usuarios registrados así como los administradores y los chollos creados en la base de datos.</p>
+</li>
+<li>
+<p><code>Usuario</code>: Puede ver sus propios chollos, editarlos y borrarlos, además de crear nuevos.</p>
+</li>
+</ul>
+<ol start="617">
+<li>
+<p>Crea la vista para poner nuevos chollos y recuerda <span class="alert"><strong><em>sólo pueden entrar a esta vista usuarios registrados o administradores</em></strong></span>.</p>
+</li>
+<li>
+<p>Crea la vista donde se muestren todos los chollos creados. Esta vista puede verla cualquier usuario, registrado o no en el sistema. Ten en cuenta que esta vista será la vista general de la web así que puedes llamarla <code>index.php</code> donde después aplicaremos filtros por $_GET.</p>
+</li>
+</ol>
+<!--
+
+## Eloquent
+
+### Mapeo ORM
+
+#### Modelo
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="go">php artisan make:model Pregunta</span>
+</code></pre></div>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2024-2025 Jesús García - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/aitormedrano" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.2 4.2 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.52 8.52 0 0 1-5.33 1.84q-.51 0-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<a.medrano@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.13c-.15.01-.29.06-.39.17l-1 1 2.05 2 1-1c.22-.21.22-.56 0-.77l-1.24-1.23a.56.56 0 0 0-.38-.17m-2 1.75L13 19.94V22h2.06l6.06-6.07M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7v-.89l8.24-8.22c.47-.49 1.12-.76 1.8-.76.34 0 .68.06 1 .19V6c0-1.12-.92-2-2.04-2m0 4-8 5-8-5V6l8 5 8-5"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "toc.integrate", "content.tabs.link"], "search": "assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+    
+  </body>
+</html>
