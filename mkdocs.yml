@@ -1,5 +1,5 @@
 site_name: Desarrollo Web en Entorno Servidor
-site_url: https://aitor-medrano.github.io/dwes2122
+site_url: https://jssdocente.github.io/dwes2425
 use_directory_urls: false
 
 nav:
@@ -50,9 +50,9 @@ extra:
       link: https://twitter.com/aitormedrano
     - icon: material/email-edit
       link: mailto:<a.medrano@edu.gva.es>
-  analytics:
-    provider: google
-    property: G-X6D0LR7TC8
+  #analytics:
+    #provider: google
+    #property: G-X6D0LR7TC8
 
 plugins:
   - search
@@ -82,4 +82,4 @@ markdown_extensions:
       permalink: true
       toc_depth: 3
 
-copyright: 2021-2022 Aitor Medrano, Luis Alemañ - Licencia CC BY-NC-SA
+copyright: 2024-2025 Jesús García - Licencia CC BY-NC-SA
