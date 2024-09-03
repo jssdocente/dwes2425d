@@ -47,7 +47,7 @@ name: build-push-mkdocs
 # Eventos que desescandenan el workflow
 on:
   push:
-    branches: ["main"]
+    branches: ["master"]
 
   workflow_dispatch:
 
@@ -92,4 +92,4 @@ El último paso que tendremos que realizar será configurar los permisos que ten
 
 Para configurar el repositorio seleccionamos: Settings -> Actions -> General.
 
-Buscamos la sección `Workflow permissions` y seleccionamos la opción `Read and write permissions`.
+Buscamos la sección `Workflow permissions` y seleccionamos la opción Read and write permissions.

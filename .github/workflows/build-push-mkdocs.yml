@@ -3,7 +3,7 @@ name: build-push-mkdocs
 # Eventos que desescandenan el workflow
 on:
   push:
-    branches: ["main"]
+    branches: ["master"]
 
   workflow_dispatch:
 
