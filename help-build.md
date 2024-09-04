@@ -27,7 +27,9 @@ docker-compose exec mkdocs sh  # mkdocs es el nombre del servicio dentro del doc
 
 ## Despliegue
 
-### Despliegue a través de Mkdocs
+### Despliegue GitHub Pages
+
+#### Despliegue a través de Mkdocs
 
 Para desplegar la documentación en GitHub Pages, se puede hacer de la siguiente manera:
 
@@ -35,7 +37,7 @@ Para desplegar la documentación en GitHub Pages, se puede hacer de la siguiente
 mkdocs gh-deploy
 ```
 
-### Despliegue a través de GitHub Actions
+#### Despliegue a través de GitHub Actions
 
 Se puede configurar un flujo de trabajo en GitHub Actions para que se despliegue automáticamente la documentación en GitHub Pages cada vez que se haga un push a la rama `main`.
 
@@ -93,3 +95,94 @@ El último paso que tendremos que realizar será configurar los permisos que ten
 Para configurar el repositorio seleccionamos: Settings -> Actions -> General.
 
 Buscamos la sección `Workflow permissions` y seleccionamos la opción Read and write permissions.
+
+
+
+
+### Despliegue a AWS S3
+
+Se recomienda usar CloudFormation para desplegar la infraestructura necesaria en AWS. [AWS Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-s3.html)
+
+
+1. Crear un Yaml con la siguiente estructura:
+
+```yaml
+AWSTemplateFormatVersion: 2010-09-09
+Description: Resources to host documentation.
+
+Parameters:
+SiteName:
+    Description: Site name
+    Type: String
+    Default: tp-beta-learning
+
+Resources:
+S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+        BucketName: !Ref SiteName
+        AccessControl: PublicRead
+        WebsiteConfiguration:
+            IndexDocument: index.html
+            ErrorDocument: error.html
+
+BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+    PolicyDocument:
+        Id: MyPolicy
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicReadForGetBucketObjects
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Join
+            - ''
+            - - 'arn:aws:s3:::'
+                - !Ref S3Bucket
+                - /*
+    Bucket: !Ref S3Bucket
+
+Outputs:
+WebsiteURL:
+    Value: !GetAtt
+        - S3Bucket
+        - WebsiteURL
+    Description: URL for website hosted on S3
+```
+
+2. Deploy the cloud-formation usando AWS CLI. 
+   
+```bash
+aws cloudformation create-stack --stack-name tp-beta-learning --template-body file://s3-bucket.yaml --parameters ParameterKey=SiteName,ParameterValue=tp-beta-learning
+```
+
+3. Desplegar Site a S3
+  
+  - En local ejecutar `mkdocs build`. Esto crea un site directorio.
+  - Desplegar a S3 con el siguiente comando: `aws s3 sync ./site s3://<bucket-name> --recursive`
+  - El sitio estará disponible en `http://<bucket-name>.s3-website-<region>.amazonaws.com`
+
+Para desplegar la documentación en un bucket de AWS S3, se puede hacer de la siguiente manera:
+
+El siguiente paso es configurar el bucket de S3 para que sea un sitio web estático. Para ello, se puede hacer de la siguiente manera:
+
+1. Ir a la consola de AWS y buscar el servicio S3.
+2. Seleccionar el bucket que se ha creado.
+3. Ir a la pestaña `Properties`.
+4. En la sección `Static website hosting`, seleccionar `Use this bucket to host a website`.
+5. En `Index document`, poner `index.html`.
+6. En `Error document`, poner `error.html` o el que se prefiera.
+7. Guardar los cambios.
+
+
+4. Aplicar seguridad básica a la web estática.
+
+- Seguir este video: [How to restrict access to static S3 site using HTTP Basic Auth](https://www.youtube.com/watch?v=gc3w_bMtcQE)
+- Otra opcion es usar CloudFront y CloudFront Functions. [Host Static Content with Basic Authentication on AWS](https://mertbakir.gitlab.io/dev-ops/static-content-on-aws/)
+
+
+```
+
+
