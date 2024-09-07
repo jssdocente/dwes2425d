@@ -20,9 +20,32 @@
     6. Se han verificado los mecanismos de integración de los lenguajes de marcas con los lenguajes de programación en entorno servidor.
     7. Se han reconocido y evaluado las herramientas de programación en entorno servidor.
 
+??? abstract "Objetivos del tema"
+
+    Se trata de que concozcas todos los elementos que se pueden encontrar en una aplicación web y en la arqutectura web de un servicio, además de los tipos de aplicaciones web que existen.
+
+    1. Entender la diferencia entre la infraestructura internet y los servicios web
+    2. Conocer las diferentes partes de una arquitectura web
+    3. Entender los conceptos previos de las aplicaciones web.
+    4. Comprender los tipos de aplicaciones web que se pueden desarrollar.
+    5. Conocer las tecnologías que se utilizan en el desarrollo de aplicaciones web y los tipos de lenguajes existentes más utilizados.
+  
+
 Las arquitecturas web definen la forma en que las páginas de un sitio web están estructuradas y enlazadas entre sí. Las aplicaciones web se basan en en modelo cliente-servidor.
 
-## Cliente / Servidor
+## Internet y la Web (no es lo mismo)
+
+1. Repaso (se ve en PAR - Planificación y Administración de Redes)
+2. Son cosas diferentes:
+
+    1. [Internet](https://es.wikipedia.org/wiki/Internet) (Infraestuctura)
+    2. [Web](https://es.wikipedia.org/wiki/Servicio_web) (Servicios)
+
+3. Infraestructura Internet: TCP/IP + Servicios
+4. Recordar los estándares (y las organizaciones)
+5. El protocolo HTTP
+
+## Modelo Cliente / Servidor
 
 <figure>
   <img src="imagenes/01/clienteservidor.png" />
@@ -40,7 +63,7 @@ El cliente hace la petición (*request* normalmente mediante el protocolo GET me
 Si la página web únicamente contiene HTML + CSS se considera una página estática. Para generar una página dinámica, donde el contenido cambia, a día de hoy tenemos dos alternativas:
 
 * Utilizar un lenguaje de servidor que genere el contenido, ya sea mediante el acceso a una BD o servicios externos.
-* Utilizar servicios REST de terceros invocados desde JS.
+* Utilizar servicios REST de terceros o propios invocados desde JS.
 
 <figure>
   <img src="imagenes/01/paginadinamica.png" />
@@ -52,7 +75,7 @@ Las tecnologías empleadadas (y los perfiles de desarrollo asociados) para la ge
 | Perfil                    | Herramienta           | Tecnología
 | ---                       | ---                   | ---
 | *Front-end* / cliente     | Navegador Web         | HTML + CSS + JavaScript
-| *Back-end* / servidor     | Servidor Web + BBDD   | PHP, Python, Ruby, Java / JSP, .Net / .asp
+| *Back-end* / servidor     | Servidor Web + Servidor Aplicaciones +  BBDD   | PHP, Python, Ruby, Java / JSP, .Net / .asp
 
 !!! tip "Perfil *Full-stack*"
     En las ofertas de trabajo cuando hacen referencia a un *Full-stack developer*, están buscando un perfil que domina tanto el *front-end* como el *back-end*.
@@ -65,6 +88,13 @@ A día de hoy, gran parte del desarrollo web está transicionando de una arquite
   <img src="imagenes/01/01spa.png" />
   <figcaption>Arquitectura tradicional vs SPA</figcaption>
 </figure>
+
+??? info "SPA En detalle"
+    Si quires profundizar en este tema de las aplicaciones SPA, puedes consultar los siguientes recursos:
+
+    - [SPA Wikipedia](https://es.wikipedia.org/wiki/Single-page_application)
+    - [¿Qué es una SPA en programación?](https://keepcoding.io/blog/que-es-una-spa-en-programacion/)
+
 
 ## Arquitectura de 3 capas
 
@@ -86,7 +116,7 @@ Ejemplo de arquitectura en tres capas físicas (*3 tier*):
 </figure>
 
 !!! warning "Cluster en tiers"
-    No confundir las capas con la cantidad de servidores. Actualmente se trabaja con arquitecturas con múltiples servidores en una misma capa física mediante un cluster, para ofrecer tolerancia a errores y escalabilidad horizontal.
+    No confundir las capas con la cantidad de servidores. Actualmente se trabaja con arquitecturas con múltiples servidores en una misma capa física mediante un cluster, para ofrecer [tolerancia a errores](https://es.wikipedia.org/wiki/Dise%C3%B1o_de_tolerancia_a_fallos) y [escalabilidad horizontal](https://www.arsys.es/blog/escalado-horizontal-vs-vertical).
 
 ### Layer
 
@@ -134,27 +164,123 @@ Lo estudiaremos en más detalle al profundizar en el uso de los frameworks PHP.
 
 Software que recibe peticiones HTTP (GET, POST, DELETE, ...). Devuelve el recurso solicitado (HTML, CSS, JS, JSON, imágenes, etc...)
 
-El producto más implantando es Apache Web Server (<https://httpd.apache.org/>), creado en 1995.
+Un servidor web es una tecnología que aloja el código y los datos de un sitio web. Al ingresar una URL en el navegador, la URL es en realidad el identificador de dirección del servidor web. El servidor web recibe la solicitud y devuelve el contenido de la página web al navegador del usuario.
 
-* Software libre y multiplataforma
-* Sistema de módulos dinámicos → PHP, Python, Perl
-* Utiliza el archivo `.htaccess` para su configuración
+Su navegador y servidor web se comunican de la siguiente manera:
 
-En la actualidad, *Apache* está perdiendo mercado respecto a Nginx (<https://www.nginx.com>). Se trata de un producto más moderno (2004) y que en determinados escenarios tiene mejor rendimiento que Apache.
+1. El navegador usa la URL para encontrar la dirección IP del servidor.
+2. El navegador envía una solicitud HTTP de información.
+3. El servidor web se comunica con un servidor de base de datos para encontrar los datos relevantes.
+4. El servidor web devuelve contenido estático, como páginas HTML, imágenes, videos o archivos, en una respuesta HTTP al navegador.
+5. A continuación, el navegador le mostrará la información.
 
-* Comparativa servidores web: <https://w3techs.com/technologies/history_overview/web_server/ms/q>
+Un sitio web que aloja contenido estático, como blogs, imágenes de encabezado o artículos, puede ejecutarse en un servidor web. Sin embargo, la mayoría de los sitios web y aplicaciones web son mucho más interactivos y requieren un servidor de aplicaciones.
+
+??? example "En profundidad: Servidores Web"
+
+    === "Servidores Web mas populares"
+
+		Algunos de los servidores web más utilizados son los siguientes:
+
+		- <ins>Servidor HTTP Apache
+			
+			Es un servidor web gratuito y de código abierto que se utiliza en muchos sistemas operativos, como Windows, Linux y Mac OS X. [Apache](https://www.hostinger.es/tutoriales/que-es-apache/) es el software de servidor web más antiguo y uno de los más utilizados por los propietarios de páginas web, desarrolladores y proveedores de hosting, con una [cuota de mercado](https://w3techs.com/technologies/details/ws-apache) de más del 31%.
+			
+		- <ins>NGINX</ins>
+			
+			Es un famoso software de servidor web de código abierto que inicialmente sólo funcionaba para el servicio web HTTP. Ahora también se utiliza como proxy inverso, balanceador de carga HTTP y proxy de correo electrónico.
+			
+			NGINX es conocido por su velocidad y su capacidad para manejar múltiples conexiones, por lo que muchos sitios web de alto tráfico utilizan sus servicios.
+			
+		- <ins>IIS: (Internet Information Services) de Microsoft
+			
+			[IIS](https://www.iis.net/) es un software de servidor web cerrado desarrollado por Microsoft y ampliamente utilizado en los sistemas operativos Windows.
+			
+		- <ins>Lighttpd
+			
+			Es un software de servidor web gratuito y de código abierto que es conocido por su velocidad y por requerir menos potencia de la CPU. [Lighttpd](https://www.lighttpd.net/) también es popular por tener una pequeña huella de memoria.
+			
+			En el ámbito del hosting, los distintos hosts soportan diferentes tipos de servidores web. Por ejemplo, [Hostinger soporta](https://www.hostinger.es/tecnologia) tanto Apache como NGINX, los dos servidores web líderes en el mercado.
+
+
+    === "Apache vs Nginx"
+
+        ¿ Cuál es la diferencia entre Apache y Nginx ?
+
+        **Similaridades**
+
+          - Ambos son servidores web de código abierto.
+          - Amplia comunidad de usuarios y desarrolladores.
+          - Permiten agregar funcionalidad a través de módulos.
+          - Ambos permiten actuar como servidor proxy, permite pasar información a otras aplicaciones y devolver esta información al usuario (cliente).
+          - Procesamiento basado en eventos para conexiones simulateneas (últimas versiones de apache).
+
+
+        **Diferencias**
+
+        Puntos | Apache | Nginx
+        ---|---|---
+        Configuración | Sintaxis XML | Sintaxis estilo C
+        Configuración | Fichero .htaccess configuración distribuida en muchas carpetas | Bloques de configuración en un único fichero
+        Contenido dinámico | Nativamente procesado con módulos, eliminando la necesidad de otras aplicaciones (PHP, Perl, Python, ...) | Requiere de procesamiento externo a través de otras aplicaciones
+        Contenido estático | Menos eficiente | Más eficiente (más del doble de rápido)
+        Cache y balanceo de carga | A través de módulos (conf. compleja) | Capacidades nativas (sencilla)
+
+!!! info "Comparativa de servidores web"
+
+    <https://w3techs.com/technologies/history_overview/web_server/ms/q>
 
 ### Servidor de Aplicaciones
 
-* Software que ofrece servicios adicionales a los de un servidor web:
+Un servidor de aplicaciones amplía las capacidades de un servidor web, pues admite la generación de contenido dinámico, la lógica de la aplicación y la integración con varios recursos. Proporciona un entorno de tiempo de ejecución en el que puede ejecutar el código de la aplicación e interactuar con otros componentes de software, como los sistemas de mensajería y las bases de datos. Utiliza la lógica empresarial para transformar los datos de manera más significativa que un servidor web.
+
+* Ofrece servicios adicionales a los de un servidor web:
     * Clustering
     * Balanceo de carga
     * Tolerancia a fallos
+    * ...
+
 * *Tomcat* (<http://tomcat.apache.org/>) es el servidor de aplicaciones *open source* y multiplataforma de referencia para una arquitectura Java.
     * Contiende un contenedor Web Java que interpreta *Servlets* y JSP.
 
-!!! info
-    Tanto los servidores web como los servidores de aplicaciones los estudiaremos en profundidad en el módulo de *"Despliegue de Aplicaciones Web"*.
+
+??? example "En profundidad: Servidores de Aplicaciones"
+
+    === "Diferencias clave"
+
+		**Servidor Web**
+
+		- Un servidor web es un software que se ejecuta en un servidor y que responde a las solicitudes de los clientes a través del protocolo HTTP.
+		- Un servidor web sirve contenido estático, como páginas HTML, imágenes y archivos.
+		- Los servidores web más populares son Apache y Nginx.
+		- Los servidores web son ideales para sitios web pequeños y estáticos.
+
+		**Servidor de Aplicaciones**
+
+		- Un servidor de aplicaciones es un software que se ejecuta en un servidor y que responde a las solicitudes de los clientes a través de protocolos más complejos.
+		- Un servidor de aplicaciones sirve contenido dinámico, como aplicaciones web y servicios web.
+		- Los servidores de aplicaciones son ideales para aplicaciones web complejas y dinámicas.
+		- Los servidores de aplicaciones más populares son Tomcat, JBoss y WebSphere.
+
+	=== "Resumen"
+	
+		Conceptos | Servidor web | Servidor de aplicaciones
+		---|---|---
+		Tareas realizadas | Los servidores web ofrecen respuestas a solicitudes sencillas. | Un servidor de aplicaciones ofrece contenido más complejo de bases de datos, servicios y sistemas empresariales.
+		Protocolos utilizados | Los servidores web utilizan principalmente HTTP. También admiten FTP y SMTP. | Los servidores de aplicaciones admiten muchos protocolos. 
+		Tipos de contenidos | Los servidores web ofrecen contenido estático, como páginas HTML, imágenes, videos y archivos. | Los servidores de aplicaciones ofrecen contenido dinámico, como actualizaciones en tiempo real, información personalizada y atención al cliente.
+		Subprocesamiento múltiple | No suele utilizar subprocesos múltiples. | Utiliza subprocesos múltiples para procesar solicitudes de forma simultánea. 
+	
+	=== "Funcionamiento conjunto"
+
+		Los servidores de aplicaciones y los servidores web trabajan juntos para administrar las solicitudes de los clientes y ofrecer el contenido correcto al usuario. El servidor web siempre recibe primero una nueva solicitud. Si puede producir la información por sí mismo, lo hace y envía una respuesta HTTP. También comprueba que los datos que el usuario solicitó no estén ya en su caché.
+
+		Si el servidor web no puede acceder al contenido que el usuario necesita, reenvía la solicitud al servidor de aplicaciones. El servidor de aplicaciones procesa los datos y utiliza la lógica empresarial para proporcionar la información correcta. A continuación, devuelve la solicitud al servidor web, que la pasa al usuario. En ciertas arquitecturas, también puede configurar los servidores de aplicaciones para que gestionen las solicitudes HTTP por sí mismos.	
+
+		![Digrama de flujo](imagenes/01/diagramflow-webserver-webapp.png)
+
+
+> 💡Tanto los servidores web como los servidores de aplicaciones se estudian en profundidad en el módulo de *"Despliegue de Aplicaciones Web"*.
 
 ### Lenguajes en el servidor
 
@@ -172,6 +298,41 @@ Las aplicaciones que generan las páginas web se programan en alguno de los sigu
 *Java Enterprise Edition* es la solución Java para el desarrollo de aplicaciones *enterprise*. Ofrece una arquitectura muy completa y compleja, escalable y tolerante a fallos. Planteada para aplicaciones para grandes sistemas.
 
 ![JavaEE](imagenes/01/javaee.png)
+
+
+#### .NET
+
+![Diagrama de .NET](imagenes/01/ApsNetCoreDiagram.png){ width="500", align=right }
+
+* Plataforma de desarrollo de Microsoft
+* Utiliza el lenguaje C# o Visual Basic .NET
+* Utiliza el servidor de aplicaciones IIS
+* Se basa en el framework .NET (.Net Core en la actualidad)
+* Permite el desarrollo de aplicaciones web, de escritorio y móviles
+* Para la web, se utiliza ASP.NET, que es un framework para el desarrollo de aplicaciones web
+  * ASP.NET MVC (Modelo Vista Controlador)
+  * ASP.NET Web API (servicios web)
+  * ASP.NET SignalR (comunicación en tiempo real)
+  * ASP.NET Blazor (Las aplicaciones web se desarrollan en C# y se ejecutan en el navegador)
+
+
+#### Ruby
+
+* Lenguaje de programación interpretado
+* Desarrollado por Yukihiro Matsumoto en 1995
+* Inspirado en Perl, Smalltalk, Eiffel, Ada y Lisp
+* Framework Ruby on Rails
+* Utilizado por GitHub, Twitter, Airbnb, Shopify, ...
+
+
+#### Node.js
+
+* Entorno de ejecución de JavaScript en el servidor
+* Basado en el motor V8 de Google
+* Desarrollado por Ryan Dahl en 2009
+* Utilizado por Netflix, Uber, LinkedIn, PayPal, ...
+* Frameworks: Express, Koa, Hapi, Sails, Meteor, NestJS, ...
+* Permite el desarrollo de aplicaciones web, de escritorio y móviles
 
 #### PHP
 
@@ -194,6 +355,7 @@ El siguiente mapa mental muestra un resumen de sus elementos:
 </figure>
 
 Durante las siguientes unidades vamos a estudiar PHP en profundidad.
+
 
 ## Puesta en marcha
 
@@ -329,7 +491,7 @@ Otra forma más sencilla para lanzar de nuevo los contenedores y gestionarlos un
 
 ### Entorno de desarrollo
 
-En este curso vamos a emplear *Visual Studio Code* (<https://code.visualstudio.com>) como entorno de desarrollo (IDE). Existen otras alternativas, siendo [PhpStorm](https://www.jetbrains.com/es-es/phpstorm/) la más conocida pero siendo de pago. Otra posibilidad es utilizar [Eclipse](https://www.eclipse.org/pdt/), aunque es un entorno bastante pesado.
+En este curso vamos a emplear *Visual Studio Code* (<https://code.visualstudio.com>) como entorno de desarrollo (IDE), y más adelante también [PhpStorm](https://www.jetbrains.com/es-es/phpstorm/), que es sin duda la más usada y conocinda aunque es de pago (existe opción para estudiantes).
 
 *VSCode* es un editor de código fuente que se complementa mediante extensiones. Para facilitar el trabajo a lo largo del curso vamos a utilizar las siguientes extensiones:
 
@@ -372,35 +534,35 @@ Si nombramos el archivo como `index.php`, al acceder a `http://localhost` autom�
 * Curso de introducción a Docker, por *Sergi García Barea* : <https://sergarb1.github.io/CursoIntroduccionADocker/>
 * Artículo [Arquitecturas Web y su evolución](https://www.arquitecturajava.com/arquitecturas-web-y-su-evolucion/)
 
+
+
 ## Actividades
 
-101. Busca en internet cuales son los tres frameworks PHP más utilizados, y indica:
+??? question "Cuestionario en grupo"
+
+	40 preguntas sobre Internet [Kahoot](https://create.kahoot.it/share/40-preguntas-sobre-internet/ffb5a58c-4e58-4656-826f-0f8d94304331)
+	
+
+101. Trabajo sobre servidores web
+     
+	 1. Busca en internet la historia de Apache y redacta un resumen de la misma (con tus palabras), varios parráfos.
+	 2. Busca en internet la historia de Nginx..
+
+102. Busca en internet cuales son los tres frameworks PHP más utilizados, y indica:
 
     * Nombre y URL
     * Año de creación
     * Última versión
 
-102. Busca tres ofertas de trabajo de *desarrollo de software* en Infojobs en la provincia de Alicante que citen PHP y anota:
+103. Busca tres ofertas de trabajo de *desarrollo de software* en Infojobs o Manfred que citen PHP y anota:
 
     * Empresa + puesto + frameworks PHP + requísitos + sueldo + enlace a la oferta.
 
-103. Una vez arrancado el servicio PHP (mediante XAMPP o Docker), crea el archivo `info.php` y añade el siguiente fragmento de código:
-
-    ``` php
-    <?php phpinfo() ?>
-    ```
-    Anota los valores de:
-
-    * Versión de PHP
-    * *Loaded Configuration File*
-    * `memory_limit`
-    * `DOCUMENT_ROOT`
-
-104. Abre el archivo `php.ini-production` que está dentro del contenedor (puedes averiguar la ruta a partir de la propiedad *Configuration File (php.ini) Path*) e indica para qué sirven las siguientes propiedades y qué valores contienen:
-
-    * `file_uploads`
-    * `max_execution_time`
-    * `short_open_tag`
-
-    !!! note "php.ini"
-        Es el archivo de configuración de PHP, y en toda instalación vienen dos plantillas (`php.ini-development` y `php.ini-production`) para que elijamos los valores más acordes a nuestro proyecto y creemos nuestro archivo propio de `php.ini`.
+104. Tecnologías Web
+	
+	1. ¿ Donde puede ver las especificaciones de HTML ?
+	2. ¿ Y de CSS ?
+	3. ¿ Y de Javascript ?
+	4. ¿ Cúal es la última versión de cada uno de ellos ?
+	5. ¿ Sabrías distinguir un servidor web de un servidor de aplicaciones ?
+	6. El servidor de aplicaciones, el web y el de base de datos, ¿tienen que estar en la mimsa máquina ? ¿en la misma red?

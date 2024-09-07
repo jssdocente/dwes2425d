@@ -1,10 +1,5 @@
 # Desarrollo Web en Entorno Servidor
 
-!!! tip "Apuntes obsoletos"
-    Estos apuntes se redactaron durante el curso 21/22. La primera mitad fueron escritos por mí (*Aitor Medrano*), y luego los continuó *Luis Alemañ*. Desde entonces ya no imparto este módulo y por lo tanto, ya no se actualizan.
-
-    Repasándolos en perspectiva no están mal pero tienen mucho margen de mejora. Si los has utilizado y ampliado, si quieres, mándame un [mail](mailto:a.medrano@edu.gva.es) y pondré un enlace a tu repositorio para visibilizarlo y poder ayudar a más gente, ya sea profesorado o alumnado.
-
 Aquí puedes encontrar los apuntes del módulo de ***Desarrollo web en entorno servidor***, que se imparte en el segundo curso del ciclo formativo de grado superior de *Desarrollo de Aplicaciones Web*.
 
 La duración del módulo es de 160 horas lectivas, a razón de **8 horas semanales**, y se desarrolla a lo largo de los **dos primeros trimestres** del curso. Se ha [planificado](planning.md) basándose en 4 sesiones de 2 horas lectivas por semana.
@@ -78,20 +73,25 @@ Duración estimada: 88 sesiones
     * *AJAX* con *JSON*.
     * Interacción con *Vue.js*.
 
-<!--
+
 ## Instrumentos de calificación
 
 La nota de cada evaluación se calcula mediante:
 
-* 30% Trabajo en Clase / Actividades
-    * Se evalúan todas las actividades realizadas en clase y en casa.
-    * Las actividades se evalúan mediante tareas de *Aules* con calificaciones comprendidas entre 0 y 3 puntos:
-        * 0: No entregada
-        * 1: Entregada pero solución errónea o incompleta
-        * 2: Entregada y solución aceptable, aunque tiene algún apartado incompleto
-        * 3: Entregada y solución correcta.
-* 70% Actividad de evaluación
+* **25% Trabajo en Clase / Actividades**
+    * El trabajo en clase se evalúa mediante la observación del profesor.
+    * En cada trimestre habrá alguna/s *Tareas Evaluables*, a partir de las cúales se obtendrá esta parte de la calificación.  con calificaciones comprendidas entre 0 y 10 puntos:
+        * Las calificaciones estarán comprendidas entre 0 y 10 puntos.
+        * Es necesario entregar las tareas antes de la fecha máxima, en caso contrario se considerará no entregada.
+        * Las tareas se podrán recuperar en la fecha que el profesor determine, pero la calificación será de Apto o no Apto, en este caso.
+        * Para aprobar esta parte de la evaluación es necesario obtener una nota media de *6 puntos*.
+  
+* **75% Pruebas Teoria y Práctica**
     * Una o dos pruebas por evaluación.
+    * Recuperación:
+        * Para la recuperar la 1ª evaluación se hará una prueba de recuperación entre la 2º y 3ª semana de Enero.
+        * Para recuperar la 2ª evaluación se hará en la Evaluación Final Ordinaria.
+        * En caso de no superar el curso en la Evaluación Final Ordinaria, se podrá recuperar en la Evaluación Final Extraordinaria.
 
 La nota final se calcula mediante la media de cada una de las evaluaciones.
--->
+
