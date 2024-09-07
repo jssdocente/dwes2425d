@@ -28,7 +28,8 @@ jobs:
       - name: Install Mkdocs
         run: |
           pip install mkdocs
-          pip install mkdocs-material 
+          pip install mkdocs-material
+          pip install mkdocs-glightbox
 
       - name: Build MkDocs
         run: |
