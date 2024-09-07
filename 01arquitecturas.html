@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://jssdocente.github.io/dwes2425/01arquitecturas.html">
       
       
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="extra/ArquitecturasWebExtendido.html">
       
       
       <link rel="icon" href="imagenes/favicon.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Arquitecturas Web - Desarrollo Web en Entorno Servidor</title>
+        <title>1.- Arquitecturas Web - Desarrollo Web en Entorno Servidor</title>
       
     
     
@@ -51,7 +55,16 @@
     
     
     
-  </head>
+   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -105,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Arquitecturas Web
+              1.- Arquitecturas Web
             
           </span>
         </div>
@@ -238,6 +251,333 @@
   
 
     
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1.- Arquitecturas Web
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="01arquitecturas.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    1.- Arquitecturas Web
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#internet-y-la-web-no-es-lo-mismo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internet y la Web (no es lo mismo)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelo-cliente-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modelo Cliente / Servidor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modelo Cliente / Servidor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pagina-web-dinamica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Página web dinámica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-page-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single Page Application
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-de-3-capas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura de 3 capas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arquitectura de 3 capas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tier
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decisiones-de-diseno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decisiones de diseño
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#herramientas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Herramientas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Herramientas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#servidor-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servidor Web
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servidor-de-aplicaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servidor de Aplicaciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lenguajes-en-el-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lenguajes en el servidor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#puesta-en-marcha" class="md-nav__link">
+    <span class="md-ellipsis">
+      Puesta en marcha
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Puesta en marcha">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xampp" class="md-nav__link">
+    <span class="md-ellipsis">
+      XAMPP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entorno-de-desarrollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entorno de desarrollo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hola-mundo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hola Mundo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividades
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Anexo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Anexo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extra/ArquitecturasWebExtendido.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anexo I. Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -273,10 +613,37 @@
 <li>Se han reconocido y evaluado las herramientas de programación en entorno servidor.</li>
 </ol>
 </details>
+<details class="abstract">
+<summary>Objetivos del tema</summary>
+<p>Se trata de que concozcas todos los elementos que se pueden encontrar en una aplicación web y en la arqutectura web de un servicio, además de los tipos de aplicaciones web que existen.</p>
+<ol>
+<li>Entender la diferencia entre la infraestructura internet y los servicios web</li>
+<li>Conocer las diferentes partes de una arquitectura web</li>
+<li>Entender los conceptos previos de las aplicaciones web.</li>
+<li>Comprender los tipos de aplicaciones web que se pueden desarrollar.</li>
+<li>Conocer las tecnologías que se utilizan en el desarrollo de aplicaciones web y los tipos de lenguajes existentes más utilizados.</li>
+</ol>
+</details>
 <p>Las arquitecturas web definen la forma en que las páginas de un sitio web están estructuradas y enlazadas entre sí. Las aplicaciones web se basan en en modelo cliente-servidor.</p>
-<h2 id="cliente-servidor">Cliente / Servidor<a class="headerlink" href="#cliente-servidor" title="Permanent link">&para;</a></h2>
+<h2 id="internet-y-la-web-no-es-lo-mismo">Internet y la Web (no es lo mismo)<a class="headerlink" href="#internet-y-la-web-no-es-lo-mismo" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Repaso (se ve en PAR - Planificación y Administración de Redes)</li>
+<li>
+<p>Son cosas diferentes:</p>
+<ol>
+<li><a href="https://es.wikipedia.org/wiki/Internet">Internet</a> (Infraestuctura)</li>
+<li><a href="https://es.wikipedia.org/wiki/Servicio_web">Web</a> (Servicios)</li>
+</ol>
+</li>
+<li>
+<p>Infraestructura Internet: TCP/IP + Servicios</p>
+</li>
+<li>Recordar los estándares (y las organizaciones)</li>
+<li>El protocolo HTTP</li>
+</ol>
+<h2 id="modelo-cliente-servidor">Modelo Cliente / Servidor<a class="headerlink" href="#modelo-cliente-servidor" title="Permanent link">&para;</a></h2>
 <figure>
-  <img src="imagenes/01/clienteservidor.png" />
+  <a class="glightbox" href="imagenes/01/clienteservidor.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/01/clienteservidor.png" /></a>
   <figcaption>Arquitectura Cliente Servidor</figcaption>
 </figure>
 
@@ -287,10 +654,10 @@
 <p>Si la página web únicamente contiene HTML + CSS se considera una página estática. Para generar una página dinámica, donde el contenido cambia, a día de hoy tenemos dos alternativas:</p>
 <ul>
 <li>Utilizar un lenguaje de servidor que genere el contenido, ya sea mediante el acceso a una BD o servicios externos.</li>
-<li>Utilizar servicios REST de terceros invocados desde JS.</li>
+<li>Utilizar servicios REST de terceros o propios invocados desde JS.</li>
 </ul>
 <figure>
-  <img src="imagenes/01/paginadinamica.png" />
+  <a class="glightbox" href="imagenes/01/paginadinamica.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/01/paginadinamica.png" /></a>
   <figcaption>Página web dinámica</figcaption>
 </figure>
 
@@ -311,7 +678,7 @@
 </tr>
 <tr>
 <td><em>Back-end</em> / servidor</td>
-<td>Servidor Web + BBDD</td>
+<td>Servidor Web + Servidor Aplicaciones +  BBDD</td>
 <td>PHP, Python, Ruby, Java / JSP, .Net / .asp</td>
 </tr>
 </tbody>
@@ -323,10 +690,18 @@
 <h3 id="single-page-application"><em>Single Page Application</em><a class="headerlink" href="#single-page-application" title="Permanent link">&para;</a></h3>
 <p>A día de hoy, gran parte del desarrollo web está transicionando de una arquitectura web cliente-servidor clásica donde el cliente realiza una llamada al backend, por una arquitectura SPA donde el cliente gana mucho mayor peso y sigue una programación reactiva que accede a servicios remotos REST que realizan las operaciones (comunicandose mediante JSON).</p>
 <figure>
-  <img src="imagenes/01/01spa.png" />
+  <a class="glightbox" href="imagenes/01/01spa.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/01/01spa.png" /></a>
   <figcaption>Arquitectura tradicional vs SPA</figcaption>
 </figure>
 
+<details class="info">
+<summary>SPA En detalle</summary>
+<p>Si quires profundizar en este tema de las aplicaciones SPA, puedes consultar los siguientes recursos:</p>
+<ul>
+<li><a href="https://es.wikipedia.org/wiki/Single-page_application">SPA Wikipedia</a></li>
+<li><a href="https://keepcoding.io/blog/que-es-una-spa-en-programacion/">¿Qué es una SPA en programación?</a></li>
+</ul>
+</details>
 <h2 id="arquitectura-de-3-capas">Arquitectura de 3 capas<a class="headerlink" href="#arquitectura-de-3-capas" title="Permanent link">&para;</a></h2>
 <p>Hay que distinguir entre capas <strong>físicas</strong> (<em>tier</em>) y capas <strong>lógicas</strong> (<em>layer</em>).</p>
 <h3 id="tier">Tier<a class="headerlink" href="#tier" title="Permanent link">&para;</a></h3>
@@ -338,16 +713,16 @@
 <li>Servidor de base de datos</li>
 </ul>
 <figure>
-  <img src="imagenes/01/tier3.png" />
+  <a class="glightbox" href="imagenes/01/tier3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/01/tier3.png" /></a>
   <figcaption>Arquitectura de tres capas físicas</figcaption>
 </figure>
 
 <div class="admonition warning">
 <p class="admonition-title">Cluster en tiers</p>
-<p>No confundir las capas con la cantidad de servidores. Actualmente se trabaja con arquitecturas con múltiples servidores en una misma capa física mediante un cluster, para ofrecer tolerancia a errores y escalabilidad horizontal.</p>
+<p>No confundir las capas con la cantidad de servidores. Actualmente se trabaja con arquitecturas con múltiples servidores en una misma capa física mediante un cluster, para ofrecer <a href="https://es.wikipedia.org/wiki/Dise%C3%B1o_de_tolerancia_a_fallos">tolerancia a errores</a> y <a href="https://www.arsys.es/blog/escalado-horizontal-vs-vertical">escalabilidad horizontal</a>.</p>
 </div>
 <h3 id="layer">Layer<a class="headerlink" href="#layer" title="Permanent link">&para;</a></h3>
-<p><img align="right" alt="Arquitectura de tres capas físicas" src="imagenes/01/layer3.png" /></p>
+<p><a class="glightbox" href="imagenes/01/layer3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img align="right" alt="Arquitectura de tres capas físicas" src="imagenes/01/layer3.png" /></a></p>
 <p>En cambio, las capas lógicas (<em>layers</em>) organizan el código respecto a su funcionalidad:</p>
 <ul>
 <li>Presentación</li>
@@ -356,12 +731,12 @@
 </ul>
 <p>Como se observa, cada una de las capas se puede implementar con diferentes lenguajes de programación y/o herramientas.</p>
 <figure>
-  <img src="imagenes/01/tierlayer.png" />
+  <a class="glightbox" href="imagenes/01/tierlayer.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/01/tierlayer.png" /></a>
   <figcaption>Arquitectura de tres capas físicas en tres lógicas</figcaption>
 </figure>
 
 <h2 id="mvc">MVC<a class="headerlink" href="#mvc" title="Permanent link">&para;</a></h2>
-<p><img _="&amp;" align="right" alt="MVC" src="imagenes/01/mvc.png" width="500" /></p>
+<p><a class="glightbox" href="imagenes/01/mvc.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img _="&amp;" align="right" alt="MVC" src="imagenes/01/mvc.png" width="500" /></a></p>
 <p><em>Model-View-Controller</em> o Modelo-Vista-Controlador es un modelo de arquitectura que separa los datos y la lógica de negocio respecto a la interfaz de usuario y el componente encargado de gestionar los eventos y las comunicaciones.</p>
 <p>Al separar los componentes en elementos conceptuales permite reutilizar el código y mejorar su organización y mantenimiento. Sus elementos son:</p>
 <ul>
@@ -382,33 +757,181 @@
 <h2 id="herramientas">Herramientas<a class="headerlink" href="#herramientas" title="Permanent link">&para;</a></h2>
 <h3 id="servidor-web">Servidor Web<a class="headerlink" href="#servidor-web" title="Permanent link">&para;</a></h3>
 <p>Software que recibe peticiones HTTP (GET, POST, DELETE, ...). Devuelve el recurso solicitado (HTML, CSS, JS, JSON, imágenes, etc...)</p>
-<p>El producto más implantando es Apache Web Server (<a href="https://httpd.apache.org/">https://httpd.apache.org/</a>), creado en 1995.</p>
+<p>Un servidor web es una tecnología que aloja el código y los datos de un sitio web. Al ingresar una URL en el navegador, la URL es en realidad el identificador de dirección del servidor web. El servidor web recibe la solicitud y devuelve el contenido de la página web al navegador del usuario.</p>
+<p>Su navegador y servidor web se comunican de la siguiente manera:</p>
+<ol>
+<li>El navegador usa la URL para encontrar la dirección IP del servidor.</li>
+<li>El navegador envía una solicitud HTTP de información.</li>
+<li>El servidor web se comunica con un servidor de base de datos para encontrar los datos relevantes.</li>
+<li>El servidor web devuelve contenido estático, como páginas HTML, imágenes, videos o archivos, en una respuesta HTTP al navegador.</li>
+<li>A continuación, el navegador le mostrará la información.</li>
+</ol>
+<p>Un sitio web que aloja contenido estático, como blogs, imágenes de encabezado o artículos, puede ejecutarse en un servidor web. Sin embargo, la mayoría de los sitios web y aplicaciones web son mucho más interactivos y requieren un servidor de aplicaciones.</p>
+<details class="example">
+<summary>En profundidad: Servidores Web</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Servidores Web mas populares</label><label for="__tabbed_1_2">Apache vs Nginx</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Algunos de los servidores web más utilizados son los siguientes:</p>
 <ul>
-<li>Software libre y multiplataforma</li>
-<li>Sistema de módulos dinámicos → PHP, Python, Perl</li>
-<li>Utiliza el archivo <code>.htaccess</code> para su configuración</li>
+<li>
+<p><ins>Servidor HTTP Apache</p>
+<p>Es un servidor web gratuito y de código abierto que se utiliza en muchos sistemas operativos, como Windows, Linux y Mac OS X. <a href="https://www.hostinger.es/tutoriales/que-es-apache/">Apache</a> es el software de servidor web más antiguo y uno de los más utilizados por los propietarios de páginas web, desarrolladores y proveedores de hosting, con una <a href="https://w3techs.com/technologies/details/ws-apache">cuota de mercado</a> de más del 31%.</p>
+</li>
+<li>
+<p><ins>NGINX</ins></p>
+<p>Es un famoso software de servidor web de código abierto que inicialmente sólo funcionaba para el servicio web HTTP. Ahora también se utiliza como proxy inverso, balanceador de carga HTTP y proxy de correo electrónico.</p>
+<p>NGINX es conocido por su velocidad y su capacidad para manejar múltiples conexiones, por lo que muchos sitios web de alto tráfico utilizan sus servicios.</p>
+</li>
+<li>
+<p><ins>IIS: (Internet Information Services) de Microsoft</p>
+<p><a href="https://www.iis.net/">IIS</a> es un software de servidor web cerrado desarrollado por Microsoft y ampliamente utilizado en los sistemas operativos Windows.</p>
+</li>
+<li>
+<p><ins>Lighttpd</p>
+<p>Es un software de servidor web gratuito y de código abierto que es conocido por su velocidad y por requerir menos potencia de la CPU. <a href="https://www.lighttpd.net/">Lighttpd</a> también es popular por tener una pequeña huella de memoria.</p>
+<p>En el ámbito del hosting, los distintos hosts soportan diferentes tipos de servidores web. Por ejemplo, <a href="https://www.hostinger.es/tecnologia">Hostinger soporta</a> tanto Apache como NGINX, los dos servidores web líderes en el mercado.</p>
+</li>
 </ul>
-<p>En la actualidad, <em>Apache</em> está perdiendo mercado respecto a Nginx (<a href="https://www.nginx.com">https://www.nginx.com</a>). Se trata de un producto más moderno (2004) y que en determinados escenarios tiene mejor rendimiento que Apache.</p>
+</div>
+<div class="tabbed-block">
+<p>¿ Cuál es la diferencia entre Apache y Nginx ?</p>
+<p><strong>Similaridades</strong></p>
 <ul>
-<li>Comparativa servidores web: <a href="https://w3techs.com/technologies/history_overview/web_server/ms/q">https://w3techs.com/technologies/history_overview/web_server/ms/q</a></li>
+<li>Ambos son servidores web de código abierto.</li>
+<li>Amplia comunidad de usuarios y desarrolladores.</li>
+<li>Permiten agregar funcionalidad a través de módulos.</li>
+<li>Ambos permiten actuar como servidor proxy, permite pasar información a otras aplicaciones y devolver esta información al usuario (cliente).</li>
+<li>Procesamiento basado en eventos para conexiones simulateneas (últimas versiones de apache).</li>
 </ul>
+<p><strong>Diferencias</strong></p>
+<table>
+<thead>
+<tr>
+<th>Puntos</th>
+<th>Apache</th>
+<th>Nginx</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Configuración</td>
+<td>Sintaxis XML</td>
+<td>Sintaxis estilo C</td>
+</tr>
+<tr>
+<td>Configuración</td>
+<td>Fichero .htaccess configuración distribuida en muchas carpetas</td>
+<td>Bloques de configuración en un único fichero</td>
+</tr>
+<tr>
+<td>Contenido dinámico</td>
+<td>Nativamente procesado con módulos, eliminando la necesidad de otras aplicaciones (PHP, Perl, Python, ...)</td>
+<td>Requiere de procesamiento externo a través de otras aplicaciones</td>
+</tr>
+<tr>
+<td>Contenido estático</td>
+<td>Menos eficiente</td>
+<td>Más eficiente (más del doble de rápido)</td>
+</tr>
+<tr>
+<td>Cache y balanceo de carga</td>
+<td>A través de módulos (conf. compleja)</td>
+<td>Capacidades nativas (sencilla)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</details>
+<div class="admonition info">
+<p class="admonition-title">Comparativa de servidores web</p>
+<p><a href="https://w3techs.com/technologies/history_overview/web_server/ms/q">https://w3techs.com/technologies/history_overview/web_server/ms/q</a></p>
+</div>
 <h3 id="servidor-de-aplicaciones">Servidor de Aplicaciones<a class="headerlink" href="#servidor-de-aplicaciones" title="Permanent link">&para;</a></h3>
+<p>Un servidor de aplicaciones amplía las capacidades de un servidor web, pues admite la generación de contenido dinámico, la lógica de la aplicación y la integración con varios recursos. Proporciona un entorno de tiempo de ejecución en el que puede ejecutar el código de la aplicación e interactuar con otros componentes de software, como los sistemas de mensajería y las bases de datos. Utiliza la lógica empresarial para transformar los datos de manera más significativa que un servidor web.</p>
 <ul>
-<li>Software que ofrece servicios adicionales a los de un servidor web:<ul>
+<li>
+<p>Ofrece servicios adicionales a los de un servidor web:</p>
+<ul>
 <li>Clustering</li>
 <li>Balanceo de carga</li>
 <li>Tolerancia a fallos</li>
+<li>...</li>
 </ul>
 </li>
-<li><em>Tomcat</em> (<a href="http://tomcat.apache.org/">http://tomcat.apache.org/</a>) es el servidor de aplicaciones <em>open source</em> y multiplataforma de referencia para una arquitectura Java.<ul>
+<li>
+<p><em>Tomcat</em> (<a href="http://tomcat.apache.org/">http://tomcat.apache.org/</a>) es el servidor de aplicaciones <em>open source</em> y multiplataforma de referencia para una arquitectura Java.</p>
+<ul>
 <li>Contiende un contenedor Web Java que interpreta <em>Servlets</em> y JSP.</li>
 </ul>
 </li>
 </ul>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Tanto los servidores web como los servidores de aplicaciones los estudiaremos en profundidad en el módulo de <em>"Despliegue de Aplicaciones Web"</em>.</p>
+<details class="example">
+<summary>En profundidad: Servidores de Aplicaciones</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Diferencias clave</label><label for="__tabbed_2_2">Resumen</label><label for="__tabbed_2_3">Funcionamiento conjunto</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>Servidor Web</strong></p>
+<ul>
+<li>Un servidor web es un software que se ejecuta en un servidor y que responde a las solicitudes de los clientes a través del protocolo HTTP.</li>
+<li>Un servidor web sirve contenido estático, como páginas HTML, imágenes y archivos.</li>
+<li>Los servidores web más populares son Apache y Nginx.</li>
+<li>Los servidores web son ideales para sitios web pequeños y estáticos.</li>
+</ul>
+<p><strong>Servidor de Aplicaciones</strong></p>
+<ul>
+<li>Un servidor de aplicaciones es un software que se ejecuta en un servidor y que responde a las solicitudes de los clientes a través de protocolos más complejos.</li>
+<li>Un servidor de aplicaciones sirve contenido dinámico, como aplicaciones web y servicios web.</li>
+<li>Los servidores de aplicaciones son ideales para aplicaciones web complejas y dinámicas.</li>
+<li>Los servidores de aplicaciones más populares son Tomcat, JBoss y WebSphere.</li>
+</ul>
 </div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Conceptos</th>
+<th>Servidor web</th>
+<th>Servidor de aplicaciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tareas realizadas</td>
+<td>Los servidores web ofrecen respuestas a solicitudes sencillas.</td>
+<td>Un servidor de aplicaciones ofrece contenido más complejo de bases de datos, servicios y sistemas empresariales.</td>
+</tr>
+<tr>
+<td>Protocolos utilizados</td>
+<td>Los servidores web utilizan principalmente HTTP. También admiten FTP y SMTP.</td>
+<td>Los servidores de aplicaciones admiten muchos protocolos.</td>
+</tr>
+<tr>
+<td>Tipos de contenidos</td>
+<td>Los servidores web ofrecen contenido estático, como páginas HTML, imágenes, videos y archivos.</td>
+<td>Los servidores de aplicaciones ofrecen contenido dinámico, como actualizaciones en tiempo real, información personalizada y atención al cliente.</td>
+</tr>
+<tr>
+<td>Subprocesamiento múltiple</td>
+<td>No suele utilizar subprocesos múltiples.</td>
+<td>Utiliza subprocesos múltiples para procesar solicitudes de forma simultánea.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>Los servidores de aplicaciones y los servidores web trabajan juntos para administrar las solicitudes de los clientes y ofrecer el contenido correcto al usuario. El servidor web siempre recibe primero una nueva solicitud. Si puede producir la información por sí mismo, lo hace y envía una respuesta HTTP. También comprueba que los datos que el usuario solicitó no estén ya en su caché.</p>
+<p>Si el servidor web no puede acceder al contenido que el usuario necesita, reenvía la solicitud al servidor de aplicaciones. El servidor de aplicaciones procesa los datos y utiliza la lógica empresarial para proporcionar la información correcta. A continuación, devuelve la solicitud al servidor web, que la pasa al usuario. En ciertas arquitecturas, también puede configurar los servidores de aplicaciones para que gestionen las solicitudes HTTP por sí mismos.    </p>
+<p><a class="glightbox" href="imagenes/01/diagramflow-webserver-webapp.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Digrama de flujo" src="imagenes/01/diagramflow-webserver-webapp.png" /></a></p>
+</div>
+</div>
+</div>
+</details>
+<blockquote>
+<p>💡Tanto los servidores web como los servidores de aplicaciones se estudian en profundidad en el módulo de <em>"Despliegue de Aplicaciones Web"</em>.</p>
+</blockquote>
 <h3 id="lenguajes-en-el-servidor">Lenguajes en el servidor<a class="headerlink" href="#lenguajes-en-el-servidor" title="Permanent link">&para;</a></h3>
 <p>Las aplicaciones que generan las páginas web se programan en alguno de los siguientes lenguajes:</p>
 <ul>
@@ -421,7 +944,38 @@
 </ul>
 <h4 id="javaee">JavaEE<a class="headerlink" href="#javaee" title="Permanent link">&para;</a></h4>
 <p><em>Java Enterprise Edition</em> es la solución Java para el desarrollo de aplicaciones <em>enterprise</em>. Ofrece una arquitectura muy completa y compleja, escalable y tolerante a fallos. Planteada para aplicaciones para grandes sistemas.</p>
-<p><img alt="JavaEE" src="imagenes/01/javaee.png" /></p>
+<p><a class="glightbox" href="imagenes/01/javaee.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="JavaEE" src="imagenes/01/javaee.png" /></a></p>
+<h4 id="net">.NET<a class="headerlink" href="#net" title="Permanent link">&para;</a></h4>
+<p><a class="glightbox" href="imagenes/01/ApsNetCoreDiagram.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img _="," align="right" alt="Diagrama de .NET" src="imagenes/01/ApsNetCoreDiagram.png" width="500" /></a></p>
+<ul>
+<li>Plataforma de desarrollo de Microsoft</li>
+<li>Utiliza el lenguaje C# o Visual Basic .NET</li>
+<li>Utiliza el servidor de aplicaciones IIS</li>
+<li>Se basa en el framework .NET (.Net Core en la actualidad)</li>
+<li>Permite el desarrollo de aplicaciones web, de escritorio y móviles</li>
+<li>Para la web, se utiliza ASP.NET, que es un framework para el desarrollo de aplicaciones web</li>
+<li>ASP.NET MVC (Modelo Vista Controlador)</li>
+<li>ASP.NET Web API (servicios web)</li>
+<li>ASP.NET SignalR (comunicación en tiempo real)</li>
+<li>ASP.NET Blazor (Las aplicaciones web se desarrollan en C# y se ejecutan en el navegador)</li>
+</ul>
+<h4 id="ruby">Ruby<a class="headerlink" href="#ruby" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Lenguaje de programación interpretado</li>
+<li>Desarrollado por Yukihiro Matsumoto en 1995</li>
+<li>Inspirado en Perl, Smalltalk, Eiffel, Ada y Lisp</li>
+<li>Framework Ruby on Rails</li>
+<li>Utilizado por GitHub, Twitter, Airbnb, Shopify, ...</li>
+</ul>
+<h4 id="nodejs">Node.js<a class="headerlink" href="#nodejs" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Entorno de ejecución de JavaScript en el servidor</li>
+<li>Basado en el motor V8 de Google</li>
+<li>Desarrollado por Ryan Dahl en 2009</li>
+<li>Utilizado por Netflix, Uber, LinkedIn, PayPal, ...</li>
+<li>Frameworks: Express, Koa, Hapi, Sails, Meteor, NestJS, ...</li>
+<li>Permite el desarrollo de aplicaciones web, de escritorio y móviles</li>
+</ul>
 <h4 id="php">PHP<a class="headerlink" href="#php" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Lenguaje de propósito general diseñado para el desarrollo de páginas web dinámicas</li>
@@ -440,7 +994,7 @@
 <p>Su documentación es bastante completa: <a href="https://www.php.net/manual/es/index.php">https://www.php.net/manual/es/index.php</a></p>
 <p>El siguiente mapa mental muestra un resumen de sus elementos:</p>
 <figure>
-  <img src="imagenes/01/php.jpg" />
+  <a class="glightbox" href="imagenes/01/php.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/01/php.jpg" /></a>
   <figcaption>Elementos del lenguaje PHP</figcaption>
 </figure>
 
@@ -474,7 +1028,7 @@
 <h4 id="plantilla-servidor-web-php">Plantilla Servidor Web + PHP<a class="headerlink" href="#plantilla-servidor-web-php" title="Permanent link">&para;</a></h4>
 <p><em>Docker</em> se basa en el uso de imágenes para crear contenedores. <em>Docker Compose</em> simplifica el trabajo con múltiples contenedores, y por ello, para facilitar el arraque, nos centraremos en <em>Docker Compose</em> utilizando una plantilla que únicamente va a contener como servicios Apache/Nginx y PHP.</p>
 <p>Para ello, vamos a rellenar el archivo <code>docker-compose.yaml</code> con:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Apache y PHP</label><label for="__tabbed_1_2">Nginx y PHP</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Apache y PHP</label><label for="__tabbed_3_2">Nginx y PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Services</span>
@@ -539,7 +1093,7 @@
 </ul>
 <p>Otra forma más sencilla para lanzar de nuevo los contenedores y gestionarlos una vez creados es utilizar el interfaz gráfico que ofrece <em>Docker Desktop</em>:</p>
 <figure>
-  <img src="imagenes/01/dockerdesktop.png" />
+  <a class="glightbox" href="imagenes/01/dockerdesktop.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/01/dockerdesktop.png" /></a>
   <figcaption>Arranque de contenedor mediante Docker Desktop</figcaption>
 </figure>
 
@@ -552,7 +1106,7 @@
 <p>En el módulo de <em>Despliegue de aplicaciones</em> estudiaréis en profundidad, además de Docker, Apache y otros servicios que nos servirán de ayuda para el desarrollo en entorno servidor.</p>
 </div>
 <h3 id="entorno-de-desarrollo">Entorno de desarrollo<a class="headerlink" href="#entorno-de-desarrollo" title="Permanent link">&para;</a></h3>
-<p>En este curso vamos a emplear <em>Visual Studio Code</em> (<a href="https://code.visualstudio.com">https://code.visualstudio.com</a>) como entorno de desarrollo (IDE). Existen otras alternativas, siendo <a href="https://www.jetbrains.com/es-es/phpstorm/">PhpStorm</a> la más conocida pero siendo de pago. Otra posibilidad es utilizar <a href="https://www.eclipse.org/pdt/">Eclipse</a>, aunque es un entorno bastante pesado.</p>
+<p>En este curso vamos a emplear <em>Visual Studio Code</em> (<a href="https://code.visualstudio.com">https://code.visualstudio.com</a>) como entorno de desarrollo (IDE), y más adelante también <a href="https://www.jetbrains.com/es-es/phpstorm/">PhpStorm</a>, que es sin duda la más usada y conocinda aunque es de pago (existe opción para estudiantes).</p>
 <p><em>VSCode</em> es un editor de código fuente que se complementa mediante extensiones. Para facilitar el trabajo a lo largo del curso vamos a utilizar las siguientes extensiones:</p>
 <ul>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client">PHP Intelephense</a></li>
@@ -561,7 +1115,7 @@
 <p>En la siguiente sesión comenzaremos a utilizar <em>Intelephense</em> pero en esta sesión nos vamos a centrar en <em>Docker</em> (más adelante instalaremos nuevas extensiones).</p>
 <p>Por ejemplo, si abrimos la extensión de <em>Docker</em>, podréis visualizar tanto los contenedores como las imágenes de vuestro sistema. Desde cada contenedor, mediante clic derecho, podemos iniciar/detener/reiniciar cada contenedor, así como ver su contenido o abrir un terminal dentro del mismo.</p>
 <figure>
-  <img src="imagenes/01/vscodedocker.png" width="300"/>
+  <a class="glightbox" href="imagenes/01/vscodedocker.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/01/vscodedocker.png" width="300"/></a>
   <figcaption>Opciones mediante extensión Docker en VSCode</figcaption>
 </figure>
 
@@ -588,7 +1142,18 @@
 <li>Artículo <a href="https://www.arquitecturajava.com/arquitecturas-web-y-su-evolucion/">Arquitecturas Web y su evolución</a></li>
 </ul>
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<details class="question">
+<summary>Cuestionario en grupo</summary>
+<p>40 preguntas sobre Internet <a href="https://create.kahoot.it/share/40-preguntas-sobre-internet/ffb5a58c-4e58-4656-826f-0f8d94304331">Kahoot</a></p>
+</details>
 <ol start="101">
+<li>
+<p>Trabajo sobre servidores web</p>
+<ol>
+<li>Busca en internet la historia de Apache y redacta un resumen de la misma (con tus palabras), varios parráfos.</li>
+<li>Busca en internet la historia de Nginx..</li>
+</ol>
+</li>
 <li>
 <p>Busca en internet cuales son los tres frameworks PHP más utilizados, y indica:</p>
 <ul>
@@ -598,34 +1163,21 @@
 </ul>
 </li>
 <li>
-<p>Busca tres ofertas de trabajo de <em>desarrollo de software</em> en Infojobs en la provincia de Alicante que citen PHP y anota:</p>
+<p>Busca tres ofertas de trabajo de <em>desarrollo de software</em> en Infojobs o Manfred que citen PHP y anota:</p>
 <ul>
 <li>Empresa + puesto + frameworks PHP + requísitos + sueldo + enlace a la oferta.</li>
 </ul>
 </li>
 <li>
-<p>Una vez arrancado el servicio PHP (mediante XAMPP o Docker), crea el archivo <code>info.php</code> y añade el siguiente fragmento de código:</p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="cp">&lt;?php</span> <span class="nb">phpinfo</span><span class="p">()</span> <span class="cp">?&gt;</span>
-</code></pre></div>
-Anota los valores de:</p>
-<ul>
-<li>Versión de PHP</li>
-<li><em>Loaded Configuration File</em></li>
-<li><code>memory_limit</code></li>
-<li><code>DOCUMENT_ROOT</code></li>
-</ul>
-</li>
-<li>
-<p>Abre el archivo <code>php.ini-production</code> que está dentro del contenedor (puedes averiguar la ruta a partir de la propiedad <em>Configuration File (php.ini) Path</em>) e indica para qué sirven las siguientes propiedades y qué valores contienen:</p>
-<ul>
-<li><code>file_uploads</code></li>
-<li><code>max_execution_time</code></li>
-<li><code>short_open_tag</code></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">php.ini</p>
-<p>Es el archivo de configuración de PHP, y en toda instalación vienen dos plantillas (<code>php.ini-development</code> y <code>php.ini-production</code>) para que elijamos los valores más acordes a nuestro proyecto y creemos nuestro archivo propio de <code>php.ini</code>.</p>
-</div>
+<p>Tecnologías Web</p>
+<ol>
+<li>¿ Donde puede ver las especificaciones de HTML ?</li>
+<li>¿ Y de CSS ?</li>
+<li>¿ Y de Javascript ?</li>
+<li>¿ Cúal es la última versión de cada uno de ellos ?</li>
+<li>¿ Sabrías distinguir un servidor web de un servidor de aplicaciones ?</li>
+<li>El servidor de aplicaciones, el web y el de base de datos, ¿tienen que estar en la mimsa máquina ? ¿en la misma red?</li>
+</ol>
 </li>
 </ol>
 
@@ -709,5 +1261,7 @@ Anota los valores de:</p>
       <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

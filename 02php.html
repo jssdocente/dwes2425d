@@ -51,7 +51,16 @@
     
     
     
-  </head>
+   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -238,6 +247,89 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01arquitecturas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Anexo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Anexo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extra/ArquitecturasWebExtendido.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anexo I. Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -291,7 +383,7 @@
 </ol>
 </details>
 <h2 id="php">PHP<a class="headerlink" href="#php" title="Permanent link">&para;</a></h2>
-<p><img _="&amp;" align="right" alt="PHP" src="imagenes/02/phplogo.png" width="300" /></p>
+<p><a class="glightbox" href="imagenes/02/phplogo.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img _="&amp;" align="right" alt="PHP" src="imagenes/02/phplogo.png" width="300" /></a></p>
 <ul>
 <li>Acrónimo de <em>Personal Home Page</em></li>
 <li>Lenguaje de propósito general, aunque su fuerte es el desarollo web.</li>
@@ -1610,7 +1702,7 @@ Al comparar cadenas con valores numericos podemos utilizar:</p>
 Tras ello, introduce dos comentarios, uno de bloque y otro de una línea.</li>
 <li><code>202calculos.php</code>: Escribe un programa que utilice las variables <code>$x</code> y <code>$y</code>. Asígnales los valores <code>166</code> y <code>999</code> respectivamente.
 A continuación, muestra por pantalla el valor de cada variable, la suma, la resta, la división y la multiplicación.
-<img align="right" alt="203" src="imagenes/02/02p203.png" /></li>
+<a class="glightbox" href="imagenes/02/02p203.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img align="right" alt="203" src="imagenes/02/02p203.png" /></a></li>
 <li><code>203datosPersonales.php</code>: Escribe un programa que almacene en variables tu nombre, primer apellido, segundo apellido, email, año de nacimiento y teléfono. Luego muéstralos por pantalla dentro de una tabla.</li>
 <li>
 <p><code>204datosPersonales.html</code> y <code>204datosPersonales.php</code>: Es el mismo ejercicio que el anterior, pero separando la lógica. En el primer archivo crearemos el formulario para introducir los datos, y luego recogemos los datos y generamos la tabla en el segundo archivo.</p>
@@ -1671,7 +1763,7 @@ Por ejemplo, al introducir <code>139</code> debe mostrar:</p>
 <p><code>212calendario.php</code>: Escribe un programa similar a un calendario de manera que a partir de <code>dia</code>, <code>mes</code> y <code>anyo</code> muestre la fecha dentro de un día. Debes tener en cuenta que no todos los meses tienen 30 días. En este caso, no vamos a tener en cuenta los años bisiestos.</p>
 </li>
 </ol>
-<p><img _="&amp;" align="right" alt="213" src="imagenes/02/02p213.png" width="150" /></p>
+<p><a class="glightbox" href="imagenes/02/02p213.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img _="&amp;" align="right" alt="213" src="imagenes/02/02p213.png" width="150" /></a></p>
 <ol start="213">
 <li>
 <p><code>213ecuacion2g.php</code>: Crea un programa que resuelva una ecuación de 2º grado del tipo <code>ax² + bx + c = 0</code>.
@@ -1757,7 +1849,7 @@ Finalmente, en <code>224sumarDatos.php</code>: a partir de los datos de todas la
 Las celdas deben estar rellenadas con los valores de las coordenadas de cada celda.</p>
 </li>
 <li><code>226formulario.html</code> y <code>226cuadrado.php</code>: Basándote en el ejercicio anterior, rellena la tabla de manera que solo los bordes tengan contenido, quedándose el resto de celdas en blanco.
-<img _="&amp;" align="right" alt="228" src="imagenes/02/02p228.png" width="200" /></li>
+<a class="glightbox" href="imagenes/02/02p228.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img _="&amp;" align="right" alt="228" src="imagenes/02/02p228.png" width="200" /></a></li>
 <li><code>227formulario.html</code> y <code>227equis.php</code>: Basándote en el ejercicio anterior, ahora sólo debe aparecer el contenido de los dos diagonales.</li>
 <li><code>228cuadradoMultiplicar.php</code>: Crea un programa que muestre por pantalla un cuadrado exactamente igual (fíjate bien en los encabezados, tanto de las filas como de las columnas) al de la imagen con las tablas de multiplicar.</li>
 </ol>
@@ -1861,7 +1953,7 @@ Muestra a continuación por pantalla el contenido del array de tal forma que:</p
 <li>
 <p><code>245preparaTiquetCompra.php</code>: A partir de una cantidad de productos, leer el nombre y coste de la cantidad de productos indicados (similar al ejercicio 237, pero esta vez no hace falta crear el formulario con la cantidad, se recibe mediante un parámetro GET via URL).<br />
 <code>245imprimeTiquetCompra.php</code>: Tras leer los datos del tiquet de compra, enumera en una tabla los productos, con su precio en euros y pesetas, y finalmente, en una última fila, totalizar en ambas monedas.
-<img _="&amp;" align="right" alt="245" src="imagenes/02/02p245.png" width="200" /></p>
+<a class="glightbox" href="imagenes/02/02p245.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img _="&amp;" align="right" alt="245" src="imagenes/02/02p245.png" width="200" /></a></p>
 </li>
 <li>A partir de los archivos creados en el ejercicio anterior, crea una plantilla mediante includes:
 <code>246preparaCompra.php</code>: similar a <code>245preparaTiquetCompra.php</code>, pero separando el encabezado (<em>Supermercado Severo</em> en <code>h1</code>) y el pie (<em>Tu supermercado de confianza</em>) en ficheros externos y referenciando a ellos mediante <code>include</code>.<br />
@@ -2003,5 +2095,7 @@ Además de la propia función, el ejercicio debe contener código para poder pro
       <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

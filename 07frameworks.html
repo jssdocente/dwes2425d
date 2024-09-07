@@ -51,7 +51,16 @@
     
     
     
-  </head>
+   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -238,6 +247,89 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01arquitecturas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Anexo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Anexo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extra/ArquitecturasWebExtendido.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anexo I. Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -288,7 +380,7 @@
 </code></pre></div>
 <p>Si por alguna extraña razón <strong>estás en Windows</strong> y no te funciona una de las 2 imágenes, puede ser debido a la instalción de composer dentro de la imagen de Laravel.</p>
 <div class="center img-large">
-    <img src="imagenes/07/error-laravel.png">
+    <a class="glightbox" href="imagenes/07/error-laravel.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/07/error-laravel.png"></a>
 </div>
 
 <p>Para solucionarlo, nos vamos a la carpeta del proyecto que se te habrá creado por defecto al hacer docker-compose, en este caso y si no has modificado el archivo .yml la carpeta del proyecto sera <code>my-proyect</code> y dentro de ella eliminamos la carpeta <code>vendor</code>.</p>
@@ -573,7 +665,7 @@ Si todo ha salido bien, recibiremos un mensaje por consola con que todo ha ido b
 </code></pre></div>
 <p>Si todo ha salido bien obtendremos el siguiente resultado donde podremos observar que todas las migraciones se han insertado correctamente en la base de datos.</p>
 <div class="center img-large">
-    <img src="imagenes/07/migraciones.png">
+    <a class="glightbox" href="imagenes/07/migraciones.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/07/migraciones.png"></a>
 </div>
 
 <p>Si nos vamos al cliente que utilicemos para manejar la base de datos (phpMyAdmin por ejemplo) veremos que en nuestra base de datos se han creado todas las tablas de la migración que hemos ejecutado y <strong>además</strong> una tabla que se llama <span class="success"><strong><em>migrations</em></strong></span>.</p>
@@ -1569,7 +1661,7 @@ Muy parecida a la de Crear un chollo pero que puedas editar un Chollo en funció
 </li>
 </ul>
 <div class="center img-large">
-    <img src="imagenes/07/estructura-ficheros.png">
+    <a class="glightbox" href="imagenes/07/estructura-ficheros.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/07/estructura-ficheros.png"></a>
 </div>
 
 <ul>
@@ -1828,5 +1920,7 @@ TODO: Revisar las validaciones de los controladores ... creo que el lugar correc
       <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

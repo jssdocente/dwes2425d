@@ -51,7 +51,16 @@
     
     
     
-  </head>
+   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -238,6 +247,89 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01arquitecturas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Anexo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Anexo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extra/ArquitecturasWebExtendido.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anexo I. Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -280,7 +372,7 @@
 <p>En esta unidad vamos a aprender a acceder a datos que se encuentran en un servidor; recuperando, editando y creando dichos datos a través de una base de datos.</p>
 <p>A través de las distintas capas o niveles, de las cuales 2 de ellas ya conocemos (<em>Apache</em>, <em>PHP</em>) y <em>MySQL</em> la que vamos a estudiar en este tema.</p>
 <div class="center img-large">
-    <img src="imagenes/06/06-bbdd-arquitectura-3-niveles.png">
+    <a class="glightbox" href="imagenes/06/06-bbdd-arquitectura-3-niveles.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/06/06-bbdd-arquitectura-3-niveles.png"></a>
 </div>
 
 <h2 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h2>
@@ -292,7 +384,7 @@
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>http://localhost:8000
 </code></pre></div>
 <div class="center img-medium">
-    <img src="imagenes/06/06-bbdd-phpMyAdmin-login.png">
+    <a class="glightbox" href="imagenes/06/06-bbdd-phpMyAdmin-login.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/06/06-bbdd-phpMyAdmin-login.png"></a>
 </div>
 
 <p>Para acceder debemos utilizar las siguientes credenciales que vienen configuradas en el alrchivo <code>docker-compose.yml</code> </p>
@@ -336,13 +428,13 @@
 </div>
 
 <div class="center img-large">
-    <img src="imagenes/06/06-bbdd-estructura.png">
+    <a class="glightbox" href="imagenes/06/06-bbdd-estructura.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/06/06-bbdd-estructura.png"></a>
 </div>
 
 <h2 id="chollosevero">CholloSevero<a class="headerlink" href="#chollosevero" title="Permanent link">&para;</a></h2>
 <p>Como muy bien habéis elegido, a lo largo de esta unidad vamos a trabajar con una base de datos que iremos confeccionando conforme avancemos, donde almacenaremos la información relacionada con ofertas que publiquen los usuarios y los listaremos en función de varios filtros; nuevos, más votados, más vistos, más comentados entre otros, al más puro estilo <strong><em><a href="https://www.chollometro.com">Chollometro</a></em></strong>.</p>
 <div class="center img-large">
-    <img src="imagenes/06/06-chollometro.gif">
+    <a class="glightbox" href="imagenes/06/06-chollometro.gif" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/06/06-chollometro.gif"></a>
 </div>
 
 <h2 id="sql">SQL<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h2>
@@ -359,13 +451,13 @@
 </code></pre></div>
 <h2 id="phpmyadmin">phpMyAdmin<a class="headerlink" href="#phpmyadmin" title="Permanent link">&para;</a></h2>
 <div class="center img-medium">
-    <img src="imagenes/06/06-bbdd-phpMyAdmin-logo.png">
+    <a class="glightbox" href="imagenes/06/06-bbdd-phpMyAdmin-logo.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/06/06-bbdd-phpMyAdmin-logo.png"></a>
 </div>
 
 <p>Este software funciona bajo Apache y PHP y es más que nada una interfaz web para gestionar las bases de datos que tengamos disponibles en nuestro servidor local. Muchos <em>hostings</em> ofrecen esta herramienta por defecto para poder gestionar las BBDD que tengamos configuradas bajo nuestra cuenta.</p>
 <h3 id="creando-una-base-de-datos-dentro-de-phpmyadmin">Creando una base de datos dentro de phpMyAdmin<a class="headerlink" href="#creando-una-base-de-datos-dentro-de-phpmyadmin" title="Permanent link">&para;</a></h3>
 <div class="center img-large">
-    <img src="imagenes/06/06-bbdd-phpMyAdmin.gif">
+    <a class="glightbox" href="imagenes/06/06-bbdd-phpMyAdmin.gif" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/06/06-bbdd-phpMyAdmin.gif"></a>
 </div>
 
 <ol>
@@ -431,7 +523,7 @@
 <li><code>servidor</code>: El servidor donde se encuentra la base de datos que queremos usar suele ser <strong>localhost</strong>, pero en nuestro caso, al utilizar Docker será el nombre de la imagen <span class="warning"><strong><em>mysql:8.0</em></strong></span> que aparece al dejar el ratón encima en el Visual Studio Code</li>
 </ul>
 <div class="center img-large">
-    <img src="imagenes/06/06-mysql-servidor-docker.gif">
+    <a class="glightbox" href="imagenes/06/06-mysql-servidor-docker.gif" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/06/06-mysql-servidor-docker.gif"></a>
 </div>
 
 <ul>
@@ -646,7 +738,7 @@ En primer lugar, creamos la conexión con la base de datos a través del constru
 <li><code>PDO::FETCH_BOTH:</code> valor por defecto. Devuelve un array indexado cuyos keys son tanto el nombre de las columnas como números.</li>
 </ul>
 <div class="center img-large">
-    <img src="imagenes/06/06-pdo-listado-fetch.png">
+    <a class="glightbox" href="imagenes/06/06-pdo-listado-fetch.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/06/06-pdo-listado-fetch.png"></a>
 </div>
 
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;?php</span>
@@ -785,7 +877,7 @@ Pero si lo que queremos es leer datos con forma de objeto utilizando <code>PDO::
 <p>Tenéis una lista de ejemplos muy completa en la <a href="https://phpdelusions.net/pdo/objects">documentación oficial</a>.</p>
 <h2 id="login-password">Login &amp; Password<a class="headerlink" href="#login-password" title="Permanent link">&para;</a></h2>
 <div class="center img-medium">
-    <img src="imagenes/06/06-login-password.gif">
+    <a class="glightbox" href="imagenes/06/06-login-password.gif" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/06/06-login-password.gif"></a>
 </div>
 
 <p>Para manejar un sistema completo de login y password con contraseñas cifradas, necesitamos un método que cifre esos strings que el usuario introduce como contraseña; tanto en el formulario de registro como en el del login, ya que al codificar una contraseña, después tenemos que decodificarla para comprobar que ambas contrasñeas (la que instroduce el usuario en el login y la que tenemos en la base de datos) coincidan.</p>
@@ -928,7 +1020,7 @@ Pero si lo que queremos es leer datos con forma de objeto utilizando <code>PDO::
 <h3 id="archivos-pdf">Archivos PDF<a class="headerlink" href="#archivos-pdf" title="Permanent link">&para;</a></h3>
 <p>Con PHP podemos manejar todo tipo de archivos como ya hemos visto pero, ¿qué pasa si queremos generar ficheros PDF con datos sacados de una base de datos?</p>
 <div class="center img-small">
-    <img src="imagenes/06/06-pdf.png">
+    <a class="glightbox" href="imagenes/06/06-pdf.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/06/06-pdf.png"></a>
 </div>
 
 <p>Gracias a una clase escrita en PHP, podemos generar archivos PDF sin necesidad de instalar librerías adicionales en nuestro servidor.</p>
@@ -1017,7 +1109,7 @@ Hay muchos ejemplos y tutoriales, así como documentación de la clase FPDF en l
 <span class="linenos" data-linenos="55 "></span><span class="cp">?&gt;</span>
 </code></pre></div>
 <div class="center img-large">
-    <img src="imagenes/06/06-pdf-output.gif">
+    <a class="glightbox" href="imagenes/06/06-pdf-output.gif" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/06/06-pdf-output.gif"></a>
 </div>
 
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
@@ -1239,5 +1331,7 @@ Hay muchos ejemplos y tutoriales, así como documentación de la clase FPDF en l
       <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

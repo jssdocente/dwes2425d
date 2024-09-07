@@ -51,7 +51,16 @@
     
     
     
-  </head>
+   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -238,6 +247,89 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01arquitecturas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Anexo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Anexo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extra/ArquitecturasWebExtendido.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anexo I. Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -296,7 +388,7 @@
 <p>Todas las clases empiezan por letra mayúscula.</p>
 </div>
 <p>Cuando un proyecto crece, es normal modelar las clases mediante UML (¿recordáis <em>Entornos de Desarrollo</em>?). La clases se representan mediante un cuadrado, separando el nombre, de las propiedades y los métodos:</p>
-<p><img alt="UML" src="imagenes/03/uml.png" width="500" /></p>
+<p><a class="glightbox" href="imagenes/03/uml.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UML" src="imagenes/03/uml.png" width="500" /></a></p>
 <p>Una vez que hemos creado un objeto, se utiliza el operador <code>-&gt;</code> para acceder a una propiedad o un método:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="x">$objeto-&gt;propiedad;</span>
 <span class="linenos" data-linenos="2 "></span><span class="x">$objeto-&gt;método(parámetros);</span>
@@ -853,7 +945,7 @@ Una clase abstracta puede contener propiedades y métodos no-abstractos, y/o mé
 <h3 id="organizacion">Organización<a class="headerlink" href="#organizacion" title="Permanent link">&para;</a></h3>
 <p>Todo proyecto, conforme crece, necesita organizar su código fuente. Se plantea una organización en la que los archivos que interactuan con el navegador se colocan en el raíz, y las clases que definamos van dentro de un namespace (y dentro de su propia carpeta <code>src</code> o <code>app</code>).</p>
 <figure>
-<img src="imagenes/03/03organizacion.png">
+<a class="glightbox" href="imagenes/03/03organizacion.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03organizacion.png"></a>
 <figcaption>Organización del código fuente</figcaption>
 </figure>
 
@@ -884,7 +976,7 @@ Una clase abstracta puede contener propiedades y métodos no-abstractos, y/o mé
 </div>
 <p>Y ¿cómo organizamos ahora nuestro código aprovechando el <em>autoload</em>?</p>
 <figure style="float: right;">
-    <img src="imagenes/03/03autoload.png" width="600">
+    <a class="glightbox" href="imagenes/03/03autoload.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03autoload.png" width="600"></a>
     <figcaption>Organización con autoload</figcaption>
 </figure>
 
@@ -1178,7 +1270,7 @@ Completa el siguiente método con una cadena HTML que muestre los datos de un em
 <li><code>public static function toHtml(Empleado $emp): string</code></li>
 </ul>
 <p><figure style="float: right;">
-    <img src="imagenes/03/03p307.png">
+    <a class="glightbox" href="imagenes/03/03p307.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03p307.png"></a>
     <figcaption>Ejercicio 307</figcaption>
 </figure></p>
 </li>
@@ -1236,7 +1328,7 @@ Transforma <code>Persona</code> a una clase abstracta donde su método estático
 </li>
 </ul>
 <p><figure>
-    <img src="imagenes/03/03p312.png">
+    <a class="glightbox" href="imagenes/03/03p312.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03p312.png"></a>
     <figcaption>Ejercicio 312</figcaption>
 </figure></p>
 </li>
@@ -1292,7 +1384,7 @@ Transforma <code>Persona</code> a una clase abstracta donde su método estático
 </div>
 <p>Cada clase debe ir en un archivo php separado. Para facilitar su implementación, se muestra la estructura UML del modelo y un fragmento de código para probar las clases:</p>
 <figure style="float: right;">
-    <img src="imagenes/03/03p320.png" width="150">
+    <a class="glightbox" href="imagenes/03/03p320.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03p320.png" width="150"></a>
     <figcaption>Creamos el Soporte</figcaption>
 </figure>
 
@@ -1331,7 +1423,7 @@ Precio IVA incluido: 3.48 euros
 </div>
 </div>
 <figure style="float: right;">
-    <img src="imagenes/03/03p321.png" width="150">
+    <a class="glightbox" href="imagenes/03/03p321.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03p321.png" width="150"></a>
     <figcaption>Añadimos Cinta de Video</figcaption>
 </figure>
 
@@ -1368,7 +1460,7 @@ Duración: 107 minutos
 </div>
 </div>
 <figure style="float: right;">
-    <img src="imagenes/03/03p322.png" width="250">
+    <a class="glightbox" href="imagenes/03/03p322.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03p322.png" width="250"></a>
     <figcaption>Añadimos Dvd</figcaption>
 </figure>
 
@@ -1406,7 +1498,7 @@ Formato Pantalla:16:9
 </div>
 </div>
 <figure style="float: right;">
-    <img src="imagenes/03/03p323.png" width="350">
+    <a class="glightbox" href="imagenes/03/03p323.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03p323.png" width="350"></a>
     <figcaption>Añadimos Juego</figcaption>
 </figure>
 
@@ -1444,12 +1536,12 @@ Para un jugador
 </div>
 <p>Llegados a este punto, nuestro modelo es similar al siguiente diagrama:</p>
 <figure>
-    <img src="imagenes/03/03videoclub1.png" width="600">
+    <a class="glightbox" href="imagenes/03/03videoclub1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03videoclub1.png" width="600"></a>
     <figcaption>Modelo inicial de Videoclub</figcaption>
 </figure>
 
 <figure style="float: right;">
-    <img src="imagenes/03/03p324.png" width="275">
+    <a class="glightbox" href="imagenes/03/03p324.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03p324.png" width="275"></a>
     <figcaption>Añadimos Cliente</figcaption>
 </figure>
 
@@ -1572,7 +1664,7 @@ Formato Pantalla:16:9</p>
 </ol>
 <p>El modelo completo quedará de la siguiente manera:</p>
 <figure>
-    <img src="imagenes/03/03videoclub2.png" width="800">
+    <a class="glightbox" href="imagenes/03/03videoclub2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03videoclub2.png" width="800"></a>
     <figcaption>Modelo completo de Videoclub</figcaption>
 </figure>
 
@@ -1819,5 +1911,7 @@ Recuerda actualizar la propiedad <code>alquilado</code> de los diferentes soport
       <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

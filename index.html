@@ -12,6 +12,8 @@
       
       
       
+        <link rel="next" href="01arquitecturas.html">
+      
       
       <link rel="icon" href="imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
@@ -51,7 +53,16 @@
     
     
     
-  </head>
+   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -321,9 +332,101 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#instrumentos-de-calificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instrumentos de calificación
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01arquitecturas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Anexo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Anexo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extra/ArquitecturasWebExtendido.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anexo I. Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -345,11 +448,6 @@
 
 
 <h1 id="desarrollo-web-en-entorno-servidor">Desarrollo Web en Entorno Servidor<a class="headerlink" href="#desarrollo-web-en-entorno-servidor" title="Permanent link">&para;</a></h1>
-<div class="admonition tip">
-<p class="admonition-title">Apuntes obsoletos</p>
-<p>Estos apuntes se redactaron durante el curso 21/22. La primera mitad fueron escritos por mí (<em>Aitor Medrano</em>), y luego los continuó <em>Luis Alemañ</em>. Desde entonces ya no imparto este módulo y por lo tanto, ya no se actualizan.</p>
-<p>Repasándolos en perspectiva no están mal pero tienen mucho margen de mejora. Si los has utilizado y ampliado, si quieres, mándame un <a href="mailto:a.medrano@edu.gva.es">mail</a> y pondré un enlace a tu repositorio para visibilizarlo y poder ayudar a más gente, ya sea profesorado o alumnado.</p>
-</div>
 <p>Aquí puedes encontrar los apuntes del módulo de <strong><em>Desarrollo web en entorno servidor</em></strong>, que se imparte en el segundo curso del ciclo formativo de grado superior de <em>Desarrollo de Aplicaciones Web</em>.</p>
 <p>La duración del módulo es de 160 horas lectivas, a razón de <strong>8 horas semanales</strong>, y se desarrolla a lo largo de los <strong>dos primeros trimestres</strong> del curso. Se ha <a href="planning.html">planificado</a> basándose en 4 sesiones de 2 horas lectivas por semana.</p>
 <h2 id="que-voy-a-aprender">¿Qué voy a aprender?<a class="headerlink" href="#que-voy-a-aprender" title="Permanent link">&para;</a></h2>
@@ -435,23 +533,36 @@ La primera evaluación contendría las unidades comprendidas entre la 1 y 5, y p
 </ul>
 </li>
 </ol>
-<!--
-## Instrumentos de calificación
-
-La nota de cada evaluación se calcula mediante:
-
-* 30% Trabajo en Clase / Actividades
-    * Se evalúan todas las actividades realizadas en clase y en casa.
-    * Las actividades se evalúan mediante tareas de *Aules* con calificaciones comprendidas entre 0 y 3 puntos:
-        * 0: No entregada
-        * 1: Entregada pero solución errónea o incompleta
-        * 2: Entregada y solución aceptable, aunque tiene algún apartado incompleto
-        * 3: Entregada y solución correcta.
-* 70% Actividad de evaluación
-    * Una o dos pruebas por evaluación.
-
-La nota final se calcula mediante la media de cada una de las evaluaciones.
--->
+<h2 id="instrumentos-de-calificacion">Instrumentos de calificación<a class="headerlink" href="#instrumentos-de-calificacion" title="Permanent link">&para;</a></h2>
+<p>La nota de cada evaluación se calcula mediante:</p>
+<ul>
+<li>
+<p><strong>25% Trabajo en Clase / Actividades</strong></p>
+<ul>
+<li>El trabajo en clase se evalúa mediante la observación del profesor.</li>
+<li>En cada trimestre habrá alguna/s <em>Tareas Evaluables</em>, a partir de las cúales se obtendrá esta parte de la calificación.  con calificaciones comprendidas entre 0 y 10 puntos:<ul>
+<li>Las calificaciones estarán comprendidas entre 0 y 10 puntos.</li>
+<li>Es necesario entregar las tareas antes de la fecha máxima, en caso contrario se considerará no entregada.</li>
+<li>Las tareas se podrán recuperar en la fecha que el profesor determine, pero la calificación será de Apto o no Apto, en este caso.</li>
+<li>Para aprobar esta parte de la evaluación es necesario obtener una nota media de <em>6 puntos</em>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>75% Pruebas Teoria y Práctica</strong></p>
+<ul>
+<li>Una o dos pruebas por evaluación.</li>
+<li>Recuperación:<ul>
+<li>Para la recuperar la 1ª evaluación se hará una prueba de recuperación entre la 2º y 3ª semana de Enero.</li>
+<li>Para recuperar la 2ª evaluación se hará en la Evaluación Final Ordinaria.</li>
+<li>En caso de no superar el curso en la Evaluación Final Ordinaria, se podrá recuperar en la Evaluación Final Extraordinaria.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>La nota final se calcula mediante la media de cada una de las evaluaciones.</p>
 
 
 
@@ -533,5 +644,7 @@ La nota final se calcula mediante la media de cada una de las evaluaciones.
       <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

@@ -51,7 +51,16 @@
     
     
     
-  </head>
+   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -234,6 +243,89 @@
   
 
       </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01arquitecturas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Anexo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Anexo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extra/ArquitecturasWebExtendido.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anexo I. Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -535,7 +627,7 @@ Las cookies se almacenan en el navegador, y la sesión en el servidor web.</p>
 <span class="linenos" data-linenos="2 "></span><span class="nb">setcookie</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span> <span class="nx">valor</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3600</span><span class="p">)</span> <span class="c1">// Caducan dentro de una hora</span>
 </code></pre></div>
 <figure style="align: center;">
-    <img src="imagenes/04/04cookies.png" width="700">
+    <a class="glightbox" href="imagenes/04/04cookies.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/04/04cookies.png" width="700"></a>
     <figcaption>Comunicación con cookies</figcaption>
 </figure>
 
@@ -553,7 +645,7 @@ Si el cliente no tiene las cookies activas, el ID se propaga en cada URL dentro 
 Cada sesión tiene asociado un almacén de datos mediante el array global <code>$_SESSION</code>, en el cual podemos almacenar y recuperar información.</p>
 <p>La sesión comienza al ejecutar un script PHP. Se genera un nuevo ID y se cargan los datos del almacén:</p>
 <figure style="align: center;">
-    <img src="imagenes/04/04sesion.png" width="700">
+    <a class="glightbox" href="imagenes/04/04sesion.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/04/04sesion.png" width="700"></a>
     <figcaption>Comunicación con sesión</figcaption>
 </figure>
 
@@ -795,7 +887,7 @@ En <code>mainAdmin.php</code>, además de la bienvenida, debe mostrar:
     * Listado de clientes
     * Listado de soportes</p>
 <p><figure style="float: right;">
-    <img src="imagenes/04/04p423.png" width="400">
+    <a class="glightbox" href="imagenes/04/04p423.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/04/04p423.png" width="400"></a>
     <figcaption>Esquema navegación ejercicio 423</figcaption>
 </figure></p>
 </li>
@@ -828,7 +920,7 @@ Una vez eliminado, debe volver al listado de clientes.</p>
 </li>
 </ol>
 <figure style="align: center;">
-    <img src="imagenes/04/04p426.png" width="600">
+    <a class="glightbox" href="imagenes/04/04p426.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/04/04p426.png" width="600"></a>
     <figcaption>Esquema navegación Videoclub 3.0</figcaption>
 </figure>
 
@@ -912,5 +1004,7 @@ Una vez eliminado, debe volver al listado de clientes.</p>
       <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
