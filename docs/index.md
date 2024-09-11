@@ -97,5 +97,5 @@ La primera evaluación contendría las unidades comprendidas entre la 1 y 5, y p
             * Para recuperar la 2ª evaluación se hará en la Evaluación Final Ordinaria.
             * En caso de no superar el curso en la Evaluación Final Ordinaria, se podrá recuperar en la Evaluación Final Extraordinaria.
 
-La evaluación será continua.
+    La evaluación será continua.
 
