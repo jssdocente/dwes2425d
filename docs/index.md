@@ -9,6 +9,8 @@ La duración del módulo es de 160 horas lectivas, a razón de **8 horas semanal
     * A desarrollar aplicaciones web dinámicas, que obtienen la información a partir de una base de datos.
     * Analizar la estructura de una aplicación cliente/servidor, separando el código de presentación de la lógica de negocio
     * Obtener información a partir de los datos almacenados, así como modificarlos.
+    * Utilizar frameworks de desarrollo web para agilizar el proceso de desarrollo.
+    * Crear servicios web para la comunicación entre aplicaciones.
 
 ??? tip "Resultados de Aprendizaje"
 
