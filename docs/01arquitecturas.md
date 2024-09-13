@@ -45,6 +45,15 @@ Las arquitecturas web definen la forma en que las páginas de un sitio web está
 4. Recordar los estándares (y las organizaciones)
 5. El protocolo HTTP
 
+
+??? sucess "Aprender conceptos más que código"
+
+     Esta la la clave principal para ser un buen programador. Aprender a programar es fácil, pero entender los conceptos y saber aplicarlos es lo que te hará destacar.
+
+    <iframe width="1000" height="700" src="https://www.youtube.com/embed/ImOR0o-QHOQ" title="Aprende conceptos antes que código" frameborder="0" clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    </iframe>
+
+
 ## Modelo Cliente / Servidor
 
 <figure>
@@ -90,15 +99,62 @@ A día de hoy, gran parte del desarrollo web está transicionando de una arquite
 </figure>
 
 ??? info "SPA En detalle"
+
     Si quires profundizar en este tema de las aplicaciones SPA, puedes consultar los siguientes recursos:
 
+    - [Aplicaciones SPA vs Aplicaciones MPA](https://youtu.be/2z0FChkphvo){ target="_blank" }
     - [SPA Wikipedia](https://es.wikipedia.org/wiki/Single-page_application)
     - [¿Qué es una SPA en programación?](https://keepcoding.io/blog/que-es-una-spa-en-programacion/)
+
+
+### Client Side Rendering vs Server Side Rendering
+
+En el desarrollo de aplicaciones web, se pueden distinguir dos formas de renderizar el contenido de una página web:
+
+* **Client Side Rendering (CSR)**: El contenido de la página se renderiza en el cliente, es decir, en el navegador del usuario. La página se carga en blanco y, a medida que se van recibiendo los datos, se va mostrando el contenido. Es la técnica más utilizada en aplicaciones web modernas, ya que permite una mayor interactividad y una mejor experiencia de usuario.
+* **Server Side Rendering (SSR)**: El contenido de la página se renderiza en el servidor y se envía al cliente ya renderizado. La página se carga con todo el contenido visible, lo que permite una carga más rápida y un mejor SEO. Es la técnica más utilizada en aplicaciones web tradicionales.
+* **Hybrid Rendering**: Es una combinación de las dos técnicas anteriores. La página se renderiza en el servidor y en el cliente, lo que permite una carga rápida y una mayor interactividad.
+  
+
+#### Comparativa
+
+| Característica | Client Side Rendering | Server Side Rendering |
+| --- | --- | --- |
+| **Carga inicial** | Más lenta | Más rápida |
+| **Interactividad** | Mayor | Menor |
+| **SEO** | Menor | Mayor |
+| **Tiempo de carga** | Mayor | Menor |
+| **Experiencia de usuario** | Mejor | Peor |
+
+### Tipos de aplicaciones web
+
+| Tipo de aplicación | Descripción |
+| --- | --- |
+| **Estáticas** | Son páginas web que no cambian su contenido en función de la interacción del usuario. Son páginas web que no requieren de una base de datos para funcionar. |
+| **Dinámicas** | Son páginas web que cambian su contenido en función de la interacción del usuario. Son páginas web que requieren de una base de datos para funcionar. |
+| **Interactivas** | Son páginas web que permiten al usuario interactuar con el contenido de la página. Son páginas web que requieren de una base de datos para funcionar. |
+| **Transaccionales** | Son páginas web que permiten al usuario realizar transacciones, como compras o reservas. Son páginas web que requieren de una base de datos para funcionar. |
+| **Colaborativas** | Son páginas web que permiten a varios usuarios colaborar en la creación de contenido. Son páginas web que requieren de una base de datos para funcionar. |
+| **Adaptativas** | Son páginas web que se adaptan a las características del dispositivo del usuario. |
+
+
+??? info "Client Side Rendering vs Server Side Rendering"
+
+    Para profundizar en este tema, puedes consultar los siguientes recursos:
+
+    - [Client Side Rendering vs Server Side Rendering](https://youtu.be/CnavwJZAMw0)
+    - [CSR vs SSR presentación](https://www.figma.com/board/oBOsrzlbRjv6bSnc2gIyOA/Next.js-Diagrams-(Community)?node-id=0-1&node-type=canvas&t=5dUlZZqs6K2YIPrg-0)
 
 
 ## Arquitectura de 3 capas
 
 Hay que distinguir entre capas **físicas** (*tier*) y capas **lógicas** (*layer*).
+
+??? info "Vídeo: N-Layers Vs N-Tiers"
+
+    En este vídeo se explica la diferencia entre capas físicas y lógicas en una arquitectura de software.
+    
+    <iframe width="800" height="500" src="https://www.youtube.com/embed/r3rRwKdDMz0" title="Definición de conceptos: N-Layers Vs N-Tiers" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### Tier
 
