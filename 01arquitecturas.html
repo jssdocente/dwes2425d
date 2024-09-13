@@ -340,6 +340,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#client-side-rendering-vs-server-side-rendering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client Side Rendering vs Server Side Rendering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipos-de-aplicaciones-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de aplicaciones web
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -641,6 +659,12 @@
 <li>Recordar los estándares (y las organizaciones)</li>
 <li>El protocolo HTTP</li>
 </ol>
+<details class="sucess">
+<summary>Aprender conceptos más que código</summary>
+<p>Esta la la clave principal para ser un buen programador. Aprender a programar es fácil, pero entender los conceptos y saber aplicarlos es lo que te hará destacar.</p>
+<p><iframe width="1000" height="700" src="https://www.youtube.com/embed/ImOR0o-QHOQ" title="Aprende conceptos antes que código" frameborder="0" clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe></p>
+</details>
 <h2 id="modelo-cliente-servidor">Modelo Cliente / Servidor<a class="headerlink" href="#modelo-cliente-servidor" title="Permanent link">&para;</a></h2>
 <figure>
   <a class="glightbox" href="imagenes/01/clienteservidor.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/01/clienteservidor.png" /></a>
@@ -698,12 +722,105 @@
 <summary>SPA En detalle</summary>
 <p>Si quires profundizar en este tema de las aplicaciones SPA, puedes consultar los siguientes recursos:</p>
 <ul>
+<li><a href="https://youtu.be/2z0FChkphvo" target="_blank">Aplicaciones SPA vs Aplicaciones MPA</a></li>
 <li><a href="https://es.wikipedia.org/wiki/Single-page_application">SPA Wikipedia</a></li>
 <li><a href="https://keepcoding.io/blog/que-es-una-spa-en-programacion/">¿Qué es una SPA en programación?</a></li>
 </ul>
 </details>
+<h3 id="client-side-rendering-vs-server-side-rendering">Client Side Rendering vs Server Side Rendering<a class="headerlink" href="#client-side-rendering-vs-server-side-rendering" title="Permanent link">&para;</a></h3>
+<p>En el desarrollo de aplicaciones web, se pueden distinguir dos formas de renderizar el contenido de una página web:</p>
+<ul>
+<li><strong>Client Side Rendering (CSR)</strong>: El contenido de la página se renderiza en el cliente, es decir, en el navegador del usuario. La página se carga en blanco y, a medida que se van recibiendo los datos, se va mostrando el contenido. Es la técnica más utilizada en aplicaciones web modernas, ya que permite una mayor interactividad y una mejor experiencia de usuario.</li>
+<li><strong>Server Side Rendering (SSR)</strong>: El contenido de la página se renderiza en el servidor y se envía al cliente ya renderizado. La página se carga con todo el contenido visible, lo que permite una carga más rápida y un mejor SEO. Es la técnica más utilizada en aplicaciones web tradicionales.</li>
+<li><strong>Hybrid Rendering</strong>: Es una combinación de las dos técnicas anteriores. La página se renderiza en el servidor y en el cliente, lo que permite una carga rápida y una mayor interactividad.</li>
+</ul>
+<h4 id="comparativa">Comparativa<a class="headerlink" href="#comparativa" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Client Side Rendering</th>
+<th>Server Side Rendering</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Carga inicial</strong></td>
+<td>Más lenta</td>
+<td>Más rápida</td>
+</tr>
+<tr>
+<td><strong>Interactividad</strong></td>
+<td>Mayor</td>
+<td>Menor</td>
+</tr>
+<tr>
+<td><strong>SEO</strong></td>
+<td>Menor</td>
+<td>Mayor</td>
+</tr>
+<tr>
+<td><strong>Tiempo de carga</strong></td>
+<td>Mayor</td>
+<td>Menor</td>
+</tr>
+<tr>
+<td><strong>Experiencia de usuario</strong></td>
+<td>Mejor</td>
+<td>Peor</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tipos-de-aplicaciones-web">Tipos de aplicaciones web<a class="headerlink" href="#tipos-de-aplicaciones-web" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tipo de aplicación</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Estáticas</strong></td>
+<td>Son páginas web que no cambian su contenido en función de la interacción del usuario. Son páginas web que no requieren de una base de datos para funcionar.</td>
+</tr>
+<tr>
+<td><strong>Dinámicas</strong></td>
+<td>Son páginas web que cambian su contenido en función de la interacción del usuario. Son páginas web que requieren de una base de datos para funcionar.</td>
+</tr>
+<tr>
+<td><strong>Interactivas</strong></td>
+<td>Son páginas web que permiten al usuario interactuar con el contenido de la página. Son páginas web que requieren de una base de datos para funcionar.</td>
+</tr>
+<tr>
+<td><strong>Transaccionales</strong></td>
+<td>Son páginas web que permiten al usuario realizar transacciones, como compras o reservas. Son páginas web que requieren de una base de datos para funcionar.</td>
+</tr>
+<tr>
+<td><strong>Colaborativas</strong></td>
+<td>Son páginas web que permiten a varios usuarios colaborar en la creación de contenido. Son páginas web que requieren de una base de datos para funcionar.</td>
+</tr>
+<tr>
+<td><strong>Adaptativas</strong></td>
+<td>Son páginas web que se adaptan a las características del dispositivo del usuario.</td>
+</tr>
+</tbody>
+</table>
+<details class="info">
+<summary>Client Side Rendering vs Server Side Rendering</summary>
+<p>Para profundizar en este tema, puedes consultar los siguientes recursos:</p>
+<ul>
+<li><a href="https://youtu.be/CnavwJZAMw0">Client Side Rendering vs Server Side Rendering</a></li>
+<li><a href="https://www.figma.com/board/oBOsrzlbRjv6bSnc2gIyOA/Next.js-Diagrams-(Community)?node-id=0-1&amp;node-type=canvas&amp;t=5dUlZZqs6K2YIPrg-0">CSR vs SSR presentación</a></li>
+</ul>
+</details>
 <h2 id="arquitectura-de-3-capas">Arquitectura de 3 capas<a class="headerlink" href="#arquitectura-de-3-capas" title="Permanent link">&para;</a></h2>
 <p>Hay que distinguir entre capas <strong>físicas</strong> (<em>tier</em>) y capas <strong>lógicas</strong> (<em>layer</em>).</p>
+<details class="info">
+<summary>Vídeo: N-Layers Vs N-Tiers</summary>
+<p>En este vídeo se explica la diferencia entre capas físicas y lógicas en una arquitectura de software.</p>
+<p><iframe width="800" height="500" src="https://www.youtube.com/embed/r3rRwKdDMz0" title="Definición de conceptos: N-Layers Vs N-Tiers" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+</details>
 <h3 id="tier">Tier<a class="headerlink" href="#tier" title="Permanent link">&para;</a></h3>
 <p>Capa física de una arquitectura. Supone un nuevo elemento hardware separado físicamente. Las capas físicas más alejadas del cliente están más protegidas, tanto por firewalls como por VPN.</p>
 <p>Ejemplo de arquitectura en tres capas físicas (<em>3 tier</em>):</p>
