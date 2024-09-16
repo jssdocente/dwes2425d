@@ -1,7 +1,11 @@
 version: '3'
 services:
   mkdocs:
-    image: squidfunk/mkdocs-material
+    image: jssdocente/mkdocs-daw
+    build:
+      context: ./.docker
+      dockerfile: dockerfile
+      
     container_name: Mkdocs-dwes2425
     ports:
       - "8005:8000"
