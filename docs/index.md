@@ -116,7 +116,7 @@ La primera evaluación contendría las unidades comprendidas entre la 1 y 5, y p
     1. [Arquitecturas Web](01arquitecturas.md) (4h)
         * Cliente/Servidor.
         * MVC.
-    2. El lenguaje PHP (26h)
+    2. [El lenguaje PHP](02php.md) (26h)
         * Condiciones y bucles.
         * Arrays.
     3. Orientación a objetos con PHP (18h)
