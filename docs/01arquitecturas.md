@@ -413,13 +413,54 @@ El siguiente mapa mental muestra un resumen de sus elementos:
 Durante las siguientes unidades vamos a estudiar PHP en profundidad.
 
 
-## Puesta en marcha
 
-Para poder trabajar con un entorno de desarrollo local, hemos de preparar nuestro entorno de desarrollo con las herramientas comentadas. A lo largo del curso vamos a utilizar la versión 8 de PHP.
+!!! example "Actividades"
+
+    100. 40 preguntas sobre Internet [Kahoot](https://create.kahoot.it/share/40-preguntas-sobre-internet/ffb5a58c-4e58-4656-826f-0f8d94304331)
+
+    101. Trabajo sobre servidores web
+        
+           1.   Busca en internet la historia de Apache y redacta un resumen de la misma (con tus palabras), varios parráfos.
+           2.   Busca en internet la historia de Nginx..
+
+    102. Busca en internet cuales son los tres frameworks PHP más utilizados, y indica:
+
+          * Nombre y URL
+          * Año de creación
+          * Última versión
+
+    103. Busca tres ofertas de trabajo de *desarrollo de software* en Infojobs o Manfred que citen PHP y anota:
+
+          * Empresa + puesto + frameworks PHP + requísitos + sueldo + enlace a la oferta.
+
+    104. Tecnologías Web
+      
+           1. ¿ Donde puede ver las especificaciones de HTML ?
+           2. ¿ Y de CSS ?
+           3. ¿ Y de Javascript ?
+           4. ¿ Cúal es la última versión de cada uno de ellos ?
+           5. ¿ Sabrías distinguir un servidor web de un servidor de aplicaciones ?
+           6. El servidor de aplicaciones, el web y el de base de datos, ¿tienen que estar en la mimsa máquina ? ¿en la misma red?
+
+
+## **Puesta en marcha**
+
+Para poder trabajar con un entorno de desarrollo local, hemos de preparar nuestro entorno de desarrollo con todo lo necesario, y esto no es trivial al principio.
+
+Este es un punto muy importante, ya vamos a necesitar una serie de recursos, tanto IDEs (y sus plugins) como el propio PHP, BDs, servidores web y aplicaciones, etc. para poder trabajar en el curso. Otro punto clave es el sistema operativo, ya que no es lo mismo trabajar en Windows que en Linux o en MacOS. Los entornos más comunes son Windows y Linux (MacOS), para los que existe más herramientas y recursos.
+
+>💡[¿Por qué necesito un entorno de desarrollo local?](hhttps://youtu.be/tvbu-cezBI8)<br>
+> Este video explica la importancia de tener un entorno de desarrollo local y cúal elegir para PHP.
+
+!!! tip "Entorno de desarrollo con Docker"
+    Docker es una herramienta muy importante en el desarrollo de software (y fundamental en Web), ya que nos permite crear contenedores con los servicios necesarios para trabajar, testear diferentes entornos sin afectar al entorno local, pero por su complejidad vamos a empezar con un entorno de desarrollo más sencillo, más automatizado y donde nos centremos en el código y no en la infraestructura.
+
+    Existen opciones ya implementadas para trabajar con Docker, como [Laradock](https://laradock.io/), [DevilBox](devilbox.org) que utilizaremos más adelante en el curso.
+
 
 ### XAMPP
 
-XAMPP (https://www.apachefriends.org/es/index.html) es una distribución compuesta con el software necesario para desarrollar en entorno servidor. Se compone de las siguientes herramientas en base a sus siglas:
+[XAMPP](https://www.apachefriends.org/es/index.html) es una distribución compuesta con el software necesario para desarrollar en entorno servidor. Se compone de las siguientes herramientas en base a sus siglas:
 
 * X para el sistema operativo (de ahí que se conozca tamnbién como LAMP o WAMP).
 * A para Apache.
@@ -429,121 +470,21 @@ XAMPP (https://www.apachefriends.org/es/index.html) es una distribución compues
 
 Desde la propia página se puede descargar el archivo ejecutable para el sistema operativo de nuestro ordenador. Se recomienda leer la FAQ de cada sistema operativo con instrucciones para su puesta en marcha.
 
-!!! note "XAMPP en Windows"
-    Si vas a trabajar con tu propio ordenador, XAMPP es una solución más sencilla que Docker, sobre todo si trabajar con Windows como sistema operativo.
+🔥 **XAMP tiene ya unos años, y aunque es una solución, no es la más sencilla ni más flexible, además suele ser bastante opaca en cuanto a la configuración de los servicios, y si da problemas, no es fácil de solucionar.**
 
-### Docker
 
-Docker (<https://www.docker.com>) es un gestor de contenedores, considerando un contenedor como un método de virtualización del sistema operativo.
+### Laragon
 
-El uso de contenedores requiere menos recursos que una máquina virtual, por lo tanto, su lanzamiento y detención son más rápidos que las máquinas virtuales.
+Laragon (https://laragon.org/) es una herramienta similar a XAMPP (solo para Windows) pero más moderna y con más opciones. Como dice su eslogan "Productiva, Portable, Rápida, Efectiva y Sorprendente!!".
 
-Así pues, *Docker* permite crear, probar e implementar aplicaciones rápidamente, a partir de una serie de plantillas que se conocen como imágenes de *Docker*.
+Otro punto importante es que Laragon sigue siendo mantenida, mientras que XAMPP no se actualiza desde hace tiempo.
 
-Para ello es necesario tener instalado *Docker Desktop* (<https://www.docker.com/products/docker-desktop>) en nuestros entornos de desarrollo (el cual ya incluye en nucleo de *Docker* y la herramienta *docker compose*). En los ordenadores del aula ya está instalado. Para instalarlo en casa, en el caso de Windows, es necesario instalar previamente *WSL 2*, el cual es un subsistema de *Linux* dentro de *Windows*.
+Pasos:
 
-A lo largo del curso iremos creando diferentes contenedores con los servicios necesarios, de manera que cada vez sólo trabajemos con el software mínimo.
+1. [Instalar Laragon](https://laragon.org/docs/install)
+2. [Montar el entorno de desarrollo con Laragon](https://youtu.be/tvbu-cezBI8?t=198)
+3. Comprobar que todo funciona correctamente.
 
-!!! caution "Versiones"
-    A lo largo del curso vamos a usar PHP `8.0`. Respecto a *Docker*, para escribir los apuntes hemos utilizado la version `20.10` y la version `2.19` de *docker compose*. Finalmente, la versión de *Docker Desktop* que hemos utilizado es la `4.0`.
-
-#### Plantilla Servidor Web + PHP
-
-*Docker* se basa en el uso de imágenes para crear contenedores. *Docker Compose* simplifica el trabajo con múltiples contenedores, y por ello, para facilitar el arraque, nos centraremos en *Docker Compose* utilizando una plantilla que únicamente va a contener como servicios Apache/Nginx y PHP.
-
-Para ello, vamos a rellenar el archivo `docker-compose.yaml` con:
-
-=== "Apache y PHP"
-
-    ``` yaml
-    # Services
-    services:
-      # Apache + PHP
-      apache_php:
-        image: php:8-apache
-        # Preparamos un volumen para almacenar nuestro código
-        volumes:
-          - ./src/:/var/www/html
-        expose:
-          - 80
-        ports:
-          - 80:80
-    ```
-
-=== "Nginx y PHP"
-
-    ``` yaml
-    # Services
-    services:
-
-      nginx:
-        image: nginx:1.19
-        ports:
-          - 80:80
-        volumes:
-          - ./src:/var/www/php
-          - ./.docker/nginx/conf.d:/etc/nginx/conf.d # cargamos la configuración de un fichero externo
-        depends_on:
-          - php   # enlazamos nginx con php
-
-      php:
-        image: php:8.0-fpm
-        working_dir: /var/www/php
-        volumes:
-          - ./src:/var/www/php
-    ```
-
-Dentro de la carpeta que contenga dicho archivo, hemos de crear una carpeta `src` donde colocaremos nuestro código fuente. Para facilitar la puesta en marcha, tenéis la plantilla de [Apache/PHP](recursos/plantilla-AP.zip) ([versión 2](recursos/plantilla-AP2.zip) con `a2enmod rewrite`) o [Nginx/PHP](recursos/plantilla-NP.zip) disponible para su descarga.
-
-Cuando estemos listos, lanzaremos el servicio mediante:
-
-``` console
-docker-compose up -d
-```
-
-Si queremos ver el contenido de los archivos de log del servicio utilizaremos:
-
-``` console
-docker-compose logs -f
-```
-
-Para copiar un archivo desde nuestro sistema al interior del contenedor:
-
-``` console
-docker cp ./miFichero idContenedor:/tmp
-```
-
-Y al revés, si queremos consultar un archivo contenido dentro de un contenedor, lo copiaremos a nuestro sistema:
-
-``` console
-docker cp idContenedor:/tmp/archivoAConsultar.txt ./
-```
-
-Finalmente, si queremos acceder a un terminal interactivo dentro del contenedor:
-
-``` console
-docker exec -it nombreContenedor bash
-```
-
-Otros comandos que podemos llegar a utilizar son:
-
-* `docker ps`: Ver los contenedores que se estan ejecutando
-* `docker ps -a`: Ver todos los contenedores
-* `docker start nombreContenedor`: Arrancar un contenedor
-* `docker images`: Ver las imágenes que tenemos descargadas
-
-Otra forma más sencilla para lanzar de nuevo los contenedores y gestionarlos una vez creados es utilizar el interfaz gráfico que ofrece *Docker Desktop*:
-
-<figure>
-  <img src="imagenes/01/dockerdesktop.png" />
-  <figcaption>Arranque de contenedor mediante Docker Desktop</figcaption>
-</figure>
-
-!!! tip "Docker stack"
-    Existen diversas opciones mediante Docker que ofrecen soluciones completas y empaquetas para todo el stack de desarrollo. En posteriores sesiones utilizaremos tanto *Devilbox* (<http://devilbox.org>) como *Laradock* (<https://laradock.io>)
-
-!!! question "Pero quiero saber cómo funciona..."
-    En el módulo de *Despliegue de aplicaciones* estudiaréis en profundidad, además de Docker, Apache y otros servicios que nos servirán de ayuda para el desarrollo en entorno servidor.
 
 ### Entorno de desarrollo
 
@@ -552,16 +493,11 @@ En este curso vamos a emplear *Visual Studio Code* (<https://code.visualstudio.c
 *VSCode* es un editor de código fuente que se complementa mediante extensiones. Para facilitar el trabajo a lo largo del curso vamos a utilizar las siguientes extensiones:
 
 * [PHP Intelephense](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client)
-* [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
 
-En la siguiente sesión comenzaremos a utilizar *Intelephense* pero en esta sesión nos vamos a centrar en *Docker* (más adelante instalaremos nuevas extensiones).
+> 💡 Para PHP Intelephense es requerido desactivar la extensión propia que VSCode tiene para PHP. 
+> 1. Ir a extensiones, buscar por @builtin php, Desactvivar PHP Languaje Features, dejar PHP Languaje Basis para resaltar la sintaxis.
 
-Por ejemplo, si abrimos la extensión de *Docker*, podréis visualizar tanto los contenedores como las imágenes de vuestro sistema. Desde cada contenedor, mediante clic derecho, podemos iniciar/detener/reiniciar cada contenedor, así como ver su contenido o abrir un terminal dentro del mismo.
-
-<figure>
-  <img src="imagenes/01/vscodedocker.png" width="300"/>
-  <figcaption>Opciones mediante extensión Docker en VSCode</figcaption>
-</figure>
+En este [tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-visual-studio-code-for-php-projects) (inglés) se explica cómo configurar VSCode para trabajar con PHP.
 
 ### Hola Mundo
 
@@ -590,35 +526,3 @@ Si nombramos el archivo como `index.php`, al acceder a `http://localhost` autom�
 * Curso de introducción a Docker, por *Sergi García Barea* : <https://sergarb1.github.io/CursoIntroduccionADocker/>
 * Artículo [Arquitecturas Web y su evolución](https://www.arquitecturajava.com/arquitecturas-web-y-su-evolucion/)
 
-
-
-## Actividades
-
-??? question "Cuestionario en grupo"
-
-	40 preguntas sobre Internet [Kahoot](https://create.kahoot.it/share/40-preguntas-sobre-internet/ffb5a58c-4e58-4656-826f-0f8d94304331)
-	
-
-101. Trabajo sobre servidores web
-     
-	 1. Busca en internet la historia de Apache y redacta un resumen de la misma (con tus palabras), varios parráfos.
-	 2. Busca en internet la historia de Nginx..
-
-102. Busca en internet cuales son los tres frameworks PHP más utilizados, y indica:
-
-    * Nombre y URL
-    * Año de creación
-    * Última versión
-
-103. Busca tres ofertas de trabajo de *desarrollo de software* en Infojobs o Manfred que citen PHP y anota:
-
-    * Empresa + puesto + frameworks PHP + requísitos + sueldo + enlace a la oferta.
-
-104. Tecnologías Web
-	
-	1. ¿ Donde puede ver las especificaciones de HTML ?
-	2. ¿ Y de CSS ?
-	3. ¿ Y de Javascript ?
-	4. ¿ Cúal es la última versión de cada uno de ellos ?
-	5. ¿ Sabrías distinguir un servidor web de un servidor de aplicaciones ?
-	6. El servidor de aplicaciones, el web y el de base de datos, ¿tienen que estar en la mimsa máquina ? ¿en la misma red?

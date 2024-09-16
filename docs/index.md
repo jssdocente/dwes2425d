@@ -179,3 +179,42 @@ La primera evaluación contendría las unidades comprendidas entre la 1 y 5, y p
 
     La evaluación será continua.
 
+
+### Recursos
+
+??? abstract "Recursos del módulo"
+
+    === "Documentación"
+        * Tutoriales
+            * [Tutorial para principiantes](https://www.ionos.es/digitalguide/paginas-web/creacion-de-paginas-web/tutorial-de-php-fundamentos-basicos-para-principiantes/)
+
+        * Referencias
+            * [Documentación oficional PHP](https://www.php.net/)
+
+        * Recopilatorio
+            * [Awesome PHP](https://github.com/ziadoz/awesome-php)
+    
+    === "Software"
+        * IDEs
+            * [Visual Studio Code](https://code.visualstudio.com/)
+            * [PHPStorm](https://www.jetbrains.com/phpstorm/)
+        * Administración de bases de datos
+            * [DBeaver](https://dbeaver.io/)
+        * Entorno de desarrollo
+            * [Laragon](https://laragon.org/)
+            * [XAMPP](https://www.apachefriends.org/es/index.html)
+
+        * Entorno de desarrollo en contenedores
+            * [Docker: Devilbox](https://devilbox.io/)
+            * [Docker: Laradock](https://laradock.io/)
+    
+    === "Cursos Openwebinars"
+        * PHP:
+            * [PHP: fundamentos](https://openwebinars.net/academia/aprende/curso-php-basico)
+            * [PHP: Ampliando conceptos](https://openwebinars.net/academia/aprende/php-ampliar-conceptos)
+            * [PHP y MySQL: Creando sitios dinámicos](https://openwebinars.net/academia/aprende/php-mysql)
+        * Frameworks:
+            * [Desarrollo Web Moderno con Laravel: De la teoría a la práctica](https://openwebinars.net/academia/portada/desarrollo-web-moderno-laravel-teoria-practica/)
+
+            
+        
