@@ -476,9 +476,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#docker" class="md-nav__link">
+  <a href="#laragon" class="md-nav__link">
     <span class="md-ellipsis">
-      Docker
+      Laragon
     </span>
   </a>
   
@@ -511,15 +511,6 @@
   <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
       Referencias
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#actividades" class="md-nav__link">
-    <span class="md-ellipsis">
-      Actividades
     </span>
   </a>
   
@@ -1116,154 +1107,12 @@
 </figure>
 
 <p>Durante las siguientes unidades vamos a estudiar PHP en profundidad.</p>
-<h2 id="puesta-en-marcha">Puesta en marcha<a class="headerlink" href="#puesta-en-marcha" title="Permanent link">&para;</a></h2>
-<p>Para poder trabajar con un entorno de desarrollo local, hemos de preparar nuestro entorno de desarrollo con las herramientas comentadas. A lo largo del curso vamos a utilizar la versión 8 de PHP.</p>
-<h3 id="xampp">XAMPP<a class="headerlink" href="#xampp" title="Permanent link">&para;</a></h3>
-<p>XAMPP (https://www.apachefriends.org/es/index.html) es una distribución compuesta con el software necesario para desarrollar en entorno servidor. Se compone de las siguientes herramientas en base a sus siglas:</p>
-<ul>
-<li>X para el sistema operativo (de ahí que se conozca tamnbién como LAMP o WAMP).</li>
-<li>A para Apache.</li>
-<li>M para MySQL / MariaDB. También incluye phpMyAdmin para la administración de la base de datos desde un interfaz web.</li>
-<li>P para PHP.</li>
-<li>la última P para Perl.</li>
-</ul>
-<p>Desde la propia página se puede descargar el archivo ejecutable para el sistema operativo de nuestro ordenador. Se recomienda leer la FAQ de cada sistema operativo con instrucciones para su puesta en marcha.</p>
-<div class="admonition note">
-<p class="admonition-title">XAMPP en Windows</p>
-<p>Si vas a trabajar con tu propio ordenador, XAMPP es una solución más sencilla que Docker, sobre todo si trabajar con Windows como sistema operativo.</p>
-</div>
-<h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
-<p>Docker (<a href="https://www.docker.com">https://www.docker.com</a>) es un gestor de contenedores, considerando un contenedor como un método de virtualización del sistema operativo.</p>
-<p>El uso de contenedores requiere menos recursos que una máquina virtual, por lo tanto, su lanzamiento y detención son más rápidos que las máquinas virtuales.</p>
-<p>Así pues, <em>Docker</em> permite crear, probar e implementar aplicaciones rápidamente, a partir de una serie de plantillas que se conocen como imágenes de <em>Docker</em>.</p>
-<p>Para ello es necesario tener instalado <em>Docker Desktop</em> (<a href="https://www.docker.com/products/docker-desktop">https://www.docker.com/products/docker-desktop</a>) en nuestros entornos de desarrollo (el cual ya incluye en nucleo de <em>Docker</em> y la herramienta <em>docker compose</em>). En los ordenadores del aula ya está instalado. Para instalarlo en casa, en el caso de Windows, es necesario instalar previamente <em>WSL 2</em>, el cual es un subsistema de <em>Linux</em> dentro de <em>Windows</em>.</p>
-<p>A lo largo del curso iremos creando diferentes contenedores con los servicios necesarios, de manera que cada vez sólo trabajemos con el software mínimo.</p>
-<div class="admonition caution">
-<p class="admonition-title">Versiones</p>
-<p>A lo largo del curso vamos a usar PHP <code>8.0</code>. Respecto a <em>Docker</em>, para escribir los apuntes hemos utilizado la version <code>20.10</code> y la version <code>2.19</code> de <em>docker compose</em>. Finalmente, la versión de <em>Docker Desktop</em> que hemos utilizado es la <code>4.0</code>.</p>
-</div>
-<h4 id="plantilla-servidor-web-php">Plantilla Servidor Web + PHP<a class="headerlink" href="#plantilla-servidor-web-php" title="Permanent link">&para;</a></h4>
-<p><em>Docker</em> se basa en el uso de imágenes para crear contenedores. <em>Docker Compose</em> simplifica el trabajo con múltiples contenedores, y por ello, para facilitar el arraque, nos centraremos en <em>Docker Compose</em> utilizando una plantilla que únicamente va a contener como servicios Apache/Nginx y PHP.</p>
-<p>Para ello, vamos a rellenar el archivo <code>docker-compose.yaml</code> con:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Apache y PHP</label><label for="__tabbed_3_2">Nginx y PHP</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Services</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="nt">services</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="c1"># Apache + PHP</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nt">apache_php</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php:8-apache</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="c1"># Preparamos un volumen para almacenar nuestro código</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./src/:/var/www/html</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="nt">expose</span><span class="p">:</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80:80</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Services</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="nt">services</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 3 "></span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nt">nginx</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx:1.19</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80:80</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./src:/var/www/php</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./.docker/nginx/conf.d:/etc/nginx/conf.d</span><span class="w"> </span><span class="c1"># cargamos la configuración de un fichero externo</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php</span><span class="w">   </span><span class="c1"># enlazamos nginx con php</span>
-<span class="linenos" data-linenos="13 "></span>
-<span class="linenos" data-linenos="14 "></span><span class="w">  </span><span class="nt">php</span><span class="p">:</span>
-<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php:8.0-fpm</span>
-<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="nt">working_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/www/php</span>
-<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="linenos" data-linenos="18 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./src:/var/www/php</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>Dentro de la carpeta que contenga dicho archivo, hemos de crear una carpeta <code>src</code> donde colocaremos nuestro código fuente. Para facilitar la puesta en marcha, tenéis la plantilla de <a href="recursos/plantilla-AP.zip">Apache/PHP</a> (<a href="recursos/plantilla-AP2.zip">versión 2</a> con <code>a2enmod rewrite</code>) o <a href="recursos/plantilla-NP.zip">Nginx/PHP</a> disponible para su descarga.</p>
-<p>Cuando estemos listos, lanzaremos el servicio mediante:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="go">docker-compose up -d</span>
-</code></pre></div>
-<p>Si queremos ver el contenido de los archivos de log del servicio utilizaremos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="go">docker-compose logs -f</span>
-</code></pre></div>
-<p>Para copiar un archivo desde nuestro sistema al interior del contenedor:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="go">docker cp ./miFichero idContenedor:/tmp</span>
-</code></pre></div>
-<p>Y al revés, si queremos consultar un archivo contenido dentro de un contenedor, lo copiaremos a nuestro sistema:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="go">docker cp idContenedor:/tmp/archivoAConsultar.txt ./</span>
-</code></pre></div>
-<p>Finalmente, si queremos acceder a un terminal interactivo dentro del contenedor:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="go">docker exec -it nombreContenedor bash</span>
-</code></pre></div>
-<p>Otros comandos que podemos llegar a utilizar son:</p>
-<ul>
-<li><code>docker ps</code>: Ver los contenedores que se estan ejecutando</li>
-<li><code>docker ps -a</code>: Ver todos los contenedores</li>
-<li><code>docker start nombreContenedor</code>: Arrancar un contenedor</li>
-<li><code>docker images</code>: Ver las imágenes que tenemos descargadas</li>
-</ul>
-<p>Otra forma más sencilla para lanzar de nuevo los contenedores y gestionarlos una vez creados es utilizar el interfaz gráfico que ofrece <em>Docker Desktop</em>:</p>
-<figure>
-  <a class="glightbox" href="imagenes/01/dockerdesktop.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/01/dockerdesktop.png" /></a>
-  <figcaption>Arranque de contenedor mediante Docker Desktop</figcaption>
-</figure>
-
-<div class="admonition tip">
-<p class="admonition-title">Docker stack</p>
-<p>Existen diversas opciones mediante Docker que ofrecen soluciones completas y empaquetas para todo el stack de desarrollo. En posteriores sesiones utilizaremos tanto <em>Devilbox</em> (<a href="http://devilbox.org">http://devilbox.org</a>) como <em>Laradock</em> (<a href="https://laradock.io">https://laradock.io</a>)</p>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Pero quiero saber cómo funciona...</p>
-<p>En el módulo de <em>Despliegue de aplicaciones</em> estudiaréis en profundidad, además de Docker, Apache y otros servicios que nos servirán de ayuda para el desarrollo en entorno servidor.</p>
-</div>
-<h3 id="entorno-de-desarrollo">Entorno de desarrollo<a class="headerlink" href="#entorno-de-desarrollo" title="Permanent link">&para;</a></h3>
-<p>En este curso vamos a emplear <em>Visual Studio Code</em> (<a href="https://code.visualstudio.com">https://code.visualstudio.com</a>) como entorno de desarrollo (IDE), y más adelante también <a href="https://www.jetbrains.com/es-es/phpstorm/">PhpStorm</a>, que es sin duda la más usada y conocinda aunque es de pago (existe opción para estudiantes).</p>
-<p><em>VSCode</em> es un editor de código fuente que se complementa mediante extensiones. Para facilitar el trabajo a lo largo del curso vamos a utilizar las siguientes extensiones:</p>
-<ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client">PHP Intelephense</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker">Docker</a></li>
-</ul>
-<p>En la siguiente sesión comenzaremos a utilizar <em>Intelephense</em> pero en esta sesión nos vamos a centrar en <em>Docker</em> (más adelante instalaremos nuevas extensiones).</p>
-<p>Por ejemplo, si abrimos la extensión de <em>Docker</em>, podréis visualizar tanto los contenedores como las imágenes de vuestro sistema. Desde cada contenedor, mediante clic derecho, podemos iniciar/detener/reiniciar cada contenedor, así como ver su contenido o abrir un terminal dentro del mismo.</p>
-<figure>
-  <a class="glightbox" href="imagenes/01/vscodedocker.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/01/vscodedocker.png" width="300"/></a>
-  <figcaption>Opciones mediante extensión Docker en VSCode</figcaption>
-</figure>
-
-<h3 id="hola-mundo">Hola Mundo<a class="headerlink" href="#hola-mundo" title="Permanent link">&para;</a></h3>
-<p>Y como no, nuestro primer ejemplo será un <em>Hola Mundo</em> en PHP.</p>
-<p>Si nombramos el archivo como <code>index.php</code>, al acceder a <code>http://localhost</code> automáticamente cargará el resultado:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 4 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 5 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 6 "></span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Hola Mundo<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="hll"><span class="linenos" data-linenos=" 9 "></span>    <span class="cp">&lt;?php</span>
-</span><span class="hll"><span class="linenos" data-linenos="10 "></span>        <span class="k">echo</span> <span class="s2">&quot;Hola Mundo&quot;</span><span class="p">;</span>
-</span><span class="hll"><span class="linenos" data-linenos="11 "></span>    <span class="cp">?&gt;</span>
-</span><span class="linenos" data-linenos="12 "></span><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="13 "></span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
-<h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Curso de introducción a Docker, por <em>Sergi García Barea</em> : <a href="https://sergarb1.github.io/CursoIntroduccionADocker/">https://sergarb1.github.io/CursoIntroduccionADocker/</a></li>
-<li>Artículo <a href="https://www.arquitecturajava.com/arquitecturas-web-y-su-evolucion/">Arquitecturas Web y su evolución</a></li>
-</ul>
-<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
-<details class="question">
-<summary>Cuestionario en grupo</summary>
+<div class="admonition example">
+<p class="admonition-title">Actividades</p>
+<ol start="100">
+<li>
 <p>40 preguntas sobre Internet <a href="https://create.kahoot.it/share/40-preguntas-sobre-internet/ffb5a58c-4e58-4656-826f-0f8d94304331">Kahoot</a></p>
-</details>
-<ol start="101">
+</li>
 <li>
 <p>Trabajo sobre servidores web</p>
 <ol>
@@ -1297,6 +1146,72 @@
 </ol>
 </li>
 </ol>
+</div>
+<h2 id="puesta-en-marcha"><strong>Puesta en marcha</strong><a class="headerlink" href="#puesta-en-marcha" title="Permanent link">&para;</a></h2>
+<p>Para poder trabajar con un entorno de desarrollo local, hemos de preparar nuestro entorno de desarrollo con todo lo necesario, y esto no es trivial al principio.</p>
+<p>Este es un punto muy importante, ya vamos a necesitar una serie de recursos, tanto IDEs (y sus plugins) como el propio PHP, BDs, servidores web y aplicaciones, etc. para poder trabajar en el curso. Otro punto clave es el sistema operativo, ya que no es lo mismo trabajar en Windows que en Linux o en MacOS. Los entornos más comunes son Windows y Linux (MacOS), para los que existe más herramientas y recursos.</p>
+<blockquote>
+<p>💡<a href="hhttps://youtu.be/tvbu-cezBI8">¿Por qué necesito un entorno de desarrollo local?</a><br>
+Este video explica la importancia de tener un entorno de desarrollo local y cúal elegir para PHP.</p>
+</blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Entorno de desarrollo con Docker</p>
+<p>Docker es una herramienta muy importante en el desarrollo de software (y fundamental en Web), ya que nos permite crear contenedores con los servicios necesarios para trabajar, testear diferentes entornos sin afectar al entorno local, pero por su complejidad vamos a empezar con un entorno de desarrollo más sencillo, más automatizado y donde nos centremos en el código y no en la infraestructura.</p>
+<p>Existen opciones ya implementadas para trabajar con Docker, como <a href="https://laradock.io/">Laradock</a>, <a href="devilbox.org">DevilBox</a> que utilizaremos más adelante en el curso.</p>
+</div>
+<h3 id="xampp">XAMPP<a class="headerlink" href="#xampp" title="Permanent link">&para;</a></h3>
+<p><a href="https://www.apachefriends.org/es/index.html">XAMPP</a> es una distribución compuesta con el software necesario para desarrollar en entorno servidor. Se compone de las siguientes herramientas en base a sus siglas:</p>
+<ul>
+<li>X para el sistema operativo (de ahí que se conozca tamnbién como LAMP o WAMP).</li>
+<li>A para Apache.</li>
+<li>M para MySQL / MariaDB. También incluye phpMyAdmin para la administración de la base de datos desde un interfaz web.</li>
+<li>P para PHP.</li>
+<li>la última P para Perl.</li>
+</ul>
+<p>Desde la propia página se puede descargar el archivo ejecutable para el sistema operativo de nuestro ordenador. Se recomienda leer la FAQ de cada sistema operativo con instrucciones para su puesta en marcha.</p>
+<p>🔥 <strong>XAMP tiene ya unos años, y aunque es una solución, no es la más sencilla ni más flexible, además suele ser bastante opaca en cuanto a la configuración de los servicios, y si da problemas, no es fácil de solucionar.</strong></p>
+<h3 id="laragon">Laragon<a class="headerlink" href="#laragon" title="Permanent link">&para;</a></h3>
+<p>Laragon (https://laragon.org/) es una herramienta similar a XAMPP (solo para Windows) pero más moderna y con más opciones. Como dice su eslogan "Productiva, Portable, Rápida, Efectiva y Sorprendente!!".</p>
+<p>Otro punto importante es que Laragon sigue siendo mantenida, mientras que XAMPP no se actualiza desde hace tiempo.</p>
+<p>Pasos:</p>
+<ol>
+<li><a href="https://laragon.org/docs/install">Instalar Laragon</a></li>
+<li><a href="https://youtu.be/tvbu-cezBI8?t=198">Montar el entorno de desarrollo con Laragon</a></li>
+<li>Comprobar que todo funciona correctamente.</li>
+</ol>
+<h3 id="entorno-de-desarrollo">Entorno de desarrollo<a class="headerlink" href="#entorno-de-desarrollo" title="Permanent link">&para;</a></h3>
+<p>En este curso vamos a emplear <em>Visual Studio Code</em> (<a href="https://code.visualstudio.com">https://code.visualstudio.com</a>) como entorno de desarrollo (IDE), y más adelante también <a href="https://www.jetbrains.com/es-es/phpstorm/">PhpStorm</a>, que es sin duda la más usada y conocinda aunque es de pago (existe opción para estudiantes).</p>
+<p><em>VSCode</em> es un editor de código fuente que se complementa mediante extensiones. Para facilitar el trabajo a lo largo del curso vamos a utilizar las siguientes extensiones:</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client">PHP Intelephense</a></li>
+</ul>
+<blockquote>
+<p>💡 Para PHP Intelephense es requerido desactivar la extensión propia que VSCode tiene para PHP. 
+1. Ir a extensiones, buscar por @builtin php, Desactvivar PHP Languaje Features, dejar PHP Languaje Basis para resaltar la sintaxis.</p>
+</blockquote>
+<p>En este <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-visual-studio-code-for-php-projects">tutorial</a> (inglés) se explica cómo configurar VSCode para trabajar con PHP.</p>
+<h3 id="hola-mundo">Hola Mundo<a class="headerlink" href="#hola-mundo" title="Permanent link">&para;</a></h3>
+<p>Y como no, nuestro primer ejemplo será un <em>Hola Mundo</em> en PHP.</p>
+<p>Si nombramos el archivo como <code>index.php</code>, al acceder a <code>http://localhost</code> automáticamente cargará el resultado:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Hola Mundo<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span>    <span class="cp">&lt;?php</span>
+</span><span class="hll"><span class="linenos" data-linenos="10 "></span>        <span class="k">echo</span> <span class="s2">&quot;Hola Mundo&quot;</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos" data-linenos="11 "></span>    <span class="cp">?&gt;</span>
+</span><span class="linenos" data-linenos="12 "></span><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="13 "></span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Curso de introducción a Docker, por <em>Sergi García Barea</em> : <a href="https://sergarb1.github.io/CursoIntroduccionADocker/">https://sergarb1.github.io/CursoIntroduccionADocker/</a></li>
+<li>Artículo <a href="https://www.arquitecturajava.com/arquitecturas-web-y-su-evolucion/">Arquitecturas Web y su evolución</a></li>
+</ul>
 
 
 
