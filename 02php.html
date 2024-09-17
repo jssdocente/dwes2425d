@@ -444,15 +444,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#trabajando-con-formularios" class="md-nav__link">
-    <span class="md-ellipsis">
-      Trabajando con formularios
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#condiciones" class="md-nav__link">
     <span class="md-ellipsis">
       Condiciones
@@ -651,6 +642,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#trabajando-con-formularios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trabajando con formularios
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
       Referencias
@@ -665,57 +665,6 @@
       Actividades
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Actividades">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#php-basico" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHP básico
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bucles_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bucles
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#arrays_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Arrays
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#funciones_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Funciones
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#funciones-predefinidas_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Funciones predefinidas
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -852,7 +801,7 @@
 <li>El cliente recibe el resultado generado tras interpretar el código en el servidor.</li>
 <li>El código se almacena en archivo con extensión <code>.php</code>.</li>
 </ul>
-<p>La última versión es la 8.0, de Noviembre de 2020 (y en menos de un par de meses tendremos la versión 8.3). La versión 7.0 salió en Diciembre de 2015. Además de numerosas nuevas funcionalidades que iremos viendo durante el curso, tiene más de dos veces mejor rendimiento que PHP5.</p>
+<p>La última versión es la 8.3, de Agosto de 2024. La versión 7.0 salió en Diciembre de 2015. Además de numerosas nuevas funcionalidades que iremos viendo durante el curso, tiene más de dos veces mejor rendimiento que PHP5.</p>
 <p>Su documentación es extensa y está traducida: <a href="https://www.php.net/manual/es/">https://www.php.net/manual/es/</a>.</p>
 <h3 id="codigo-embebido">Código embebido<a class="headerlink" href="#codigo-embebido" title="Permanent link">&para;</a></h3>
 <p>Los bloques de código se escriben entre <strong><code>&lt;?php</code></strong> y <strong><code>?&gt;</code></strong>, mientras que las sentencias se separan mediante <strong><code>;</code></strong>.</p>
@@ -936,9 +885,39 @@
 <span class="linenos" data-linenos="10 "></span><span class="k">echo</span> <span class="nv">$sinValor</span><span class="p">;</span>
 <span class="linenos" data-linenos="11 "></span><span class="cp">?&gt;</span>
 </code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Tipos</p>
+<blockquote>
 <p>Aunque a priori no hay tipos de datos, internamente PHP trabaja con cuatro tipos escalares: <em>boolean</em>, <em>integer</em>, <em>float</em> y <em>string</em> y cuatro tipos compuestos: <em>array</em>, <em>object</em>, <em>callable</em> e <em>iterable</em>. Existe un tipo especial para <em>null</em> (más información en <a href="http://php.net/manual/es/language.types.null.php">http://php.net/manual/es/language.types.null.php</a>).</p>
+</blockquote>
+<div class="admonition question">
+<p class="admonition-title">¿Qué mostrará el siguiente código?</p>
+<p>Indica qué mostrará el siguiente código:</p>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 3 "></span>    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Document<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="10 "></span>    <span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="cp">    $bookName= &quot;Harry Potter&quot;;</span>
+<span class="linenos" data-linenos="13 "></span><span class="cp">    $read = false;</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="cp">    if ($read) {</span>
+<span class="linenos" data-linenos="16 "></span><span class="cp">        $message = &quot;Has leido el libro $bookName&quot;;</span>
+<span class="linenos" data-linenos="17 "></span><span class="cp">    }</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span><span class="cp">    ?&gt;</span>
+<span class="linenos" data-linenos="20 "></span>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="21 "></span>        <span class="cp">&lt;?php echo $message; ?&gt;</span>  
+<span class="linenos" data-linenos="22 "></span>    <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="23 "></span><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="24 "></span>
+<span class="linenos" data-linenos="25 "></span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+En la línea 17, ¿cómo podrías simplificar esa expresión?</p>
 </div>
 <h3 id="constantes">Constantes<a class="headerlink" href="#constantes" title="Permanent link">&para;</a></h3>
 <p>Son variables cuyo valor no varían. Existen dos posibilidades:</p>
@@ -1023,7 +1002,7 @@
 <p>En ocasiones, necesitamos rodear el nombre de la variable entre llaves para poder unir más texto al resultado:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="cp">&lt;?php</span>
 <span class="linenos" data-linenos="2 "></span><span class="nv">$color</span> <span class="o">=</span> <span class="s2">&quot;rojo&quot;</span><span class="p">;</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">echo</span> <span class="s2">&quot;El plural de </span><span class="si">$color</span><span class="s2"> el </span><span class="si">${</span><span class="nv">color</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">echo</span> <span class="s2">&quot;El plural de </span><span class="si">$color</span><span class="s2"> el </span><span class="si">{</span><span class="nv">$color</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">;</span>
 <span class="linenos" data-linenos="4 "></span><span class="cp">?&gt;</span>
 </code></pre></div>
 <p>Más adelante estudiaremos algunas funciones para el tratamiento de cadenas.</p>
@@ -1105,7 +1084,7 @@
 <td><code>true</code> si tanto <code>$a</code> como <code>$b</code> son <code>true</code>.</td>
 </tr>
 <tr>
-<td><code>$a or $b</code>, <code>$a || $b</code></td>
+<td><code>$a or $b</code>, <code>$a         |                     | $b</code></td>
 <td><em>Or</em> (o inclusivo)</td>
 <td><code>true</code> si cualquiera de <code>$a</code> o <code>$b</code> es <code>true</code>.</td>
 </tr>
@@ -1187,51 +1166,6 @@ Más información en <a href="https://www.php.net/manual/es/language.operators.p
 <p class="admonition-title">Autoevaluación</p>
 <p>Si <code>$a=5</code> y <code>$b=4</code>, averigua el valor de <code>$c</code> si <code>$c = $a*2 &gt; $b+5 &amp;&amp; !($b&lt;&gt;4)</code></p>
 </div>
-<h2 id="trabajando-con-formularios">Trabajando con formularios<a class="headerlink" href="#trabajando-con-formularios" title="Permanent link">&para;</a></h2>
-<p>Los datos se envían via URL con el formato <code>var1=valor1&amp;var2=valor2…</code>. Por ejemplo: <code>ejemplo.php?nombre=Bruce+apellido1=Wayne</code></p>
-<p>Se divide en dos pasos:</p>
-<ol>
-<li>Generar un formulario con <code>action='archivo.php' method='GET'</code></li>
-<li>En el archivo <code>.php</code> leer los datos con <code>$_GET['nombreVar']</code></li>
-</ol>
-<p>Vamos a separar siempre que podamos el código HTML del de PHP.
-Por ejemplo, el formulario lo colocamos en <code>saluda.html</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;saluda.php&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;get&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="2 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span><span class="p">&gt;</span>Nombre: <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="3 "></span>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="4 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;apellido1&quot;</span><span class="p">&gt;</span>Primer apellido:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span> 
-<span class="linenos" data-linenos="5 "></span>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;apellido1&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;apellido1&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="6 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;enviar&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="7 "></span><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Y recogemos los datos en <code>saluda.php</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="cp">&lt;?php</span>
-<span class="linenos" data-linenos="2 "></span><span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">];</span>
-<span class="linenos" data-linenos="3 "></span><span class="nv">$apellido1</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;apellido1&quot;</span><span class="p">];</span>
-<span class="linenos" data-linenos="4 "></span>
-<span class="linenos" data-linenos="5 "></span><span class="k">echo</span> <span class="s2">&quot;Hola </span><span class="si">$nombre</span><span class="s2"> </span><span class="si">$apellido1</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="linenos" data-linenos="6 "></span><span class="cp">?&gt;</span>
-</code></pre></div>
-<p>Si lo quisiéramos realizar todo en un único archivo (<em>lo cual no es recomendable</em>), podemos hacerlo así:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;get&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 2 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span><span class="p">&gt;</span>Nombre: <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 3 "></span>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 4 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;apellido1&quot;</span><span class="p">&gt;</span>Primer apellido:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 5 "></span>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;apellido1&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;apellido1&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 6 "></span>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;enviar&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 9 "></span>    <span class="cp">&lt;?php</span>
-<span class="linenos" data-linenos="10 "></span>    <span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]))</span> <span class="p">{</span>
-<span class="linenos" data-linenos="11 "></span>        <span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">];</span>
-<span class="linenos" data-linenos="12 "></span>        <span class="nv">$apellido1</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;apellido1&quot;</span><span class="p">];</span>
-<span class="linenos" data-linenos="13 "></span>
-<span class="linenos" data-linenos="14 "></span>        <span class="k">echo</span> <span class="s2">&quot;Hola </span><span class="si">$nombre</span><span class="s2"> </span><span class="si">$apellido1</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="linenos" data-linenos="15 "></span>    <span class="p">}</span>
-<span class="linenos" data-linenos="16 "></span>    <span class="cp">?&gt;</span>
-<span class="linenos" data-linenos="17 "></span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>El trabajo con formularios lo estudiaremos en profundidad en la unidad 4, y veremos que además de <code>GET</code>, podemos enviar los datos con <code>POST</code>.</p>
 <h2 id="condiciones">Condiciones<a class="headerlink" href="#condiciones" title="Permanent link">&para;</a></h2>
 <p>La condición simple se realiza mediante la instrucción <code>if</code>. Entre paréntesis se pone la condición que se evalua a <code>true</code> o <code>false</code>. Si no se ponen llaves, en vez de abrir un bloque, se ejecutará sólo la siguiente instrucción.</p>
 <div class="admonition warning">
@@ -2141,6 +2075,51 @@ Al comparar cadenas con valores numericos podemos utilizar:</p>
 <span class="linenos" data-linenos="11 "></span><span class="nb">var_dump</span><span class="p">(</span><span class="nb">is_int</span><span class="p">(</span><span class="nb">intval</span><span class="p">(</span><span class="nv">$uno</span><span class="p">)));</span> <span class="c1">// true</span>
 <span class="linenos" data-linenos="12 "></span><span class="cp">?&gt;</span>
 </code></pre></div>
+<h2 id="trabajando-con-formularios">Trabajando con formularios<a class="headerlink" href="#trabajando-con-formularios" title="Permanent link">&para;</a></h2>
+<p>Los datos se envían via URL con el formato <code>var1=valor1&amp;var2=valor2…</code>. Por ejemplo: <code>ejemplo.php?nombre=Bruce+apellido1=Wayne</code></p>
+<p>Se divide en dos pasos:</p>
+<ol>
+<li>Generar un formulario con <code>action='archivo.php' method='GET'</code></li>
+<li>En el archivo <code>.php</code> leer los datos con <code>$_GET['nombreVar']</code></li>
+</ol>
+<p>Vamos a separar siempre que podamos el código HTML del de PHP.
+Por ejemplo, el formulario lo colocamos en <code>saluda.html</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;saluda.php&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;get&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="2 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span><span class="p">&gt;</span>Nombre: <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="4 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;apellido1&quot;</span><span class="p">&gt;</span>Primer apellido:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span> 
+<span class="linenos" data-linenos="5 "></span>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;apellido1&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;apellido1&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="6 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;enviar&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="7 "></span><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Y recogemos los datos en <code>saluda.php</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos="2 "></span><span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">];</span>
+<span class="linenos" data-linenos="3 "></span><span class="nv">$apellido1</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;apellido1&quot;</span><span class="p">];</span>
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span><span class="k">echo</span> <span class="s2">&quot;Hola </span><span class="si">$nombre</span><span class="s2"> </span><span class="si">$apellido1</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="6 "></span><span class="cp">?&gt;</span>
+</code></pre></div>
+<p>Si lo quisiéramos realizar todo en un único archivo (<em>lo cual no es recomendable</em>), podemos hacerlo así:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;get&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 2 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span><span class="p">&gt;</span>Nombre: <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 3 "></span>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;apellido1&quot;</span><span class="p">&gt;</span>Primer apellido:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;apellido1&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;apellido1&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;enviar&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="cp">&lt;?php</span>
+<span class="linenos" data-linenos="10 "></span>    <span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="linenos" data-linenos="11 "></span>        <span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">];</span>
+<span class="linenos" data-linenos="12 "></span>        <span class="nv">$apellido1</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;apellido1&quot;</span><span class="p">];</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span>        <span class="k">echo</span> <span class="s2">&quot;Hola </span><span class="si">$nombre</span><span class="s2"> </span><span class="si">$apellido1</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="15 "></span>    <span class="p">}</span>
+<span class="linenos" data-linenos="16 "></span>    <span class="cp">?&gt;</span>
+<span class="linenos" data-linenos="17 "></span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>El trabajo con formularios lo estudiaremos en profundidad en la unidad 4, y veremos que además de <code>GET</code>, podemos enviar los datos con <code>POST</code>.</p>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://www.php.net/manual/es/index.php">Manual de PHP</a></li>
@@ -2150,8 +2129,15 @@ Al comparar cadenas con valores numericos podemos utilizar:</p>
 <li><a href="http://phpdevenezuela.github.io/php-the-right-way/">PHP - La manera correcta</a></li>
 </ul>
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
-<h3 id="php-basico">PHP básico<a class="headerlink" href="#php-basico" title="Permanent link">&para;</a></h3>
-<ol start="200">
+<div class="admonition danger">
+<p class="admonition-title">¡No te limites a copiar y pegar! ¡Practica y experimenta con los ejercicios!</p>
+</div>
+<details class="exercise">
+<summary>Ejercicios</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:5"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><input id="__tabbed_5_5" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">PHP básico</label><label for="__tabbed_5_2">Bucles</label><label for="__tabbed_5_3">Arrays</label><label for="__tabbed_5_4">Funciones</label><label for="__tabbed_5_5">Funciones predefinidas</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
 <li>Visualiza el vídeo de Jesús Amieiro sobre <a href="https://www.youtube.com/watch?v=o3IwAqslGUM&amp;t=12724s">PHP en 2020</a> a partir del minuto 3:32 (son 40 minutos aproximadamente).<ul>
 <li>¿Qué relación existe entre PHP y Facebook?</li>
 <li>Respecto al rendimiento, ¿qué versión mínima deberíamos utilizar?</li>
@@ -2224,7 +2210,7 @@ Por ejemplo, al introducir <code>139</code> debe mostrar:</p>
 </li>
 </ol>
 <p><a class="glightbox" href="imagenes/02/02p213.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img _="&amp;" align="right" alt="213" src="imagenes/02/02p213.png" width="150" /></a></p>
-<ol start="213">
+<ol start="14">
 <li>
 <p><code>213ecuacion2g.php</code>: Crea un programa que resuelva una ecuación de 2º grado del tipo <code>ax² + bx + c = 0</code>.
 Ten en cuenta que puede tener 2, 1 o no tener solución dependiendo del valor del discriminante <code>b²-4ac</code>.</p>
@@ -2232,12 +2218,13 @@ Ten en cuenta que puede tener 2, 1 o no tener solución dependiendo del valor de
 </li>
 </ol>
 <p>Ejercicios de investigación:</p>
-<ol start="214">
+<ol start="15">
 <li>Investiga para que sirve el operador nave espacial, disponible desde PHP7 (<a href="https://www.php.net/manual/es/migration70.new-features.php">https://www.php.net/manual/es/migration70.new-features.php</a>). Explica con un par de líneas su propósito y mediante código demuestra su uso.</li>
 <li>Investiga para qué sirve la instrucción <code>match()</code>, disponible desde PHP8 (<a href="https://www.php.net/manual/es/control-structures.match.php">https://www.php.net/manual/es/control-structures.match.php</a>). Explica con un par de líneas su propósito y mediante código demuestra su uso.</li>
 </ol>
-<h3 id="bucles_1">Bucles<a class="headerlink" href="#bucles_1" title="Permanent link">&para;</a></h3>
-<ol start="220">
+</div>
+<div class="tabbed-block">
+<ol start="17">
 <li>
 <p><code>220pares050.php:</code> Escribe un programa que muestre los números pares del 0 al 50 (dentro de una lista desordenada).</p>
 <p><code>220paresAB.php</code>: A partir del anterior, refactorizar para que funcione con <code>inicio</code> y <code>fin</code>.</p>
@@ -2313,7 +2300,8 @@ Las celdas deben estar rellenadas con los valores de las coordenadas de cada cel
 <li><code>227formulario.html</code> y <code>227equis.php</code>: Basándote en el ejercicio anterior, ahora sólo debe aparecer el contenido de los dos diagonales.</li>
 <li><code>228cuadradoMultiplicar.php</code>: Crea un programa que muestre por pantalla un cuadrado exactamente igual (fíjate bien en los encabezados, tanto de las filas como de las columnas) al de la imagen con las tablas de multiplicar.</li>
 </ol>
-<h3 id="arrays_1">Arrays<a class="headerlink" href="#arrays_1" title="Permanent link">&para;</a></h3>
+</div>
+<div class="tabbed-block">
 <ol start="230">
 <li>
 <p><code>230aleatorios50.php</code>: Rellena un array con 50 números aleatorios comprendidos entre el 0 y el 99, y luego muéstralo en una lista desordenada.
@@ -2366,7 +2354,8 @@ Muestra a continuación por pantalla el contenido del array de tal forma que:</p
 </ul>
 </li>
 </ol>
-<h3 id="funciones_1">Funciones<a class="headerlink" href="#funciones_1" title="Permanent link">&para;</a></h3>
+</div>
+<div class="tabbed-block">
 <ol start="240">
 <li>
 <p><code>240arrayPar.php</code>: Crea las siguientes funciones:</p>
@@ -2430,18 +2419,19 @@ Muestra a continuación por pantalla el contenido del array de tal forma que:</p
 </ul>
 </li>
 </ol>
-<h3 id="funciones-predefinidas_1">Funciones predefinidas<a class="headerlink" href="#funciones-predefinidas_1" title="Permanent link">&para;</a></h3>
-<p>Todos los ejercicios se deben realizar creando nuevas funciones para encapsular el código.
-Además de la propia función, el ejercicio debe contener código para poder probarlo.</p>
+</div>
+<div class="tabbed-block">
+<p><p>Todos los ejercicios se deben realizar creando nuevas funciones para encapsular el código.
+Además de la propia función, el ejercicio debe contener código para poder probarlo.</p></p>
 <ol start="250">
 <li><code>250fraseImpares.php</code>: Lee una frase y devuelve una nueva con solo los caracteres de las posiciones impares.</li>
 <li><code>251vocales.php</code>: A partir de una frase, devuelve la cantidad de cada una de las vocales, y el total de ellas.</li>
 <li>
-<p><code>252analizador.php</code>: A partir de una frase con palabras sólo separadas por espacios, devolver</p>
 <ul>
 <li>Letras totales y cantidad de palabras</li>
 <li>Una línea por cada palabra indicando su tamaño</li>
 </ul>
+<p><code>252analizador.php</code>: A partir de una frase con palabras sólo separadas por espacios, devolver</p>
 <p>Nota: no se puede usar <code>str_word_count</code><br />
 <code>252analizadorWC.php</code>: Investiga que hace la función <code>str_word_count</code>, y vuelve a hacer el ejercicio.</p>
 </li>
@@ -2474,6 +2464,10 @@ Además de la propia función, el ejercicio debe contener código para poder pro
 </ul>
 </li>
 </ol>
+</div>
+</div>
+</div>
+</details>
 
 
 
