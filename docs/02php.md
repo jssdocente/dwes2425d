@@ -46,7 +46,7 @@
 * El cliente recibe el resultado generado tras interpretar el código en el servidor.
 * El código se almacena en archivo con extensión `.php`.
 
-La última versión es la 8.0, de Noviembre de 2020 (y en menos de un par de meses tendremos la versión 8.3). La versión 7.0 salió en Diciembre de 2015. Además de numerosas nuevas funcionalidades que iremos viendo durante el curso, tiene más de dos veces mejor rendimiento que PHP5.
+La última versión es la 8.3, de Agosto de 2024. La versión 7.0 salió en Diciembre de 2015. Además de numerosas nuevas funcionalidades que iremos viendo durante el curso, tiene más de dos veces mejor rendimiento que PHP5.
 
 Su documentación es extensa y está traducida: <https://www.php.net/manual/es/>.
 
@@ -150,8 +150,45 @@ echo $sinValor;
 ?>
 ```
 
-!!! info "Tipos"
-    Aunque a priori no hay tipos de datos, internamente PHP trabaja con cuatro tipos escalares: *boolean*, *integer*, *float* y *string* y cuatro tipos compuestos: *array*, *object*, *callable* e *iterable*. Existe un tipo especial para *null* (más información en <http://php.net/manual/es/language.types.null.php>).
+> Aunque a priori no hay tipos de datos, internamente PHP trabaja con cuatro tipos escalares: *boolean*, *integer*, *float* y *string* y cuatro tipos compuestos: *array*, *object*, *callable* e *iterable*. Existe un tipo especial para *null* (más información en <http://php.net/manual/es/language.types.null.php>).
+
+
+!!! question "¿Qué mostrará el siguiente código?"
+
+    Indica qué mostrará el siguiente código:
+
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <?php
+        
+        $bookName= "Harry Potter";
+        $read = false;
+
+        if ($read) {
+            $message = "Has leido el libro $bookName";
+        }
+
+        ?>
+        <h1>
+            <?php echo $message; ?>  
+        </h1>
+    </body>
+
+    </html>
+    ```
+    En la línea 17, ¿cómo podrías simplificar esa expresión?
+
+
+
+
 
 ### Constantes
 
@@ -176,15 +213,15 @@ echo PI, " ", IVA; // No se pone el símbolo dolar
 
 ### Ariméticos
 
-| Ejemplo | Nombre | Resultado
-| ---   | ---   | ---
-| `-$a` | Negación | Opuesto de `$a`.
-| `$a + $b` | Suma | Suma de `$a` y `$b`.
-| `$a - $b` | Resta | Diferencia de `$a` y `$b`.
-| `$a * $b` | Multiplicación | Producto de `$a` y `$b`.
-| `$a / $b` | División | Cociente de `$a` y `$b`.
-| `$a % $b` | Módulo / Resto | Resto de `$a` dividido por `$b`.
-| `$a ** $b` | Potencia | Resultado de `$a` elevado a `$b`. PHP >= 5.6.
+| Ejemplo    | Nombre         | Resultado                                     |
+| ---------- | -------------- | --------------------------------------------- |
+| `-$a`      | Negación       | Opuesto de `$a`.                              |
+| `$a + $b`  | Suma           | Suma de `$a` y `$b`.                          |
+| `$a - $b`  | Resta          | Diferencia de `$a` y `$b`.                    |
+| `$a * $b`  | Multiplicación | Producto de `$a` y `$b`.                      |
+| `$a / $b`  | División       | Cociente de `$a` y `$b`.                      |
+| `$a % $b`  | Módulo / Resto | Resto de `$a` dividido por `$b`.              |
+| `$a ** $b` | Potencia       | Resultado de `$a` elevado a `$b`. PHP >= 5.6. |
 
 En el caso de **cadenas**, si queremos concatenarlas, se utiliza el operador `.`:
 
@@ -211,7 +248,7 @@ En ocasiones, necesitamos rodear el nombre de la variable entre llaves para pode
 ``` php
 <?php
 $color = "rojo";
-echo "El plural de $color el ${color}s";
+echo "El plural de $color el {$color}s";
 ?>
 ```
 
@@ -219,41 +256,41 @@ Más adelante estudiaremos algunas funciones para el tratamiento de cadenas.
 
 ### Comparación
 
-| Ejemplo | Nombre | Resultado
-| ---   | ---   | ---
-| `$a == $b` | Igual | `true` si `$a` es igual a `$b` tras de la conversión de tipos.
-| `$a === $b` | Idéntico, Comparación estricta | `true` si `$a` es igual a `$b`, y son del mismo tipo de dato.
-| `$a != $b`, `$a <> $b` | Diferente |`true` si `$a` no es igual a `$b` después de la conversión de tipos.
-| `$a !== $b` | No idéntico |`true` si `$a` no es igual a `$b`, o si no son del mismo tipo.
-| `$a < $b` | Menor que |`true` si `$a` es estrictamente menor que `$b`.
-| `$a > $b` | Mayor que |`true` si `$a` es estrictamente mayor que `$b`.
-| `$a <= $b` | Menor o igual que |`true` si `$a` es menor o igual que `$b`.
-| `$a >= $b` | Mayor o igual que |`true` si `$a` es mayor o igual que `$b`.
-| `$a <=> $b` | Nave espacial | Devuelve `-1`, `0` o `1` cuando `$a` es respectivamente menor, igual, o mayor que `$b`. PHP >= 7.
-| `$a ?? $b ?? $c` | Fusión de *null* | El primer operando de izquierda a derecha que exista y no sea `null`. `null` si no hay valores definidos y no son `null`. PHP >= 7.
+| Ejemplo                | Nombre                         | Resultado                                                                                                                           |
+| ---------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `$a == $b`             | Igual                          | `true` si `$a` es igual a `$b` tras de la conversión de tipos.                                                                      |
+| `$a === $b`            | Idéntico, Comparación estricta | `true` si `$a` es igual a `$b`, y son del mismo tipo de dato.                                                                       |
+| `$a != $b`, `$a <> $b` | Diferente                      | `true` si `$a` no es igual a `$b` después de la conversión de tipos.                                                                |
+| `$a !== $b`            | No idéntico                    | `true` si `$a` no es igual a `$b`, o si no son del mismo tipo.                                                                      |
+| `$a < $b`              | Menor que                      | `true` si `$a` es estrictamente menor que `$b`.                                                                                     |
+| `$a > $b`              | Mayor que                      | `true` si `$a` es estrictamente mayor que `$b`.                                                                                     |
+| `$a <= $b`             | Menor o igual que              | `true` si `$a` es menor o igual que `$b`.                                                                                           |
+| `$a >= $b`             | Mayor o igual que              | `true` si `$a` es mayor o igual que `$b`.                                                                                           |
+| `$a <=> $b`            | Nave espacial                  | Devuelve `-1`, `0` o `1` cuando `$a` es respectivamente menor, igual, o mayor que `$b`. PHP >= 7.                                   |
+| `$a ?? $b ?? $c`       | Fusión de *null*               | El primer operando de izquierda a derecha que exista y no sea `null`. `null` si no hay valores definidos y no son `null`. PHP >= 7. |
 
 ### Lógicos
 
-| Ejemplo | Nombre | Resultado
-| ---   | ---   | ---
-| `$a and $b`, `$a && $b` | *And* (y) | `true` si tanto `$a` como `$b` son `true`.
-| `$a or $b`, `$a || $b`| *Or* (o inclusivo) | `true` si cualquiera de `$a` o `$b` es `true`.
-| `$a xor $b` | *Xor* (o exclusivo) | `true` si `$a` o `$b` es `true`, pero no ambos.
-| `!$a` | *Not* (no) | `true` si `$a` no es `true`.
+| Ejemplo                 | Nombre              | Resultado                                       |
+| ----------------------- | ------------------- | ----------------------------------------------- |
+| `$a and $b`, `$a && $b` | *And* (y)           | `true` si tanto `$a` como `$b` son `true`.      |
+| `$a or $b`, `$a         |                     | $b`                                             | *Or* (o inclusivo) | `true` si cualquiera de `$a` o `$b` es `true`. |
+| `$a xor $b`             | *Xor* (o exclusivo) | `true` si `$a` o `$b` es `true`, pero no ambos. |
+| `!$a`                   | *Not* (no)          | `true` si `$a` no es `true`.                    |
 
 ### Asignación
 
-| Ejemplo | Nombre | Resultado
-| ---   | ---   | ---
-| `$a = $b` | Asignación | Asigna a `$a` el valor de `$b`
-| `$a += $b` | Asignación de la suma | Le suma a `$a` el valor de `$b`. Equivalente a `$a = $a + $b`
-| `$a -= $b` | Asignación de la resta | Le resta a `$a` el valor de `$b`. Equivalente a `$a = $a - $b`
-| `$a *= $b` | Asignación del producto | Asigna a `$a` el producto de `$a` por `$b`. Equivalente a `$a = $a * $b`
-| `$a /= $b` | Asignación de la división | Asigna a `$a` el conciente de `$a` entre `$b`. Equivalente a `$a = $a / $b`
-| `$a %= $b` | Asignación del resto | Asigna a `$a` el resto de dividir `$a` entre `$b`. Equivalente a `$a = $a % $b`
-| `$a .= $b` | Concatenación | Concatena a `$a` la cadena `$b`. Equivalente a `$a = $a . $b`
-| `$a++` | Incremento | Incrementa `$a` en una unidad. Equivalente a `$a = $a + 1`
-| `$a--` | Decremento | Decrementa `$a` en una unidad. Equivalente a `$a = $a - 1`
+| Ejemplo    | Nombre                    | Resultado                                                                       |
+| ---------- | ------------------------- | ------------------------------------------------------------------------------- |
+| `$a = $b`  | Asignación                | Asigna a `$a` el valor de `$b`                                                  |
+| `$a += $b` | Asignación de la suma     | Le suma a `$a` el valor de `$b`. Equivalente a `$a = $a + $b`                   |
+| `$a -= $b` | Asignación de la resta    | Le resta a `$a` el valor de `$b`. Equivalente a `$a = $a - $b`                  |
+| `$a *= $b` | Asignación del producto   | Asigna a `$a` el producto de `$a` por `$b`. Equivalente a `$a = $a * $b`        |
+| `$a /= $b` | Asignación de la división | Asigna a `$a` el conciente de `$a` entre `$b`. Equivalente a `$a = $a / $b`     |
+| `$a %= $b` | Asignación del resto      | Asigna a `$a` el resto de dividir `$a` entre `$b`. Equivalente a `$a = $a % $b` |
+| `$a .= $b` | Concatenación             | Concatena a `$a` la cadena `$b`. Equivalente a `$a = $a . $b`                   |
+| `$a++`     | Incremento                | Incrementa `$a` en una unidad. Equivalente a `$a = $a + 1`                      |
+| `$a--`     | Decremento                | Decrementa `$a` en una unidad. Equivalente a `$a = $a - 1`                      |
 
 !!! Tip "Prioridad de los operadores"
     Recuerda la prioridad. Primero los paréntesis, luego la negación (`!`), productos/divisiones, sumas/restas, comparaciones, lógicos y por último se realiza la asignación.
@@ -262,62 +299,6 @@ Más adelante estudiaremos algunas funciones para el tratamiento de cadenas.
 !!! question "Autoevaluación"
     Si `$a=5` y `$b=4`, averigua el valor de `$c` si `$c = $a*2 > $b+5 && !($b<>4)`
 
-## Trabajando con formularios
-
-Los datos se envían via URL con el formato `var1=valor1&var2=valor2…`. Por ejemplo: `ejemplo.php?nombre=Bruce+apellido1=Wayne`
-
-Se divide en dos pasos:
-
-1. Generar un formulario con `action='archivo.php' method='GET'`
-2. En el archivo `.php` leer los datos con `$_GET['nombreVar']`
-
-Vamos a separar siempre que podamos el código HTML del de PHP.
-Por ejemplo, el formulario lo colocamos en `saluda.html`:
-
-``` html
-<form action="saluda.php" method="get">
-    <p><label for="nombre">Nombre: </label>
-    <input type="text" name="nombre" id="nombre"></p>
-    <p><label for="apellido1">Primer apellido:</label> 
-    <input type="text" name="apellido1" id="apellido1"></p>
-    <p><input type="submit" value="enviar"></p>
-</form>
-```
-
-Y recogemos los datos en `saluda.php`:
-
-``` php
-<?php
-$nombre = $_GET["nombre"];
-$apellido1 = $_GET["apellido1"];
-
-echo "Hola $nombre $apellido1";
-?>
-```
-
-Si lo quisiéramos realizar todo en un único archivo (*lo cual no es recomendable*), podemos hacerlo así:
-
-``` html+php
-<form action="" method="get">
-    <p><label for="nombre">Nombre: </label>
-    <input type="text" name="nombre" id="nombre"></p>
-    <p><label for="apellido1">Primer apellido:</label>
-    <input type="text" name="apellido1" id="apellido1"></p>
-    <input type="submit" value="enviar">
-</form>
-<p>
-    <?php
-    if(isset($_GET['nombre'])) {
-        $nombre = $_GET["nombre"];
-        $apellido1 = $_GET["apellido1"];
-
-        echo "Hola $nombre $apellido1";
-    }
-    ?>
-</p>
-```
-
-El trabajo con formularios lo estudiaremos en profundidad en la unidad 4, y veremos que además de `GET`, podemos enviar los datos con `POST`.
 
 ## Condiciones
 
@@ -1383,6 +1364,63 @@ var_dump(is_int(intval($uno))); // true
 ?>
 ```
 
+## Trabajando con formularios
+
+Los datos se envían via URL con el formato `var1=valor1&var2=valor2…`. Por ejemplo: `ejemplo.php?nombre=Bruce+apellido1=Wayne`
+
+Se divide en dos pasos:
+
+1. Generar un formulario con `action='archivo.php' method='GET'`
+2. En el archivo `.php` leer los datos con `$_GET['nombreVar']`
+
+Vamos a separar siempre que podamos el código HTML del de PHP.
+Por ejemplo, el formulario lo colocamos en `saluda.html`:
+
+``` html
+<form action="saluda.php" method="get">
+    <p><label for="nombre">Nombre: </label>
+    <input type="text" name="nombre" id="nombre"></p>
+    <p><label for="apellido1">Primer apellido:</label> 
+    <input type="text" name="apellido1" id="apellido1"></p>
+    <p><input type="submit" value="enviar"></p>
+</form>
+```
+
+Y recogemos los datos en `saluda.php`:
+
+``` php
+<?php
+$nombre = $_GET["nombre"];
+$apellido1 = $_GET["apellido1"];
+
+echo "Hola $nombre $apellido1";
+?>
+```
+
+Si lo quisiéramos realizar todo en un único archivo (*lo cual no es recomendable*), podemos hacerlo así:
+
+``` html+php
+<form action="" method="get">
+    <p><label for="nombre">Nombre: </label>
+    <input type="text" name="nombre" id="nombre"></p>
+    <p><label for="apellido1">Primer apellido:</label>
+    <input type="text" name="apellido1" id="apellido1"></p>
+    <input type="submit" value="enviar">
+</form>
+<p>
+    <?php
+    if(isset($_GET['nombre'])) {
+        $nombre = $_GET["nombre"];
+        $apellido1 = $_GET["apellido1"];
+
+        echo "Hola $nombre $apellido1";
+    }
+    ?>
+</p>
+```
+
+El trabajo con formularios lo estudiaremos en profundidad en la unidad 4, y veremos que además de `GET`, podemos enviar los datos con `POST`.
+
 ## Referencias
 
 * [Manual de PHP](https://www.php.net/manual/es/index.php)
@@ -1393,246 +1431,251 @@ var_dump(is_int(intval($uno))); // true
 
 ## Actividades
 
-### PHP básico
+!!! danger "¡No te limites a copiar y pegar! ¡Practica y experimenta con los ejercicios!"
 
-200. Visualiza el vídeo de Jesús Amieiro sobre [PHP en 2020](https://www.youtube.com/watch?v=o3IwAqslGUM&t=12724s) a partir del minuto 3:32 (son 40 minutos aproximadamente).
-    * ¿Qué relación existe entre PHP y Facebook?
-    * Respecto al rendimiento, ¿qué versión mínima deberíamos utilizar?
-    * ¿Por qué PHP tiene mala fama? 
-201. `201tresfrases.php`: Muestra 3 frases, cada una en un párrafo utilizando las tres posibilidades que existen de mostrar contenido.
-Tras ello, introduce dos comentarios, uno de bloque y otro de una línea.
-202. `202calculos.php`: Escribe un programa que utilice las variables `$x` y `$y`. Asígnales los valores `166` y `999` respectivamente.
-A continuación, muestra por pantalla el valor de cada variable, la suma, la resta, la división y la multiplicación.
-![203](imagenes/02/02p203.png){align=right}
-203. `203datosPersonales.php`: Escribe un programa que almacene en variables tu nombre, primer apellido, segundo apellido, email, año de nacimiento y teléfono. Luego muéstralos por pantalla dentro de una tabla.
-204. `204datosPersonales.html` y `204datosPersonales.php`: Es el mismo ejercicio que el anterior, pero separando la lógica. En el primer archivo crearemos el formulario para introducir los datos, y luego recogemos los datos y generamos la tabla en el segundo archivo.
 
-205. `205madlib.html`y `205madlib.php`: A partir de un nombre, un verbo, un adjetivo y un adverbio, crea una historia que contenga dichos elementos. Por ejemplo:
+??? exercise "Ejercicios"
 
-    * Entrada: perro / caminar / azul / rápidamente
-    * Salida: ¿ Te gusta caminar con tu perro azul rápidamente ?
+    === "PHP básico"
 
-    * `205madlib2.html` y `205madlib2.php` Crea un madlib más extenso, leyendo más datos de entrada.
+        1.   Visualiza el vídeo de Jesús Amieiro sobre [PHP en 2020](https://www.youtube.com/watch?v=o3IwAqslGUM&t=12724s) a partir del minuto 3:32 (son 40 minutos aproximadamente).
+            * ¿Qué relación existe entre PHP y Facebook?
+            * Respecto al rendimiento, ¿qué versión mínima deberíamos utilizar?
+            * ¿Por qué PHP tiene mala fama? 
+        2.   `201tresfrases.php`: Muestra 3 frases, cada una en un párrafo utilizando las tres posibilidades que existen de mostrar contenido.
+        Tras ello, introduce dos comentarios, uno de bloque y otro de una línea.
+        3.   `202calculos.php`: Escribe un programa que utilice las variables `$x` y `$y`. Asígnales los valores `166` y `999` respectivamente.
+        A continuación, muestra por pantalla el valor de cada variable, la suma, la resta, la división y la multiplicación.
+        ![203](imagenes/02/02p203.png){align=right}
+        4.   `203datosPersonales.php`: Escribe un programa que almacene en variables tu nombre, primer apellido, segundo apellido, email, año de nacimiento y teléfono. Luego muéstralos por pantalla dentro de una tabla.
+        5.   `204datosPersonales.html` y `204datosPersonales.php`: Es el mismo ejercicio que el anterior, pero separando la lógica. En el primer archivo crearemos el formulario para introducir los datos, y luego recogemos los datos y generamos la tabla en el segundo archivo.
 
-206. `206anyos.php`: Tras leer la edad de una persona, mostrar la edad que tendrá dentro de 10 años y hace 10 años.
-Además, muestra qué año será en cada uno de los casos.
-Finalmente, muestra el año de jubilación suponiendo que trabajarás hasta los 67 años.
-En este caso, no hace falta que previamente crees un formulario, puedes probar el ejercicio via URL: `206anyos.php?edad=33`.
+        6.   `205madlib.html`y `205madlib.php`: A partir de un nombre, un verbo, un adjetivo y un adverbio, crea una historia que contenga dichos elementos. Por ejemplo:
 
-    Tip: `$anyoActual = date("Y");`
+            * Entrada: perro / caminar / azul / rápidamente
+            * Salida: ¿ Te gusta caminar con tu perro azul rápidamente ?
 
-207. `207dinero.php`: A partir de una cantidad de dinero, mostrar su descomposición en billetes  (500, 200, 100, 50, 20, 10, 5) y monedas (2, 1), para que el número de elementos sea mínimo.
-No se utilizar ninguna instrucción condicional.
-Por ejemplo, al introducir `139` debe mostrar:
+            * `205madlib2.html` y `205madlib2.php` Crea un madlib más extenso, leyendo más datos de entrada.
 
-    ``` out
-    1 billete de 100
-    0 billete de 50
-    1 billete de 20
-    1 billete de 10
-    1 billete de 5
-    2 moneda de 2
-    ```
+        7.   `206anyos.php`: Tras leer la edad de una persona, mostrar la edad que tendrá dentro de 10 años y hace 10 años.
+        Además, muestra qué año será en cada uno de los casos.
+        Finalmente, muestra el año de jubilación suponiendo que trabajarás hasta los 67 años.
+        En este caso, no hace falta que previamente crees un formulario, puedes probar el ejercicio via URL: `206anyos.php?edad=33`.
 
-    Tip: Puedes forzar a realizar la división entera mediante la función `intdiv($dividendo, $divisor)` o pasar un número flotante a entero puedes usar la función `intval()`
+            Tip: `$anyoActual = date("Y");`
 
-208. `208posnegcero.php`: A partir de un `numero`, muestra por pantalla si el número es `positivo`, `negativo` o `cero`.
+        8.   `207dinero.php`: A partir de una cantidad de dinero, mostrar su descomposición en billetes  (500, 200, 100, 50, 20, 10, 5) y monedas (2, 1), para que el número de elementos sea mínimo.
+        No se utilizar ninguna instrucción condicional.
+        Por ejemplo, al introducir `139` debe mostrar:
 
-209. `209mayor3.php`: Sin hacer uso de condiciones que utilicen dentro la condición los operadores lógicos, muestra el mayor de tres números (`a`, `b` y `c`).
-    
-    `209mayor3c.php`: Utiliza en las condiciones los operadores lógicos.
+            ``` out
+            1 billete de 100
+            0 billete de 50
+            1 billete de 20
+            1 billete de 10
+            1 billete de 5
+            2 moneda de 2
+            ```
 
-210. `210nombreEdad.php`: A partir de una `edad` muestra por pantalla:
+            Tip: Puedes forzar a realizar la división entera mediante la función `intdiv($dividendo, $divisor)` o pasar un número flotante a entero puedes usar la función `intval()`
 
-    * `bebé` si tiene menos de 3 años
-    * `niño` si tiene entre 3 y 12 años
-    * `adolescente` entre 13 y 17 años
-    * `adulto` entre 18 y 66
-    * `jubilado` a partir de 67
+        9.   `208posnegcero.php`: A partir de un `numero`, muestra por pantalla si el número es `positivo`, `negativo` o `cero`.
 
-211. `211reloj.php`: Escribe un programa que funcione similar a un reloj, de manera que a partir de los valores de `hora`, `minuto` y `segundo` muestre la hora dentro de un segundo. Tras las `23:59:59` serán las `0:0:0`.
+        10.  `209mayor3.php`: Sin hacer uso de condiciones que utilicen dentro la condición los operadores lógicos, muestra el mayor de tres números (`a`, `b` y `c`).
+            
+            `209mayor3c.php`: Utiliza en las condiciones los operadores lógicos.
 
-212. `212calendario.php`: Escribe un programa similar a un calendario de manera que a partir de `dia`, `mes` y `anyo` muestre la fecha dentro de un día. Debes tener en cuenta que no todos los meses tienen 30 días. En este caso, no vamos a tener en cuenta los años bisiestos.
+        11.  `210nombreEdad.php`: A partir de una `edad` muestra por pantalla:
 
-![213](imagenes/02/02p213.png){align=right & width=150}
+            * `bebé` si tiene menos de 3 años
+            * `niño` si tiene entre 3 y 12 años
+            * `adolescente` entre 13 y 17 años
+            * `adulto` entre 18 y 66
+            * `jubilado` a partir de 67
 
-213. `213ecuacion2g.php`: Crea un programa que resuelva una ecuación de 2º grado del tipo `ax² + bx + c = 0`.
-Ten en cuenta que puede tener 2, 1 o no tener solución dependiendo del valor del discriminante `b²-4ac`.
+        12.  `211reloj.php`: Escribe un programa que funcione similar a un reloj, de manera que a partir de los valores de `hora`, `minuto` y `segundo` muestre la hora dentro de un segundo. Tras las `23:59:59` serán las `0:0:0`.
 
-    Tip: Para calcular la raíz cuadrada deberás utilizar la función `sqrt()`
+        13.  `212calendario.php`: Escribe un programa similar a un calendario de manera que a partir de `dia`, `mes` y `anyo` muestre la fecha dentro de un día. Debes tener en cuenta que no todos los meses tienen 30 días. En este caso, no vamos a tener en cuenta los años bisiestos.
 
-Ejercicios de investigación:
+        ![213](imagenes/02/02p213.png){align=right & width=150}
 
-214. Investiga para que sirve el operador nave espacial, disponible desde PHP7 (<https://www.php.net/manual/es/migration70.new-features.php>). Explica con un par de líneas su propósito y mediante código demuestra su uso.
-215. Investiga para qué sirve la instrucción `match()`, disponible desde PHP8 (<https://www.php.net/manual/es/control-structures.match.php>). Explica con un par de líneas su propósito y mediante código demuestra su uso.
+        14.  `213ecuacion2g.php`: Crea un programa que resuelva una ecuación de 2º grado del tipo `ax² + bx + c = 0`.
+        Ten en cuenta que puede tener 2, 1 o no tener solución dependiendo del valor del discriminante `b²-4ac`.
 
-### Bucles
+            Tip: Para calcular la raíz cuadrada deberás utilizar la función `sqrt()`
 
-220. `220pares050.php:` Escribe un programa que muestre los números pares del 0 al 50 (dentro de una lista desordenada).
+        Ejercicios de investigación:
 
-    `220paresAB.php`: A partir del anterior, refactorizar para que funcione con `inicio` y `fin`.
+        15.  Investiga para que sirve el operador nave espacial, disponible desde PHP7 (<https://www.php.net/manual/es/migration70.new-features.php>). Explica con un par de líneas su propósito y mediante código demuestra su uso.
+        16.  Investiga para qué sirve la instrucción `match()`, disponible desde PHP8 (<https://www.php.net/manual/es/control-structures.match.php>). Explica con un par de líneas su propósito y mediante código demuestra su uso.
 
-221. `221suma110.php`: Escribe un programa que sume los números del 1 al 10.
+    === "Bucles"
 
-    `221sumaAB.php`: A partir del anterior, refactorizar para que funcione con `inicio` y `fin`.
+        17.  `220pares050.php:` Escribe un programa que muestre los números pares del 0 al 50 (dentro de una lista desordenada).
 
-222. `222potencia.php`: A partir de una `base` y `exponente`, mediante la acumulación de productos, calcula la potencia utilizando la instrucción `for`.
+            `220paresAB.php`: A partir del anterior, refactorizar para que funcione con `inicio` y `fin`.
 
-    `222potenciaWhile.php`: Reescribe el ejercicio anterior haciendo uso sólo de `while`.  
-    `222potenciaDoWhile.php`: Reescribe el ejercicio anterior haciendo uso sólo de `do-while`.
+        18.  `221suma110.php`: Escribe un programa que sume los números del 1 al 10.
 
-223. `223tablaMultiplicar.php`: Muestra dentro de una tabla HTML la tabla de multiplicar del `numero` que reciba como parámetro. Utiliza `<thead>` con sus respectivos `<th>` y `<tbody`> para dibujar la tabla. Por ejemplo:
+            `221sumaAB.php`: A partir del anterior, refactorizar para que funcione con `inicio` y `fin`.
 
-    a | * | b | = | a*b
-    -- | -- | -- | -- | --
-    7  | * | 1 | = | 7
-    7  | * | 2 | = | 14
-    ...
-    7  | * | 10 | = | 70
+        19.  `222potencia.php`: A partir de una `base` y `exponente`, mediante la acumulación de productos, calcula la potencia utilizando la instrucción `for`.
 
+            `222potenciaWhile.php`: Reescribe el ejercicio anterior haciendo uso sólo de `while`.  
+            `222potenciaDoWhile.php`: Reescribe el ejercicio anterior haciendo uso sólo de `do-while`.
 
-224. `224formulario.html`: Crea un formulario que permita leer una `cantidad`.  
+        20.  `223tablaMultiplicar.php`: Muestra dentro de una tabla HTML la tabla de multiplicar del `numero` que reciba como parámetro. Utiliza `<thead>` con sus respectivos `<th>` y `<tbody`> para dibujar la tabla. Por ejemplo:
 
-    !!! tip inline end
-        Para guardar un dato oculto puedes utilizar un campo de formulario de tipo oculto: `<input type="hidden" name="cantidad" value="33" />`
+            | a   | *   | b   | =   | a*b |
+            | --- | --- | --- | --- | --- |
+            | 7   | *   | 1   | =   | 7   |
+            | 7   | *   | 2   | =   | 14  |
+            ...
+            7  | * | 10 | = | 70
 
-    `224leerDatos.php`: a partir de `cantidad`, prepara un formulario con tantas cajas de datos como su valor.  
-    Finalmente, en `224sumarDatos.php`: a partir de los datos de todas las cajas de la página anterior, súmalos y muestra el total.
 
-225. `225formulario.html` y `225tabla.php`: A partir de un número de `filas` y `columnas`, crear una tabla con ese tamaño.
-Las celdas deben estar rellenadas con los valores de las coordenadas de cada celda.
-226. `226formulario.html` y `226cuadrado.php`: Basándote en el ejercicio anterior, rellena la tabla de manera que solo los bordes tengan contenido, quedándose el resto de celdas en blanco.
-![228](imagenes/02/02p228.png){align=right & width=200}
-227. `227formulario.html` y `227equis.php`: Basándote en el ejercicio anterior, ahora sólo debe aparecer el contenido de los dos diagonales.
-228. `228cuadradoMultiplicar.php`: Crea un programa que muestre por pantalla un cuadrado exactamente igual (fíjate bien en los encabezados, tanto de las filas como de las columnas) al de la imagen con las tablas de multiplicar.
+        224. `224formulario.html`: Crea un formulario que permita leer una `cantidad`.  
 
-### Arrays
+            !!! tip inline end
+                Para guardar un dato oculto puedes utilizar un campo de formulario de tipo oculto: `<input type="hidden" name="cantidad" value="33" />`
 
-230. `230aleatorios50.php`: Rellena un array con 50 números aleatorios comprendidos entre el 0 y el 99, y luego muéstralo en una lista desordenada.
-Para crear un número aleatorio, utiliza la función `rand(inicio, fin)`. Por ejemplo:
+            `224leerDatos.php`: a partir de `cantidad`, prepara un formulario con tantas cajas de datos como su valor.  
+            Finalmente, en `224sumarDatos.php`: a partir de los datos de todas las cajas de la página anterior, súmalos y muestra el total.
 
-    ``` php
-    $num = rand(0, 99)
-    ```
+        225. `225formulario.html` y `225tabla.php`: A partir de un número de `filas` y `columnas`, crear una tabla con ese tamaño.
+        Las celdas deben estar rellenadas con los valores de las coordenadas de cada celda.
+        226. `226formulario.html` y `226cuadrado.php`: Basándote en el ejercicio anterior, rellena la tabla de manera que solo los bordes tengan contenido, quedándose el resto de celdas en blanco.
+        ![228](imagenes/02/02p228.png){align=right & width=200}
+        227. `227formulario.html` y `227equis.php`: Basándote en el ejercicio anterior, ahora sólo debe aparecer el contenido de los dos diagonales.
+        228. `228cuadradoMultiplicar.php`: Crea un programa que muestre por pantalla un cuadrado exactamente igual (fíjate bien en los encabezados, tanto de las filas como de las columnas) al de la imagen con las tablas de multiplicar.
 
-231. `231bola8.html`: Prepara un formulario con un caja de texto que realice a una pregunta al usuario.  
-`231bola8.php`: A partir del anterior, crea un programa que muestre la pregunta recibida y genere una respuesta de manera aleatoria entre un conjunto de respuestas predefinidas, almacenadas en un array: *Si, no, quizás, claro que sí, por supuesto que no, no lo tengo claro, seguro, yo diría que sí, ni de coña, etc..*.  
-Este ejercicio se basa en el juego de la [Bola 8 mágica](https://es.wikipedia.org/wiki/Magic_8-Ball).
+    === "Arrays"
 
-232. `232mates.php`: A partir del ejercicio 230, genera un array aleatorio de 33 elementos con números comprendidos entre el 0 y 100 y calcula:
+        230. `230aleatorios50.php`: Rellena un array con 50 números aleatorios comprendidos entre el 0 y el 99, y luego muéstralo en una lista desordenada.
+        Para crear un número aleatorio, utiliza la función `rand(inicio, fin)`. Por ejemplo:
 
-    * El mayor
-    * El menor
-    * La media
+            ``` php
+            $num = rand(0, 99)
+            ```
 
-233. `233sexos.php`: Rellena un array de 100 elementos de manera aleatoria con valores `M` o `F` (por ejemplo `["M", "M", "F", "M", ...]`). Una vez completado, vuelve a recorrerlo y calcula cuantos elementos hay de cada uno de los valores almacenando el resultado en un array asociativo `['M' => 44, 'F' => 66]` (*no utilices variables para contar las `M` o las `F`*).
-Finalmente, muestra el resultado por pantalla
+        231. `231bola8.html`: Prepara un formulario con un caja de texto que realice a una pregunta al usuario.  
+        `231bola8.php`: A partir del anterior, crea un programa que muestre la pregunta recibida y genere una respuesta de manera aleatoria entre un conjunto de respuestas predefinidas, almacenadas en un array: *Si, no, quizás, claro que sí, por supuesto que no, no lo tengo claro, seguro, yo diría que sí, ni de coña, etc..*.  
+        Este ejercicio se basa en el juego de la [Bola 8 mágica](https://es.wikipedia.org/wiki/Magic_8-Ball).
 
-234. `234monedas.php`: Vuelve a realizar el ejercicio 207, el de las monedas (500, 200, 100, 50, 20, 10, 5, 2, 1), pero haciendo uso de arrays y un bucle.
-Almacena el resultado en un array asociativo.
-Muestra el resultado en una lista desordenada únicamente con las cantidades que tienen algún valor.
+        232. `232mates.php`: A partir del ejercicio 230, genera un array aleatorio de 33 elementos con números comprendidos entre el 0 y 100 y calcula:
 
-235. `235alturas.php`: Mediante un array asociativo, almacena el nombre y la altura de 5 personas (`nombre => altura`).
-Posteriormente, recorre el array y muéstralo en una tabla HTML.
-Finalmente añade una última fila a la tabla con la altura media.
+            * El mayor
+            * El menor
+            * La media
 
-236. `236personas.php`: Mediante un array bidimensional, almacena el nombre, altura y email de 5 personas. Para ello, crea un array de personas, siendo cada persona un array asociativo: `[ ['nombre'=>'Aitor', 'altura'=>182, 'email'=>'aitor@correo.com'],[…],… ]`
-Posteriormente, recorre el array y muéstralo en una tabla HTML.
+        233. `233sexos.php`: Rellena un array de 100 elementos de manera aleatoria con valores `M` o `F` (por ejemplo `["M", "M", "F", "M", ...]`). Una vez completado, vuelve a recorrerlo y calcula cuantos elementos hay de cada uno de los valores almacenando el resultado en un array asociativo `['M' => 44, 'F' => 66]` (*no utilices variables para contar las `M` o las `F`*).
+        Finalmente, muestra el resultado por pantalla
 
-237. `237leerCantidad.html` y `237leerPersonas.php`: a partir de un formulario con un campo de `cantidad` de personas, generar un nuevo formulario para leer el nombre, altura y email de `cantidad` personas.  
-`237gestionarPersonas.php`: A partir de las personas introducidas, mostrar sus datos en una tabla, y posteriormente, destacar los datos del más alto y el del más bajo.
+        234. `234monedas.php`: Vuelve a realizar el ejercicio 207, el de las monedas (500, 200, 100, 50, 20, 10, 5, 2, 1), pero haciendo uso de arrays y un bucle.
+        Almacena el resultado en un array asociativo.
+        Muestra el resultado en una lista desordenada únicamente con las cantidades que tienen algún valor.
 
-238. `238tablaDistintos.php`: Rellena un array bidimensional de 6 filas por 9 columnas con números aleatorios comprendidos entre 100 y 999 (ambos incluidos). Todos los números deben ser distintos, es decir, no se puede repetir ninguno.  
-Muestra a continuación por pantalla el contenido del array de tal forma que:
+        235. `235alturas.php`: Mediante un array asociativo, almacena el nombre y la altura de 5 personas (`nombre => altura`).
+        Posteriormente, recorre el array y muéstralo en una tabla HTML.
+        Finalmente añade una última fila a la tabla con la altura media.
 
-    * La columna del máximo debe aparecer en azul.
-    * La fila del mínimo debe aparecer en verde
-    * El resto de números deben aparecer en negro.
+        236. `236personas.php`: Mediante un array bidimensional, almacena el nombre, altura y email de 5 personas. Para ello, crea un array de personas, siendo cada persona un array asociativo: `[ ['nombre'=>'Aitor', 'altura'=>182, 'email'=>'aitor@correo.com'],[…],… ]`
+        Posteriormente, recorre el array y muéstralo en una tabla HTML.
 
-### Funciones
+        237. `237leerCantidad.html` y `237leerPersonas.php`: a partir de un formulario con un campo de `cantidad` de personas, generar un nuevo formulario para leer el nombre, altura y email de `cantidad` personas.  
+        `237gestionarPersonas.php`: A partir de las personas introducidas, mostrar sus datos en una tabla, y posteriormente, destacar los datos del más alto y el del más bajo.
 
-240. `240arrayPar.php`: Crea las siguientes funciones:
+        238. `238tablaDistintos.php`: Rellena un array bidimensional de 6 filas por 9 columnas con números aleatorios comprendidos entre 100 y 999 (ambos incluidos). Todos los números deben ser distintos, es decir, no se puede repetir ninguno.  
+        Muestra a continuación por pantalla el contenido del array de tal forma que:
 
-    * Una función que averigüe si un número es par: `esPar(int $num): bool`
-    * Una función que devuelva un array de tamaño `$tam` con números aleatorios comprendido entre `$min` y `$max` : `arrayAleatorio(int $tam, int $min, int $max) : array`
-    * Una función que reciba un `$array` por referencia y devuelva la cantidad de números pares que hay almacenados: `arrayPares(array &$array): int`
+            * La columna del máximo debe aparecer en azul.
+            * La fila del mínimo debe aparecer en verde
+            * El resto de números deben aparecer en negro.
 
-241. `241parametrosVariables.php`: Crea las siguientes funciones:
+    === "Funciones"
 
-    * Una función que devuelva el mayor de todos los números recibidos como parámetros: `function mayor(): int`. Utiliza las funciones `func_get_args()`, etc... No puedes usar la función `max()`.
-    * Una función que concatene todos los parámetros recibidos separándolos con un espacio: `function concatenar(...$palabras) : string`. Utiliza el operador `...`.
+        240. `240arrayPar.php`: Crea las siguientes funciones:
 
-242. `242matematicas.php`: Añade las siguientes funciones:
+            * Una función que averigüe si un número es par: `esPar(int $num): bool`
+            * Una función que devuelva un array de tamaño `$tam` con números aleatorios comprendido entre `$min` y `$max` : `arrayAleatorio(int $tam, int $min, int $max) : array`
+            * Una función que reciba un `$array` por referencia y devuelva la cantidad de números pares que hay almacenados: `arrayPares(array &$array): int`
 
-    * `digitos(int $num): int` → devuelve la cantidad de dígitos de un número.
-    * `digitoN(int $num, int $pos): int` → devuelve el dígito que ocupa, empezando por la izquierda, la posición `$pos`.
-    * `quitaPorDetras(int $num, int $cant): int` → le quita por detrás (derecha) `$cant` dígitos.
-    * `quitaPorDelante(int $num, int $cant): int` → le quita por delante (izquierda) `$cant` dígitos.
+        241. `241parametrosVariables.php`: Crea las siguientes funciones:
 
-    Para probar las funciones, haz uso tanto de paso de argumentos posicionales como argumentos con nombre.
+            * Una función que devuelva el mayor de todos los números recibidos como parámetros: `function mayor(): int`. Utiliza las funciones `func_get_args()`, etc... No puedes usar la función `max()`.
+            * Una función que concatene todos los parámetros recibidos separándolos con un espacio: `function concatenar(...$palabras) : string`. Utiliza el operador `...`.
 
-243. `243biblioteca.php`: crea un archivo con funciones para sumar, restar, multiplicar y dividir dos números.  
-`243arrayFunciones.php`: haciendo uso de un array que almacene el nombre de las funciones del archivo anterior, a partir de dos números recibidos por URL, recorre el array e invoca a las funciones de manera dinámica haciendo uso de funciones variable.
+        242. `242matematicas.php`: Añade las siguientes funciones:
 
-244. `244euros.php`: Crea una biblioteca con dos funciones:
+            * `digitos(int $num): int` → devuelve la cantidad de dígitos de un número.
+            * `digitoN(int $num, int $pos): int` → devuelve el dígito que ocupa, empezando por la izquierda, la posición `$pos`.
+            * `quitaPorDetras(int $num, int $cant): int` → le quita por detrás (derecha) `$cant` dígitos.
+            * `quitaPorDelante(int $num, int $cant): int` → le quita por delante (izquierda) `$cant` dígitos.
 
-    * peseta2euros: pasa de pesetas a euros
-    * euros2pesetas: pasa de euros a pesetas 
+            Para probar las funciones, haz uso tanto de paso de argumentos posicionales como argumentos con nombre.
 
-    Cada función debe recibir dos parámetros:
+        243. `243biblioteca.php`: crea un archivo con funciones para sumar, restar, multiplicar y dividir dos números.  
+        `243arrayFunciones.php`: haciendo uso de un array que almacene el nombre de las funciones del archivo anterior, a partir de dos números recibidos por URL, recorre el array e invoca a las funciones de manera dinámica haciendo uso de funciones variable.
 
-    * La cantidad a transformar
-    * La cotización, con un parámetro por defecto con el factor de transformación.
-    
-    `244calculadoraEuros.php`: utiliza `243euros.php` y prueba las funciones pasando tanto cantidades con la cotización por defecto, como con nuevas cotizaciones. Recuerda que 1 euro son/eran 166.36 pesetas.
+        244. `244euros.php`: Crea una biblioteca con dos funciones:
 
-245. `245preparaTiquetCompra.php`: A partir de una cantidad de productos, leer el nombre y coste de la cantidad de productos indicados (similar al ejercicio 237, pero esta vez no hace falta crear el formulario con la cantidad, se recibe mediante un parámetro GET via URL).  
-`245imprimeTiquetCompra.php`: Tras leer los datos del tiquet de compra, enumera en una tabla los productos, con su precio en euros y pesetas, y finalmente, en una última fila, totalizar en ambas monedas.
-![245](imagenes/02/02p245.png){align=right & width=200}
-246. A partir de los archivos creados en el ejercicio anterior, crea una plantilla mediante includes:
-`246preparaCompra.php`: similar a `245preparaTiquetCompra.php`, pero separando el encabezado (*Supermercado Severo* en `h1`) y el pie (*Tu supermercado de confianza*) en ficheros externos y referenciando a ellos mediante `include`.  
-`246listaCompra.php`: recibe los datos del anterior, y reutiliza parte de `245imprimeTiquetCompra.php` cambiando la tabla por una lista desordenada de los productos junto a su precio.
-247. Vamos a simular un formulario de acceso:
+            * peseta2euros: pasa de pesetas a euros
+            * euros2pesetas: pasa de euros a pesetas 
 
-    * `247login.php`: el formulario de entrada, que solicita el usuario y contraseña.
-    * `247compruebaLogin.php`: recibe los datos y comprueba si son correctos (los usuarios se guardan en un array asociativo) pasando el control mediante el uso de `include` a:
-        * `247ok.php`: El usuario introducido es correcto
-        * `247ko.php`: El usuario es incorrecto. Informar si ambos están mal o solo la contraseña. Volver a mostrar el formulario de acceso.
+            Cada función debe recibir dos parámetros:
 
-### Funciones predefinidas
+            * La cantidad a transformar
+            * La cotización, con un parámetro por defecto con el factor de transformación.
+            
+            `244calculadoraEuros.php`: utiliza `243euros.php` y prueba las funciones pasando tanto cantidades con la cotización por defecto, como con nuevas cotizaciones. Recuerda que 1 euro son/eran 166.36 pesetas.
 
-Todos los ejercicios se deben realizar creando nuevas funciones para encapsular el código.
-Además de la propia función, el ejercicio debe contener código para poder probarlo.
+        245. `245preparaTiquetCompra.php`: A partir de una cantidad de productos, leer el nombre y coste de la cantidad de productos indicados (similar al ejercicio 237, pero esta vez no hace falta crear el formulario con la cantidad, se recibe mediante un parámetro GET via URL).  
+        `245imprimeTiquetCompra.php`: Tras leer los datos del tiquet de compra, enumera en una tabla los productos, con su precio en euros y pesetas, y finalmente, en una última fila, totalizar en ambas monedas.
+        ![245](imagenes/02/02p245.png){align=right & width=200}
+        246. A partir de los archivos creados en el ejercicio anterior, crea una plantilla mediante includes:
+        `246preparaCompra.php`: similar a `245preparaTiquetCompra.php`, pero separando el encabezado (*Supermercado Severo* en `h1`) y el pie (*Tu supermercado de confianza*) en ficheros externos y referenciando a ellos mediante `include`.  
+        `246listaCompra.php`: recibe los datos del anterior, y reutiliza parte de `245imprimeTiquetCompra.php` cambiando la tabla por una lista desordenada de los productos junto a su precio.
+        247. Vamos a simular un formulario de acceso:
 
-250. `250fraseImpares.php`: Lee una frase y devuelve una nueva con solo los caracteres de las posiciones impares.
-251. `251vocales.php`: A partir de una frase, devuelve la cantidad de cada una de las vocales, y el total de ellas.
-252. `252analizador.php`: A partir de una frase con palabras sólo separadas por espacios, devolver
-    * Letras totales y cantidad de palabras
-    * Una línea por cada palabra indicando su tamaño
+            * `247login.php`: el formulario de entrada, que solicita el usuario y contraseña.
+            * `247compruebaLogin.php`: recibe los datos y comprueba si son correctos (los usuarios se guardan en un array asociativo) pasando el control mediante el uso de `include` a:
+                * `247ok.php`: El usuario introducido es correcto
+                * `247ko.php`: El usuario es incorrecto. Informar si ambos están mal o solo la contraseña. Volver a mostrar el formulario de acceso.
 
-    Nota: no se puede usar `str_word_count`  
-    `252analizadorWC.php`: Investiga que hace la función `str_word_count`, y vuelve a hacer el ejercicio.
+    === "Funciones predefinidas"
 
-253. `253cani.php`: EsCrIbE uNa FuNcIóN qUe TrAnSfOrMe UnA cAdEnA eN cAnI.
-254. `254palindromo.php`: Escribe una función que devuelva un booleano indicando si una palabra es palíndroma (se lee igual de izquierda a derecha que de derecha a izquierda, por ejemplo, “ligar es ser agil”).
-255. `255codificar.php`: Utilizando las funciones para trabajar con caracteres, a partir de una cadena y un desplazamiento: 
-    * Si el desplazamiento es 1, sustituye la A por B, la B por C, etc.
-    * El desplazamiento no puede ser negativo
-    * Si se sale del abecedario, debe volver a empezar
-    * Hay que respetar los espacios, puntos y comas.
-256. `256filtrado.html`: Crea un programa que permita al usuario leer un conjunto de números separados por espacios.  
-`256filtrado.php`: El programa filtrará los números leídos para volver a mostrar únicamente los números pares e indicará la cantidad existente.
-    ```
-    Dame números: 1 4 7 9 23 10 8
-    Los 3 números pares son: 4 10 8
-    ```
-257. `257investiga.php`: Investiga las siguientes funciones de cadena (explica para qué sirven mediante comentarios, y programa un pequeño ejemplo de cada una de ellas): `ucwords`, `strrev`, `str_repeat` y `md5`.
+        <p>Todos los ejercicios se deben realizar creando nuevas funciones para encapsular el código.
+        Además de la propia función, el ejercicio debe contener código para poder probarlo.</p>
 
-Los siguientes ejercicios se basan en la generación de números aleatorios.
+        250. `250fraseImpares.php`: Lee una frase y devuelve una nueva con solo los caracteres de las posiciones impares.
+        251. `251vocales.php`: A partir de una frase, devuelve la cantidad de cada una de las vocales, y el total de ellas.
+        252. `252analizador.php`: A partir de una frase con palabras sólo separadas por espacios, devolver
+            * Letras totales y cantidad de palabras
+            * Una línea por cada palabra indicando su tamaño
 
-260. `260generador.php`: Crea una función que permite generar una letra aleatoria, mayúscula o minúscula.
-261. `261generaContrasenya.php`: Crea una función que a partir de un tamaño, genere una contraseña aleatoria compuesta de letras y dígitos de manera aleatoria.
-263. `262quinielas.php`: Crea las siguientes funciones:
-    * `quinigol() : array` --> Genera un array multidimensional con 6 resultados aleatorios con combinaciones `[012M, 012M]`
-    * `quiniela() : array` --> Genera un array con una combinación de quiniela generada de manera aleatoria: 14 resultados con `1X2` y el pleno al quince con `[012M, 012M]`
-    * `tabla(array $quiniela) : string` --> transforma un array de una quniela en una tabla HTML
+            Nota: no se puede usar `str_word_count`  
+            `252analizadorWC.php`: Investiga que hace la función `str_word_count`, y vuelve a hacer el ejercicio.
+
+        253. `253cani.php`: EsCrIbE uNa FuNcIóN qUe TrAnSfOrMe UnA cAdEnA eN cAnI.
+        254. `254palindromo.php`: Escribe una función que devuelva un booleano indicando si una palabra es palíndroma (se lee igual de izquierda a derecha que de derecha a izquierda, por ejemplo, “ligar es ser agil”).
+        255. `255codificar.php`: Utilizando las funciones para trabajar con caracteres, a partir de una cadena y un desplazamiento: 
+            * Si el desplazamiento es 1, sustituye la A por B, la B por C, etc.
+            * El desplazamiento no puede ser negativo
+            * Si se sale del abecedario, debe volver a empezar
+            * Hay que respetar los espacios, puntos y comas.
+        256. `256filtrado.html`: Crea un programa que permita al usuario leer un conjunto de números separados por espacios.  
+        `256filtrado.php`: El programa filtrará los números leídos para volver a mostrar únicamente los números pares e indicará la cantidad existente.
+            ```
+            Dame números: 1 4 7 9 23 10 8
+            Los 3 números pares son: 4 10 8
+            ```
+        257. `257investiga.php`: Investiga las siguientes funciones de cadena (explica para qué sirven mediante comentarios, y programa un pequeño ejemplo de cada una de ellas): `ucwords`, `strrev`, `str_repeat` y `md5`.
+
+        Los siguientes ejercicios se basan en la generación de números aleatorios.
+
+        260. `260generador.php`: Crea una función que permite generar una letra aleatoria, mayúscula o minúscula.
+        261. `261generaContrasenya.php`: Crea una función que a partir de un tamaño, genere una contraseña aleatoria compuesta de letras y dígitos de manera aleatoria.
+        263. `262quinielas.php`: Crea las siguientes funciones:
+            * `quinigol() : array` --> Genera un array multidimensional con 6 resultados aleatorios con combinaciones `[012M, 012M]`
+            * `quiniela() : array` --> Genera un array con una combinación de quiniela generada de manera aleatoria: 14 resultados con `1X2` y el pleno al quince con `[012M, 012M]`
+            * `tabla(array $quiniela) : string` --> transforma un array de una quniela en una tabla HTML
