@@ -50,6 +50,9 @@ La última versión es la 8.3, de Agosto de 2024. La versión 7.0 salió en Dici
 
 Su documentación es extensa y está traducida: <https://www.php.net/manual/es/>.
 
+??? info "Video: Evolución PHP, presente y futuro de PHP"
+    <iframe width="800" height="500" src="https://www.youtube.com/embed/o3IwAqslGUM?start=12831" title="HacktoberDay 2020 mañana" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ### Código embebido
 
 Los bloques de código se escriben entre **`<?php`** y **`?>`**, mientras que las sentencias se separan mediante **`;`**.
