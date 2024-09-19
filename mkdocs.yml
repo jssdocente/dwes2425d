@@ -5,8 +5,11 @@ use_directory_urls: false
 nav:
   - "Inicio": "index.md"
   - "1.- Arquitecturas Web": "01arquitecturas.md"
-  - "2.- El lenguaje PHP": "02php.md"
-  - "3.- PHP Orientado a Objetos": "03phpoo.md"
+  - "2.- El lenguaje PHP":
+    - "Introducción": 02_index.md
+    - "PHP Básico": 02.1_php_basico.md
+    - "PHP Avanzado": 02.2_php_avanzado.md
+  - "3. PHP Orientado a Objetos": "03phpoo.md"
   # - "4.- Programación Web": "04web.md"
   # - "5.- Herramientas Web": "05herramientas.md"
   # - "6.- Acceso a Datos": "06accesoDatos.md"
@@ -41,8 +44,9 @@ theme:
     - header.autohide
     - toc.integrate
     - content.tabs.link
-    # - navigation.tabs
-    # - navigation.top
+    - content.code.copy
+    - content.code.select
+    - navigation.top
 
 extra:
   search:
@@ -85,8 +89,19 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.details
   - pymdownx.highlight:
+      use_pygments: true
       linenums: true
       linenums_style: pymdownx-inline
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      extend_pygments_lang:
+        - name: php
+          lang: php
+          options:
+            startinline: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
   - pymdownx.superfences:
       custom_fences:
           - name: mermaid
