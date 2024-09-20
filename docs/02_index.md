@@ -58,5 +58,5 @@ Su documentación es extensa y está traducida: <https://www.php.net/manual/es/>
 
 ## Contenidos del tema
 
-  1. [PHP Básico](02.1_php_basico.md.md)
+  1. [PHP Básico](02.1_php_basico.md)
   2. [PHP Avanzado](02.2_php_avanzado.md)
