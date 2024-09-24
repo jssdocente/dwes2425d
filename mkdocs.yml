@@ -36,6 +36,8 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Cambiar a modo día
+  icon:
+    annotation: material/plus-circle
   font:
     text: Roboto
     code: Roboto Mono
@@ -47,6 +49,7 @@ theme:
     - content.code.copy
     - content.code.select
     - navigation.top
+    - content.code.annotate
 
 extra:
   search:
