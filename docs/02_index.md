@@ -60,3 +60,8 @@ Su documentación es extensa y está traducida: <https://www.php.net/manual/es/>
 
   1. [PHP Básico](02.1_php_basico.md)
   2. [PHP Avanzado](02.2_php_avanzado.md)
+
+## Guías
+
+
+  1. [Instalar varias versiones de PHP en Windows](extra/guias/01.php_multiversion_manual.md)
