@@ -9,6 +9,7 @@ nav:
     - "Introducción": 02_index.md
     - "PHP Básico": 02.1_php_basico.md
     - "PHP Avanzado": 02.2_php_avanzado.md
+    - "PHP evolución": 02.3_php_versiones_evolucion.md
   - "3. PHP Orientado a Objetos": "03phpoo.md"
   # - "4.- Programación Web": "04web.md"
   # - "5.- Herramientas Web": "05herramientas.md"
