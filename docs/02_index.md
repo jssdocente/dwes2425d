@@ -60,6 +60,7 @@ Su documentación es extensa y está traducida: <https://www.php.net/manual/es/>
 
   1. [PHP Básico](02.1_php_basico.md)
   2. [PHP Avanzado](02.2_php_avanzado.md)
+  3. [PHP Evolución de su sintaxis, del pasado al presente](02.3_php_versiones_evolucion.md)
 
 ## Guías
 
