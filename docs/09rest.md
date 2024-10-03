@@ -177,18 +177,3 @@ $response = Http::post('http://localhost:8000/api/chollo-severo', [
 ]);
 ```
 
-## Actividades
-
-901. <span class="success">**Chollo Severo V 2.0**</span> Crea un controlador nuevo que se llame `RestController` (o como quieras llamarlo) y escribe todos los métodos que necesites para convertir tu `app` que, consume de una Base de Datos, a una `Restful App` que reciba los datos a través de la API de tu proyecto de Chollos.
-
-<!-- 
-## Producción y consumo
-
-## AJAX con JSON
-
-## Interacción con Vue.js
-
-<https://manuais.iessanclemente.net/index.php/LARAVEL_Framework_-_Tutorial_01_-_Creación_de_API_RESTful_(actualizado)>
-<https://github.com/jmnavarro/http-api-design>
-<https://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api>
-<https://leanpub.com/build-apis-you-wont-hate> -->
