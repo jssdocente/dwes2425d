@@ -1,0 +1,929 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jssdocente.github.io/dwes2425/actividades/02.1.php-basico.activitys.html">
+      
+      
+      
+      
+      <link rel="icon" href="../imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+    
+    
+      
+        <title>02.1.php basico.activitys - 2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 13h-4v4h-2v-4H7v-2h4V7h2v4h4m-5-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#actividades-del-tema-2-php-basico" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../index.html" title="2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25" class="md-header__button md-logo" aria-label="2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              02.1.php basico.activitys
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="Teal"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25" class="md-nav__button md-logo" aria-label="2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01arquitecturas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2.- El lenguaje PHP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            2.- El lenguaje PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.1_php_basico.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP Básico
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.2_php_avanzado.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP Avanzado
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.3_php_versiones_evolucion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP evolución
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03phpoo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. PHP Orientado a Objetos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Anexo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Anexo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extra/ArquitecturasWebExtendido.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anexo I. Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>02.1.php basico.activitys</h1>
+
+<h2 id="actividades-del-tema-2-php-basico">Actividades del Tema 2: PHP básico<a class="headerlink" href="#actividades-del-tema-2-php-basico" title="Permanent link">&para;</a></h2>
+<details class="exercise">
+<summary>Ejercicios</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">PHP básico</label><label for="__tabbed_1_2">Bucles</label><label for="__tabbed_1_3">Arrays</label><label for="__tabbed_1_4">Funciones</label><label for="__tabbed_1_5">Funciones predefinidas</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Visualiza el vídeo de Jesús Amieiro sobre <a href="https://www.youtube.com/watch?v=o3IwAqslGUM&amp;t=12724s">PHP en 2020</a> a partir del minuto 3:32 (son 40 minutos aproximadamente).<ul>
+<li>¿Qué relación existe entre PHP y Facebook?</li>
+<li>Respecto al rendimiento, ¿qué versión mínima deberíamos utilizar?</li>
+<li>¿Por qué PHP tiene mala fama? </li>
+</ul>
+</li>
+<li><code>201tresfrases.php</code>: Muestra 3 frases, cada una en un párrafo utilizando las tres posibilidades que existen de mostrar contenido.
+Tras ello, introduce dos comentarios, uno de bloque y otro de una línea.</li>
+<li><code>202calculos.php</code>: Escribe un programa que utilice las variables <code>$x</code> y <code>$y</code>. Asígnales los valores <code>166</code> y <code>999</code> respectivamente.
+A continuación, muestra por pantalla el valor de cada variable, la suma, la resta, la división y la multiplicación.
+<a class="glightbox" href="imagenes/02/02p203.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img align="right" alt="203" src="imagenes/02/02p203.png" /></a></li>
+<li><code>203datosPersonales.php</code>: Escribe un programa que almacene en variables tu nombre, primer apellido, segundo apellido, email, año de nacimiento y teléfono. Luego muéstralos por pantalla dentro de una tabla.</li>
+<li>
+<p><code>204datosPersonales.html</code> y <code>204datosPersonales.php</code>: Es el mismo ejercicio que el anterior, pero separando la lógica. En el primer archivo crearemos el formulario para introducir los datos, y luego recogemos los datos y generamos la tabla en el segundo archivo.</p>
+</li>
+<li>
+<p><code>205madlib.html</code>y <code>205madlib.php</code>: A partir de un nombre, un verbo, un adjetivo y un adverbio, crea una historia que contenga dichos elementos. Por ejemplo:</p>
+<ul>
+<li>Entrada: perro / caminar / azul / rápidamente</li>
+<li>
+<p>Salida: ¿ Te gusta caminar con tu perro azul rápidamente ?</p>
+</li>
+<li>
+<p><code>205madlib2.html</code> y <code>205madlib2.php</code> Crea un madlib más extenso, leyendo más datos de entrada.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>206anyos.php</code>: Tras leer la edad de una persona, mostrar la edad que tendrá dentro de 10 años y hace 10 años.
+Además, muestra qué año será en cada uno de los casos.
+Finalmente, muestra el año de jubilación suponiendo que trabajarás hasta los 67 años.
+En este caso, no hace falta que previamente crees un formulario, puedes probar el ejercicio via URL: <code>206anyos.php?edad=33</code>.</p>
+<p>Tip: <code>$anyoActual = date("Y");</code></p>
+</li>
+<li>
+<p><code>207dinero.php</code>: A partir de una cantidad de dinero, mostrar su descomposición en billetes  (500, 200, 100, 50, 20, 10, 5) y monedas (2, 1), para que el número de elementos sea mínimo.
+No se utilizar ninguna instrucción condicional.
+Por ejemplo, al introducir <code>139</code> debe mostrar:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a>1 billete de 100
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a>0 billete de 50
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a>1 billete de 20
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a>1 billete de 10
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a>1 billete de 5
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos="6 "></span></a>2 moneda de 2
+</span></code></pre></div>
+<p>Tip: Puedes forzar a realizar la división entera mediante la función <code>intdiv($dividendo, $divisor)</code> o pasar un número flotante a entero puedes usar la función <code>intval()</code></p>
+</li>
+<li>
+<p><code>208posnegcero.php</code>: A partir de un <code>numero</code>, muestra por pantalla si el número es <code>positivo</code>, <code>negativo</code> o <code>cero</code>.</p>
+</li>
+<li>
+<p><code>209mayor3.php</code>: Sin hacer uso de condiciones que utilicen dentro la condición los operadores lógicos, muestra el mayor de tres números (<code>a</code>, <code>b</code> y <code>c</code>).</p>
+<p><code>209mayor3c.php</code>: Utiliza en las condiciones los operadores lógicos.</p>
+</li>
+<li>
+<p><code>210nombreEdad.php</code>: A partir de una <code>edad</code> muestra por pantalla:</p>
+<ul>
+<li><code>bebé</code> si tiene menos de 3 años</li>
+<li><code>niño</code> si tiene entre 3 y 12 años</li>
+<li><code>adolescente</code> entre 13 y 17 años</li>
+<li><code>adulto</code> entre 18 y 66</li>
+<li><code>jubilado</code> a partir de 67</li>
+</ul>
+</li>
+<li>
+<p><code>211reloj.php</code>: Escribe un programa que funcione similar a un reloj, de manera que a partir de los valores de <code>hora</code>, <code>minuto</code> y <code>segundo</code> muestre la hora dentro de un segundo. Tras las <code>23:59:59</code> serán las <code>0:0:0</code>.</p>
+</li>
+<li>
+<p><code>212calendario.php</code>: Escribe un programa similar a un calendario de manera que a partir de <code>dia</code>, <code>mes</code> y <code>anyo</code> muestre la fecha dentro de un día. Debes tener en cuenta que no todos los meses tienen 30 días. En este caso, no vamos a tener en cuenta los años bisiestos.</p>
+</li>
+</ol>
+<p><a class="glightbox" href="imagenes/02/02p213.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img _="&amp;" align="right" alt="213" src="imagenes/02/02p213.png" width="150" /></a></p>
+<ol start="14">
+<li>
+<p><code>213ecuacion2g.php</code>: Crea un programa que resuelva una ecuación de 2º grado del tipo <code>ax² + bx + c = 0</code>.
+Ten en cuenta que puede tener 2, 1 o no tener solución dependiendo del valor del discriminante <code>b²-4ac</code>.</p>
+<p>Tip: Para calcular la raíz cuadrada deberás utilizar la función <code>sqrt()</code></p>
+</li>
+</ol>
+<p>Ejercicios de investigación:</p>
+<ol start="15">
+<li>Investiga para que sirve el operador nave espacial, disponible desde PHP7 (<a href="https://www.php.net/manual/es/migration70.new-features.php">https://www.php.net/manual/es/migration70.new-features.php</a>). Explica con un par de líneas su propósito y mediante código demuestra su uso.</li>
+<li>Investiga para qué sirve la instrucción <code>match()</code>, disponible desde PHP8 (<a href="https://www.php.net/manual/es/control-structures.match.php">https://www.php.net/manual/es/control-structures.match.php</a>). Explica con un par de líneas su propósito y mediante código demuestra su uso.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol start="17">
+<li>
+<p><code>220pares050.php:</code> Escribe un programa que muestre los números pares del 0 al 50 (dentro de una lista desordenada).</p>
+<p><code>220paresAB.php</code>: A partir del anterior, refactorizar para que funcione con <code>inicio</code> y <code>fin</code>.</p>
+</li>
+<li>
+<p><code>221suma110.php</code>: Escribe un programa que sume los números del 1 al 10.</p>
+<p><code>221sumaAB.php</code>: A partir del anterior, refactorizar para que funcione con <code>inicio</code> y <code>fin</code>.</p>
+</li>
+<li>
+<p><code>222potencia.php</code>: A partir de una <code>base</code> y <code>exponente</code>, mediante la acumulación de productos, calcula la potencia utilizando la instrucción <code>for</code>.</p>
+<p><code>222potenciaWhile.php</code>: Reescribe el ejercicio anterior haciendo uso sólo de <code>while</code>.<br />
+<code>222potenciaDoWhile.php</code>: Reescribe el ejercicio anterior haciendo uso sólo de <code>do-while</code>.</p>
+</li>
+<li>
+<p><code>223tablaMultiplicar.php</code>: Muestra dentro de una tabla HTML la tabla de multiplicar del <code>numero</code> que reciba como parámetro. Utiliza <code>&lt;thead&gt;</code> con sus respectivos <code>&lt;th&gt;</code> y <code>&lt;tbody</code>&gt; para dibujar la tabla. Por ejemplo:</p>
+<table>
+<thead>
+<tr>
+<th>a</th>
+<th>*</th>
+<th>b</th>
+<th>=</th>
+<th>a*b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>*</td>
+<td>1</td>
+<td>=</td>
+<td>7</td>
+</tr>
+<tr>
+<td>7</td>
+<td>*</td>
+<td>2</td>
+<td>=</td>
+<td>14</td>
+</tr>
+<tr>
+<td>...</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>*</td>
+<td>10</td>
+<td>=</td>
+<td>70</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>224formulario.html</code>: Crea un formulario que permita leer una <code>cantidad</code>.  </p>
+<div class="admonition tip inline end">
+<p class="admonition-title">Tip</p>
+<p>Para guardar un dato oculto puedes utilizar un campo de formulario de tipo oculto: <code>&lt;input type="hidden" name="cantidad" value="33" /&gt;</code></p>
+</div>
+<p><code>224leerDatos.php</code>: a partir de <code>cantidad</code>, prepara un formulario con tantas cajas de datos como su valor.<br />
+Finalmente, en <code>224sumarDatos.php</code>: a partir de los datos de todas las cajas de la página anterior, súmalos y muestra el total.</p>
+</li>
+<li>
+<p><code>225formulario.html</code> y <code>225tabla.php</code>: A partir de un número de <code>filas</code> y <code>columnas</code>, crear una tabla con ese tamaño.
+Las celdas deben estar rellenadas con los valores de las coordenadas de cada celda.</p>
+</li>
+<li><code>226formulario.html</code> y <code>226cuadrado.php</code>: Basándote en el ejercicio anterior, rellena la tabla de manera que solo los bordes tengan contenido, quedándose el resto de celdas en blanco.
+<a class="glightbox" href="imagenes/02/02p228.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img _="&amp;" align="right" alt="228" src="imagenes/02/02p228.png" width="200" /></a></li>
+<li><code>227formulario.html</code> y <code>227equis.php</code>: Basándote en el ejercicio anterior, ahora sólo debe aparecer el contenido de los dos diagonales.</li>
+<li><code>228cuadradoMultiplicar.php</code>: Crea un programa que muestre por pantalla un cuadrado exactamente igual (fíjate bien en los encabezados, tanto de las filas como de las columnas) al de la imagen con las tablas de multiplicar.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol start="230">
+<li>
+<p><code>230aleatorios50.php</code>: Rellena un array con 50 números aleatorios comprendidos entre el 0 y el 99, y luego muéstralo en una lista desordenada.
+Para crear un número aleatorio, utiliza la función <code>rand(inicio, fin)</code>. Por ejemplo:</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a><span class="nv">$num</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+</span></code></pre></div>
+</li>
+<li>
+<p><code>231bola8.html</code>: Prepara un formulario con un caja de texto que realice a una pregunta al usuario.<br />
+<code>231bola8.php</code>: A partir del anterior, crea un programa que muestre la pregunta recibida y genere una respuesta de manera aleatoria entre un conjunto de respuestas predefinidas, almacenadas en un array: <em>Si, no, quizás, claro que sí, por supuesto que no, no lo tengo claro, seguro, yo diría que sí, ni de coña, etc..</em>.<br />
+Este ejercicio se basa en el juego de la <a href="https://es.wikipedia.org/wiki/Magic_8-Ball">Bola 8 mágica</a>.</p>
+</li>
+<li>
+<p><code>232mates.php</code>: A partir del ejercicio 230, genera un array aleatorio de 33 elementos con números comprendidos entre el 0 y 100 y calcula:</p>
+<ul>
+<li>El mayor</li>
+<li>El menor</li>
+<li>La media</li>
+</ul>
+</li>
+<li>
+<p><code>233sexos.php</code>: Rellena un array de 100 elementos de manera aleatoria con valores <code>M</code> o <code>F</code> (por ejemplo <code>["M", "M", "F", "M", ...]</code>). Una vez completado, vuelve a recorrerlo y calcula cuantos elementos hay de cada uno de los valores almacenando el resultado en un array asociativo <code>['M' =&gt; 44, 'F' =&gt; 66]</code> (<em>no utilices variables para contar las <code>M</code> o las <code>F</code></em>).
+Finalmente, muestra el resultado por pantalla</p>
+</li>
+<li>
+<p><code>234monedas.php</code>: Vuelve a realizar el ejercicio 207, el de las monedas (500, 200, 100, 50, 20, 10, 5, 2, 1), pero haciendo uso de arrays y un bucle.
+Almacena el resultado en un array asociativo.
+Muestra el resultado en una lista desordenada únicamente con las cantidades que tienen algún valor.</p>
+</li>
+<li>
+<p><code>235alturas.php</code>: Mediante un array asociativo, almacena el nombre y la altura de 5 personas (<code>nombre =&gt; altura</code>).
+Posteriormente, recorre el array y muéstralo en una tabla HTML.
+Finalmente añade una última fila a la tabla con la altura media.</p>
+</li>
+<li>
+<p><code>236personas.php</code>: Mediante un array bidimensional, almacena el nombre, altura y email de 5 personas. Para ello, crea un array de personas, siendo cada persona un array asociativo: <code>[ ['nombre'=&gt;'Aitor', 'altura'=&gt;182, 'email'=&gt;'aitor@correo.com'],[…],… ]</code>
+Posteriormente, recorre el array y muéstralo en una tabla HTML.</p>
+</li>
+<li>
+<p><code>237leerCantidad.html</code> y <code>237leerPersonas.php</code>: a partir de un formulario con un campo de <code>cantidad</code> de personas, generar un nuevo formulario para leer el nombre, altura y email de <code>cantidad</code> personas.<br />
+<code>237gestionarPersonas.php</code>: A partir de las personas introducidas, mostrar sus datos en una tabla, y posteriormente, destacar los datos del más alto y el del más bajo.</p>
+</li>
+<li>
+<p><code>238tablaDistintos.php</code>: Rellena un array bidimensional de 6 filas por 9 columnas con números aleatorios comprendidos entre 100 y 999 (ambos incluidos). Todos los números deben ser distintos, es decir, no se puede repetir ninguno.<br />
+Muestra a continuación por pantalla el contenido del array de tal forma que:</p>
+<ul>
+<li>La columna del máximo debe aparecer en azul.</li>
+<li>La fila del mínimo debe aparecer en verde</li>
+<li>El resto de números deben aparecer en negro.</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol start="240">
+<li>
+<p><code>240arrayPar.php</code>: Crea las siguientes funciones:</p>
+<ul>
+<li>Una función que averigüe si un número es par: <code>esPar(int $num): bool</code></li>
+<li>Una función que devuelva un array de tamaño <code>$tam</code> con números aleatorios comprendido entre <code>$min</code> y <code>$max</code> : <code>arrayAleatorio(int $tam, int $min, int $max) : array</code></li>
+<li>Una función que reciba un <code>$array</code> por referencia y devuelva la cantidad de números pares que hay almacenados: <code>arrayPares(array &amp;$array): int</code></li>
+</ul>
+</li>
+<li>
+<p><code>241parametrosVariables.php</code>: Crea las siguientes funciones:</p>
+<ul>
+<li>Una función que devuelva el mayor de todos los números recibidos como parámetros: <code>function mayor(): int</code>. Utiliza las funciones <code>func_get_args()</code>, etc... No puedes usar la función <code>max()</code>.</li>
+<li>Una función que concatene todos los parámetros recibidos separándolos con un espacio: <code>function concatenar(...$palabras) : string</code>. Utiliza el operador <code>...</code>.</li>
+</ul>
+</li>
+<li>
+<p><code>242matematicas.php</code>: Añade las siguientes funciones:</p>
+<ul>
+<li><code>digitos(int $num): int</code> → devuelve la cantidad de dígitos de un número.</li>
+<li><code>digitoN(int $num, int $pos): int</code> → devuelve el dígito que ocupa, empezando por la izquierda, la posición <code>$pos</code>.</li>
+<li><code>quitaPorDetras(int $num, int $cant): int</code> → le quita por detrás (derecha) <code>$cant</code> dígitos.</li>
+<li><code>quitaPorDelante(int $num, int $cant): int</code> → le quita por delante (izquierda) <code>$cant</code> dígitos.</li>
+</ul>
+<p>Para probar las funciones, haz uso tanto de paso de argumentos posicionales como argumentos con nombre.</p>
+</li>
+<li>
+<p><code>243biblioteca.php</code>: crea un archivo con funciones para sumar, restar, multiplicar y dividir dos números.<br />
+<code>243arrayFunciones.php</code>: haciendo uso de un array que almacene el nombre de las funciones del archivo anterior, a partir de dos números recibidos por URL, recorre el array e invoca a las funciones de manera dinámica haciendo uso de funciones variable.</p>
+</li>
+<li>
+<p><code>244euros.php</code>: Crea una biblioteca con dos funciones:</p>
+<ul>
+<li>peseta2euros: pasa de pesetas a euros</li>
+<li>euros2pesetas: pasa de euros a pesetas </li>
+</ul>
+<p>Cada función debe recibir dos parámetros:</p>
+<ul>
+<li>La cantidad a transformar</li>
+<li>La cotización, con un parámetro por defecto con el factor de transformación.</li>
+</ul>
+<p><code>244calculadoraEuros.php</code>: utiliza <code>243euros.php</code> y prueba las funciones pasando tanto cantidades con la cotización por defecto, como con nuevas cotizaciones. Recuerda que 1 euro son/eran 166.36 pesetas.</p>
+</li>
+<li>
+<p><code>245preparaTiquetCompra.php</code>: A partir de una cantidad de productos, leer el nombre y coste de la cantidad de productos indicados (similar al ejercicio 237, pero esta vez no hace falta crear el formulario con la cantidad, se recibe mediante un parámetro GET via URL).<br />
+<code>245imprimeTiquetCompra.php</code>: Tras leer los datos del tiquet de compra, enumera en una tabla los productos, con su precio en euros y pesetas, y finalmente, en una última fila, totalizar en ambas monedas.
+<a class="glightbox" href="imagenes/02/02p245.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img _="&amp;" align="right" alt="245" src="imagenes/02/02p245.png" width="200" /></a></p>
+</li>
+<li>A partir de los archivos creados en el ejercicio anterior, crea una plantilla mediante includes:
+<code>246preparaCompra.php</code>: similar a <code>245preparaTiquetCompra.php</code>, pero separando el encabezado (<em>Supermercado Severo</em> en <code>h1</code>) y el pie (<em>Tu supermercado de confianza</em>) en ficheros externos y referenciando a ellos mediante <code>include</code>.<br />
+<code>246listaCompra.php</code>: recibe los datos del anterior, y reutiliza parte de <code>245imprimeTiquetCompra.php</code> cambiando la tabla por una lista desordenada de los productos junto a su precio.</li>
+<li>
+<p>Vamos a simular un formulario de acceso:</p>
+<ul>
+<li><code>247login.php</code>: el formulario de entrada, que solicita el usuario y contraseña.</li>
+<li><code>247compruebaLogin.php</code>: recibe los datos y comprueba si son correctos (los usuarios se guardan en un array asociativo) pasando el control mediante el uso de <code>include</code> a:<ul>
+<li><code>247ok.php</code>: El usuario introducido es correcto</li>
+<li><code>247ko.php</code>: El usuario es incorrecto. Informar si ambos están mal o solo la contraseña. Volver a mostrar el formulario de acceso.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p><p>Todos los ejercicios se deben realizar creando nuevas funciones para encapsular el código.
+Además de la propia función, el ejercicio debe contener código para poder probarlo.</p></p>
+<ol start="250">
+<li><code>250fraseImpares.php</code>: Lee una frase y devuelve una nueva con solo los caracteres de las posiciones impares.</li>
+<li><code>251vocales.php</code>: A partir de una frase, devuelve la cantidad de cada una de las vocales, y el total de ellas.</li>
+<li>
+<ul>
+<li>Letras totales y cantidad de palabras</li>
+<li>Una línea por cada palabra indicando su tamaño</li>
+</ul>
+<p><code>252analizador.php</code>: A partir de una frase con palabras sólo separadas por espacios, devolver</p>
+<p>Nota: no se puede usar <code>str_word_count</code><br />
+<code>252analizadorWC.php</code>: Investiga que hace la función <code>str_word_count</code>, y vuelve a hacer el ejercicio.</p>
+</li>
+<li>
+<p><code>253cani.php</code>: EsCrIbE uNa FuNcIóN qUe TrAnSfOrMe UnA cAdEnA eN cAnI.</p>
+</li>
+<li><code>254palindromo.php</code>: Escribe una función que devuelva un booleano indicando si una palabra es palíndroma (se lee igual de izquierda a derecha que de derecha a izquierda, por ejemplo, “ligar es ser agil”).</li>
+<li><code>255codificar.php</code>: Utilizando las funciones para trabajar con caracteres, a partir de una cadena y un desplazamiento: <ul>
+<li>Si el desplazamiento es 1, sustituye la A por B, la B por C, etc.</li>
+<li>El desplazamiento no puede ser negativo</li>
+<li>Si se sale del abecedario, debe volver a empezar</li>
+<li>Hay que respetar los espacios, puntos y comas.</li>
+</ul>
+</li>
+<li><code>256filtrado.html</code>: Crea un programa que permita al usuario leer un conjunto de números separados por espacios.<br />
+<code>256filtrado.php</code>: El programa filtrará los números leídos para volver a mostrar únicamente los números pares e indicará la cantidad existente.
+    <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a>Dame números: 1 4 7 9 23 10 8
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a>Los 3 números pares son: 4 10 8
+</span></code></pre></div></li>
+<li><code>257investiga.php</code>: Investiga las siguientes funciones de cadena (explica para qué sirven mediante comentarios, y programa un pequeño ejemplo de cada una de ellas): <code>ucwords</code>, <code>strrev</code>, <code>str_repeat</code> y <code>md5</code>.</li>
+</ol>
+<p>Los siguientes ejercicios se basan en la generación de números aleatorios.</p>
+<ol start="260">
+<li><code>260generador.php</code>: Crea una función que permite generar una letra aleatoria, mayúscula o minúscula.</li>
+<li><code>261generaContrasenya.php</code>: Crea una función que a partir de un tamaño, genere una contraseña aleatoria compuesta de letras y dígitos de manera aleatoria.</li>
+<li><code>262quinielas.php</code>: Crea las siguientes funciones:<ul>
+<li><code>quinigol() : array</code> &rarr; Genera un array multidimensional con 6 resultados aleatorios con combinaciones <code>[012M, 012M]</code></li>
+<li><code>quiniela() : array</code> &rarr; Genera un array con una combinación de quiniela generada de manera aleatoria: 14 resultados con <code>1X2</code> y el pleno al quince con <code>[012M, 012M]</code></li>
+<li><code>tabla(array $quiniela) : string</code> &rarr; transforma un array de una quniela en una tabla HTML</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2024-2025 Jesús García - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/aitormedrano" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.2 4.2 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.52 8.52 0 0 1-5.33 1.84q-.51 0-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<a.medrano@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.13c-.15.01-.29.06-.39.17l-1 1 2.05 2 1-1c.22-.21.22-.56 0-.77l-1.24-1.23a.56.56 0 0 0-.38-.17m-2 1.75L13 19.94V22h2.06l6.06-6.07M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7v-.89l8.24-8.22c.47-.49 1.12-.76 1.8-.76.34 0 .68.06 1 .19V6c0-1.12-.92-2-2.04-2m0 4-8 5-8-5V6l8 5 8-5"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "toc.integrate", "content.tabs.link", "content.code.copy", "content.code.select", "navigation.top", "content.code.annotate"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.525ec568.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

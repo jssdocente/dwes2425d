@@ -1,0 +1,1191 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jssdocente.github.io/dwes2425/actividades/03.php.oo.activitys.html">
+      
+      
+      
+      
+      <link rel="icon" href="../imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+    
+    
+      
+        <title>03.php.oo.activitys - 2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 13h-4v4h-2v-4H7v-2h4V7h2v4h4m-5-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#actividades-de-programacion-orientada-a-objetos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../index.html" title="2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25" class="md-header__button md-logo" aria-label="2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              03.php.oo.activitys
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="Teal"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25" class="md-nav__button md-logo" aria-label="2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25" data-md-component="logo">
+      
+  <img src="../imagenes/logofp.png" alt="logo">
+
+    </a>
+    2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01arquitecturas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2.- El lenguaje PHP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            2.- El lenguaje PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.1_php_basico.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP Básico
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.2_php_avanzado.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP Avanzado
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.3_php_versiones_evolucion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP evolución
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03phpoo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. PHP Orientado a Objetos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Anexo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Anexo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extra/ArquitecturasWebExtendido.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anexo I. Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>03.php.oo.activitys</h1>
+
+<h2 id="actividades-de-programacion-orientada-a-objetos">Actividades de Programación Orientada a Objetos<a class="headerlink" href="#actividades-de-programacion-orientada-a-objetos" title="Permanent link">&para;</a></h2>
+<ol start="300">
+<li>Investiga la diferencia entre un paradigma orientado a objetos basado en clases (<em>PHP</em>) respecto a uno basado en prototipos (<em>JavaScript</em>).</li>
+</ol>
+<h3 id="objetos">Objetos<a class="headerlink" href="#objetos" title="Permanent link">&para;</a></h3>
+<ol start="301">
+<li><code>301Empleado.php</code>: Crea una clase <code>Empleado</code> con su nombre, apellidos y sueldo.
+Encapsula las propiedades mediante <em>getters/setters</em> y añade métodos para:<ul>
+<li>Obtener su nombre completo → <code>getNombreCompleto(): string</code></li>
+<li>Que devuelva un booleano indicando si debe o no pagar impuestos (se pagan cuando el sueldo es superior a 3333€) → <code>debePagarImpuestos(): bool</code></li>
+</ul>
+</li>
+<li><code>302EmpleadoTelefonos.php</code>: Copia la clase del ejercicio anterior y modifícala.
+Añade una propiedad privada que almacene un array de números de teléfonos.
+Añade los siguientes métodos:<ul>
+<li><code>public function anyadirTelefono(int $telefono) : void</code> → Añade un teléfono al array</li>
+<li><code>public function listarTelefonos(): string</code> → Muestra los teléfonos separados por comas</li>
+<li><code>public function vaciarTelefonos(): void</code> → Elimina todos los teléfonos</li>
+</ul>
+</li>
+<li>
+<p><code>303EmpleadoConstructor.php</code>: Copia la clase del ejercicio anterior y modifícala.
+Elimina los <em>setters</em> de <code>nombre</code> y <code>apellidos</code>, de manera que dichos datos se asignan mediante el constructor (utiliza la sintaxis de PHP7).
+Si el constructor recibe un tercer parámetro, será el sueldo del <code>Empleado</code>. Si no, se le asignará 1000€ como sueldo inicial.</p>
+<p><code>303EmpleadoConstructor8.php</code>: Modifica la clase y utiliza la sintaxis de PHP 8 de promoción de las propiedades del constructor.</p>
+</li>
+<li>
+<p><code>304EmpleadoConstante.php</code>: Copia la clase del ejercicio anterior y modifícala.
+Añade una constante <code>SUELDO_TOPE</code> con el valor del sueldo que debe pagar impuestos, y modifica el código para utilizar la constante.</p>
+</li>
+<li><code>305EmpleadoSueldo.php</code>: Copia la clase del ejercicio anterior y modifícala.
+Cambia la constante por una variable estática <code>sueldoTope</code>, de manera que mediante <em>getter/setter</em> puedas modificar su valor.</li>
+<li>
+<p><code>306EmpleadoStatic.php</code>: Copia la clase del ejercicio anterior y modifícala.
+Completa el siguiente método con una cadena HTML que muestre los datos de un empleado dentro de un párrafo y todos los teléfonos mediante una lista ordenada (para ello, deberás crear un <em>getter</em> para los teléfonos):</p>
+<ul>
+<li><code>public static function toHtml(Empleado $emp): string</code></li>
+</ul>
+<p><figure style="float: right;">
+    <a class="glightbox" href="imagenes/03/03p307.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03p307.png"></a>
+    <figcaption>Ejercicio 307</figcaption>
+</figure></p>
+</li>
+<li>
+<p><code>307Persona.php</code>: Copia la clase del ejercicio anterior en <code>307Empleado.php</code> y modifícala.<br />
+Crea una clase <code>Persona</code> que sea padre de <code>Empleado</code>, de manera que <code>Persona</code> contenga el nombre y los apellidos, y en <code>Empleado</code> quede el salario y los teléfonos.</p>
+</li>
+<li>
+<p><code>308PersonaH.php</code>: Copia las clases del ejercicio anterior y modifícalas. Crea en <code>Persona</code> el método estático <code>toHtml(Persona $p)</code>, y modifica en <code>Empleado</code> el mismo método <code>toHtml(Persona $p)</code>, pero cambia la firma para que reciba una <code>Persona</code> como parámetro.<br />
+    Para acceder a las propiedades del empleado con la persona que recibimos como parámetro, comprobaremos su tipo:</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="k">class</span> <span class="nc">Empleado</span> <span class="k">extends</span> <span class="nx">Persona</span> <span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos=" 3 "></span></a>    <span class="c1">/// resto del código</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos=" 4 "></span></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos=" 5 "></span></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">toHtml</span><span class="p">(</span><span class="nx">Persona</span> <span class="nv">$p</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos=" 7 "></span></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$p</span> <span class="nx">instanceof</span> <span class="nx">Empleado</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos=" 8 "></span></a>            <span class="c1">// Aqui ya podemos acceder a las propiedades y métodos de Empleado</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos=" 9 "></span></a>        <span class="p">}</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><a href="#__codelineno-0-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="p">}</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><a href="#__codelineno-0-11"><span class="linenos" data-linenos="11 "></span></a><span class="p">}</span>
+</span></code></pre></div>
+</li>
+<li>
+<p><code>309PersonaE.php</code>: Copia las clases del ejercicio anterior y modifícalas.<br />
+Añade en <code>Persona</code> un atributo <code>edad</code><br />
+A la hora de saber si un empleado debe pagar impuestos, lo hará siempre y cuando tenga más de 21 años y dependa del valor de su sueldo.
+Modifica todo el código necesario para mostrar y/o editar la edad cuando sea necesario.</p>
+</li>
+<li>
+<p><code>310PersonaS.php</code>: Copia las clases del ejercicio anterior y modifícalas.<br />
+Añade nuevos métodos que hagan una representación de todas las propiedades de las clases <code>Persona</code> y <code>Empleado</code>, de forma similar a los realizados en HTML, pero sin que sean estáticos, de  manera que obtenga los datos mediante <code>$this</code>.</p>
+<ul>
+<li><code>function public __toString(): string</code></li>
+</ul>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title"><em>Magic methods</em></p>
+<p>El método <code>__toString()</code> es un método mágico que se invoca automáticamente cuando queremos obtener la representación en cadena de un objeto.</p>
+</div>
+<ol start="311">
+<li>
+<p><code>311PersonaA.php</code>: Copia las clases del ejercicio anterior y modifícalas.<br />
+Transforma <code>Persona</code> a una clase abstracta donde su método estático <code>toHtml(Persona $p)</code> tenga que ser redefinido en todos sus hijos.</p>
+</li>
+<li>
+<p><code>312Trabajador.php</code>: Copia las clases del ejercicio anterior y modifícalas.</p>
+<ul>
+<li>Cambia la estructura de clases conforme al gráfico respetando todos los métodos que ya están hechos.</li>
+<li><code>Trabajador</code> es una clase abstracta que ahora almacena los <code>telefonos</code> y donde <code>calcularSueldo</code> es un método abstracto de manera que:<ul>
+<li>El sueldo de un <code>Empleado</code> se calcula a partir de las horas trabajadas y lo que cobra por hora.</li>
+<li>Para los <code>Gerente</code>s, su sueldo se incrementa porcentualmente en base a su edad: <code>salario + salario*edad/100</code></li>
+</ul>
+</li>
+</ul>
+<p><figure>
+    <a class="glightbox" href="imagenes/03/03p312.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03p312.png"></a>
+    <figcaption>Ejercicio 312</figcaption>
+</figure></p>
+</li>
+<li>
+<p><code>313Empresa.php</code>: Utilizando las clases de los ejercicios anteriores:</p>
+<ul>
+<li>Crea una clase <code>Empresa</code> que además del nombre y la dirección, contenga una propiedad con un array de <code>Trabajador</code>es, ya sean <code>Empleado</code>s o <code>Gerente</code>s. </li>
+<li>Añade <em>getters/setters</em> para el nombre y dirección.</li>
+<li>Añade métodos para añadir y listar los trabajadores.<ul>
+<li><code>public function anyadirTrabajador(Trabajador $t)</code></li>
+<li><code>public function listarTrabajadoresHtml() : string</code> -&gt; utiliza <code>Trabajador::toHtml(Persona $p)</code></li>
+</ul>
+</li>
+<li>Añade un método para obtener el coste total en nóminas.<ul>
+<li><code>public function getCosteNominas(): float</code> -&gt; recorre los trabajadores e invoca al método <code>calcularSueldo()</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>314EmpresaI.php</code>: Copia las clases del ejercicio anterior y modifícalas.</p>
+<ul>
+<li>Crea un interfaz JSerializable, de manera que ofrezca los métodos:<ul>
+<li><code>toJSON(): string</code> → utiliza la función <a href="https://www.php.net/manual/es/function.json-encode.php"><code>json_encode(mixed)</code></a>. Ten en cuenta que como tenemos las propiedades de los objetos privados, debes recorrer las propiedades y colocarlas en un mapa. Por ejemplo:
+<div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">public</span> <span class="k">function</span> <span class="nf">toJSON</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a>    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span> <span class="k">as</span> <span class="nv">$clave</span> <span class="o">=&gt;</span> <span class="nv">$valor</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos="4 "></span></a>        <span class="nv">$mapa</span><span class="o">-&gt;</span><span class="nv">$clave</span> <span class="o">=</span> <span class="nv">$valor</span><span class="p">;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos="5 "></span></a>    <span class="p">}</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos="6 "></span></a>    <span class="k">return</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$mapa</span><span class="p">);</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos="7 "></span></a><span class="p">}</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><a href="#__codelineno-1-8"><span class="linenos" data-linenos="8 "></span></a><span class="cp">?&gt;</span>
+</span></code></pre></div></li>
+<li><code>toSerialize(): string</code> → utiliza la función <a href="https://www.php.net/manual/es/function.serialize.php"><code>serialize(mixed)</code></a></li>
+</ul>
+</li>
+<li>Modifica todas las clases que no son abstractas para que implementen el interfaz creado.</li>
+</ul>
+</li>
+</ol>
+<h3 id="proyecto-videoclub">Proyecto Videoclub<a class="headerlink" href="#proyecto-videoclub" title="Permanent link">&para;</a></h3>
+<p>En los siguientes ejercicios vamos a simular un pequeño proyecto de un Videoclub (basado en la propuesta que hace el tutorial de desarrolloweb.com), el cual vamos a realizar mediante un desarrollo incremental y siguiendo la práctica de programación en parejas (<em>pair programming</em>).</p>
+<p>Antes de nada, crea un repositorio privado en GitHub y sube el proyecto actual de <em>Videoclub</em>. Una vez creado, invita a tu compañero al repositorio como colaborador.</p>
+<ul>
+<li>Inicializa en local tu repostorio de git, mediante <code>git init</code></li>
+<li>Añade y sube los cambios a tu repositorio, mediante <code>git add .</code> y luego <code>git commit -m 'Inicializando proyecto'.</code></li>
+<li>Conecta tu repositorio con GitHub y sube los cambios (mira la instrucciones de GitHub: comandos <code>git remote</code> y <code>git push</code>).</li>
+<li>Tu compañero deberá descargar el proyecto con sus credenciales.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Proyecto no real</p>
+<p>El siguiente proyecto está pensado desde un punto de vista formativo. Algunas de las decisiones que se toman no se deben usar (como hacer <code>echo</code> dentro de las clases) o probar el código comparando el resultado en el navegador.</p>
+</div>
+<p>Cada clase debe ir en un archivo php separado. Para facilitar su implementación, se muestra la estructura UML del modelo y un fragmento de código para probar las clases:</p>
+<figure style="float: right;">
+    <a class="glightbox" href="imagenes/03/03p320.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03p320.png" width="150"></a>
+    <figcaption>Creamos el Soporte</figcaption>
+</figure>
+
+<ol start="320">
+<li>
+<p>Crea una clase para almacenar soportes (<code>Soporte.php</code>). Esta clase será la clase padre de los diferentes soportes con los que trabaje nuestro videoclub (cintas de vídeo, videojuegos, etc...):</p>
+<ul>
+<li>Crea el constructor que inicialice sus propiedades. Fíjate que la clase no tiene métodos <em>setters</em>.</li>
+<li>Definir una constante mediante un propiedad privada y estática denominada `IVA con un valor del 21%</li>
+<li>Crear un archivo (<code>inicio.php</code>) para usar las clases y copia el siguiente fragmento:</li>
+</ul>
+</li>
+</ol>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Código de prueba</label><label for="__tabbed_1_2">Navegador</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">include</span> <span class="s2">&quot;Soporte.php&quot;</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos="4 "></span></a><span class="nv">$soporte1 </span><span class="o">=</span> <span class="k">new</span> <span class="nx">Soporte</span><span class="p">(</span><span class="s2">&quot;Tenet&quot;</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> 
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos="5 "></span></a><span class="k">echo</span> <span class="s2">&quot;&lt;strong&gt;&quot;</span> <span class="o">.</span> <span class="nv">$soporte1</span><span class="o">-&gt;</span><span class="na">titulo </span><span class="o">.</span> <span class="s2">&quot;&lt;/strong&gt;&quot;</span><span class="p">;</span> 
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="#__codelineno-2-6"><span class="linenos" data-linenos="6 "></span></a><span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;Precio: &quot;</span> <span class="o">.</span> <span class="nv">$soporte1</span><span class="o">-&gt;</span><span class="na">getPrecio</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot; euros&quot;</span><span class="p">;</span> 
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><a href="#__codelineno-2-7"><span class="linenos" data-linenos="7 "></span></a><span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;Precio IVA incluido: &quot;</span> <span class="o">.</span> <span class="nv">$soporte1</span><span class="o">-&gt;</span><span class="na">getPrecioConIVA</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot; euros&quot;</span><span class="p">;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><a href="#__codelineno-2-8"><span class="linenos" data-linenos="8 "></span></a><span class="nv">$soporte1</span><span class="o">-&gt;</span><span class="na">muestraResumen</span><span class="p">();</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><pre>
+<strong>Tenet</strong>
+Precio: 3 euros
+Precio IVA incluido: 3.48 euros
+<em>Tenet</em>
+3 € (IVA no incluido)
+</pre></p>
+</div>
+</div>
+</div>
+<figure style="float: right;">
+    <a class="glightbox" href="imagenes/03/03p321.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03p321.png" width="150"></a>
+    <figcaption>Añadimos Cinta de Video</figcaption>
+</figure>
+
+<ol start="321">
+<li>
+<p>Crea la clase <code>CintaVideo</code> la cual hereda de <code>Soporte</code>. Añade el atributo <code>duracion</code> y sobreescribe tanto el contructor como el método <code>muestraResumen</code> (desde <code>CintaVideo</code> deberás llamar al método <code>muestraResumen</code> del padre).</p>
+<p>Añade a <code>inicio.php</code> el código para probar la clase:</p>
+</li>
+</ol>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Código de prueba</label><label for="__tabbed_2_2">Navegador</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">include</span> <span class="s2">&quot;CintaVideo.php&quot;</span><span class="p">;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos="3 "></span></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos="4 "></span></a><span class="nv">$miCinta </span><span class="o">=</span> <span class="k">new</span> <span class="nx">CintaVideo</span><span class="p">(</span><span class="s2">&quot;Los cazafantasmas&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">107</span><span class="p">);</span> 
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos="5 "></span></a><span class="k">echo</span> <span class="s2">&quot;&lt;strong&gt;&quot;</span> <span class="o">.</span> <span class="nv">$miCinta</span><span class="o">-&gt;</span><span class="na">titulo </span><span class="o">.</span> <span class="s2">&quot;&lt;/strong&gt;&quot;</span><span class="p">;</span> 
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos="6 "></span></a><span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;Precio: &quot;</span> <span class="o">.</span> <span class="nv">$miCinta</span><span class="o">-&gt;</span><span class="na">getPrecio</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot; euros&quot;</span><span class="p">;</span> 
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><a href="#__codelineno-3-7"><span class="linenos" data-linenos="7 "></span></a><span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;Precio IVA incluido: &quot;</span> <span class="o">.</span> <span class="nv">$miCinta</span><span class="o">-&gt;</span><span class="na">getPrecioConIva</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot; euros&quot;</span><span class="p">;</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><a href="#__codelineno-3-8"><span class="linenos" data-linenos="8 "></span></a><span class="nv">$miCinta</span><span class="o">-&gt;</span><span class="na">muestraResumen</span><span class="p">();</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><pre>
+<strong>Los cazafantasmas</strong>
+Precio: 3.5 euros
+Precio IVA incluido: 4.06 euros
+Película en VHS:
+<em>Los cazafantasmas</em>
+3.5 € (IVA no incluido)
+Duración: 107 minutos
+</pre></p>
+</div>
+</div>
+</div>
+<figure style="float: right;">
+    <a class="glightbox" href="imagenes/03/03p322.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03p322.png" width="250"></a>
+    <figcaption>Añadimos Dvd</figcaption>
+</figure>
+
+<ol start="322">
+<li>
+<p>Crea la clase <code>Dvd</code> la cual hereda de <code>Soporte</code>. Añade los atributos <code>idiomas</code> y <code>formatoPantalla</code>. A continuación sobreescribe tanto el contructor como el método <code>muestraResumen</code>.</p>
+<p>Añade a <code>inicio.php</code> el código para probar la clase:</p>
+</li>
+</ol>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Código de prueba</label><label for="__tabbed_3_2">Navegador</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">include</span> <span class="s2">&quot;Dvd.php&quot;</span><span class="p">;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos="3 "></span></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><a href="#__codelineno-4-4"><span class="linenos" data-linenos="4 "></span></a><span class="nv">$miDvd </span><span class="o">=</span> <span class="k">new</span> <span class="nx">Dvd</span><span class="p">(</span><span class="s2">&quot;Origen&quot;</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="s2">&quot;es,en,fr&quot;</span><span class="p">,</span> <span class="s2">&quot;16:9&quot;</span><span class="p">);</span> 
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><a href="#__codelineno-4-5"><span class="linenos" data-linenos="5 "></span></a><span class="k">echo</span> <span class="s2">&quot;&lt;strong&gt;&quot;</span> <span class="o">.</span> <span class="nv">$miDvd</span><span class="o">-&gt;</span><span class="na">titulo </span><span class="o">.</span> <span class="s2">&quot;&lt;/strong&gt;&quot;</span><span class="p">;</span> 
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><a href="#__codelineno-4-6"><span class="linenos" data-linenos="6 "></span></a><span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;Precio: &quot;</span> <span class="o">.</span> <span class="nv">$miDvd</span><span class="o">-&gt;</span><span class="na">getPrecio</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot; euros&quot;</span><span class="p">;</span> 
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><a href="#__codelineno-4-7"><span class="linenos" data-linenos="7 "></span></a><span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;Precio IVA incluido: &quot;</span> <span class="o">.</span> <span class="nv">$miDvd</span><span class="o">-&gt;</span><span class="na">getPrecioConIva</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot; euros&quot;</span><span class="p">;</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a><a href="#__codelineno-4-8"><span class="linenos" data-linenos="8 "></span></a><span class="nv">$miDvd</span><span class="o">-&gt;</span><span class="na">muestraResumen</span><span class="p">();</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><pre>
+<strong>Origen</strong>
+Precio: 15 euros
+Precio IVA incluido: 17.4 euros
+Película en DVD:
+<em>Origen</em>
+15 € (IVA no incluido)
+Idiomas:es,en,fr
+Formato Pantalla:16:9
+</pre></p>
+</div>
+</div>
+</div>
+<figure style="float: right;">
+    <a class="glightbox" href="imagenes/03/03p323.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03p323.png" width="350"></a>
+    <figcaption>Añadimos Juego</figcaption>
+</figure>
+
+<ol start="323">
+<li>
+<p>Crea la clase <code>Juego</code> la cual hereda de <code>Soporte</code>. Añade los atributos <code>consola</code>, <code>minNumJugadores</code> y <code>maxNumJugadores</code>. A continuación añade el método <code>muestraJugadoresPosibles</code>, el cual debe mostrar <em>Para un jugador</em>, <em>Para X jugadores</em> o <em>De X a Y jugadores</em> dependiendo de los valores de las atributos creados. Finalmente, sobreescribe tanto el contructor como el método <code>muestraResumen</code>.</p>
+<p>Añade a <code>inicio.php</code> el código para probar la clase:</p>
+</li>
+</ol>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Código de prueba</label><label for="__tabbed_4_2">Navegador</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-php highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">include</span> <span class="s2">&quot;Juego.php&quot;</span><span class="p">;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos="3 "></span></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><a href="#__codelineno-5-4"><span class="linenos" data-linenos="4 "></span></a><span class="nv">$miJuego</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Juego</span><span class="p">(</span><span class="s2">&quot;The Last of Us Part II&quot;</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mf">49.99</span><span class="p">,</span> <span class="s2">&quot;PS4&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> 
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><a href="#__codelineno-5-5"><span class="linenos" data-linenos="5 "></span></a><span class="k">echo</span> <span class="s2">&quot;&lt;strong&gt;&quot;</span> <span class="o">.</span> <span class="nv">$miJuego</span><span class="o">-&gt;</span><span class="na">titulo</span> <span class="o">.</span> <span class="s2">&quot;&lt;/strong&gt;&quot;</span><span class="p">;</span> 
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><a href="#__codelineno-5-6"><span class="linenos" data-linenos="6 "></span></a><span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;Precio: &quot;</span> <span class="o">.</span> <span class="nv">$miJuego</span><span class="o">-&gt;</span><span class="na">getPrecio</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot; euros&quot;</span><span class="p">;</span> 
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><a href="#__codelineno-5-7"><span class="linenos" data-linenos="7 "></span></a><span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;Precio IVA incluido: &quot;</span> <span class="o">.</span> <span class="nv">$miJuego</span><span class="o">-&gt;</span><span class="na">getPrecioConIva</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot; euros&quot;</span><span class="p">;</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><a href="#__codelineno-5-8"><span class="linenos" data-linenos="8 "></span></a><span class="nv">$miJuego</span><span class="o">-&gt;</span><span class="na">muestraResumen</span><span class="p">();</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><pre>
+<strong>The Last of Us Part II</strong>
+Precio: 49.99 euros
+Precio IVA incluido: 57.9884 euros
+Juego para: PS4
+<em>The Last of Us Part II</em>
+49.99 € (IVA no incluido)
+Para un jugador
+</pre></p>
+</div>
+</div>
+</div>
+<p>Llegados a este punto, nuestro modelo es similar al siguiente diagrama:</p>
+<figure>
+    <a class="glightbox" href="imagenes/03/03videoclub1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03videoclub1.png" width="600"></a>
+    <figcaption>Modelo inicial de Videoclub</figcaption>
+</figure>
+
+<figure style="float: right;">
+    <a class="glightbox" href="imagenes/03/03p324.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03p324.png" width="275"></a>
+    <figcaption>Añadimos Cliente</figcaption>
+</figure>
+
+<ol start="324">
+<li>
+<p>Crear la clase <code>Cliente</code>. El constructor recibirá el <code>nombre</code>, <code>numero</code> y <code>maxAlquilerConcurrente</code>, este último pudiendo ser opcional y tomando como valor por defecto 3. Tras ello, añade <em>getter/setter</em> únicamente a <code>numero</code>, y un <em>getter</em> a <code>numSoportesAlquilados</code> (este campo va a almacenar un contador del total de alquileres que ha realizado). El array de soportes alquilados contedrá clases que hereden de <code>Soporte</code>. Finalmente, añade el método <code>muestraResumen</code> que muestre el nombre y la cantidad de alquileres (tamaño del array <code>soportesAlquilados</code>).</p>
+</li>
+<li>
+<p>Dentro de <code>Cliente</code>, añade las siguiente operaciones:</p>
+<ul>
+<li><code>tieneAlquilado(Soporte $s): bool</code> → Recorre el array de soportes y comprueba si está el soporte</li>
+<li><code>alquilar(Soporte $s): bool</code> -→ Debe comprobar si el soporte está alquilado y si no ha superado el cupo de alquileres. Al alquilar, incrementará el <code>numSoportesAlquilados</code> y almacenará el soporte en el array. Para cada caso debe mostrar un mensaje informando de lo ocurrido.</li>
+</ul>
+</li>
+<li>
+<p>Seguimos con <code>Cliente</code> para añadir las operaciones:</p>
+<ul>
+<li><code>devolver(int $numSoporte): bool</code> → Debe comprobar que el soporte estaba alquilado  y actualizar la cantidad de soportes alquilados. Para cada caso debe mostrar un mensaje informando de lo ocurrido</li>
+<li><code>listarAlquileres(): void</code> → Informa de cuantos alquileres tiene el cliente y los muestra.</li>
+</ul>
+</li>
+</ol>
+<p>Crea el archivo <code>inicio2.php</code> con el siguiente código fuente para probar la clase:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Código de prueba</label><label for="__tabbed_5_2">Navegador</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-php highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="k">include_once</span> <span class="s2">&quot;CintaVideo.php&quot;</span><span class="p">;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><a href="#__codelineno-6-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="k">include_once</span> <span class="s2">&quot;Dvd.php&quot;</span><span class="p">;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><a href="#__codelineno-6-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="k">include_once</span> <span class="s2">&quot;Juego.php&quot;</span><span class="p">;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><a href="#__codelineno-6-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="k">include_once</span> <span class="s2">&quot;Cliente.php&quot;</span><span class="p">;</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><a href="#__codelineno-6-6"><span class="linenos" data-linenos=" 6 "></span></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><a href="#__codelineno-6-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="c1">//instanciamos un par de objetos cliente</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><a href="#__codelineno-6-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="nv">$cliente1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Cliente</span><span class="p">(</span><span class="s2">&quot;Bruce Wayne&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">);</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><a href="#__codelineno-6-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="nv">$cliente2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Cliente</span><span class="p">(</span><span class="s2">&quot;Clark Kent&quot;</span><span class="p">,</span> <span class="mi">33</span><span class="p">);</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><a href="#__codelineno-6-10"><span class="linenos" data-linenos="10 "></span></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a><a href="#__codelineno-6-11"><span class="linenos" data-linenos="11 "></span></a><span class="c1">//mostramos el número de cada cliente creado </span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a><a href="#__codelineno-6-12"><span class="linenos" data-linenos="12 "></span></a><span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;El identificador del cliente 1 es: &quot;</span> <span class="o">.</span> <span class="nv">$cliente1</span><span class="o">-&gt;</span><span class="na">getNumero</span><span class="p">();</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a><a href="#__codelineno-6-13"><span class="linenos" data-linenos="13 "></span></a><span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;El identificador del cliente 2 es: &quot;</span> <span class="o">.</span> <span class="nv">$cliente2</span><span class="o">-&gt;</span><span class="na">getNumero</span><span class="p">();</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a><a href="#__codelineno-6-14"><span class="linenos" data-linenos="14 "></span></a>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15"></a><a href="#__codelineno-6-15"><span class="linenos" data-linenos="15 "></span></a><span class="c1">//instancio algunos soportes </span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16"></a><a href="#__codelineno-6-16"><span class="linenos" data-linenos="16 "></span></a><span class="nv">$soporte1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CintaVideo</span><span class="p">(</span><span class="s2">&quot;Los cazafantasmas&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">107</span><span class="p">);</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17"></a><a href="#__codelineno-6-17"><span class="linenos" data-linenos="17 "></span></a><span class="nv">$soporte2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Juego</span><span class="p">(</span><span class="s2">&quot;The Last of Us Part II&quot;</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mf">49.99</span><span class="p">,</span> <span class="s2">&quot;PS4&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>  
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18"></a><a href="#__codelineno-6-18"><span class="linenos" data-linenos="18 "></span></a><span class="nv">$soporte3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dvd</span><span class="p">(</span><span class="s2">&quot;Origen&quot;</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="s2">&quot;es,en,fr&quot;</span><span class="p">,</span> <span class="s2">&quot;16:9&quot;</span><span class="p">);</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19"></a><a href="#__codelineno-6-19"><span class="linenos" data-linenos="19 "></span></a><span class="nv">$soporte4</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dvd</span><span class="p">(</span><span class="s2">&quot;El Imperio Contraataca&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;es,en&quot;</span><span class="p">,</span><span class="s2">&quot;16:9&quot;</span><span class="p">);</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20"></a><a href="#__codelineno-6-20"><span class="linenos" data-linenos="20 "></span></a>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21"></a><a href="#__codelineno-6-21"><span class="linenos" data-linenos="21 "></span></a><span class="c1">//alquilo algunos soportes</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22"></a><a href="#__codelineno-6-22"><span class="linenos" data-linenos="22 "></span></a><span class="nv">$cliente1</span><span class="o">-&gt;</span><span class="na">alquilar</span><span class="p">(</span><span class="nv">$soporte1</span><span class="p">);</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23"></a><a href="#__codelineno-6-23"><span class="linenos" data-linenos="23 "></span></a><span class="nv">$cliente1</span><span class="o">-&gt;</span><span class="na">alquilar</span><span class="p">(</span><span class="nv">$soporte2</span><span class="p">);</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24"></a><a href="#__codelineno-6-24"><span class="linenos" data-linenos="24 "></span></a><span class="nv">$cliente1</span><span class="o">-&gt;</span><span class="na">alquilar</span><span class="p">(</span><span class="nv">$soporte3</span><span class="p">);</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25"></a><a href="#__codelineno-6-25"><span class="linenos" data-linenos="25 "></span></a>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26"></a><a href="#__codelineno-6-26"><span class="linenos" data-linenos="26 "></span></a><span class="c1">//voy a intentar alquilar de nuevo un soporte que ya tiene alquilado</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27"></a><a href="#__codelineno-6-27"><span class="linenos" data-linenos="27 "></span></a><span class="nv">$cliente1</span><span class="o">-&gt;</span><span class="na">alquilar</span><span class="p">(</span><span class="nv">$soporte1</span><span class="p">);</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28"></a><a href="#__codelineno-6-28"><span class="linenos" data-linenos="28 "></span></a><span class="c1">//el cliente tiene 3 soportes en alquiler como máximo</span>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29"></a><a href="#__codelineno-6-29"><span class="linenos" data-linenos="29 "></span></a><span class="c1">//este soporte no lo va a poder alquilar</span>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30"></a><a href="#__codelineno-6-30"><span class="linenos" data-linenos="30 "></span></a><span class="nv">$cliente1</span><span class="o">-&gt;</span><span class="na">alquilar</span><span class="p">(</span><span class="nv">$soporte4</span><span class="p">);</span>
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31"></a><a href="#__codelineno-6-31"><span class="linenos" data-linenos="31 "></span></a><span class="c1">//este soporte no lo tiene alquilado</span>
+</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32"></a><a href="#__codelineno-6-32"><span class="linenos" data-linenos="32 "></span></a><span class="nv">$cliente1</span><span class="o">-&gt;</span><span class="na">devolver</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33"></a><a href="#__codelineno-6-33"><span class="linenos" data-linenos="33 "></span></a><span class="c1">//devuelvo un soporte que sí que tiene alquilado</span>
+</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34"></a><a href="#__codelineno-6-34"><span class="linenos" data-linenos="34 "></span></a><span class="nv">$cliente1</span><span class="o">-&gt;</span><span class="na">devolver</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35"></a><a href="#__codelineno-6-35"><span class="linenos" data-linenos="35 "></span></a><span class="c1">//alquilo otro soporte</span>
+</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36"></a><a href="#__codelineno-6-36"><span class="linenos" data-linenos="36 "></span></a><span class="nv">$cliente1</span><span class="o">-&gt;</span><span class="na">alquilar</span><span class="p">(</span><span class="nv">$soporte4</span><span class="p">);</span>
+</span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37"></a><a href="#__codelineno-6-37"><span class="linenos" data-linenos="37 "></span></a><span class="c1">//listo los elementos alquilados</span>
+</span><span id="__span-6-38"><a id="__codelineno-6-38" name="__codelineno-6-38"></a><a href="#__codelineno-6-38"><span class="linenos" data-linenos="38 "></span></a><span class="nv">$cliente1</span><span class="o">-&gt;</span><span class="na">listaAlquileres</span><span class="p">();</span>
+</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39"></a><a href="#__codelineno-6-39"><span class="linenos" data-linenos="39 "></span></a><span class="c1">//este cliente no tiene alquileres</span>
+</span><span id="__span-6-40"><a id="__codelineno-6-40" name="__codelineno-6-40"></a><a href="#__codelineno-6-40"><span class="linenos" data-linenos="40 "></span></a><span class="nv">$cliente2</span><span class="o">-&gt;</span><span class="na">devolver</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><pre>
+El identificador del cliente 1 es: 23
+El identificador del cliente 2 es: 33
+<strong>Alquilado soporte a</strong>: Bruce Wayne</p>
+<p>Película en VHS:
+<em>Los cazafantasmas</em>
+3.5 € (IVA no incluido)
+Duración: 107 minutos</p>
+<p><strong>Alquilado soporte a</strong>: Bruce Wayne</p>
+<p>Juego para: PS4
+<em>The Last of Us Part II</em>
+49.99 € (IVA no incluido)
+Para un jugador</p>
+<p><strong>Alquilado soporte a</strong>: Bruce Wayne</p>
+<p>Película en DVD:
+<em>Origen</em>
+15 € (IVA no incluido)
+Idiomas:es,en,fr
+Formato Pantalla:16:9</p>
+<p>El cliente ya tiene alquilado el soporte <strong>Los cazafantasmas</strong></p>
+<p>Este cliente tiene 3 elementos alquilados. No puede alquilar más en este videoclub hasta que no devuelva algo</p>
+<p>No se ha podido encontrar el soporte en los alquileres de este cliente</p>
+<p>No se ha podido encontrar el soporte en los alquileres de este cliente</p>
+<p>Este cliente tiene 3 elementos alquilados. No puede alquilar más en este videoclub hasta que no devuelva algo</p>
+<p><strong>El cliente tiene 3 soportes alquilados</strong></p>
+<p>Película en VHS:
+<em>Los cazafantasmas</em>
+3.5 € (IVA no incluido)
+Duración: 107 minutos</p>
+<p>Juego para: PS4
+<em>The Last of Us Part II</em>
+49.99 € (IVA no incluido)
+Para un jugador</p>
+<p>Película en DVD:
+<em>Origen</em>
+15 € (IVA no incluido)
+Idiomas:es,en,fr
+Formato Pantalla:16:9</p>
+<p>Este cliente no tiene alquilado ningún elemento
+</pre></p>
+</div>
+</div>
+</div>
+<ol start="327">
+<li>Llegado a este punto, vamos a relacionar los clientes y los soportes mediante la clase <code>Videoclub</code>. Así pues crea la clase que representa el gráfico, teniendo en cuenta que:<ul>
+<li><code>productos</code> es un array de <code>Soporte</code></li>
+<li><code>socios</code> es una array de <code>Cliente</code></li>
+<li>Los métodos públicos de incluir algún soporte, crearán la clase y llamarán al método privado de <code>incluirProducto</code>, el cual es el encargado de introducirlo dentro del array.</li>
+</ul>
+</li>
+</ol>
+<p>El modelo completo quedará de la siguiente manera:</p>
+<figure>
+    <a class="glightbox" href="imagenes/03/03videoclub2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/03/03videoclub2.png" width="800"></a>
+    <figcaption>Modelo completo de Videoclub</figcaption>
+</figure>
+
+<p>Y para probar el proyecto, dentro <code>inicio3.php</code> colocaremos:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Código de prueba</label><label for="__tabbed_6_2">Navegador</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-php highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="k">include_once</span> <span class="s2">&quot;Videoclub.php&quot;</span><span class="p">;</span> <span class="c1">// No incluimos nada más</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos=" 3 "></span></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><a href="#__codelineno-7-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="nv">$vc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Videoclub</span><span class="p">(</span><span class="s2">&quot;Severo 8A&quot;</span><span class="p">);</span> 
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><a href="#__codelineno-7-5"><span class="linenos" data-linenos=" 5 "></span></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><a href="#__codelineno-7-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="c1">//voy a incluir unos cuantos soportes de prueba </span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><a href="#__codelineno-7-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="nv">$vc</span><span class="o">-&gt;</span><span class="na">incluirJuego</span><span class="p">(</span><span class="s2">&quot;God of War&quot;</span><span class="p">,</span> <span class="mf">19.99</span><span class="p">,</span> <span class="s2">&quot;PS4&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> 
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a><a href="#__codelineno-7-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="nv">$vc</span><span class="o">-&gt;</span><span class="na">incluirJuego</span><span class="p">(</span><span class="s2">&quot;The Last of Us Part II&quot;</span><span class="p">,</span> <span class="mf">49.99</span><span class="p">,</span> <span class="s2">&quot;PS4&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a><a href="#__codelineno-7-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="nv">$vc</span><span class="o">-&gt;</span><span class="na">incluirDvd</span><span class="p">(</span><span class="s2">&quot;Torrente&quot;</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="s2">&quot;es&quot;</span><span class="p">,</span><span class="s2">&quot;16:9&quot;</span><span class="p">);</span> 
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a><a href="#__codelineno-7-10"><span class="linenos" data-linenos="10 "></span></a><span class="nv">$vc</span><span class="o">-&gt;</span><span class="na">incluirDvd</span><span class="p">(</span><span class="s2">&quot;Origen&quot;</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="s2">&quot;es,en,fr&quot;</span><span class="p">,</span> <span class="s2">&quot;16:9&quot;</span><span class="p">);</span> 
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a><a href="#__codelineno-7-11"><span class="linenos" data-linenos="11 "></span></a><span class="nv">$vc</span><span class="o">-&gt;</span><span class="na">incluirDvd</span><span class="p">(</span><span class="s2">&quot;El Imperio Contraataca&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;es,en&quot;</span><span class="p">,</span><span class="s2">&quot;16:9&quot;</span><span class="p">);</span> 
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a><a href="#__codelineno-7-12"><span class="linenos" data-linenos="12 "></span></a><span class="nv">$vc</span><span class="o">-&gt;</span><span class="na">incluirCintaVideo</span><span class="p">(</span><span class="s2">&quot;Los cazafantasmas&quot;</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">107</span><span class="p">);</span> 
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a><a href="#__codelineno-7-13"><span class="linenos" data-linenos="13 "></span></a><span class="nv">$vc</span><span class="o">-&gt;</span><span class="na">incluirCintaVideo</span><span class="p">(</span><span class="s2">&quot;El nombre de la Rosa&quot;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">140</span><span class="p">);</span> 
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a><a href="#__codelineno-7-14"><span class="linenos" data-linenos="14 "></span></a>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15"></a><a href="#__codelineno-7-15"><span class="linenos" data-linenos="15 "></span></a><span class="c1">//listo los productos </span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16"></a><a href="#__codelineno-7-16"><span class="linenos" data-linenos="16 "></span></a><span class="nv">$vc</span><span class="o">-&gt;</span><span class="na">listarProductos</span><span class="p">();</span> 
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17"></a><a href="#__codelineno-7-17"><span class="linenos" data-linenos="17 "></span></a>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18"></a><a href="#__codelineno-7-18"><span class="linenos" data-linenos="18 "></span></a><span class="c1">//voy a crear algunos socios </span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19"></a><a href="#__codelineno-7-19"><span class="linenos" data-linenos="19 "></span></a><span class="nv">$vc</span><span class="o">-&gt;</span><span class="na">incluirSocio</span><span class="p">(</span><span class="s2">&quot;Amancio Ortega&quot;</span><span class="p">);</span> 
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20"></a><a href="#__codelineno-7-20"><span class="linenos" data-linenos="20 "></span></a><span class="nv">$vc</span><span class="o">-&gt;</span><span class="na">incluirSocio</span><span class="p">(</span><span class="s2">&quot;Pablo Picasso&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> 
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21"></a><a href="#__codelineno-7-21"><span class="linenos" data-linenos="21 "></span></a>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22"></a><a href="#__codelineno-7-22"><span class="linenos" data-linenos="22 "></span></a><span class="nv">$vc</span><span class="o">-&gt;</span><span class="na">alquilaSocioProducto</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> 
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23"></a><a href="#__codelineno-7-23"><span class="linenos" data-linenos="23 "></span></a><span class="nv">$vc</span><span class="o">-&gt;</span><span class="na">alquilaSocioProducto</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span> 
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24"></a><a href="#__codelineno-7-24"><span class="linenos" data-linenos="24 "></span></a><span class="c1">//alquilo otra vez el soporte 2 al socio 1. </span>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25"></a><a href="#__codelineno-7-25"><span class="linenos" data-linenos="25 "></span></a><span class="c1">// no debe dejarme porque ya lo tiene alquilado </span>
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26"></a><a href="#__codelineno-7-26"><span class="linenos" data-linenos="26 "></span></a><span class="nv">$vc</span><span class="o">-&gt;</span><span class="na">alquilaSocioProducto</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> 
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27"></a><a href="#__codelineno-7-27"><span class="linenos" data-linenos="27 "></span></a><span class="c1">//alquilo el soporte 6 al socio 1. </span>
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28"></a><a href="#__codelineno-7-28"><span class="linenos" data-linenos="28 "></span></a><span class="c1">//no se puede porque el socio 1 tiene 2 alquileres como máximo </span>
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29"></a><a href="#__codelineno-7-29"><span class="linenos" data-linenos="29 "></span></a><span class="nv">$vc</span><span class="o">-&gt;</span><span class="na">alquilaSocioProducto</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span> 
+</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30"></a><a href="#__codelineno-7-30"><span class="linenos" data-linenos="30 "></span></a>
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31"></a><a href="#__codelineno-7-31"><span class="linenos" data-linenos="31 "></span></a><span class="c1">//listo los socios </span>
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32"></a><a href="#__codelineno-7-32"><span class="linenos" data-linenos="32 "></span></a><span class="nv">$vc</span><span class="o">-&gt;</span><span class="na">listarSocios</span><span class="p">();</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><pre>
+Incluido soporte 0
+Incluido soporte 1
+Incluido soporte 2
+Incluido soporte 3
+Incluido soporte 4
+Incluido soporte 5
+Incluido soporte 6</p>
+<p>Listado de los 7 productos disponibles:
+1.- Juego para: PS4
+<em>God of War</em>
+19.99 € (IVA no incluido)
+Para un jugador
+2.- Juego para: PS4
+<em>The Last of Us Part II</em>
+49.99 € (IVA no incluido)
+Para un jugador
+3.- Película en DVD:
+<em>Torrente</em>
+4.5 € (IVA no incluido)
+Idiomas:es
+Formato Pantalla:16:9
+4.- Película en DVD:
+<em>Origen</em>
+4.5 € (IVA no incluido)
+Idiomas:es,en,fr
+Formato Pantalla:16:9
+5.- Película en DVD:
+<em>El Imperio Contraataca</em>
+3 € (IVA no incluido)
+Idiomas:es,en
+Formato Pantalla:16:9
+6.- Película en VHS:
+<em>Los cazafantasmas</em>
+3.5 € (IVA no incluido)
+Duración: 107 minutos
+7.- Película en VHS:
+<em>El nombre de la Rosa</em>
+1.5 € (IVA no incluido)
+Duración: 140 minutos</p>
+<p>Incluido socio 0
+Incluido socio 1</p>
+<p><strong>Alquilado soporte a</strong>: Pablo Picasso</p>
+<p>Película en DVD:
+<em>Torrente</em>
+4.5 € (IVA no incluido)
+Idiomas:es
+Formato Pantalla:16:9</p>
+<p>** Alquilado soporte a**: Pablo Picasso</p>
+<p>Película en DVD:
+<em>Origen</em>
+4.5 € (IVA no incluido)
+Idiomas:es,en,fr
+Formato Pantalla:16:9</p>
+<p>El cliente ya tiene alquilado el soporte Torrente</p>
+<p>Este cliente tiene 2 elementos alquilados. No puede alquilar más en este videoclub hasta que no devuelva algo</p>
+<p>Listado de 2 socios del videoclub:
+1.- <strong>Cliente 0</strong>: Amancio Ortega
+Alquileres actuales: 0
+2.- <strong>Cliente 1</strong>: Pablo Picasso
+Alquileres actuales: 2
+</pre></p>
+</div>
+</div>
+</div>
+<ol start="328">
+<li>
+<p>Transforma <code>Soporte</code> a una clase abstracta y comprueba que todo sigue funcionando. ¿Qué conseguimos al hacerla abstracta?</p>
+</li>
+<li>
+<p>Crea un interfaz <code>Resumible</code>, de manera que las clases que lo implementen deben ofrecer el método <code>muestraResumen()</code>. Modifica la clase <code>Soporte</code> y haz que implemente el interfaz. ¿Hace falta que también lo implementen los hijos?</p>
+</li>
+</ol>
+<h3 id="proyecto-videoclub-20">Proyecto Videoclub 2.0<a class="headerlink" href="#proyecto-videoclub-20" title="Permanent link">&para;</a></h3>
+<p>Antes de comenzar con la segunda parte del videoclub, crea una etiqueta mediante <code>git tag</code> con el nombre <code>v0.329</code> y sube los cambios a GitHub.</p>
+<ol start="330">
+<li>Modifica las operaciones de alquilar, tanto en <code>Cliente</code> como en <code>Videoclub</code>, para dar soporte al encadenamiento de métodos.
+Posteriormente, modifica el código de prueba para utilizar esta técnica.</li>
+<li>Haciendo uso de <em>namespaces</em>:<ul>
+<li>Coloca todas las clases/interfaces en <code>Dwes\ProyectoVideoclub</code></li>
+<li>Cada clase debe hacer <code>include_once</code> de los recursos que emplea</li>
+<li>Coloca el/los archivos de prueba en el raíz (sin espacio de nombres)</li>
+<li>Desde el archivo de pruebas, utiliza <code>use</code> para poder realizar accesos sin cualificar</li>
+<li>Etiqueta los cambios como <code>v0.331</code>.</li>
+</ul>
+</li>
+<li>Reorganiza las carpeta tal como hemos visto en los apuntes: <code>app</code>, <code>test</code> y <code>vendor</code>.<ul>
+<li>Crea un fichero <code>autoload.php</code> para registrar la ruta donde encontrar las clases</li>
+<li>Modifica todo el código necesario, incluyendo <code>autoload.php</code> donde sea necesario y borrando los <em>includes</em> previos.</li>
+</ul>
+</li>
+<li>A continuación vamos a crear un conjunto de excepciones de aplicación. Estas excepciones son simples, no necesitan sobreescribir ningún método. Así pues, crea la excepción de aplicación <code>VideoclubException</code> en el <em>namespace</em> <code>Dwes\ProyectoVideoclub\Util</code>.
+Posteriormente crea los siguientes hijos (deben heredar de <code>VideoclubException</code>), cada uno en su propio archivo:<ul>
+<li><code>SoporteYaAlquiladoException</code></li>
+<li><code>CupoSuperadoException</code></li>
+<li><code>SoporteNoEncontradoException</code></li>
+<li><code>ClienteNoEncontradoException</code></li>
+</ul>
+</li>
+<li>En <code>Cliente</code>, modifica los métodos <code>alquilar</code> y <code>devolver</code>, para que hagan uso de las nuevas excepciones (lanzándolas cuando sea necesario) y funcionen como métodos encadenados. Destacar que estos métodos, no se capturar estás excepciones, sólo se lanzan.
+En <code>Videoclub</code>, modifica <code>alquilarSocioPelicula</code> para capturar todas las excepciones que ahora lanza <code>Cliente</code> e informar al usuario en consecuencia.</li>
+<li>Vamos a modificar el proyecto para que el videoclub sepa qué productos están o no alquilados:<ul>
+<li>En <code>Soporte</code>, crea una propiedad pública cuyo nombre sea <code>alquilado</code> que inicialmente estará a <code>false</code>. Cuando se alquile, se pondrá a <code>true</code>. Al devolver, la volveremos a poner a <code>false</code>.</li>
+<li>En <code>Videoclub</code>, crea dos nuevas propiedades y sus getters:<ul>
+<li><code>numProductosAlquilados</code></li>
+<li><code>numTotalAlquileres</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Crea un nuevo método en <code>Videoclub</code> llamado <code>alquilarSocioProductos(int numSocio, array numerosProductos)</code>, el cual debe recibir un array con los productos a alquilar.<br />
+Antes de alquilarlos, debe comprobar que todos los soportes estén disponibles, de manera que si uno no lo está, no se le alquile ninguno.</li>
+<li>
+<p>Crea dos nuevos métodos en <code>Videoclub</code>, y mediante la definición, deduce qué deben realizar:</p>
+<ul>
+<li><code>devolverSocioProducto(int numSocio, int numeroProducto)</code></li>
+<li><code>devolverSocioProductos(int numSocio, array numerosProductos)</code></li>
+</ul>
+<p>Deben soportar el encadenamiento de métodos.
+Recuerda actualizar la propiedad <code>alquilado</code> de los diferentes soportes.</p>
+</li>
+</ol>
+<p>Cuando hayas realizado todos los ejercicios, crea una etiqueta mediante <code>git tag</code> con el nombre <code>v0.337</code> y sube los cambios a GitHub.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2024-2025 Jesús García - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/aitormedrano" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.2 4.2 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.52 8.52 0 0 1-5.33 1.84q-.51 0-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<a.medrano@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.13c-.15.01-.29.06-.39.17l-1 1 2.05 2 1-1c.22-.21.22-.56 0-.77l-1.24-1.23a.56.56 0 0 0-.38-.17m-2 1.75L13 19.94V22h2.06l6.06-6.07M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7v-.89l8.24-8.22c.47-.49 1.12-.76 1.8-.76.34 0 .68.06 1 .19V6c0-1.12-.92-2-2.04-2m0 4-8 5-8-5V6l8 5 8-5"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "toc.integrate", "content.tabs.link", "content.code.copy", "content.code.select", "navigation.top", "content.code.annotate"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.525ec568.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

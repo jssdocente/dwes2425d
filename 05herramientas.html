@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="imagenes/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
@@ -1198,160 +1198,6 @@ Más información en el artículo <a href="https://ichi.pro/es/el-manual-complet
 <li><a href="https://zetcode.com/php/monolog/">PHP Monolog</a></li>
 <li><a href="https://medium.com/@emilianozublena/unit-testing-con-phpunit-parte-1-148c6d73e822">Unit Testing con PHPUnit — Parte 1</a>, de Emiliano Zublena.</li>
 </ul>
-<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
-<h3 id="monolog_1">Monolog<a class="headerlink" href="#monolog_1" title="Permanent link">&para;</a></h3>
-<ol start="501">
-<li>
-<p>Crea un nuevo proyecto con <em>Composer</em> llamado <code>Monologos</code>:</p>
-<ul>
-<li>Incluye como librería la última versión de Monolog.</li>
-<li>Crea la clase <code>Dwes\Monologos\HolaMonolog</code>.</li>
-<li>Define una propiedad privada nombrada <code>miLog</code> para guardar el log.</li>
-<li>Define en el constructor un <code>RotatingFileHandler</code> que escriba en la carpeta <code>logs</code> del proyecto, y que almacene los mensajes a partir de <em>debug</em>.</li>
-<li>Crea los métodos <code>saludar</code> y <code>despedir</code> que hagan un log de tipo <em>info</em> con la acción correspondiente.</li>
-</ul>
-</li>
-<li>
-<p>Siguiendo con el proyecto <code>Monologos</code>:</p>
-<ul>
-<li>Crea un archivo llamado <code>inicio.php</code> que permita probar <code>HolaMonolog</code>.</li>
-<li>Comprueba que los mensajes aparecen en el <em>log</em>.</li>
-<li>Cambia el nivel para que el manejador solo muestre los mensajes a partir de <em>warning</em>.</li>
-<li>Vuelve a ejectuar <code>inicio.php</code> y comprueba el archivo de log.</li>
-</ul>
-</li>
-<li>Modifica la clase <code>HolaMonolog</code>:<ul>
-<li>En el constructor, añade a la pila un manejador que escriba a la salida de error conjunto al procesador de introspección, mostrando mensajes desde el nivel <em>debug</em>.</li>
-<li>Añade una propiedad denominada <code>hora</code>, la cual se inicializa únicamente como parámetro del constructor. Si la <code>hora</code> es inferior a 0 o mayor de 24, debe escribir un log de <em>warning</em> con un mensaje apropiado.</li>
-<li>Modifica los métodos <code>saludar</code> y <code>despedir</code> para hacerlo acorde a la propiedad <code>hora</code> (buenos días, buenas tardes, hasta mañana, etc...)</li>
-</ul>
-</li>
-</ol>
-<h3 id="proyecto-videoclub-iv">Proyecto Videoclub IV<a class="headerlink" href="#proyecto-videoclub-iv" title="Permanent link">&para;</a></h3>
-<ol start="511">
-<li>
-<p>Como ya tenemos <em>Composer</em> instalado:</p>
-<ul>
-<li>Inicialízalo dentro de tu proyecto <em>Videoclub</em></li>
-<li>Incluye <em>Monolog</em> y <em>PhpUnit</em>, cada una en su lugar adecuado.</li>
-<li>Añade el <em>autoload</em> al archivo <code>composer.json</code>, y haz los cambios necesarios en las clases para utilizar el <em>autoload</em> de <em>Composer</em>.</li>
-<li>Sube los cambios a <em>GitHub</em> y crea la etiqueta <code>v0.511</code>.</li>
-</ul>
-</li>
-<li>
-<p>Modifica la clase <code>Cliente</code> para introducir un <code>Logger</code> de <em>Monolog</em>.</p>
-<ul>
-<li>Añade el log como una propiedad de la clase e inicialízalo en el constructor, con el nombre del canal <code>VideoclubLogger</code>.</li>
-<li>Se debe almacenar en <code>logs/videoclub.log</code> mostrando todos los mensajes desde <em>debug</em>.</li>
-<li>Antes de lanzar cualquier excepción, debe escribir un log de tipo <em>warning</em>.</li>
-<li>Sustituir los <code>echo</code> que haya en el código, que ahora pasarán por el log con el nivel info, a excepción del método <code>muestraResumen</code> que seguirá haciendo <code>echo</code>.</li>
-</ul>
-</li>
-<li>
-<p>Vuelve a hacer lo mismo que en el ejercicio anterior, pero ahora con la clase <code>Videoclub</code>. Además:</p>
-<ul>
-<li>Siempre que se llame a un método del log, se le pasará como segundo parámetro la información que dispongamos.</li>
-<li>Ejecuta el archivo de prueba y comprueba que el log se rellena correctamente.</li>
-</ul>
-</li>
-<li>
-<p>Vamos a refactorizar el código común de inicialización de <em>Monolog</em> que tenemos repetidos en los constructores a una factoría de <em>Monolog</em>, la cual colocaremos en <code>\Dwes\Videoclub\Util\LogFactory</code>. Comprueba que sigue funcionando correctamente.</p>
-</li>
-<li>
-<p>Modifica la factoría para que devuelva <code>LogInterface</code> y comprueba que sigue funcionando. Sube los cambios a GitHub con la etiqueta <code>v0.515</code>.</p>
-</li>
-</ol>
-<h3 id="phpdocumentor">phpDocumentor<a class="headerlink" href="#phpdocumentor" title="Permanent link">&para;</a></h3>
-<ol start="521">
-<li>Comprueba que en el contenedor de Docker funciona <em>phpDocumentor</em>.
-Ejecuta phpdoc sobre tu proyecto <em>Monolog</em> y comprueba el api que se crea.
-Comenta tanto la clase como los métodos, y posteriormente, vuelve a ejecutar phpdoc.</li>
-<li>Documenta el proyecto <em>Videoclub</em>, y genera la documentación. Empieza por las clases de <code>Soporte</code> y sus hijos. Comprueba el resultado. Luego sigue con <code>Cliente</code> y finalmente <code>Videoclub</code>.</li>
-</ol>
-<h3 id="web-scraping_1">Web Scraping<a class="headerlink" href="#web-scraping_1" title="Permanent link">&para;</a></h3>
-<ol start="531">
-<li>
-<p>A partir de los datos de <a href="http://www.seleccionbaloncesto.es">http://www.seleccionbaloncesto.es</a>, calcula la altura y edad media del equipo de baloncesto masculino. Observa que tienes los datos dentro de una tabla debajo de las noticias.</p>
-</li>
-<li>
-<p>Volviendo al Videoclub, en <code>Soporte</code> añade una propiedad llamada <code>metacritic</code> para almacenar la URL de cada soporte. A continuación, modifica los métodos <code>incluirXXX</code> de <code>Videoclub</code> para que admitan como primer parámetro dicha URL. Tras ello, modifica el fichero <code>inicio3.php</code> para pasarle la URL  de cada soporte (para ello deberás consultarlos en Metacritic haciendo búsquedas manuales). Por ejemplo, en el caso de la película Cazafantasmas, su URL es <a href="https://www.metacritic.com/movie/ghostbusters">https://www.metacritic.com/movie/ghostbusters</a>.</p>
-</li>
-<li>
-<p>Finalmente, añade un método abstracto en <code>Soporte</code> llamado <code>getPuntuacion</code>, que haciendo uso de <em>Web Scraping</em> se conecte a <em>Metacritic</em> y obtenga su puntuación. Modifica <code>inicio3.php</code> para obtener todos los alquileres de un cliente mediante <code>getAlquileres() : array</code>, y para cada uno de ellos, además del título, muestra su puntuación.</p>
-</li>
-</ol>
-<h3 id="phpunit">phpUnit<a class="headerlink" href="#phpunit" title="Permanent link">&para;</a></h3>
-<ol start="541">
-<li>
-<p>A partir de la clase <code>HolaMonolog</code>, modifica los métodos para que además de escribir en en log, devuelvan el saludo como una cadena.<br />
-Crea la clase <code>HolaMonologTest</code> y añade diferentes casos de prueba para comprobar que los saludos y despedidas son acordes a la hora con la que se crea la clase.</p>
-</li>
-<li>
-<p>Vamos a simular <em>Test Driven Development</em>. Queremos que nuestra aplicación almacene los últimos tres saludos que ha realizado. Para ello:</p>
-<ul>
-<li>Crea las prueba necesarias (invoca al método <code>saludar</code> varias veces y llama al método que te devuelva los saludos almacenados)</li>
-<li>Implementa el código para pasar las pruebas</li>
-<li>Refactoriza el código</li>
-</ul>
-</li>
-<li>
-<p>Crea una nueva prueba que utilice proveedores de datos para comprobar esta última funcionalidad, pasándole:</p>
-<ul>
-<li>Un saludo.</li>
-<li>Tres saludos.</li>
-<li>Cuatro saludos.</li>
-</ul>
-</li>
-<li>
-<p>¿Recuerdas que si la hora es negativa o superior a 24 escribíamos en el log un <em>warning</em>?
-Ahora debe lanzar una excepción de tipo <code>InvalidArgumentException</code> (como la excepción forma para de PHP, hay que poner su FQN: <code>\InvalidArgumentException</code>). Vuelve a aplicar TDD y completa tus casos de prueba.</p>
-</li>
-<li>
-<p>Comenta la última prueba realizada (la comprobación de las excepciones) y realiza un informe de cobertura de pruebas. Analiza los resultados obtenidos. Elimina los últimos comentarios sobre la última prueba y vuelve a generar y analizar el informe de cobertura.</p>
-</li>
-</ol>
-<h3 id="proyecto-videoclub-v">Proyecto Videoclub V<a class="headerlink" href="#proyecto-videoclub-v" title="Permanent link">&para;</a></h3>
-<p>El objetivo de los siguientes ejercicios es conseguir de manera incremental una cobertura de pruebas superior al 95%.</p>
-<ol start="551">
-<li>
-<p>Crea pruebas dentro de la carpeta <code>tests</code> para las clases <code>Soporte</code>, <code>CintaVideo</code>, <code>Dvd</code> y <code>Juego</code>.
-Recuerda respetar el espacio de nombres.
-Los métodos <code>muestraResumen</code>, tras hacer echo de los mensajes, deben devolver una cadena con el propio mensaje.</p>
-</li>
-<li>
-<p>Crea pruebas para la clase <code>Cliente</code>, aprovechando todo el código que teníamos para comprobar la funcionalidad.
-Utiliza proveedores de datos para añadir conjuntos de datos mayores que los empleados.
-Comprueba que funciona con diferentes cupos, que al intentar alquilar un soporte marcado como ya alquilado debe lanzar una excepción, que no coincidan los ids de los soportes, etc...</p>
-</li>
-<li>
-<p>Crea las pruebas para la clase <code>Videoclub</code>. Ten en cuenta los últimos métodos añadidos que permitían alquilar y devolver soportes, tanto de manera individual como mediante un array.</p>
-</li>
-<li>
-<p>Crea el informe de cobertura. Una vez creado, analiza los datos de cobertura (&gt;= 90%) y comprueba el valor de CRAP, de manera que siempre sea &lt;= 5.
-En caso de no cumplirse, crea nuevos casos de prueba y/o refactoriza el código de tu aplicación.</p>
-</li>
-</ol>
-<p>Sube los cambios a GitHub con la etiqueta <code>v0.554</code>.</p>
-<h3 id="ampliacion">Ampliación<a class="headerlink" href="#ampliacion" title="Permanent link">&para;</a></h3>
-<ol start="561">
-<li>
-<p>Queremos que en <code>Videoclub</code>, cuando un cliente no existe (tanto al alquilar como al devolver) se lance una nueva excepción: <code>ClienteNoExisteException</code>.
-Además, dado el número creciente de excepciones, queremos mover las excepciones al namespace <code>Dwes\Videoclub\Exception</code>.<br />
-Siguiendo TDD, primero crea las pruebas, y luego modifica el código de aplicación.<br />
-Vuelve a generar el informe de cobertura y comprueba la calidad de nuestras pruebas.</p>
-</li>
-<li>
-<p>¿Nadie se ha dado cuenta que en los Dvd no estamos almacenando su duración?
-Haz todos los cambios necesarios, primero en las pruebas y luego en el código.</p>
-</li>
-<li>
-<p>Tras años luchando contra la tecnología, decidimos introducir los Blu-ray en nuestra empresa.
-Hemos decido que <code>Bluray</code> herede de <code>Soporte</code>.
-Además del <code>título</code> y la <code>duracion</code>, nos interesa almacenar si <code>es4k</code>.
-Haz todos los cambios necesarios, primero en las pruebas y luego en el código.</p>
-</li>
-</ol>
-<p>Sube los cambios a GitHub con la etiqueta <code>v0.563</code>.</p>
 
 
 
@@ -1436,7 +1282,7 @@ Haz todos los cambios necesarios, primero en las pruebas y luego en el código.<
     <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "toc.integrate", "content.tabs.link", "content.code.copy", "content.code.select", "navigation.top", "content.code.annotate"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      <script src="assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

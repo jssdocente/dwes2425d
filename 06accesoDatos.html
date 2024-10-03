@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="imagenes/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
@@ -1264,145 +1264,6 @@ Hay muchos ejemplos y tutoriales, así como documentación de la clase FPDF en l
     <a class="glightbox" href="imagenes/06/06-pdf-output.gif" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="imagenes/06/06-pdf-output.gif"></a>
 </div>
 
-<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
-<h3 id="mysqli_1">MySQLi<a class="headerlink" href="#mysqli_1" title="Permanent link">&para;</a></h3>
-<ol start="601">
-<li>
-<p>Crea una nueva base de datos con el nombre <code>lol</code> y cotejamiento de datos <code>utf8mb4_unicode_ci</code>.</p>
-</li>
-<li>
-<p>En nuestra base de datos <code>lol</code> que acabamos de crear,  vamos a crear la tabla <code>campeon</code> con los siguientes campos.</p>
-</li>
-</ol>
-<ul>
-<li>id [*]</li>
-<li>nombre</li>
-<li>rol</li>
-<li>dificultad</li>
-<li>
-<p>descripcion</p>
-<p>Acuérdate que [*] significa que es clave primaria y no olvides poner el tipo de datos de cada uno de los campos.</p>
-</li>
-</ul>
-<ol start="603">
-<li>
-<p>Rellena la tabla <code>campeon</code> con, al menos 5 registros, con los datos que tú quieras o si lo prefieres, puedes basarte en la <a href="https://www.leagueoflegends.com/es-es/champions">página oficial del juego</a> pero <span class="alert"><strong>¡¡ NO TE PONGAS A JUGAR !!</strong></span></p>
-</li>
-<li>
-<p>Crea el archivo <code>604campeones.php</code> donde listes todos los campeones del LOL que has metido en tu base de datos. Acuérdate que para ello deberas hacer una conexión con la base de datos y un <code>foreach</code> para cada campeón que tengas albergado en la tabla <code>campeon</code>.</p>
-</li>
-<li>
-<p>Modifica el archivo <code>604campeones.php</code> y guárdalo como <code>606campeones.php</code> pero pon al lado de cada uno de los campeones listados un botón para <code>editar</code> y otro para <code>borrar</code>. Cada uno de esos botones hará la correspondiente función dependiendo del id del campeón seleccionado.</p>
-</li>
-</ol>
-<ul>
-<li>
-<p>Al pinchar en editar, el usuario será redirigido al archivo <code>605editando.php</code> donde mostrará un formulario con los campos rellenos por los datos del campeón seleccionado. Al darle al botón de <code>guardar</code> los datos se guardarán en la base de datos y el usuario será redirigido a la lista de campones para poder ver los cambios.</p>
-</li>
-<li>
-<p>Al pinchar en borrar, el usuario será preguntado a través de un mensaje de JavaScript (prompt) si está seguro de que quiere borrar al campeón seleccionado. En el mensaje de confirmación debe aparecer el <strong>nombre del campeón seleccionado</strong>. Si el usuario pincha en <code>Aceptar</code> el campeón será eliminado de la base de datos y el usuario será redirigido nuevamente al listado de campeones para comprobar que, efectivamente dicho campeón se ha eliminado de la lista.</p>
-</li>
-</ul>
-<h3 id="filtros-y-comodines">Filtros y comodines<a class="headerlink" href="#filtros-y-comodines" title="Permanent link">&para;</a></h3>
-<ol start="606">
-<li>modifica el archivo <code>604campeones.php</code> y guárdalo como <code>606campeones.php</code> para que se muestre como una tabla con las columnas de la propia tabla de la base de datos, es decir; id, nombre, rol, dificultad, descripción. Al lado de cada nombre de cada columna, pon 2 iconos que sean ˄ ˅ y que cada uno de ellos ordene el listado en función de cuál se haya pinchado.</li>
-</ol>
-<ul>
-<li>
-<p>Si se ha pulsado en Nombre el icono de ˄, el listado debe aparecer ordenado por nombre ascendente. Si por el contrario se ha pulsado ˅ tendrá que ordenarse por nombre descendente.</p>
-</li>
-<li>
-<p>Ten en cuenta que cada icono debe llevar consigo un enlace al listado que contenga parámetros en la URL que satisfagan las opciones seleccionadas así que haced uso de $_GET para poder capturarlos y escribid las consultas SQL que sean necesarias para hacer cada uno de los filtros.</p>
-</li>
-<li>
-<p>Puedes usar <a href="https://fontawesome.com">Font Awesome</a> para los iconos pero es algo opcional</p>
-</li>
-</ul>
-<h3 id="pdo">PDO<a class="headerlink" href="#pdo" title="Permanent link">&para;</a></h3>
-<ol start="607">
-<li>
-<p>Aprovecha lo que hiciste de los ejercicios 601 al 604 pero esta vez utilizando <code>PDO::FETCH_ASSOC</code>.</p>
-</li>
-<li>
-<p>Crea una tabla nueva dentro de la base de datos <code>lol</code> que ya tienes y crea un sistema de login con usuarios. Introduce en la base de datos al menos 3 usuarios diferentes con sus contraseñas distintas. Recuerda que:</p>
-</li>
-</ol>
-<ul>
-<li>
-<p>La tabla nueva ha de llamarse <code>usuario</code></p>
-</li>
-<li>
-<p>Los campos a crear en la nueva tabla deben ser</p>
-<ul>
-<li><code>id</code> [*]</li>
-<li><code>nombre</code></li>
-<li><code>usuario</code></li>
-<li><code>password</code></li>
-<li><code>email</code></li>
-</ul>
-</li>
-<li>
-<p>Las contraseñas deben ser cifradas antes de guardar el datos en la base de datos.</p>
-</li>
-<li>
-<p>Crea el formulario <code>608registro.php</code> donde el usuario introduzca los datos de registro y vincúlalo con <code>608nuevoUsuario.php</code> para que recoja los datos mediante POST y los inserte en la base de datos si todo ha ido bien.</p>
-</li>
-<li>
-<p>Queda <span class="alert"><strong>PROHIBIDÍSIMO</strong></span> acceder a <code>608nuevoUsuario.php</code> sin el formulario rellenado.</p>
-</li>
-<li>
-<p>La sentencia de INSERT debe estar controlada para que no pueda introducirse ningún dato en blanco. Ten en cuenta que estás modificando la base de datos y no queremos campos mal rellenados.</p>
-</li>
-<li>
-<p>Si todo ha ido bien, muestra un mensaje por pantalla diciendo <code>El usuario XXX ha sido introducido en el sistema con la contraseña YYY</code>.</p>
-</li>
-</ul>
-<h3 id="ficheros">Ficheros<a class="headerlink" href="#ficheros" title="Permanent link">&para;</a></h3>
-<ol start="609">
-<li>
-<p>Métete en <a href="https://www.lipsum.com/">loremipsum.com</a> y genera un texto de 3 párrafos. Copia el texto generado y guárdalo en un archivo nuevo llamado <code>609loremIpsum.txt</code>. Genera un archivo php llamado <code>609loremIpsum.php</code> y muestra por pantalla el texto del archivo txt que acabas de crear, su tamaño en <strong>Kilobytes</strong> , la fecha de su última modificación y el ID de usuario que creó el archivo.</p>
-</li>
-<li>
-<p>Vuelve a cargar el archivo <code>606campeones.php</code> y renómbralo a <code>610campeones.php</code> pero en vez de mostrar la tabla por pantalla, genera un archivo CSV <code>610campeones.csv</code> y otro <code>610campeonesCSV.php</code> donde saques por pantalla el contenido del archivo <code>610campeones.csv</code>.</p>
-</li>
-</ol>
-<h3 id="proyecto-chollosevero">Proyecto CholloSevero<a class="headerlink" href="#proyecto-chollosevero" title="Permanent link">&para;</a></h3>
-<ol start="615">
-<li>
-<p>Estructura el proyecto y piensa en las tablas y bases de datos que necesitéis para crear el proyecto. Crea los UML necesarios con nombres como <code>615UMLnombreTabla</code> metiendo todos los campos que se necesiten así como las relaciones que creas necesarias. Establece un sistema de archivos para el proyecto, teniendo en cuenta que van a haber imágenes, css, funciones php, constantes e incluso javaScript (pero algo básico) para controlar los eventos del usuario a lo largo de la interfaz.</p>
-</li>
-<li>
-<p>Crea un sistema de login/password con los roles <code>administrador</code> y <code>usuario</code>. De momento que se validen los usuarios correctamente utilizando encriptación en la contraseña.</p>
-</li>
-</ol>
-<ul>
-<li>
-<p><code>Administrador</code>: Puede ver todos los usuarios registrados así como los administradores y los chollos creados en la base de datos.</p>
-</li>
-<li>
-<p><code>Usuario</code>: Puede ver sus propios chollos, editarlos y borrarlos, además de crear nuevos.</p>
-</li>
-</ul>
-<ol start="617">
-<li>
-<p>Crea la vista para poner nuevos chollos y recuerda <span class="alert"><strong><em>sólo pueden entrar a esta vista usuarios registrados o administradores</em></strong></span>.</p>
-</li>
-<li>
-<p>Crea la vista donde se muestren todos los chollos creados. Esta vista puede verla cualquier usuario, registrado o no en el sistema. Ten en cuenta que esta vista será la vista general de la web así que puedes llamarla <code>index.php</code> donde después aplicaremos filtros por $_GET.</p>
-</li>
-</ol>
-<!--
-
-## Eloquent
-
-### Mapeo ORM
-
-#### Modelo
-
-<div class="language-console highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1"></a><a href="#__codelineno-32-1"><span class="linenos" data-linenos="1 "></span></a><span class="go">php artisan make:model Pregunta</span>
-</span></code></pre></div>
- -->
-
 
 
 
@@ -1486,7 +1347,7 @@ Hay muchos ejemplos y tutoriales, así como documentación de la clase FPDF en l
     <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "toc.integrate", "content.tabs.link", "content.code.copy", "content.code.select", "navigation.top", "content.code.annotate"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      <script src="assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

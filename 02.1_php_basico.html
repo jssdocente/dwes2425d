@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="imagenes/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
@@ -673,9 +673,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#trabajando-con-formularios" class="md-nav__link">
+  <a href="#formularios" class="md-nav__link">
     <span class="md-ellipsis">
-      Trabajando con formularios
+      Formularios
     </span>
   </a>
   
@@ -685,15 +685,6 @@
   <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
       Referencias
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#actividades" class="md-nav__link">
-    <span class="md-ellipsis">
-      Actividades
     </span>
   </a>
   
@@ -2247,7 +2238,7 @@ Al comparar cadenas con valores numericos podemos utilizar:</p>
 </span><span id="__span-69-5"><a id="__codelineno-69-5" name="__codelineno-69-5"></a><a href="#__codelineno-69-5"><span class="linenos" data-linenos="5 "></span></a><span class="nv">$trasComa</span> <span class="o">=</span> <span class="nb">strstr</span><span class="p">(</span><span class="nv">$frase</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">);</span> <span class="c1">// &quot;, eso dicen, a veces&quot;</span>
 </span><span id="__span-69-6"><a id="__codelineno-69-6" name="__codelineno-69-6"></a><a href="#__codelineno-69-6"><span class="linenos" data-linenos="6 "></span></a><span class="cp">?&gt;</span>
 </span></code></pre></div>
-<p>Si queremos averiguar que contiene las cadenas, tenemos un conojunto de funciones de comprobaciones de tipo, se conocen como las funciones <em>ctype</em> que devuelven un booleano:</p>
+<p>Si queremos averiguar que contiene las cadenas, tenemos un conjunto de funciones de comprobaciones de tipo, se conocen como las funciones <em>ctype</em> que devuelven un booleano:</p>
 <ul>
 <li><code>ctype_alpha</code> → letras</li>
 <li><code>ctype_alnum</code> → alfanuméricos</li>
@@ -2390,12 +2381,33 @@ Al comparar cadenas con valores numericos podemos utilizar:</p>
 </span><span id="__span-75-11"><a id="__codelineno-75-11" name="__codelineno-75-11"></a><a href="#__codelineno-75-11"><span class="linenos" data-linenos="11 "></span></a><span class="nb">var_dump</span><span class="p">(</span><span class="nb">is_int</span><span class="p">(</span><span class="nb">intval</span><span class="p">(</span><span class="nv">$uno</span><span class="p">)));</span> <span class="c1">// true</span>
 </span><span id="__span-75-12"><a id="__codelineno-75-12" name="__codelineno-75-12"></a><a href="#__codelineno-75-12"><span class="linenos" data-linenos="12 "></span></a><span class="cp">?&gt;</span>
 </span></code></pre></div>
-<h2 id="trabajando-con-formularios">Trabajando con formularios<a class="headerlink" href="#trabajando-con-formularios" title="Permanent link">&para;</a></h2>
-<p>Los datos se envían via URL con el formato <code>var1=valor1&amp;var2=valor2…</code>. Por ejemplo: <code>ejemplo.php?nombre=Bruce+apellido1=Wayne</code></p>
+<h2 id="formularios">Formularios<a class="headerlink" href="#formularios" title="Permanent link">&para;</a></h2>
+<p>Los formularios son los elementos de las páginas web que permiten a un usuario introducir información en una página web. Así, los formularios nos permiten crear páginas web PHP interactivas en las que el contenido de la página se adapta a la información proporcionada por el usuario.</p>
+<p>Conceptos importantes:</p>
+<ul>
+<li>Un formulario se compone de una serie de campos de entrada, etiquetas y botones de envío. </li>
+<li>Los campos de entrada pueden ser de varios tipos: texto, contraseña, botones de radio, casillas de verificación, menús desplegables, etc. - Cada campo de entrada se identifica mediante un nombre y un valor. </li>
+<li>Cuando el usuario envía el formulario, los datos introducidos en los campos de entrada se envían al servidor web, donde se procesan con un script PHP.</li>
+</ul>
+<p>Aquí nos centraremos en cómo procesar los datos no en cómo se diseñan.</p>
+<p>En un formulario existen varios conceptos importantes:</p>
+<ul>
+<li><strong>Action</strong>: es la URL a la que se enviarán los datos del formulario. Si no se especifica, se enviarán a la misma página.</li>
+<li><strong>Method</strong>: es el método de envío de los datos. Puede ser <code>GET</code> o <code>POST</code>. En el caso de <code>GET</code>, los datos se envían en la URL, mientras que en el caso de <code>POST</code>, los datos se envían en el cuerpo de la petición.</li>
+<li><strong>Input</strong>: es el campo de entrada de datos. Puede ser de varios tipos: texto, contraseña, botones de radio, casillas de verificación, menús desplegables, etc.</li>
+<li><strong>Label</strong>: es la etiqueta que acompaña al campo de entrada. Sirve para indicar al usuario qué tipo de información debe introducir en el campo.</li>
+<li><strong>Name</strong>: es el nombre del campo de entrada. Se utiliza para identificar el campo de entrada en el script PHP que procesa los datos del formulario.</li>
+</ul>
+<h4 id="trabajando-con-formularios">Trabajando con formularios<a class="headerlink" href="#trabajando-con-formularios" title="Permanent link">&para;</a></h4>
+<p>Si es una peetición tipo <code>GET</code> los datos se envían via URL con el formato <code>var1=valor1&amp;var2=valor2…</code>. Por ejemplo: <code>ejemplo.php?nombre=Bruce+apellido1=Wayne</code>, donde cada parámetro se separa con <code>&amp;</code> y el nombre y el valor con <code>=</code>, y el nobre del parámetro es igual al valor del atributo <code>name</code> del campo de entrada.</p>
+<div class="admonition tip">
+<p class="admonition-title">Codificación de URL</p>
+<p>Los espacios en blanco se codifican como <code>+</code> o <code>%20</code>, y los caracteres especiales se codifican como <code>%xx</code>, donde <code>xx</code> es el código ASCII del carácter.</p>
+</div>
 <p>Se divide en dos pasos:</p>
 <ol>
 <li>Generar un formulario con <code>action='archivo.php' method='GET'</code></li>
-<li>En el archivo <code>.php</code> leer los datos con <code>$_GET['nombreVar']</code></li>
+<li>En el archivo <code>.php</code> (del lado servidor) leer los datos con <code>$_GET['nombreVar']</code></li>
 </ol>
 <p>Vamos a separar siempre que podamos el código HTML del de PHP.
 Por ejemplo, el formulario lo colocamos en <code>saluda.html</code>:</p>
@@ -2407,7 +2419,8 @@ Por ejemplo, el formulario lo colocamos en <code>saluda.html</code>:</p>
 </span><span id="__span-76-6"><a id="__codelineno-76-6" name="__codelineno-76-6"></a><a href="#__codelineno-76-6"><span class="linenos" data-linenos="6 "></span></a>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;enviar&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span><span id="__span-76-7"><a id="__codelineno-76-7" name="__codelineno-76-7"></a><a href="#__codelineno-76-7"><span class="linenos" data-linenos="7 "></span></a><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<p>Y recogemos los datos en <code>saluda.php</code>:</p>
+<p>Los datos se recogen a través de variables superglobales, en este caso <code>$_GET</code> y <code>$_POST</code> (dependiendo del método de envío).</p>
+<p>Recogemos los datos en <code>saluda.php</code>:</p>
 <div class="language-php highlight"><pre><span></span><code><span id="__span-77-1"><a id="__codelineno-77-1" name="__codelineno-77-1"></a><a href="#__codelineno-77-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span id="__span-77-2"><a id="__codelineno-77-2" name="__codelineno-77-2"></a><a href="#__codelineno-77-2"><span class="linenos" data-linenos="2 "></span></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">];</span>
 </span><span id="__span-77-3"><a id="__codelineno-77-3" name="__codelineno-77-3"></a><a href="#__codelineno-77-3"><span class="linenos" data-linenos="3 "></span></a><span class="nv">$apellido1</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;apellido1&quot;</span><span class="p">];</span>
@@ -2416,23 +2429,24 @@ Por ejemplo, el formulario lo colocamos en <code>saluda.html</code>:</p>
 </span><span id="__span-77-6"><a id="__codelineno-77-6" name="__codelineno-77-6"></a><a href="#__codelineno-77-6"><span class="linenos" data-linenos="6 "></span></a><span class="cp">?&gt;</span>
 </span></code></pre></div>
 <p>Si lo quisiéramos realizar todo en un único archivo (<em>lo cual no es recomendable</em>), podemos hacerlo así:</p>
-<div class="language-html+php highlight"><pre><span></span><code><span id="__span-78-1"><a id="__codelineno-78-1" name="__codelineno-78-1"></a><a href="#__codelineno-78-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;get&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-78-2"><a id="__codelineno-78-2" name="__codelineno-78-2"></a><a href="#__codelineno-78-2"><span class="linenos" data-linenos=" 2 "></span></a>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span><span class="p">&gt;</span>Nombre: <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-</span><span id="__span-78-3"><a id="__codelineno-78-3" name="__codelineno-78-3"></a><a href="#__codelineno-78-3"><span class="linenos" data-linenos=" 3 "></span></a>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span><span id="__span-78-4"><a id="__codelineno-78-4" name="__codelineno-78-4"></a><a href="#__codelineno-78-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;apellido1&quot;</span><span class="p">&gt;</span>Primer apellido:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-</span><span id="__span-78-5"><a id="__codelineno-78-5" name="__codelineno-78-5"></a><a href="#__codelineno-78-5"><span class="linenos" data-linenos=" 5 "></span></a>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;apellido1&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;apellido1&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span><span id="__span-78-6"><a id="__codelineno-78-6" name="__codelineno-78-6"></a><a href="#__codelineno-78-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;enviar&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-78-7"><a id="__codelineno-78-7" name="__codelineno-78-7"></a><a href="#__codelineno-78-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</span><span id="__span-78-8"><a id="__codelineno-78-8" name="__codelineno-78-8"></a><a href="#__codelineno-78-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
-</span><span id="__span-78-9"><a id="__codelineno-78-9" name="__codelineno-78-9"></a><a href="#__codelineno-78-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="cp">&lt;?php</span>
-</span><span id="__span-78-10"><a id="__codelineno-78-10" name="__codelineno-78-10"></a><a href="#__codelineno-78-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]))</span> <span class="p">{</span>
-</span><span id="__span-78-11"><a id="__codelineno-78-11" name="__codelineno-78-11"></a><a href="#__codelineno-78-11"><span class="linenos" data-linenos="11 "></span></a>        <span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">];</span>
-</span><span id="__span-78-12"><a id="__codelineno-78-12" name="__codelineno-78-12"></a><a href="#__codelineno-78-12"><span class="linenos" data-linenos="12 "></span></a>        <span class="nv">$apellido1</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;apellido1&quot;</span><span class="p">];</span>
-</span><span id="__span-78-13"><a id="__codelineno-78-13" name="__codelineno-78-13"></a><a href="#__codelineno-78-13"><span class="linenos" data-linenos="13 "></span></a>
-</span><span id="__span-78-14"><a id="__codelineno-78-14" name="__codelineno-78-14"></a><a href="#__codelineno-78-14"><span class="linenos" data-linenos="14 "></span></a>        <span class="k">echo</span> <span class="s2">&quot;Hola </span><span class="si">$nombre</span><span class="s2"> </span><span class="si">$apellido1</span><span class="s2">&quot;</span><span class="p">;</span>
-</span><span id="__span-78-15"><a id="__codelineno-78-15" name="__codelineno-78-15"></a><a href="#__codelineno-78-15"><span class="linenos" data-linenos="15 "></span></a>    <span class="p">}</span>
-</span><span id="__span-78-16"><a id="__codelineno-78-16" name="__codelineno-78-16"></a><a href="#__codelineno-78-16"><span class="linenos" data-linenos="16 "></span></a>    <span class="cp">?&gt;</span>
-</span><span id="__span-78-17"><a id="__codelineno-78-17" name="__codelineno-78-17"></a><a href="#__codelineno-78-17"><span class="linenos" data-linenos="17 "></span></a><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-78-1"><a id="__codelineno-78-1" name="__codelineno-78-1"></a><a href="#__codelineno-78-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="o">&lt;</span><span class="nx">form</span> <span class="nx">action</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&quot;get&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-78-2"><a id="__codelineno-78-2" name="__codelineno-78-2"></a><a href="#__codelineno-78-2"><span class="linenos" data-linenos=" 2 "></span></a>    <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;&lt;</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;nombre&quot;</span><span class="o">&gt;</span><span class="nx">Nombre</span><span class="o">:</span> <span class="o">&lt;/</span><span class="nx">label</span><span class="o">&gt;</span>
+</span><span id="__span-78-3"><a id="__codelineno-78-3" name="__codelineno-78-3"></a><a href="#__codelineno-78-3"><span class="linenos" data-linenos=" 3 "></span></a>    <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;nombre&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;nombre&quot;</span><span class="o">&gt;&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+</span><span id="__span-78-4"><a id="__codelineno-78-4" name="__codelineno-78-4"></a><a href="#__codelineno-78-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;&lt;</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;apellido1&quot;</span><span class="o">&gt;</span><span class="nx">Primer</span> <span class="nx">apellido</span><span class="o">:&lt;/</span><span class="nx">label</span><span class="o">&gt;</span>
+</span><span id="__span-78-5"><a id="__codelineno-78-5" name="__codelineno-78-5"></a><a href="#__codelineno-78-5"><span class="linenos" data-linenos=" 5 "></span></a>    <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;apellido1&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;apellido1&quot;</span><span class="o">&gt;&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+</span><span id="__span-78-6"><a id="__codelineno-78-6" name="__codelineno-78-6"></a><a href="#__codelineno-78-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;enviar&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-78-7"><a id="__codelineno-78-7" name="__codelineno-78-7"></a><a href="#__codelineno-78-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="o">&lt;/</span><span class="nx">form</span><span class="o">&gt;</span>
+</span><span id="__span-78-8"><a id="__codelineno-78-8" name="__codelineno-78-8"></a><a href="#__codelineno-78-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span><span id="__span-78-9"><a id="__codelineno-78-9" name="__codelineno-78-9"></a><a href="#__codelineno-78-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="o">&lt;?</span><span class="nx">php</span>
+</span><span id="__span-78-10"><a id="__codelineno-78-10" name="__codelineno-78-10"></a><a href="#__codelineno-78-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="c1">//isset() comprueba si una variable está definida y no es NULL</span>
+</span><span id="__span-78-11"><a id="__codelineno-78-11" name="__codelineno-78-11"></a><a href="#__codelineno-78-11"><span class="linenos" data-linenos="11 "></span></a>    <span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]))</span> <span class="p">{</span>
+</span><span id="__span-78-12"><a id="__codelineno-78-12" name="__codelineno-78-12"></a><a href="#__codelineno-78-12"><span class="linenos" data-linenos="12 "></span></a>        <span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">];</span>
+</span><span id="__span-78-13"><a id="__codelineno-78-13" name="__codelineno-78-13"></a><a href="#__codelineno-78-13"><span class="linenos" data-linenos="13 "></span></a>        <span class="nv">$apellido1</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;apellido1&quot;</span><span class="p">];</span>
+</span><span id="__span-78-14"><a id="__codelineno-78-14" name="__codelineno-78-14"></a><a href="#__codelineno-78-14"><span class="linenos" data-linenos="14 "></span></a>
+</span><span id="__span-78-15"><a id="__codelineno-78-15" name="__codelineno-78-15"></a><a href="#__codelineno-78-15"><span class="linenos" data-linenos="15 "></span></a>        <span class="k">echo</span> <span class="s2">&quot;Hola </span><span class="si">$nombre</span><span class="s2"> </span><span class="si">$apellido1</span><span class="s2">&quot;</span><span class="p">;</span>
+</span><span id="__span-78-16"><a id="__codelineno-78-16" name="__codelineno-78-16"></a><a href="#__codelineno-78-16"><span class="linenos" data-linenos="16 "></span></a>    <span class="p">}</span>
+</span><span id="__span-78-17"><a id="__codelineno-78-17" name="__codelineno-78-17"></a><a href="#__codelineno-78-17"><span class="linenos" data-linenos="17 "></span></a>    <span class="cp">?&gt;</span>
+</span><span id="__span-78-18"><a id="__codelineno-78-18" name="__codelineno-78-18"></a><a href="#__codelineno-78-18"><span class="linenos" data-linenos="18 "></span></a><span class="x">&lt;/p&gt;</span>
 </span></code></pre></div>
 <p>El trabajo con formularios lo estudiaremos en profundidad en la unidad 4, y veremos que además de <code>GET</code>, podemos enviar los datos con <code>POST</code>.</p>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
@@ -2443,346 +2457,9 @@ Por ejemplo, el formulario lo colocamos en <code>saluda.html</code>:</p>
 <li><a href="http://coppeldev.github.io/php/standards/coppel.html">Guía de Estilo - PSR</a></li>
 <li><a href="http://phpdevenezuela.github.io/php-the-right-way/">PHP - La manera correcta</a></li>
 </ul>
-<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <div class="admonition danger">
 <p class="admonition-title">¡No te limites a copiar y pegar! ¡Practica y experimenta con los ejercicios!</p>
 </div>
-<details class="exercise">
-<summary>Ejercicios</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:5"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><input id="__tabbed_5_5" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">PHP básico</label><label for="__tabbed_5_2">Bucles</label><label for="__tabbed_5_3">Arrays</label><label for="__tabbed_5_4">Funciones</label><label for="__tabbed_5_5">Funciones predefinidas</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<ol>
-<li>Visualiza el vídeo de Jesús Amieiro sobre <a href="https://www.youtube.com/watch?v=o3IwAqslGUM&amp;t=12724s">PHP en 2020</a> a partir del minuto 3:32 (son 40 minutos aproximadamente).<ul>
-<li>¿Qué relación existe entre PHP y Facebook?</li>
-<li>Respecto al rendimiento, ¿qué versión mínima deberíamos utilizar?</li>
-<li>¿Por qué PHP tiene mala fama? </li>
-</ul>
-</li>
-<li><code>201tresfrases.php</code>: Muestra 3 frases, cada una en un párrafo utilizando las tres posibilidades que existen de mostrar contenido.
-Tras ello, introduce dos comentarios, uno de bloque y otro de una línea.</li>
-<li><code>202calculos.php</code>: Escribe un programa que utilice las variables <code>$x</code> y <code>$y</code>. Asígnales los valores <code>166</code> y <code>999</code> respectivamente.
-A continuación, muestra por pantalla el valor de cada variable, la suma, la resta, la división y la multiplicación.
-<a class="glightbox" href="imagenes/02/02p203.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img align="right" alt="203" src="imagenes/02/02p203.png" /></a></li>
-<li><code>203datosPersonales.php</code>: Escribe un programa que almacene en variables tu nombre, primer apellido, segundo apellido, email, año de nacimiento y teléfono. Luego muéstralos por pantalla dentro de una tabla.</li>
-<li>
-<p><code>204datosPersonales.html</code> y <code>204datosPersonales.php</code>: Es el mismo ejercicio que el anterior, pero separando la lógica. En el primer archivo crearemos el formulario para introducir los datos, y luego recogemos los datos y generamos la tabla en el segundo archivo.</p>
-</li>
-<li>
-<p><code>205madlib.html</code>y <code>205madlib.php</code>: A partir de un nombre, un verbo, un adjetivo y un adverbio, crea una historia que contenga dichos elementos. Por ejemplo:</p>
-<ul>
-<li>Entrada: perro / caminar / azul / rápidamente</li>
-<li>
-<p>Salida: ¿ Te gusta caminar con tu perro azul rápidamente ?</p>
-</li>
-<li>
-<p><code>205madlib2.html</code> y <code>205madlib2.php</code> Crea un madlib más extenso, leyendo más datos de entrada.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>206anyos.php</code>: Tras leer la edad de una persona, mostrar la edad que tendrá dentro de 10 años y hace 10 años.
-Además, muestra qué año será en cada uno de los casos.
-Finalmente, muestra el año de jubilación suponiendo que trabajarás hasta los 67 años.
-En este caso, no hace falta que previamente crees un formulario, puedes probar el ejercicio via URL: <code>206anyos.php?edad=33</code>.</p>
-<p>Tip: <code>$anyoActual = date("Y");</code></p>
-</li>
-<li>
-<p><code>207dinero.php</code>: A partir de una cantidad de dinero, mostrar su descomposición en billetes  (500, 200, 100, 50, 20, 10, 5) y monedas (2, 1), para que el número de elementos sea mínimo.
-No se utilizar ninguna instrucción condicional.
-Por ejemplo, al introducir <code>139</code> debe mostrar:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-79-1"><a id="__codelineno-79-1" name="__codelineno-79-1"></a><a href="#__codelineno-79-1"><span class="linenos" data-linenos="1 "></span></a>1 billete de 100
-</span><span id="__span-79-2"><a id="__codelineno-79-2" name="__codelineno-79-2"></a><a href="#__codelineno-79-2"><span class="linenos" data-linenos="2 "></span></a>0 billete de 50
-</span><span id="__span-79-3"><a id="__codelineno-79-3" name="__codelineno-79-3"></a><a href="#__codelineno-79-3"><span class="linenos" data-linenos="3 "></span></a>1 billete de 20
-</span><span id="__span-79-4"><a id="__codelineno-79-4" name="__codelineno-79-4"></a><a href="#__codelineno-79-4"><span class="linenos" data-linenos="4 "></span></a>1 billete de 10
-</span><span id="__span-79-5"><a id="__codelineno-79-5" name="__codelineno-79-5"></a><a href="#__codelineno-79-5"><span class="linenos" data-linenos="5 "></span></a>1 billete de 5
-</span><span id="__span-79-6"><a id="__codelineno-79-6" name="__codelineno-79-6"></a><a href="#__codelineno-79-6"><span class="linenos" data-linenos="6 "></span></a>2 moneda de 2
-</span></code></pre></div>
-<p>Tip: Puedes forzar a realizar la división entera mediante la función <code>intdiv($dividendo, $divisor)</code> o pasar un número flotante a entero puedes usar la función <code>intval()</code></p>
-</li>
-<li>
-<p><code>208posnegcero.php</code>: A partir de un <code>numero</code>, muestra por pantalla si el número es <code>positivo</code>, <code>negativo</code> o <code>cero</code>.</p>
-</li>
-<li>
-<p><code>209mayor3.php</code>: Sin hacer uso de condiciones que utilicen dentro la condición los operadores lógicos, muestra el mayor de tres números (<code>a</code>, <code>b</code> y <code>c</code>).</p>
-<p><code>209mayor3c.php</code>: Utiliza en las condiciones los operadores lógicos.</p>
-</li>
-<li>
-<p><code>210nombreEdad.php</code>: A partir de una <code>edad</code> muestra por pantalla:</p>
-<ul>
-<li><code>bebé</code> si tiene menos de 3 años</li>
-<li><code>niño</code> si tiene entre 3 y 12 años</li>
-<li><code>adolescente</code> entre 13 y 17 años</li>
-<li><code>adulto</code> entre 18 y 66</li>
-<li><code>jubilado</code> a partir de 67</li>
-</ul>
-</li>
-<li>
-<p><code>211reloj.php</code>: Escribe un programa que funcione similar a un reloj, de manera que a partir de los valores de <code>hora</code>, <code>minuto</code> y <code>segundo</code> muestre la hora dentro de un segundo. Tras las <code>23:59:59</code> serán las <code>0:0:0</code>.</p>
-</li>
-<li>
-<p><code>212calendario.php</code>: Escribe un programa similar a un calendario de manera que a partir de <code>dia</code>, <code>mes</code> y <code>anyo</code> muestre la fecha dentro de un día. Debes tener en cuenta que no todos los meses tienen 30 días. En este caso, no vamos a tener en cuenta los años bisiestos.</p>
-</li>
-</ol>
-<p><a class="glightbox" href="imagenes/02/02p213.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img _="&amp;" align="right" alt="213" src="imagenes/02/02p213.png" width="150" /></a></p>
-<ol start="14">
-<li>
-<p><code>213ecuacion2g.php</code>: Crea un programa que resuelva una ecuación de 2º grado del tipo <code>ax² + bx + c = 0</code>.
-Ten en cuenta que puede tener 2, 1 o no tener solución dependiendo del valor del discriminante <code>b²-4ac</code>.</p>
-<p>Tip: Para calcular la raíz cuadrada deberás utilizar la función <code>sqrt()</code></p>
-</li>
-</ol>
-<p>Ejercicios de investigación:</p>
-<ol start="15">
-<li>Investiga para que sirve el operador nave espacial, disponible desde PHP7 (<a href="https://www.php.net/manual/es/migration70.new-features.php">https://www.php.net/manual/es/migration70.new-features.php</a>). Explica con un par de líneas su propósito y mediante código demuestra su uso.</li>
-<li>Investiga para qué sirve la instrucción <code>match()</code>, disponible desde PHP8 (<a href="https://www.php.net/manual/es/control-structures.match.php">https://www.php.net/manual/es/control-structures.match.php</a>). Explica con un par de líneas su propósito y mediante código demuestra su uso.</li>
-</ol>
-</div>
-<div class="tabbed-block">
-<ol start="17">
-<li>
-<p><code>220pares050.php:</code> Escribe un programa que muestre los números pares del 0 al 50 (dentro de una lista desordenada).</p>
-<p><code>220paresAB.php</code>: A partir del anterior, refactorizar para que funcione con <code>inicio</code> y <code>fin</code>.</p>
-</li>
-<li>
-<p><code>221suma110.php</code>: Escribe un programa que sume los números del 1 al 10.</p>
-<p><code>221sumaAB.php</code>: A partir del anterior, refactorizar para que funcione con <code>inicio</code> y <code>fin</code>.</p>
-</li>
-<li>
-<p><code>222potencia.php</code>: A partir de una <code>base</code> y <code>exponente</code>, mediante la acumulación de productos, calcula la potencia utilizando la instrucción <code>for</code>.</p>
-<p><code>222potenciaWhile.php</code>: Reescribe el ejercicio anterior haciendo uso sólo de <code>while</code>.<br />
-<code>222potenciaDoWhile.php</code>: Reescribe el ejercicio anterior haciendo uso sólo de <code>do-while</code>.</p>
-</li>
-<li>
-<p><code>223tablaMultiplicar.php</code>: Muestra dentro de una tabla HTML la tabla de multiplicar del <code>numero</code> que reciba como parámetro. Utiliza <code>&lt;thead&gt;</code> con sus respectivos <code>&lt;th&gt;</code> y <code>&lt;tbody</code>&gt; para dibujar la tabla. Por ejemplo:</p>
-<table>
-<thead>
-<tr>
-<th>a</th>
-<th>*</th>
-<th>b</th>
-<th>=</th>
-<th>a*b</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>7</td>
-<td>*</td>
-<td>1</td>
-<td>=</td>
-<td>7</td>
-</tr>
-<tr>
-<td>7</td>
-<td>*</td>
-<td>2</td>
-<td>=</td>
-<td>14</td>
-</tr>
-<tr>
-<td>...</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>7</td>
-<td>*</td>
-<td>10</td>
-<td>=</td>
-<td>70</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li>
-<p><code>224formulario.html</code>: Crea un formulario que permita leer una <code>cantidad</code>.  </p>
-<div class="admonition tip inline end">
-<p class="admonition-title">Tip</p>
-<p>Para guardar un dato oculto puedes utilizar un campo de formulario de tipo oculto: <code>&lt;input type="hidden" name="cantidad" value="33" /&gt;</code></p>
-</div>
-<p><code>224leerDatos.php</code>: a partir de <code>cantidad</code>, prepara un formulario con tantas cajas de datos como su valor.<br />
-Finalmente, en <code>224sumarDatos.php</code>: a partir de los datos de todas las cajas de la página anterior, súmalos y muestra el total.</p>
-</li>
-<li>
-<p><code>225formulario.html</code> y <code>225tabla.php</code>: A partir de un número de <code>filas</code> y <code>columnas</code>, crear una tabla con ese tamaño.
-Las celdas deben estar rellenadas con los valores de las coordenadas de cada celda.</p>
-</li>
-<li><code>226formulario.html</code> y <code>226cuadrado.php</code>: Basándote en el ejercicio anterior, rellena la tabla de manera que solo los bordes tengan contenido, quedándose el resto de celdas en blanco.
-<a class="glightbox" href="imagenes/02/02p228.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img _="&amp;" align="right" alt="228" src="imagenes/02/02p228.png" width="200" /></a></li>
-<li><code>227formulario.html</code> y <code>227equis.php</code>: Basándote en el ejercicio anterior, ahora sólo debe aparecer el contenido de los dos diagonales.</li>
-<li><code>228cuadradoMultiplicar.php</code>: Crea un programa que muestre por pantalla un cuadrado exactamente igual (fíjate bien en los encabezados, tanto de las filas como de las columnas) al de la imagen con las tablas de multiplicar.</li>
-</ol>
-</div>
-<div class="tabbed-block">
-<ol start="230">
-<li>
-<p><code>230aleatorios50.php</code>: Rellena un array con 50 números aleatorios comprendidos entre el 0 y el 99, y luego muéstralo en una lista desordenada.
-Para crear un número aleatorio, utiliza la función <code>rand(inicio, fin)</code>. Por ejemplo:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-80-1"><a id="__codelineno-80-1" name="__codelineno-80-1"></a><a href="#__codelineno-80-1"><span class="linenos" data-linenos="1 "></span></a><span class="nv">$num</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
-</span></code></pre></div>
-</li>
-<li>
-<p><code>231bola8.html</code>: Prepara un formulario con un caja de texto que realice a una pregunta al usuario.<br />
-<code>231bola8.php</code>: A partir del anterior, crea un programa que muestre la pregunta recibida y genere una respuesta de manera aleatoria entre un conjunto de respuestas predefinidas, almacenadas en un array: <em>Si, no, quizás, claro que sí, por supuesto que no, no lo tengo claro, seguro, yo diría que sí, ni de coña, etc..</em>.<br />
-Este ejercicio se basa en el juego de la <a href="https://es.wikipedia.org/wiki/Magic_8-Ball">Bola 8 mágica</a>.</p>
-</li>
-<li>
-<p><code>232mates.php</code>: A partir del ejercicio 230, genera un array aleatorio de 33 elementos con números comprendidos entre el 0 y 100 y calcula:</p>
-<ul>
-<li>El mayor</li>
-<li>El menor</li>
-<li>La media</li>
-</ul>
-</li>
-<li>
-<p><code>233sexos.php</code>: Rellena un array de 100 elementos de manera aleatoria con valores <code>M</code> o <code>F</code> (por ejemplo <code>["M", "M", "F", "M", ...]</code>). Una vez completado, vuelve a recorrerlo y calcula cuantos elementos hay de cada uno de los valores almacenando el resultado en un array asociativo <code>['M' =&gt; 44, 'F' =&gt; 66]</code> (<em>no utilices variables para contar las <code>M</code> o las <code>F</code></em>).
-Finalmente, muestra el resultado por pantalla</p>
-</li>
-<li>
-<p><code>234monedas.php</code>: Vuelve a realizar el ejercicio 207, el de las monedas (500, 200, 100, 50, 20, 10, 5, 2, 1), pero haciendo uso de arrays y un bucle.
-Almacena el resultado en un array asociativo.
-Muestra el resultado en una lista desordenada únicamente con las cantidades que tienen algún valor.</p>
-</li>
-<li>
-<p><code>235alturas.php</code>: Mediante un array asociativo, almacena el nombre y la altura de 5 personas (<code>nombre =&gt; altura</code>).
-Posteriormente, recorre el array y muéstralo en una tabla HTML.
-Finalmente añade una última fila a la tabla con la altura media.</p>
-</li>
-<li>
-<p><code>236personas.php</code>: Mediante un array bidimensional, almacena el nombre, altura y email de 5 personas. Para ello, crea un array de personas, siendo cada persona un array asociativo: <code>[ ['nombre'=&gt;'Aitor', 'altura'=&gt;182, 'email'=&gt;'aitor@correo.com'],[…],… ]</code>
-Posteriormente, recorre el array y muéstralo en una tabla HTML.</p>
-</li>
-<li>
-<p><code>237leerCantidad.html</code> y <code>237leerPersonas.php</code>: a partir de un formulario con un campo de <code>cantidad</code> de personas, generar un nuevo formulario para leer el nombre, altura y email de <code>cantidad</code> personas.<br />
-<code>237gestionarPersonas.php</code>: A partir de las personas introducidas, mostrar sus datos en una tabla, y posteriormente, destacar los datos del más alto y el del más bajo.</p>
-</li>
-<li>
-<p><code>238tablaDistintos.php</code>: Rellena un array bidimensional de 6 filas por 9 columnas con números aleatorios comprendidos entre 100 y 999 (ambos incluidos). Todos los números deben ser distintos, es decir, no se puede repetir ninguno.<br />
-Muestra a continuación por pantalla el contenido del array de tal forma que:</p>
-<ul>
-<li>La columna del máximo debe aparecer en azul.</li>
-<li>La fila del mínimo debe aparecer en verde</li>
-<li>El resto de números deben aparecer en negro.</li>
-</ul>
-</li>
-</ol>
-</div>
-<div class="tabbed-block">
-<ol start="240">
-<li>
-<p><code>240arrayPar.php</code>: Crea las siguientes funciones:</p>
-<ul>
-<li>Una función que averigüe si un número es par: <code>esPar(int $num): bool</code></li>
-<li>Una función que devuelva un array de tamaño <code>$tam</code> con números aleatorios comprendido entre <code>$min</code> y <code>$max</code> : <code>arrayAleatorio(int $tam, int $min, int $max) : array</code></li>
-<li>Una función que reciba un <code>$array</code> por referencia y devuelva la cantidad de números pares que hay almacenados: <code>arrayPares(array &amp;$array): int</code></li>
-</ul>
-</li>
-<li>
-<p><code>241parametrosVariables.php</code>: Crea las siguientes funciones:</p>
-<ul>
-<li>Una función que devuelva el mayor de todos los números recibidos como parámetros: <code>function mayor(): int</code>. Utiliza las funciones <code>func_get_args()</code>, etc... No puedes usar la función <code>max()</code>.</li>
-<li>Una función que concatene todos los parámetros recibidos separándolos con un espacio: <code>function concatenar(...$palabras) : string</code>. Utiliza el operador <code>...</code>.</li>
-</ul>
-</li>
-<li>
-<p><code>242matematicas.php</code>: Añade las siguientes funciones:</p>
-<ul>
-<li><code>digitos(int $num): int</code> → devuelve la cantidad de dígitos de un número.</li>
-<li><code>digitoN(int $num, int $pos): int</code> → devuelve el dígito que ocupa, empezando por la izquierda, la posición <code>$pos</code>.</li>
-<li><code>quitaPorDetras(int $num, int $cant): int</code> → le quita por detrás (derecha) <code>$cant</code> dígitos.</li>
-<li><code>quitaPorDelante(int $num, int $cant): int</code> → le quita por delante (izquierda) <code>$cant</code> dígitos.</li>
-</ul>
-<p>Para probar las funciones, haz uso tanto de paso de argumentos posicionales como argumentos con nombre.</p>
-</li>
-<li>
-<p><code>243biblioteca.php</code>: crea un archivo con funciones para sumar, restar, multiplicar y dividir dos números.<br />
-<code>243arrayFunciones.php</code>: haciendo uso de un array que almacene el nombre de las funciones del archivo anterior, a partir de dos números recibidos por URL, recorre el array e invoca a las funciones de manera dinámica haciendo uso de funciones variable.</p>
-</li>
-<li>
-<p><code>244euros.php</code>: Crea una biblioteca con dos funciones:</p>
-<ul>
-<li>peseta2euros: pasa de pesetas a euros</li>
-<li>euros2pesetas: pasa de euros a pesetas </li>
-</ul>
-<p>Cada función debe recibir dos parámetros:</p>
-<ul>
-<li>La cantidad a transformar</li>
-<li>La cotización, con un parámetro por defecto con el factor de transformación.</li>
-</ul>
-<p><code>244calculadoraEuros.php</code>: utiliza <code>243euros.php</code> y prueba las funciones pasando tanto cantidades con la cotización por defecto, como con nuevas cotizaciones. Recuerda que 1 euro son/eran 166.36 pesetas.</p>
-</li>
-<li>
-<p><code>245preparaTiquetCompra.php</code>: A partir de una cantidad de productos, leer el nombre y coste de la cantidad de productos indicados (similar al ejercicio 237, pero esta vez no hace falta crear el formulario con la cantidad, se recibe mediante un parámetro GET via URL).<br />
-<code>245imprimeTiquetCompra.php</code>: Tras leer los datos del tiquet de compra, enumera en una tabla los productos, con su precio en euros y pesetas, y finalmente, en una última fila, totalizar en ambas monedas.
-<a class="glightbox" href="imagenes/02/02p245.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img _="&amp;" align="right" alt="245" src="imagenes/02/02p245.png" width="200" /></a></p>
-</li>
-<li>A partir de los archivos creados en el ejercicio anterior, crea una plantilla mediante includes:
-<code>246preparaCompra.php</code>: similar a <code>245preparaTiquetCompra.php</code>, pero separando el encabezado (<em>Supermercado Severo</em> en <code>h1</code>) y el pie (<em>Tu supermercado de confianza</em>) en ficheros externos y referenciando a ellos mediante <code>include</code>.<br />
-<code>246listaCompra.php</code>: recibe los datos del anterior, y reutiliza parte de <code>245imprimeTiquetCompra.php</code> cambiando la tabla por una lista desordenada de los productos junto a su precio.</li>
-<li>
-<p>Vamos a simular un formulario de acceso:</p>
-<ul>
-<li><code>247login.php</code>: el formulario de entrada, que solicita el usuario y contraseña.</li>
-<li><code>247compruebaLogin.php</code>: recibe los datos y comprueba si son correctos (los usuarios se guardan en un array asociativo) pasando el control mediante el uso de <code>include</code> a:<ul>
-<li><code>247ok.php</code>: El usuario introducido es correcto</li>
-<li><code>247ko.php</code>: El usuario es incorrecto. Informar si ambos están mal o solo la contraseña. Volver a mostrar el formulario de acceso.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</div>
-<div class="tabbed-block">
-<p><p>Todos los ejercicios se deben realizar creando nuevas funciones para encapsular el código.
-Además de la propia función, el ejercicio debe contener código para poder probarlo.</p></p>
-<ol start="250">
-<li><code>250fraseImpares.php</code>: Lee una frase y devuelve una nueva con solo los caracteres de las posiciones impares.</li>
-<li><code>251vocales.php</code>: A partir de una frase, devuelve la cantidad de cada una de las vocales, y el total de ellas.</li>
-<li>
-<ul>
-<li>Letras totales y cantidad de palabras</li>
-<li>Una línea por cada palabra indicando su tamaño</li>
-</ul>
-<p><code>252analizador.php</code>: A partir de una frase con palabras sólo separadas por espacios, devolver</p>
-<p>Nota: no se puede usar <code>str_word_count</code><br />
-<code>252analizadorWC.php</code>: Investiga que hace la función <code>str_word_count</code>, y vuelve a hacer el ejercicio.</p>
-</li>
-<li>
-<p><code>253cani.php</code>: EsCrIbE uNa FuNcIóN qUe TrAnSfOrMe UnA cAdEnA eN cAnI.</p>
-</li>
-<li><code>254palindromo.php</code>: Escribe una función que devuelva un booleano indicando si una palabra es palíndroma (se lee igual de izquierda a derecha que de derecha a izquierda, por ejemplo, “ligar es ser agil”).</li>
-<li><code>255codificar.php</code>: Utilizando las funciones para trabajar con caracteres, a partir de una cadena y un desplazamiento: <ul>
-<li>Si el desplazamiento es 1, sustituye la A por B, la B por C, etc.</li>
-<li>El desplazamiento no puede ser negativo</li>
-<li>Si se sale del abecedario, debe volver a empezar</li>
-<li>Hay que respetar los espacios, puntos y comas.</li>
-</ul>
-</li>
-<li><code>256filtrado.html</code>: Crea un programa que permita al usuario leer un conjunto de números separados por espacios.<br />
-<code>256filtrado.php</code>: El programa filtrará los números leídos para volver a mostrar únicamente los números pares e indicará la cantidad existente.
-    <div class="language-text highlight"><pre><span></span><code><span id="__span-81-1"><a id="__codelineno-81-1" name="__codelineno-81-1"></a><a href="#__codelineno-81-1"><span class="linenos" data-linenos="1 "></span></a>Dame números: 1 4 7 9 23 10 8
-</span><span id="__span-81-2"><a id="__codelineno-81-2" name="__codelineno-81-2"></a><a href="#__codelineno-81-2"><span class="linenos" data-linenos="2 "></span></a>Los 3 números pares son: 4 10 8
-</span></code></pre></div></li>
-<li><code>257investiga.php</code>: Investiga las siguientes funciones de cadena (explica para qué sirven mediante comentarios, y programa un pequeño ejemplo de cada una de ellas): <code>ucwords</code>, <code>strrev</code>, <code>str_repeat</code> y <code>md5</code>.</li>
-</ol>
-<p>Los siguientes ejercicios se basan en la generación de números aleatorios.</p>
-<ol start="260">
-<li><code>260generador.php</code>: Crea una función que permite generar una letra aleatoria, mayúscula o minúscula.</li>
-<li><code>261generaContrasenya.php</code>: Crea una función que a partir de un tamaño, genere una contraseña aleatoria compuesta de letras y dígitos de manera aleatoria.</li>
-<li><code>262quinielas.php</code>: Crea las siguientes funciones:<ul>
-<li><code>quinigol() : array</code> &rarr; Genera un array multidimensional con 6 resultados aleatorios con combinaciones <code>[012M, 012M]</code></li>
-<li><code>quiniela() : array</code> &rarr; Genera un array con una combinación de quiniela generada de manera aleatoria: 14 resultados con <code>1X2</code> y el pleno al quince con <code>[012M, 012M]</code></li>
-<li><code>tabla(array $quiniela) : string</code> &rarr; transforma un array de una quniela en una tabla HTML</li>
-</ul>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</details>
 
 
 
@@ -2867,7 +2544,7 @@ Además de la propia función, el ejercicio debe contener código para poder pro
     <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "toc.integrate", "content.tabs.link", "content.code.copy", "content.code.select", "navigation.top", "content.code.annotate"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      <script src="assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
