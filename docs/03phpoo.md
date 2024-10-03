@@ -531,6 +531,25 @@ final class Microondas extends Producto {
 }
 ```
 
+## Composición
+
+Es una técnica de programación que permite crear objetos complejos a partir de otros más simples. Se basa en la relación "tiene un" en lugar de "es un".
+
+El problema de la herencia en los lenguajes de programación más tradicionales es que no se puede heredar de más de una clase a la vez. La composición permite que un objeto contenga a otro, y así se pueden reutilizar los métodos de la clase contenida.
+
+La Herencia presenta varios problemas:
+
+- **Jerarquía rígida**: La herencia es una relación permanente y a menudo rígida. No se puede cambiar en tiempo de ejecución.
+- **inconsistencia**: Al heredar se hereda todo, incluso lo que no se necesita. Esto puede dar lugar a casos incongruentes, ya que no tiene sentido en algunos casos ciertos métodos o propiedades.
+- **Acoplamiento fuerte**: La herencia crea una relación fuerte entre las clases. Si cambia una clase, es probable que tenga que cambiar la otra.
+- **Complejidad**: La herencia puede hacer que el código sea más difícil de entender, y también es dificil de conocer de dónde proviene un método o propiedad.	
+
+Frente a estos problemas, la composición ofrece una solución más flexible y menos acoplada. En lugar de heredar de una clase, esta se `compone` de otras `funcionalidades`.
+
+Este tema es muy extenso y sale fuera del temario de este módulo, pero es importante que conozcas que existe y que es una técnica muy utilizada en el mundo de la programación.
+
+Para más información, revisa este [**video**](https://youtu.be/r98HJSns7ZM).
+
 ## Interfaces
 
 Permite definir un contrato con las firmas de los métodos a cumplir. Así pues, sólo contiene declaraciones de funciones y todas deben ser públicas.
@@ -614,6 +633,227 @@ class Libro {
     }
 }
 ```
+
+#### Sintaxis Fluent (Fluida)
+
+Este patrón de diseño se conoce como `Fluent Interface` y se utiliza para crear un código más legible y fácil de entender. Es como si se estuviera escribiendo una frase en inglés, donde cada método es una palabra, y un conjunto de palabras forman una frase (una acción).
+
+Un ejemplo de esto sería para realizar validaciones que lleva a cabo `Laravel`:
+
+``` php
+<?php
+$rules = [
+    'id' => Rule::int()
+                ->required(),
+
+    'name' => Rule::string()
+                    ->required()
+                    ->minLength(3)
+                    ->toString(),
+
+    'email' => Rule::string()
+                    ->required()
+                    ->email()
+                    ->toArray(),
+
+    'role_id' => Rule::modelExists(Role::class),
+];
+```
+
+En este ejemplo vemos como se encadenan los métodos `int()`, `required()`, `string()`, `minLength(3)`, `toString()`, `toArray()`, `email()`, ... haciendo realmente legible el código. También el formato en multilínea ayuda a que sea más legible.
+
+En el caso de `name`, se está validando que sea un string, que sea requerido, que tenga una longitud mínima de 3 caracteres y que se convierta a string.
+
+Si no se utilizara el patrón `Fluent Interface`, el código sería mucho más largo y menos legible.
+
+``` php	
+<?php
+$rules = [
+    'id' => Rule::int();
+    'name' => Rule::string();
+
+    'email' => Rule::string();
+    'role_id' => Rule::modelExists(Role::class);
+];
+
+$rules['name']->required();
+$rules['name']->minLength(3);
+$rules['name']->toString();
+
+$rules['email']->required();
+$rules['email']->email();
+$rules['email']->toArray();
+
+//...
+//Como se puede aprecer el código es mucho más largo y menos legible
+```
+
+## Enumerados
+
+Los enumerados son una característica fundamental en muchos lenguajes de programación, ya que permiten evitar los [`magic numbers`](https://dev.to/ruben_alapont/magic-numbers-and-magic-strings-its-time-to-talk-about-it-ci2) (números mágicos) y los `magic strings` (cadenas mágicas), y además permiten agrupar valores relacionados bajo un mismo nombre.
+
+Esto tiene muchas ventajas:
+
+- Limitar el rango de valores posibles que una variable puede tener.
+- Mejorar la legibilidad del código.
+- Errores más fáciles de detectar, ya que el IDE puede ofrecer autocompletado.
+- Facilitar la refactorización del código.
+- y muchos más...
+
+Sin los enumerados, se podría hacer algo similar con constantes:
+
+``` php
+<?php
+class Genero {
+    const PENDIENTE = 1;
+    const ACEPTADO = 2;
+    const RECHAZADO = 3;
+}
+
+$estado = Genero::PENDIENTE;
+```
+pero el uso de constantes no es tan seguro como el uso de enumerados, ya que las constantes son simplemente valores que no tienen ninguna relación entre sí.
+
+**En PHP 8.1 se ha añadido la posibilidad de definir enumerados mediante la palabra clave `enum`.**
+
+Los enumerados realmente son clases que extienden de `Enum` y que contienen constantes públicas y estáticas, todas relacionadas entre sí, y que se pueden utilizar como si fueran valores primitivos.
+
+Un enumerado puede tener un `Backed Type` que es el tipo de dato que se utilizará para almacenar los valores del enumerado. Si no se especifica, se utilizará `int`. 
+
+Esto es muy importante, ya que en muchas ocasiones en Base de Datos se almacenan el valor, pero ese valor  por si mismo no dice nada a un desarrollador. Por ejemplo, si en una tabla de usuarios se almacena el género, si se almacena un 1, no se sabe si es hombre o mujer. Por eso, es importante que el valor almacenado sea un entero, pero que se pueda acceder a él mediante un nombre más descriptivo.
+
+Para saber si un un valor que viene de la BD, o que tenemos almacenado en una variable, es un `Hombre` o una `Mujer`, se puede hacer de la siguiente manera:
+
+``` php
+<?php
+$genero = 1; //Valor obtenido desde BD o de cualquier otro sitio
+
+if ($genero == 1) {
+    echo "Hombre";
+} else if ($genero == 2) {
+    echo "Mujer";
+}
+```
+
+Pero esto no es nada legible, tenemos que conferirle el significado a los valores, esto es lo que se conocer como `Magic Numbers`, números que tienen un significado especial en el código, pero que puede cambiar en cualquier momento, y si eso ocurre tendriamos que cambiar todo el código relacionado.
+
+Con los enumerados esto se soluciona, ya que podemos hacer lo siguiente:
+
+``` php
+<?php
+enum Genero {
+    case HOMBRE;
+    case MUJER;
+    case OTROS;
+}
+?>
+```
+
+En este caso el valor asociado a cada constante, se le asigna automáticamente, y es un entero que empieza en 0 y va incrementando en 1 por cada constante que se añade. Pero este comportamiento se puede cambiar, y se puede asignar un valor específico a cada constante, ya sea un entero o un string.
+
+
+=== "Valor tipo Entero"
+    ``` php
+    <?php
+    enum Genero: int {
+        case MUJER = 1;
+        case HOMBRE = 2;
+        case OTROS = 3;
+    }
+
+    $genero = Genero::MUJER;
+
+    ```
+
+=== "Valor tipo String"
+    ``` php
+    <?php
+    enum Genero: String {
+        case MUJER = "M";
+        case HOMBRE = "H";
+        case OTROS = "O";
+    }
+
+    $genero = Genero::MUJER;
+    ```
+Como se puede apreciar, el código no cambiaría, pero la legibilidad del código mejoraría. Si en un futuro se cambia el valor de `MUJER` de `1` a `2`, no habría que cambiar nada más en el código, ya que el valor de `MUJER` se obtiene mediante `Estado::MUJER`.
+
+También los enumerados pueden tener métodos, que se pueden utilizar para obtener información sobre el enumerado.
+
+``` php
+<?php
+enum Genero {
+    case HOMBRE;
+    case MUJER;
+    case OTROS;
+
+    public function esHombre(): bool {
+        return $this == self::HOMBRE;
+    }
+
+    public function esMujer(): bool {
+        return $this == self::MUJER;
+    }
+
+    public function esOtros(): bool {
+        return $this == self::OTROS;
+    }
+}
+
+$genero = Genero::HOMBRE;
+
+if ($genero->esHombre()) {
+    echo "Hombre";
+} else if ($genero->esMujer()) {
+    echo "Mujer";
+} else if ($genero->esOtros()) {
+    echo "Otros";
+}
+```
+
+Además también se pueden incluir dentro de Switch, Match, foreach, etc.
+
+``` php
+<?php
+enum Genero {
+    case HOMBRE;
+    case MUJER;
+    case OTROS;
+}
+
+$genero = Genero::HOMBRE;
+
+//La ventaja de los enumerados es que el IDE nos ofrecerá autocompletado, y te avisará si existe algún tipo que no estás incluyendo en el switch
+switch ($genero) {
+    case Genero::HOMBRE:
+        echo "Hombre";
+        break;
+    case Genero::MUJER:
+        echo "Mujer";
+        break;
+    case Genero::OTROS:
+        echo "Otros";
+        break;
+}
+
+//Con match es más sencillo
+match ($genero) {
+    Genero::HOMBRE => "Hombre",
+    Genero::MUJER => "Mujer",
+    Genero::OTROS => "Otros",
+};
+
+//También se pueden recorrer con foreach
+foreach (Genero::getValues() as $genero) {
+    echo $genero;
+}
+```
+
+En resumen, los enumerados son una herramienta muy potente que nos permite mejorar la legibilidad del código, y evitar errores en el futuro.
+
+!!! tip "Más información"
+    Para conocer más en profuncidad los enumerados, revisa esta [guía](extra/03/03.1.enumerados_avanzado.md).
+
 
 ## Métodos mágicos
 
