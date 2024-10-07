@@ -20,11 +20,82 @@
     7. Se han aplicado los principios de la programación orientada a objetos. 
     8. Se ha probado y documentado el código.
 
-## Clases y Objetos
+## Paradigma de la Programación Orientada a Objetos
+
+La programación orientada a objetos (POO) es un paradigma de programación que utiliza objetos y sus interacciones para diseñar aplicaciones y programas informáticos. Está basado en varias técnicas, incluyendo herencia, abstracción, polimorfismo y encapsulamiento.
+
+> 💡La POO y la programación estructura son dos de los paradigmas de programación más comunes. La programación estructurada se basa en la secuencia de instrucciones, mientras que la POO se basa en la interacción de objetos.
+
+La POO y la programación estructura no son excluyentes, un programa basado en objetos seguirá teniendo variables, bucles y sentencias condicionales, no obstante, la POO permite una mayor modularidad, reutilización del código, será más legible y escalable.
 
 PHP sigue un paradigma de programación orientada a objetos (POO) basada en clases.
 
-Un clase es un plantilla que define las propiedades y métodos para poder crear objetos. De este manera, un objeto es una instancia de una clase.
+#### Clases y Objetos
+
+Un **objeto** en términos de POO no se diferencia mucho de lo que conocemos como un objeto en la vida real. Pensemos por ejemplo en un coche. Nuestro coche sería un objeto concreto de la vida real, igual que el coche del vecino, o el coche de un compañero de trabajo, o un deportivo que vimos por la calle el fin de semana pasado… Todos esos coches serían objetos concretos que podemos ver y tocar. Usando la terminología de la POO diríamos que son **instancias**.
+
+Tanto mi coche como el coche del vecino tienen algo en común, ambos son coches. En este caso mi coche y el coche del vecino serían *instancias* (objetos) y *coche* (a secas) sería una clase. La palabra coche define algo genérico, es una `abstracción`, no es un coche concreto sino que hace referencia a algo que tiene una serie de `propiedades` como matrícula, marca, modelo, color, etc. Este conjunto de propiedades se denominan `atributos o variables de instancia`.
+
+!!! info "Puntos clave"
+    * **Clase**: Concepto abstracto que denota una serie de cualidades, por ejemplo coche.
+    * **Instancia**: Objeto palpable, que se deriva de la concreción de una clase, por ejemplo *mi coche*.
+    * **Atributos**: Conjunto de características que comparten los objetos de una clase, por ejemplo para la clase *coche* tendríamos *matrícula, marca, modelo, color y número de plazas*..
+
+
+## Encapsulamiento y ocultación
+
+Uno de los pilares en los que se basa la Programación Orientada a Objetos es el **encapsulamiento**. Básicamente, el encapsulamiento consiste en definir todas las propiedades y el comportamiento de una clase dentro de esa clase; es decir, en la clase Coche estará definido todo lo concerniente a la clase Coche y en la clase Libro estará definido todo lo que tenga que ver con la clase Libro.
+El **encapsulamiento** parece algo obvio, casi de perogrullo, pero hay que tenerlo siempre muy presente al programar utilizando clases y objetos. En alguna ocasión puede que estemos tentados a mezclar parte de una clase con otra clase distinta para resolver un problema puntual. No hay que caer en esa trampa. Se deben escribir los programas de forma que cada cosa esté en su sitio. Sobre todo al principio, cuando definimos nuestras primeras clases, debemos estar pendientes de que todo está definido donde corresponde.
+
+La **ocultación** es una técnica que incorporan algunos lenguajes (entre ellos Java) que permite esconder los elementos que definen una clase, de tal forma que desde otra clase distinta no se pueden “ver las tripas” de la primera. La ocultación facilita, como veremos más adelante, el encapsulamiento.
+
+## Clases en PHP
+
+Las clases en PHP comienzan con una **letra mayúscula**. Es muy recomendable separar la implementación de las clases del programa principal en ficheros diferentes. Desde el programa principal se puede cargar la clase mediante `include o include_once` seguido del nombre del fichero de clase (este tema se tratará más adelante). `El nombre de la clase debe coincidir con el nombre del fichero que la implementa (con la extensión .php)`.
+
+Para declarar una clase, se utiliza la palabra clave `class` seguido del nombre de la clase. Para instanciar un objeto a partir de la clase, se utiliza `new`:
+
+**¿Cómo se le pasan datos cuando una instancia es creada?** a través del `constructor`. Este método es muy importante ya que se llamará siempre que se creen nuevos objetos de la clase y servirá generalmente para inicializar los valores de los atributos. En PHP, el constructor de una clase se define con el nombre *__construct()*
+
+A continuación tenemos un ejemplo muy sencillo. Se trata de la implementación de la clase Persona. Esta clase tendrá dos atributos: *nombre y profesión*.
+
+``` php
+<?php
+class Persona {
+    private $nombre;
+    private $profesion;
+    // Constructor
+    public function __construct($nom, $pro) {
+        $this->nombre = $nom;
+        $this->profesion = $pro;
+    }
+    public function presentarse() {
+        //Esto es con fines ilustrativos, no es recomendable mezclar HTML con PHP en el nivel de la clase
+        return "Hola, me llamo " . $this->nombre . " y soy " . $this->profesion;
+    }
+}
+```
+
+Los atributos se declaran privados y los métodos públicos, esto quiere decir que los atributos serán accesibles únicamente desde dentro de la clase y los métodos desde dentro y fuera de la clase.
+
+Ahora para llamar a la clase Persona y crear un objeto de la misma, se hace de la siguiente forma:
+
+``` php
+<?php
+//Se referencia al fichero donde está situada la clase. Más adelante veremos una forma de hacerlo de forma más automática.
+include_once 'Persona.php';
+
+$unTipo = new Persona("Pepe Pérez", "albañil");
+$unNota = new Persona("Rigoberto Peláez", "programador");
+//Para llamar a un método de la clase se utiliza -> seguido del nombre del método
+echo $unTipo->presentarse();
+echo $unNota->presentarse();
+
+var_dump($unNota);
+var_dump($unTipo);
+```	
+
+#### Niveles de acceso a las propiedades y métodos
 
 Tanto las propiedades como los métodos se definen con una visibilidad (quien puede acceder)
 
@@ -32,106 +103,31 @@ Tanto las propiedades como los métodos se definen con una visibilidad (quien pu
 * Protegido - `protected`: Sólo puede acceder la propia clase o sus descendientes.
 * Público - `public`: Puede acceder cualquier otra clase.
 
-Para declarar una clase, se utiliza la palabra clave `class` seguido del nombre de la clase. Para instanciar un objeto a partir de la clase, se utiliza `new`:
+> 💡 Este nivel de acceso se puede aplicar tanto a propiedades, como a métodos (incluido el constructor).
 
-``` php
-<?php
-class NombreClase {
-// propiedades
-// y métodos
-}
+*Para acceder a los métodos o propiedades de una clase se utiliza el operador `->`.*
 
-$ob = new NombreClase();
-```
-
-!!! important "Clases con mayúscula"
-    Todas las clases empiezan por letra mayúscula.
 
 Cuando un proyecto crece, es normal modelar las clases mediante UML (¿recordáis *Entornos de Desarrollo*?). La clases se representan mediante un cuadrado, separando el nombre, de las propiedades y los métodos:
 
 ![UML](imagenes/03/uml.png){ width=500 }
 
-Una vez que hemos creado un objeto, se utiliza el operador `->` para acceder a una propiedad o un método:
+!!! warning "Ficheros y clases"
+    Aunque se pueden declarar varias clases en el mismo archivo, es una mala práctica. Así pues, lo recomendado es que **cada fichero  contedrá una sola clase y se nombrará con el nombre de la clase**.
+    Como toda regla, hay excepciones, pero en general, es una buena práctica.
 
-``` php
-$objeto->propiedad;
-$objeto->método(parámetros);
-```
 
-Si desde dentro de la clase, queremos acceder a una propiedad o método de la misma clase, utilizaremos la referencia `$this`;
+### Objetos como parámetros o valor de retorno
 
-``` php
-$this->propiedad;
-$this->método(parámetros);  
-```
+Es recomendable indicar en el tipo de los parámatros el tipo de objeto que se espera. Si ese objeto puede ser *null* o se puede devolver *null* como retorno se pone `?` delante del nombre de la clase. (tipos nullables)
 
-Así pues, como ejemplo, codificaríamos una persona en el fichero `Persona.php` como:
+Los tipos nullables han sido muy comunes en otros lenguajes de programación (Null Safety) desde su nacimiento, pero en PHP no llegaron hasta la versión 7.1.
 
-``` php
-<?php
-class Persona {
-    private string $nombre;
+> 🔥 El poder comprobar que un objeto puede ser nulo o no, nos permite hacer comprobaciones más seguras y evitar errores de ejecución.
 
-    public function setNombre(string $nom) {
-        $this->nombre=$nom;
-    }
-
-    public function imprimir(){
-        echo $this->nombre;
-        echo '<br>';
-    }
-}
-
-$bruno = new Persona(); // creamos un objeto
-$bruno->setNombre("Bruno Díaz");
-$bruno->imprimir();
-```
-
-Aunque se pueden declarar varias clases en el mismo archivo, es una mala práctica. Así pues, cada fichero contedrá una sola clase, y se nombrará con el nombre de la clase.
-
-## Encapsulación
-
-Las propiedades se definen privadas o protegidas (si queremos que las clases heredadas puedan acceder).
-
-Para cada propiedad, se añaden métodos públicos (*getter/setter*):
-
-``` php
-public setPropiedad(tipo $param)
-public getPropiedad() : tipo
-```
-
-Las constantes se definen públicas para que sean accesibles por todos los recursos.
-
-``` php
-<?php
-class MayorMenor {
-    private int $mayor;
-    private int $menor;
-
-    public function setMayor(int $may) {
-        $this->mayor = $may;
-    }
-
-    public function setMenor(int $men) {
-        $this->menor = $men;
-    }
-
-    public function getMayor() : int {
-        return $this->mayor;
-    }
-
-    public function getMenor() : int {
-        return $this->menor;
-    }
-}
-```
-
-### Recibiendo y enviando objetos
-
-Es recomendable indicarlo en el tipo de parámetros. Si el objeto puede devolver nulos se pone `?` delante del nombre de la clase.
-
-!!! important "Objetos por referencia"
+!!! info "Objetos por referencia"
     Los objetos que se envían y reciben como parámetros siempre se pasan por referencia.
+
 
 ``` php hl_lines="2"
 <?php
@@ -151,7 +147,7 @@ echo "<br>Mayor: ".$resultado->getMayor();
 echo "<br>Menor: ".$resultado->getMenor();
 ```
 
-## Constructor
+### Constructor
 
 El constructor de los objetos se define mediante el método mágico `__construct`.
 Puede o no tener parámetros, pero sólo puede haber un único constructor.
@@ -175,7 +171,7 @@ $bruno = new Persona("Bruno Díaz");
 $bruno->imprimir();
 ```
 
-### Constructores en PHP 8
+#### Constructores en PHP 8
 
 Una de las grandes novedades que ofrece PHP 8 es la simplificación de los constructores con parámetros, lo que se conoce como *promoción de las propiedades del constructor*.
 
@@ -234,7 +230,88 @@ class Punto {
     ?>
     ```
 
-## Clases estáticas
+### Métodos mágicos
+
+Todas las clases PHP ofrecen un conjunto de métodos, también conocidos como *magic methods* que se pueden sobreescribir para sustituir su comportamiento. Algunos de ellos ya los hemos utilizado.
+
+Ante cualquier duda, es conveniente consultar la [documentación oficial](https://www.php.net/manual/es/language.oop5.magic.php).
+
+Los más destacables son:
+
+* `__construct()`
+* `__destruct()` → se invoca al perder la referencia. Se utiliza para cerrar una conexión a la BD, cerrar un fichero, ...
+* `__toString()` → representación del objeto como cadena. Es decir, cuando hacemos `echo $objeto` se ejecuta automáticamente este método.
+* `__get(propiedad)`, `__set(propiedad, valor)` → Permitiría acceder a las propiedad privadas, aunque siempre es más legible/mantenible codificar los *getter/setter*.
+* `__isset(propiedad)`, `__unset(propiedad)` → Permite averiguar o quitar el valor a una propiedad.
+* `__sleep()`, `__wakeup()` → Se ejecutan al recuperar (*unserialize^*) o almacenar un objeto que se serializa (*serialize*), y se utilizan para permite definir qué propiedades se serializan.
+* `__call()`, `__callStatic()` → Se ejecutan al llamar a un método que no es público. Permiten sobrecargan métodos.
+
+
+### Getters y Setters
+
+Los *getters* y *setters* son una forma de acceder a las propiedades de una clase de forma segura, este concepto viene heredado de otros lenguajes de programación como Java, aunque no por ello también hay que utilizarlo en PHP.
+
+**Por qué NO usar getters y setters en PHP. Patrón Tell don't Ask**
+
+Bajo este titular, la idea que subyace es que no tengo que utilizar el `get{Atributo}` para acceder o `set{Atributo}` para modificar una propiedad de una clase, siempre como norma general. De hecho es muy mala práctica el hacer esto, principalmente los *setters*, por varios motivos:
+
+- Mucho código boilerplate: se generan muchos métodos que no aportan nada, y solo ensucian la legibilidad del código.
+- Los *setters* rompen la lógida de negocio, en lugar de cambiar propiedad a propiedad, se debería cambiar el estado del objeto a través de un método que tenga coherencia, cambiando todas las propiedades que se requieran.
+- Los *setters*, o propiedades de acceso al valor de los atributos, solo se deberían incluir si aportan algo, es decir, esa información que aportan no se puede sustituir por otra información más completa.
+- Las funciones para obtener el valor del atributo (*getters*) no utilizar el patrón `get{Atributo}`, sino que simplemente se llamen como el atributo que exponen.
+- Depende del tipo de Clase/Objeto. Si es un objeto `anémico`, es decir, solo se utiliza para agrupar información bajo un mismo nombre y no tiene comportamiento, tiene sentido utilizar propiedades que accedan a esa información, y los *setters* en principio se deberían asignar a través de constructor.
+
+En resumen:
+
+- Una clase se deberían construir con todos los datos necesarios para su correcto funcionamiento, a través de su constructor.
+- Solo se debería cambiar su estado, a través de métodos que tengan sentido, y no a través de *setters*.
+- Para acceder a sus propiedades, se usen métodos/propiedades que encapsulen una lógica de negocio, y no simplemente para acceder a un valor independiente.
+
+Como bien dice `Margin Fowlers` en su libro `Refactoring`, [*Tell don't Ask*](https://martinfowler.com/bliki/TellDontAsk.html), es decir, no preguntes por el estado de un objeto para cambiarlo, simplemente dile lo que tiene que hacer y que él se encargue de hacerlo.
+
+En este [📹 video](https://youtu.be/Be-ULOIGAZk?list=PLZVwXPbHD1KP763vfD1SBK9fGcbn4JbaF) se explica detalladamente este concepto.
+
+En el siguiente ejemplo, se tiene una clase `User` que tiene 3 atributos privados, se accede a su nombre y edad con propiedades sin `get` y se construye a través del constructor y tien un método para indicar `isAdult` y `isHisBirthday`.
+
+``` php
+<?php
+class User {
+    private string $name;
+    private int $age;
+    private bool $isAdult;
+
+    public function __construct(string $name, int $age) {
+        $this->name = $name;
+        $this->age = $age;
+        $this->isAdult = $age >= 18;
+    }
+
+    public function name() : string {
+        return $this->name;
+    }
+
+    public function age() : int {
+        return $this->age;
+    }
+
+    //Se delega la responsabilidad de saber si es adulto a la clase, y no al que lo llama
+    public function isAdult() : bool {
+        return $this->isAdult;
+    }
+
+    //Se delega la responsabilidad de saber si es adulto a la clase, y no al que lo llama
+    public function isHisBirthday() : bool {
+        return date('d-m') === date('d-m', strtotime('today', strtotime('2022-01-01')));
+    }
+
+    public function __toString() : string {
+        return "User: {$this->name} - {$this->age} years old";
+    }
+}
+```	
+
+
+### Clases estáticas
 
 Son aquellas que tienen propiedades y/o métodos estáticos (también se conocen como *de clase*, por que su valor se comparte entre todas las instancias de la misma clase).
 
@@ -283,12 +360,54 @@ $prod3 = new Producto("Nintendo Switch");
 echo $prod3->mostrarResumen();
 ```
 
-## Introspección
+**Métodos estáticos**
+
+Al igual que las clases también se pueden definir métodos estáticos. Estos métodos no pueden acceder a las propiedades de la clase, pero sí a las propiedades estáticas.
+
+Para acceder a los métodos estáticos, se utiliza la misma sintaxis que para el acceso a las constantes definidas en una clase: `NombreClase::nombreMetodo()`
+
+``` php
+<?php
+class Producto {
+    const IVA = 0.23;
+    private static $numProductos = 0; 
+    private $codigo;
+
+    public function __construct(string $cod) {
+        self::$numProductos++;  //acceder a una propiedad estática
+        $this->codigo = $cod;
+    }
+
+    public function mostrarResumen() : string {
+        return "El producto ".$this->codigo." es el número ".self::$numProductos;
+    }
+
+    public static function getNumeroProductos() : int {
+        return self::$numProductos;
+    }
+}
+
+//Instanciamos varios productos
+$prod1 = new Producto("PS5");
+$prod3 = new Producto("Nintendo Switch");
+//Acceso al método estático
+echo Producto::getNumeroProductos();
+```
+
+!!! warning "Problemas de los métodos estáticos"
+    Los métodos estáticos tiene varios problemas, y no son recomendables en la mayoría de los casos:
+
+      - Ruptura con el modelo purista de la POO.
+      - Acoplamiento. Lo que deriva en poca cambiabilidad y dificultan el testing
+      - Ocultación de dependencias.
+
+
+#### Introspección
 
 Al trabajar con clases y objetos, existen un conjunto de funciones ya definidas por el lenguaje que permiten obtener información sobre los objetos:
 
 * `instanceof`: permite comprobar si un objeto es de una determinada clase
-* `get_class`: devuelve el nombre de la clase
+* `get_class`: devuelve el nombre de la clase, también a través de `$objeto::class`
 * `get_declared_class`: devuelve un array con los nombres de las clases definidas
 * `class_alias`: crea un alias
 * `class_exists` / `method_exists` / `property_exists`: `true` si la clase / método / propiedad está definida
@@ -326,16 +445,18 @@ if ($p instanceof Producto) {
 
 ## Herencia
 
-PHP soporta herencia simple, de manera que una clase solo puede heredar de otra, no de dos clases a la vez. Para ello se utiliza la palabra clave `extends`. Si queremos que la clase A hereda de la clase B haremos:
+La herencia es una de las características más importantes de la POO. Si definimos una serie de atributos y métodos para una clase, al crear una subclase, todos estos atributos y métodos se 'pasan' a la subclase. La subclase puede añadir nuevos atributos y métodos (extender), o modificar los existentes (sobreescribir).
+
+> 💡 PHP soporta herencia simple, de manera que una clase solo puede heredar de otra, no de dos clases a la vez. 
+
+
+Para aplicar la herencia se utiliza la palabra clave `extends`. Si queremos que la clase A hereda de la clase B haremos:
 
 ``` php
 class A extends B
 ```
 
-El hijo hereda los atributos y métodos públicos y protegidos.
-
-!!! warning "Cada clase en un archivo"
-    Como ya hemos comentado, deberíamos colocar cada clase en un archivo diferente para posteriormente utilizarlo mediante `include`. En los siguiente ejemplo los hemos colocado junto para facilitar su legibilidad.
+El hijo hereda los atributos y métodos públicos y protegidos (no los privados).
 
 Por ejemplo, tenemos una clase `Producto` y una `Tv` que hereda de `Producto`:
 
@@ -348,7 +469,7 @@ class Producto {
     public $PVP;
 
     public function mostrarResumen() {
-        echo "<p>Prod:".$this->codigo."</p>";
+        return "Prod:" . $this->codigo;
     }
 }
 
@@ -362,6 +483,7 @@ Podemos utilizar las siguientes funciones para averiguar si hay relación entre 
 
 * `get_parent_class(object): string`
 * `is_subclass_of(object, string): bool`
+* `instanceof`: para comprobar si un objeto es de una determinada clase (o de una clase de la que hereda).
 
 ``` php
 <?php
@@ -373,6 +495,7 @@ if ($t instanceof Producto) {
 
 $padre = get_parent_class($t);
 echo "<br>La clase padre es: " . $padre;
+
 $objetoPadre = new $padre;
 echo $objetoPadre->mostrarResumen();
 
@@ -381,7 +504,7 @@ if (is_subclass_of($t, 'Producto')) {
 }
 ```
 
-### Sobreescribir métodos
+#### Sobreescribir métodos
 
 Podemos crear métodos en los hijos con el mismo nombre que el padre, cambiando su comportamiento.
 Para invocar a los métodos del padre -> `parent::nombreMetodo()`
@@ -393,15 +516,15 @@ class Tv extends Producto {
    public $tecnologia;
 
    public function mostrarResumen() {
-      parent::mostrarResumen();
-      echo "<p>TV ".$this->tecnologia." de ".$this->pulgadas."</p>";
+      $resumenPadre = parent::mostrarResumen();
+      return $resumenPadre . "TV ". $this->tecnologia . " de " . $this->pulgadas;
    }
 }
 ```
 
-### Constructor en hijos
+#### Constructor en hijos
 
-En los hijos no se crea ningún constructor de manera automática. Por lo que si no lo hay, se invoca automáticamente al del padre. En cambio, si lo definimos en el hijo, hemos de invocar al del padre de manera explícita.
+En los hijos no se crea ningún constructor de manera automática. Por lo que si no lo hay, se invoca automáticamente al del padre. **En cambio, si lo definimos en el hijo, hemos de invocar al del padre de manera explícita**.
 
 === "PHP7"
 
@@ -415,7 +538,7 @@ En los hijos no se crea ningún constructor de manera automática. Por lo que si
         }
 
         public function mostrarResumen() {
-            echo "<p>Prod:".$this->codigo."</p>";
+            return "Prod:" . $this->codigo;
         }
     }
     
@@ -430,8 +553,8 @@ En los hijos no se crea ningún constructor de manera automática. Por lo que si
         }
 
         public function mostrarResumen() {
-            parent::mostrarResumen();
-            echo "<p>TV ".$this->tecnologia." de ".$this->pulgadas."</p>";
+            $resumenPadre = parent::mostrarResumen();
+            return $resumenPadre . "TV ". $this->tecnologia . " de " . $this->pulgadas;
         }
     }
     ```
@@ -455,19 +578,21 @@ En los hijos no se crea ningún constructor de manera automática. Por lo que si
             private int $pulgadas,
             private string $tecnologia)
         {
-            parent::__construct($codigo);
+            parent::__construct($codigo); //Se llama al constructor del padre
         }
 
         public function mostrarResumen() {
-            parent::mostrarResumen();
-            echo "<p>TV ".$this->tecnologia." de ".$this->pulgadas."</p>";
+            $resumenPadre = parent::mostrarResumen();
+            return $resumenPadre . "TV ". $this->tecnologia . " de " . $this->pulgadas;
         }
     }
     ```
 
-## Clases abstractas
+#### Clases abstractas
 
-Las clases abstractas obligan a heredar de una clase, ya que no se permite su instanciación. Se define mediante `abstract class NombreClase {`.  
+Las clases abstractas son `plantillas (clases)` que no se pueden utilizar directamente, sino que es requerido hacerlo a través de clases **hijas (subclases)**, ya que no se permiten su **instanciación**.<br>
+Se define mediante la palabra clave **abstract** `abstract class NombreClase {`.  
+
 Una clase abstracta puede contener propiedades y métodos no-abstractos, y/o métodos abstractos.
 
 ``` php
@@ -483,7 +608,7 @@ abstract class Producto {
 }
 ```
 
-Cuando una clase hereda de una clase abstracta, obligatoriamente debe implementar los métodos que tiene el padre marcados como abstractos.
+Cuando una clase hereda de una clase abstracta, **obligatoriamente debe implementar los métodos que tiene el padre marcados como abstractos**.
 
 ``` php
 <?php
@@ -501,9 +626,17 @@ $t = new Tv();
 echo $t->getCodigo();
 ```
 
-## Clases finales
+#### Clases finales
 
-Son clases opuestas a abstractas, ya que evitan que se pueda heredar una clase o método para sobreescribirlo.
+Son clases opuestas a abstractas, ya que evitan que se pueda heredar una clase. Se denominan **finales** ya que con ellas finaliza la jerarquía de clases.
+
+Se define mediante la palabra clave **final** `final class NombreClase {`. 
+
+!!! warning "Puntos importantes"
+    - Un método `final` no puede ser sobrescrito por una clase hija.
+    - Una clase `final` no puede ser heredada.
+    - Y como es evidente, una clase `final` no puede ser `abstracta`
+
 
 ``` php
 <?php
@@ -531,7 +664,7 @@ final class Microondas extends Producto {
 }
 ```
 
-## Composición
+#### Composición vs Herencia
 
 Es una técnica de programación que permite crear objetos complejos a partir de otros más simples. Se basa en la relación "tiene un" en lugar de "es un".
 
@@ -552,7 +685,7 @@ Para más información, revisa este [**video**](https://youtu.be/r98HJSns7ZM).
 
 ## Interfaces
 
-Permite definir un contrato con las firmas de los métodos a cumplir. Así pues, sólo contiene declaraciones de funciones y todas deben ser públicas.
+Permite definir un **contrato** con las firmas de los métodos que una clase que lo (utilize) debe implementar o definir. Todos los métodos deben ser `públicos` y no puede contener `propiedades`.
 
 Se declaran con la palabra clave `interface` y luego las clases que cumplan el contrato lo realizan mediante la palabra clave `implements`.
 
@@ -587,107 +720,133 @@ class Producto implements MostrableTodo, Facturable {
 }
 ```
 
-## Métodos encadenados
+**¿Cúando usar `interfaces`?**
 
-Sigue el planteamiento de la programación funcional, y también se conoce como *method chaining*. Plantea que sobre un objeto se realizan varias llamadas.
+Son útiles cuando se quiere que múltiples clases tengan un comportamiento común, y implementen (obligatoriamente) un conjunto de métodos. Permiten una forma de `forzar` una estructura común a través de diferentes clases, sin necesidad de heredar de una clase común, permitiendo el polimorfismo y la reutilización de código.
 
-``` php
-<?php
-$p1 = new Libro();
-$p1->setNombre("Harry Potter");
-$p1->setAutor("JK Rowling");
-echo $p1;
+> 🔥 Las `interfaces` permiten herencia múltiple, es decir, una clase puede `heredar` de múltiples interfaces. 
 
-// Method chaining
-$p2 = new Libro();
-$p2->setNombre("Patria")->setAutor("Aramburu");
-echo $p2;
-```
 
-Para facilitarlo, vamos a modificar todos sus métodos mutadores (que modifican datos, *setters*, ...) para que devuelvan una referencia a `$this`:
+!!! info "Diferencias entre clases abstractas e interfaces"
+    |  | Clases Abstractas | Interfaces |
+    | --- | --- | --- |
+    | **Herencia vs Implementación** | proporcionan una forma de definir métodos y propiedades comunes que las subclases heredarán. | So definen un contrato que las clases deben cumplir implementando métodos específicos |
+    | **Modifidores de Acceso** | pueden tener métodos y propiedades con diferentes modificadores de acceso (público, protegido, privado) | solo pueden tener métodos con acceso público |
+    | **Múltiple herencia** | Solo herencia única, donde una subclase solo puede heredar de una clase abstracta | se pueden utilizar para la herencia múltiple, donde una clase puede implementar múltiples interfaces |
+    | **Implementación de métodos** |  pueden tener métodos abstractos (sin implementación) y métodos concretos (con implementación) |  solo pueden tener firmas de métodos sin detalles de implementación |
+    | **Instanciación** | no se pueden instanciar | no se pueden instanciar |
 
-``` php
-<?php
-class Libro {
-    private string $nombre;
-    private string $autor;
 
-    public function getNombre() : string {
-        return $this->nombre;
-    }
-    public function setNombre(string $nombre) : Libro { 
-        $this->nombre = $nombre;
-        return $this;
-    }
+**¿Cúando usar `interfaces` o `Clases Abstractas`?**
 
-    public function getAutor() : string {
-        return $this->autor;
-    }
-    public function setAutor(string $autor) : Libro {
-        $this->autor = $autor;
-        return $this;
-    }
+No hay una regla clara sobre esto, pero en general, se recomienda usar interfaces cuando se quiere definir un contrato que las clases deben cumplir, pero no se necesita una implementación común. Por otro lado, las clases abstractas son útiles cuando se quiere proporcionar una implementación común para un conjunto de clases relacionadas.
 
-    public function __toString() : string {
-        return $this->nombre." de ".$this->autor;
-    }
-}
-```
+Las clases abstractas utilizan el mecanismo de `herencia` para transmitir ese comportamiento común, mientras las interfaces es un contrato que las clases deben `implementar`, sin por ello implicar una relación de `jerarquía`. 
 
-#### Sintaxis Fluent (Fluida)
+Las `interfaces` permiten que una clase se comporte de una manera específica (solo para esa comportamiento que la interfaz define), pero no impone nada más, el resto de la clase es libre de implementar como se quiera. De esta forma, las interfaces son muy útiles para aplicar el polilorfismo.
 
-Este patrón de diseño se conoce como `Fluent Interface` y se utiliza para crear un código más legible y fácil de entender. Es como si se estuviera escribiendo una frase en inglés, donde cada método es una palabra, y un conjunto de palabras forman una frase (una acción).
+!!! example "Casos de uso más complejos"
 
-Un ejemplo de esto sería para realizar validaciones que lleva a cabo `Laravel`:
+    === "Clase Abstracta con interfaces"
 
-``` php
-<?php
-$rules = [
-    'id' => Rule::int()
-                ->required(),
+        Una clase abstracta puede implementar una interfaz, y las subclases de esa clase abstracta heredarán la implementación de la interfaz.
 
-    'name' => Rule::string()
-                    ->required()
-                    ->minLength(3)
-                    ->toString(),
+        ```php
+        <?php
+        interface A
+        {
+            public function foo(string $s): string;
 
-    'email' => Rule::string()
-                    ->required()
-                    ->email()
-                    ->toArray(),
+            public function bar(int $i): int;
+        }
 
-    'role_id' => Rule::modelExists(Role::class),
-];
-```
+        // An abstract class may implement only a portion of an interface.
+        // Classes that extend the abstract class must implement the rest.
+        abstract class B implements A
+        {
+            public function foo(string $s): string
+            {
+                return $s . PHP_EOL;
+            }
+        }
 
-En este ejemplo vemos como se encadenan los métodos `int()`, `required()`, `string()`, `minLength(3)`, `toString()`, `toArray()`, `email()`, ... haciendo realmente legible el código. También el formato en multilínea ayuda a que sea más legible.
+        class C extends B
+        {
+            public function bar(int $i): int
+            {
+                return $i * 2;
+            }
+        }
+        ?>
+        ```
 
-En el caso de `name`, se está validando que sea un string, que sea requerido, que tenga una longitud mínima de 3 caracteres y que se convierta a string.
+    === "Extendiendo e implementando a la vez"
 
-Si no se utilizara el patrón `Fluent Interface`, el código sería mucho más largo y menos legible.
+        Una clase puede heredar de otra clase y, al mismo tiempo, implementar una o más interfaces.
 
-``` php	
-<?php
-$rules = [
-    'id' => Rule::int();
-    'name' => Rule::string();
+        ```php
+        <?php
 
-    'email' => Rule::string();
-    'role_id' => Rule::modelExists(Role::class);
-];
+            class One
+            {
+                /* ... */
+            }
 
-$rules['name']->required();
-$rules['name']->minLength(3);
-$rules['name']->toString();
+            interface Usable
+            {
+                /* ... */
+            }
 
-$rules['email']->required();
-$rules['email']->email();
-$rules['email']->toArray();
+            interface Updatable
+            {
+                /* ... */
+            }
 
-//...
-//Como se puede aprecer el código es mucho más largo y menos legible
-```
+            // The keyword order here is important. 'extends' must come first.
+            class Two extends One implements Usable, Updatable
+            {
+                /* ... */
+            }
+        ?>
+        ```
 
+    === "Herencia múltiple de interfaces"
+
+        Se puede crear una jerarquía de interfaces, donde una interfaz puede extender una o más interfaces.
+
+        ```php
+        <?php
+        interface A
+        {
+            public function foo();
+        }
+
+        interface B
+        {
+            public function bar();
+        }
+
+        interface C extends A, B
+        {
+            public function baz();
+        }
+
+        class D implements C
+        {
+            public function foo()
+            {
+            }
+
+            public function bar()
+            {
+            }
+
+            public function baz()
+            {
+            }
+        }
+        ?>
+        ```
 ## Enumerados
 
 Los enumerados son una característica fundamental en muchos lenguajes de programación, ya que permiten evitar los [`magic numbers`](https://dev.to/ruben_alapont/magic-numbers-and-magic-strings-its-time-to-talk-about-it-ci2) (números mágicos) y los `magic strings` (cadenas mágicas), y además permiten agrupar valores relacionados bajo un mismo nombre.
@@ -855,25 +1014,10 @@ En resumen, los enumerados son una herramienta muy potente que nos permite mejor
     Para conocer más en profuncidad los enumerados, revisa esta [guía](extra/03/03.1.enumerados_avanzado.md).
 
 
-## Métodos mágicos
 
-Todas las clases PHP ofrecen un conjunto de métodos, también conocidos como *magic methods* que se pueden sobreescribir para sustituir su comportamiento. Algunos de ellos ya los hemos utilizado.
+## Namespaces
 
-Ante cualquier duda, es conveniente consultar la [documentación oficial](https://www.php.net/manual/es/language.oop5.magic.php).
-
-Los más destacables son:
-
-* `__construct()`
-* `__destruct()` → se invoca al perder la referencia. Se utiliza para cerrar una conexión a la BD, cerrar un fichero, ...
-* `__toString()` → representación del objeto como cadena. Es decir, cuando hacemos `echo $objeto` se ejecuta automáticamente este método.
-* `__get(propiedad)`, `__set(propiedad, valor)` → Permitiría acceder a las propiedad privadas, aunque siempre es más legible/mantenible codificar los *getter/setter*.
-* `__isset(propiedad)`, `__unset(propiedad)` → Permite averiguar o quitar el valor a una propiedad.
-* `__sleep()`, `__wakeup()` → Se ejecutan al recuperar (*unserialize^*) o almacenar un objeto que se serializa (*serialize*), y se utilizan para permite definir qué propiedades se serializan.
-* `__call()`, `__callStatic()` → Se ejecutan al llamar a un método que no es público. Permiten sobrecargan métodos.
-
-## Espacio de nombres
-
-Desde PHP 5.3 y también conocidos como *Namespaces*, permiten organizar las clases/interfaces, funciones y/o constantes de forma similar a los paquetes en *Java*.
+Desde PHP 5.3 y también conocidos como *Namespaces*, permiten organizar las clases/interfaces, funciones y/o constantes de forma similar a los paquetes en *Java*, evitando conflictos de nombres, y que por tanto, puedan existir clases con el mismo nombre en diferentes *namespaces*.
 
 !!! tip "Recomendación"
     Un sólo namespace por archivo y crear una estructura de carpetas respectando los niveles/subniveles (igual que se hace en *Java*)
@@ -901,48 +1045,92 @@ class Producto {
 
 Para referenciar a un recurso que contiene un namespace, primero hemos de tenerlo disponible haciendo uso de `include` o `require`. Si el recurso está en el mismo *namespace*, se realiza un acceso directo (se conoce como acceso sin cualificar).
 
-Realmente hay tres tipos de acceso:
+Los `namespace` son una forma de organizar las clases en niveles y subniveles, al igual que hacemos con las carpetas en el sistema de archivos.
 
-* sin cualificar: `recurso`
-* cualificado: `rutaRelativa\recurso` → no hace falta poner el *namespace* completo
-* totalmente cualificado: `\rutaAbsoluta\recurso`
+Para poder utilizarlos es necesario que entiendas la sintasis para definirlos y referenciarlos. 
+
+
+#### Declarar un Namespace
+
+En su forma más simple, un espacio de nombres se declara al comienzo de un archivo PHP utilizando la palabra reservada `namespace`  seguida del nombre deseado del espacio de nombres. Debe ser la primera declaración del archivo, antes de cualquier otro código:
+
+``` php
+// Digamos que este es el archivo MyProject.php en la raíz del proyecto 
+<?php 
+
+namespace  MyProject ; 
+
+class  User  {}
+    
+```
+En el ejemplo anterior, la clase `User` forma paret del espacio de nombres `MyProject`, es como si hubieramos archivado esta esta clase en una carpeta llamada `MyProject`.
+
+También se pueden anidar los espacios de nombres, de la misma forma que se hace con las carpetas en un sistema de archivos:
 
 ``` php
 <?php
-namespace Dwes\Ejemplos;
 
-include_once("Producto.php");
+namespace MyProject\Database ;
 
-echo IVA; // sin cualificar
-echo Utilidades\IVA; // acceso cualificado. Daría error, no existe \Dwes\Ejemplos\Utilidades\IVA
-echo \Dwes\Ejemplos\IVA; // totalmente cualificado
-
-$p1 = new Producto(); // lo busca en el mismo namespace y encuentra \Dwes\Ejemplos\Producto
-$p2 = new Model\Producto(); // daría error, no existe el namespace Model. Está buscando \Dwes\Ejemplos\Model\Producto
-$p3 = new \Dwes\Ejemplos\Producto(); // \Dwes\Ejemplos\Producto
+class  Connection  {}
 ```
+Aquí, la clase `Connection` se ubica dentro de un subespacio de nombres *Database*, debajo del espacio de nombres principal *MyProject*.
 
-Para evitar la referencia cualificada podemos declarar el uso mediante `use` (similar a hacer `import` en *Java*). Se hace en la cabecera, tras el `namespace`:
+> 🔥 En PHP, por lo general, el espacio de nombres debe coincidir con la estructura de carpetas en la que se ubica el archivo.
 
-Los tipos posibles son:
+#### Importación de Namespaces
 
-* `use const nombreCualificadoConstante`
-* `use function nombreCualificadoFuncion`
-* `use nombreCualificadoClase`
-* `use nombreCualificadoClase as NuevoNombre` // para renombrar elementos
+Cuando desea utilizar una clase o función de un espacio de nombres, se puede realizar de varias formas:
 
-Por ejemplo, si queremos utilizar la clase `\Dwes\Ejemplos\Producto` desde un recurso que se encuentra en la raíz, por ejemplo en `inicio.php`, haríamos:
+1. Por su `nombre completo` (totalmente cualificado)
 
-``` php
-<?php
-include_once("Dwes\Ejemplo\Producto.php");
+    ``` php
+    <?php 
 
-use const Dwes\Ejemplos\IVA;
-use \Dwes\Ejemplos\Producto;
+    require_once ( "app/User.php" ); // Nos desharemos de eso más tarde... ;) 
 
-echo IVA;
-$p1 = new Producto();
-```
+    // Digamos que este es el archivo index.php en la raíz del proyecto 
+    $user = new  \MyProject\User ; //Totalmente cualificado
+    ```
+
+2. Por su `nombre relativo` (parcialmente cualificado)
+
+    ``` php
+    <?php
+
+    require_once ( "app/Database/Connection.php" ); // nos desharemos de él más tarde ;) 
+
+    use MyProject\Database\Connection; 
+
+    // Sin use, sería necesario escribir el espacio de nombres completo 
+    $conn = new \MyProject\Database\Connection ; 
+
+    // Ahora, gracias a la declaración "use", podemos hacer lo siguiente: 
+    $conn = new Connection ;
+
+    ```
+    Si se requiere utilizar varias clases de un mismo espacio de nombres, se pueden importar todas a la vez:
+
+    ``` php
+    use MyProject\Database\{Connection, QueryBuilder, RecordSet}; 
+    ```
+
+3. Uso de `alias` para simplificar el acceso
+
+    A veces los nombres de las clases son bastante largos, por lo que se pueden utilizar alias para simplificar el acceso a las clases:
+
+    ``` php
+    require_once ("app/Services/SomeDataProviderAuthService.php" ) //ten paciencia... 
+
+    use  MyProject\Services\SomeDataProviderAuthService as SomeDPAuth ; 
+
+    // Si no usáramos alias, tendríamos que hacer: 
+    $conn = new  SomeDataProviderAuthService ; 
+
+    // pero gracias a los alias, podemos usar: 
+    $conn = new  SomeDPAuth ;
+
+    ```
 
 !!! tip "To `use` or not to `use`"
     En resumen, `use` permite acceder sin cualificar a recursos que están en otro *namespace*. Si estamos en el mismo espacio de nombre, no necesitamos `use`.
@@ -1012,6 +1200,34 @@ spl_autoload_register( function( $nombreClase ) {
     ?>
     ```
 
+#### Carga automática con Composer	
+
+`Composer` es una herramienta de administración de dependencias para PHP (como npm en Node). Además de administrar las dependencias de su proyecto, Composer también puede manejar la carga automática de clases. Composer sigue la especificación [PSR-4](https://www.php-fig.org/psr/psr-4/), por lo que si sigue la convención de nombres de archivos y espacios de nombres, Composer puede cargar automáticamente las clases de su proyecto.
+
+Esta configuración se realiza dentro del fichero de configuración de Composer `composer.json`:
+
+``` json
+{
+    "autoload": {
+        "psr-4": {
+            "MyProject\\": "app/"
+        }
+    }
+}
+```
+En este ejemplo, Composer buscará las clases del espacio de nombres `MyProject` en la carpeta `app/` del proyecto.
+
+Una vez realizado esto, se debe ejecutar el comando `composer dump-autoload` para que Composer genere el archivo `vendor/autoload.php` que se encargará de cargar automáticamente las clases.
+
+Este archivo `autoload.php` se incluirá en el archivo principal de su proyecto (normalmente index.php), y se encargará de cargar automáticamente las clases cuando sea necesario.
+
+``` php
+require 'vendor/autoload.php';
+```
+
+!!! tip "Recuerda"
+    Composer se estudiará en profundidad más adelante en el curso.
+
 ## Gestión de Errores
 
 PHP clasifica los errores que ocurren en diferentes niveles. Cada nivel se identifica con una constante. Por ejemplo:
@@ -1065,7 +1281,7 @@ A continuación tenemos un ejemplo mediante código:
     Error de tipo Warning: Division by zero.
     ```
 
-## Excepciones
+### Excepciones
 
 La gestión de excepciones forma parte desde PHP 5. Su funcionamiento es similar a *Java*, haciendo uso de un bloque `try / catch / finally`.
 Si detectamos una situación anómala y queremos lanzar una excepción, deberemos realizar `throw new Exception` (adjuntando el mensaje que lo ha provocado).
@@ -1228,6 +1444,107 @@ try {
 } catch (Exception $e) {
     throw new AppException("AppException: ".$e->getMessage(), $e->getCode(), $e);
 }
+```
+
+## Métodos encadenados
+
+Sigue el planteamiento de la programación funcional, y también se conoce como *method chaining*. Plantea que sobre un objeto se realizan varias llamadas.
+
+``` php
+<?php
+$p1 = new Libro();
+$p1->setNombre("Harry Potter");
+$p1->setAutor("JK Rowling");
+echo $p1;
+
+// Method chaining
+$p2 = new Libro();
+$p2->setNombre("Patria")->setAutor("Aramburu");
+echo $p2;
+```
+
+Para facilitarlo, vamos a modificar todos sus métodos mutadores (que modifican datos, *setters*, ...) para que devuelvan una referencia a `$this`:
+
+``` php
+<?php
+class Libro {
+    private string $nombre;
+    private string $autor;
+
+    public function getNombre() : string {
+        return $this->nombre;
+    }
+    public function setNombre(string $nombre) : Libro { 
+        $this->nombre = $nombre;
+        return $this;
+    }
+
+    public function getAutor() : string {
+        return $this->autor;
+    }
+    public function setAutor(string $autor) : Libro {
+        $this->autor = $autor;
+        return $this;
+    }
+
+    public function __toString() : string {
+        return $this->nombre." de ".$this->autor;
+    }
+}
+```
+
+#### Sintaxis Fluent (Fluida)
+
+Este patrón de diseño se conoce como `Fluent Interface` y se utiliza para crear un código más legible y fácil de entender. Es como si se estuviera escribiendo una frase en inglés, donde cada método es una palabra, y un conjunto de palabras forman una frase (una acción).
+
+Un ejemplo de esto sería para realizar validaciones que lleva a cabo `Laravel`:
+
+``` php
+<?php
+$rules = [
+    'id' => Rule::int()
+                ->required(),
+
+    'name' => Rule::string()
+                    ->required()
+                    ->minLength(3)
+                    ->toString(),
+
+    'email' => Rule::string()
+                    ->required()
+                    ->email()
+                    ->toArray(),
+
+    'role_id' => Rule::modelExists(Role::class),
+];
+```
+
+En este ejemplo vemos como se encadenan los métodos `int()`, `required()`, `string()`, `minLength(3)`, `toString()`, `toArray()`, `email()`, ... haciendo realmente legible el código. También el formato en multilínea ayuda a que sea más legible.
+
+En el caso de `name`, se está validando que sea un string, que sea requerido, que tenga una longitud mínima de 3 caracteres y que se convierta a string.
+
+Si no se utilizara el patrón `Fluent Interface`, el código sería mucho más largo y menos legible.
+
+``` php	
+<?php
+$rules = [
+    'id' => Rule::int();
+    'name' => Rule::string();
+
+    'email' => Rule::string();
+    'role_id' => Rule::modelExists(Role::class);
+];
+
+$rules['name']->required();
+$rules['name']->minLength(3);
+$rules['name']->toString();
+
+$rules['email']->required();
+$rules['email']->email();
+$rules['email']->toArray();
+
+//...
+//Como se puede aprecer el código es mucho más largo y menos legible
 ```
 
 ## SPL
