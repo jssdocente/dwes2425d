@@ -388,6 +388,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#tipado-dinamico-y-debil" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipado dinámico y debil
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#codigo-embebido" class="md-nav__link">
     <span class="md-ellipsis">
       Código embebido
@@ -847,6 +856,19 @@
 
 
 <h1 id="el-lenguaje-php">El lenguaje PHP<a class="headerlink" href="#el-lenguaje-php" title="Permanent link">&para;</a></h1>
+<p>PHP es un lenguaje de programación de propósito general, aunque su fuerte es el desarrollo web. </p>
+<p>Principales características:</p>
+<ul>
+<li><strong>Acrónimo de</strong> <em>Personal Home Page</em></li>
+<li><strong>Sintaxis</strong> similar a C / Java</li>
+<li><strong>Interpretado</strong> en el servidor</li>
+<li><strong>Debilmente tipado</strong> (no es necesario declarar el tipo de dato de una variable antes de usarla)</li>
+</ul>
+<h3 id="tipado-dinamico-y-debil">Tipado dinámico y debil<a class="headerlink" href="#tipado-dinamico-y-debil" title="Permanent link">&para;</a></h3>
+<p>Un <em>lenguaje es dinámicamente tipado</em> cuando es él quien deduce el tipo de datos de las variables y no se lo tenemos que indicar nosotros. En el siguiente ejemplo vemos como PHP estaría deduciendo el tipo resultante de sumar un int y un string que contiene un entero:</p>
+<p>var_dump(1 + "1"); // Output: int(2)</p>
+<p>Al ser dinámicamente tipado, además de interpretado, PHP no tiene un proceso de compilación, si no que es en tiempo de ejecución cuando PHP valida si una determinada variable tiene un determinado método, o no. Esto se conoce como <a href="https://ericlippert.com/2014/01/02/what-is-duck-typing/">Duck Typing</a>:</p>
+<p>Más adelante trataremos el tema de las variables y su tipado.</p>
 <h3 id="codigo-embebido">Código embebido<a class="headerlink" href="#codigo-embebido" title="Permanent link">&para;</a></h3>
 <p>Los bloques de código se escriben entre <strong><code>&lt;?php</code></strong> y <strong><code>?&gt;</code></strong>, mientras que las sentencias se separan mediante <strong><code>;</code></strong>.</p>
 <div class="language-html+php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -966,6 +988,21 @@
 </span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25"></a><a href="#__codelineno-5-25"><span class="linenos" data-linenos="25 "></span></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </span></code></pre></div>
 En la línea 17, ¿cómo podrías simplificar esa expresión?</p>
+</div>
+<h4 id="declaracion-de-tipos-antes-llamado-type-hinting">Declaración de Tipos (antes llamado Type Hinting)<a class="headerlink" href="#declaracion-de-tipos-antes-llamado-type-hinting" title="Permanent link">&para;</a></h4>
+<p>A partir de PHP 5.0 tenemos la posibilidad de especificar el tipo de datos que contiene una determinada variable al ser recibida como argumento. Esto aporta cierta robustez a los contratos de nuestros métodos y deja atrás la posibilidad del Duck Typing tal. A pesar de ser un avance, seguía teniendo sus limitaciones: Sólo se podían especificar clases o interfaces (POO), en ningún caso tipos primitivos del lenguaje.</p>
+<ul>
+<li>PHP 5.1 introdujo la posibilidad de especificar array como tipo de entrada</li>
+<li>PHP 7.0 introdujo soporte a primitivos como bool, string, int, y float</li>
+</ul>
+<p><strong>Strit Types</strong></p>
+<p>Otra funcionalidad al respecto de tipos incorporada en PHP 7.0 es la sentencia declare(strict_types=1);. Esta sentencia evita castings automáticos que hace PHP en caso de no especificar esta sentencia.</p>
+<p><strong>Nullable Types</strong></p>
+<p>PHP 7.1 introduce la posibilidad de especificar de forma explícita que un determinado tipo puede ser null. Para ello se añade un símbolo de interrogación (?) en la declaración del tipo.</p>
+<p>Todo estos puntos se irán viendo a lo largo estos primeros temas.</p>
+<div class="admonition info">
+<p class="admonition-title">+ sobre tipos</p>
+<p>En esta presentación se explica mucho más en profundidad el tema del <a href="https://docs.google.com/presentation/d/19swiEPdFm0yKqrUH7k5GSvFa3slq9607e8ZyPakv7Ww/htmlpresent">Tipado Stricto</a></p>
 </div>
 <h3 id="constantes">Constantes<a class="headerlink" href="#constantes" title="Permanent link">&para;</a></h3>
 <p>Son variables cuyo valor no varían. Existen dos posibilidades:</p>
@@ -2071,12 +2108,14 @@ En el caso de necesitarlas, es mejor pasarlas como parámetro a las funciones.</
 <p>Tenéis más información sobre funciones anónimas y flecha en el siguiente artículo (en inglés): <a href="https://code.tutsplus.com/tutorials/anonymous-and-arrow-functions-in-php--cms-36725">Funciones anónimas y flecha en PHP</a></p>
 </div>
 <h3 id="biblioteca-de-funciones">Biblioteca de funciones<a class="headerlink" href="#biblioteca-de-funciones" title="Permanent link">&para;</a></h3>
-<p>Podemos agrupar un conjunto de funciones en un archivo, para permitir su reutilización.
-Posteriormente, se incluye con:</p>
+<p>Podemos agrupar un conjunto de funciones en un archivo, para permitir su reutilización. Posteriormente, se incluye con:</p>
 <ul>
 <li><code>include(archivo);</code> / <code>include_once(archivo);</code></li>
 <li><code>require(archivo);</code> / <code>require_once(archivo);</code></li>
 </ul>
+<blockquote>
+<p>🔥 Al <code>incluir</code> un archivo, todo su código se <code>inserta</code> en el lugar donde se encuentra la instrucción, y las funciones, variables y clases definidas en el archivo incluido, estarán disponibles en el archivo que lo incluye.</p>
+</blockquote>
 <p>Si no encuentra el archivo, <code>require</code> lanza un error fatal, <code>include</code> lo ignora
 Las funciones <code>_once</code> sólo se cargan una vez, si ya ha sido incluida previamente, no lo vuelve a hacer, evitando bucles.</p>
 <p>Por ejemplo, colocamos las funciones en el archivo <code>biblioteca.php</code>:</p>
@@ -2097,6 +2136,10 @@ Las funciones <code>_once</code> sólo se cargan una vez, si ya ha sido incluida
 </span><span id="__span-58-4"><a id="__codelineno-58-4" name="__codelineno-58-4"></a><a href="#__codelineno-58-4"><span class="linenos" data-linenos="4 "></span></a><span class="k">echo</span> <span class="nx">resta</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span>
 </span><span id="__span-58-5"><a id="__codelineno-58-5" name="__codelineno-58-5"></a><a href="#__codelineno-58-5"><span class="linenos" data-linenos="5 "></span></a><span class="cp">?&gt;</span>
 </span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">POO: otra forma de organizar funciones</p>
+<p>En el tema de <a href="03phpoo.html"><em>Programación Orientada a Objetos</em></a> veremos cómo se pueden agrupar las funciones en clases, permitiendo así una mejor organización y reutilización del código.</p>
+</div>
 <h3 id="plantillas-mediante-include">Plantillas mediante <code>include</code><a class="headerlink" href="#plantillas-mediante-include" title="Permanent link">&para;</a></h3>
 <p>Mediante el uso de la instrucción <code>include</code> también podemos separar fragmentos de código PHP/HTML que queramos reutilizar en nuestros sitios web y crear un sistema muy sencillo de plantillas. Por ejemplo, vamos a separar una página en tres partes, primero la parte superior en <code>encabezado.php</code>:</p>
 <div class="language-html+php highlight"><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1"></a><a href="#__codelineno-59-1"><span class="linenos" data-linenos="1 "></span></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -2114,15 +2157,23 @@ Las funciones <code>_once</code> sólo se cargan una vez, si ya ha sido incluida
 </span><span id="__span-60-3"><a id="__codelineno-60-3" name="__codelineno-60-3"></a><a href="#__codelineno-60-3"><span class="linenos" data-linenos="3 "></span></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </span></code></pre></div></p>
 <p>Y luego nos centramos únicamente en el contenido que cambia en <code>pagina.php</code>:</p>
-<div class="language-html+php highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1"></a><a href="#__codelineno-61-1"><span class="linenos" data-linenos="1 "></span></a><span class="cp">&lt;?php</span>
-</span><span id="__span-61-2"><a id="__codelineno-61-2" name="__codelineno-61-2"></a><a href="#__codelineno-61-2"><span class="linenos" data-linenos="2 "></span></a><span class="nv">$titulo</span> <span class="o">=</span> <span class="s2">&quot;Página con includes&quot;</span><span class="p">;</span>
-</span><span id="__span-61-3"><a id="__codelineno-61-3" name="__codelineno-61-3"></a><a href="#__codelineno-61-3"><span class="linenos" data-linenos="3 "></span></a><span class="k">include</span><span class="p">(</span><span class="s2">&quot;encabezado.php&quot;</span><span class="p">);</span>
-</span><span id="__span-61-4"><a id="__codelineno-61-4" name="__codelineno-61-4"></a><a href="#__codelineno-61-4"><span class="linenos" data-linenos="4 "></span></a><span class="cp">?&gt;</span>
-</span><span id="__span-61-5"><a id="__codelineno-61-5" name="__codelineno-61-5"></a><a href="#__codelineno-61-5"><span class="linenos" data-linenos="5 "></span></a><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$titulo</span> <span class="cp">?&gt;</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</span><span id="__span-61-6"><a id="__codelineno-61-6" name="__codelineno-61-6"></a><a href="#__codelineno-61-6"><span class="linenos" data-linenos="6 "></span></a><span class="cp">&lt;?php</span>
-</span><span id="__span-61-7"><a id="__codelineno-61-7" name="__codelineno-61-7"></a><a href="#__codelineno-61-7"><span class="linenos" data-linenos="7 "></span></a><span class="k">include</span><span class="p">(</span><span class="s2">&quot;pie.html&quot;</span><span class="p">);</span>
-</span><span id="__span-61-8"><a id="__codelineno-61-8" name="__codelineno-61-8"></a><a href="#__codelineno-61-8"><span class="linenos" data-linenos="8 "></span></a><span class="cp">?&gt;</span>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1"></a><a href="#__codelineno-61-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span id="__span-61-2"><a id="__codelineno-61-2" name="__codelineno-61-2"></a><a href="#__codelineno-61-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="nv">$titulo</span> <span class="o">=</span> <span class="s2">&quot;Página con includes&quot;</span><span class="p">;</span>
+</span><span id="__span-61-3"><a id="__codelineno-61-3" name="__codelineno-61-3"></a><a href="#__codelineno-61-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="k">include</span><span class="p">(</span><span class="s2">&quot;encabezado.php&quot;</span><span class="p">);</span>
+</span><span id="__span-61-4"><a id="__codelineno-61-4" name="__codelineno-61-4"></a><a href="#__codelineno-61-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="cp">?&gt;</span>
+</span><span id="__span-61-5"><a id="__codelineno-61-5" name="__codelineno-61-5"></a><a href="#__codelineno-61-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="x">&lt;body&gt;</span>
+</span><span id="__span-61-6"><a id="__codelineno-61-6" name="__codelineno-61-6"></a><a href="#__codelineno-61-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="x">&lt;h1&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$titulo</span> <span class="cp">?&gt;</span><span class="x">&lt;/h1&gt;</span>
+</span><span id="__span-61-7"><a id="__codelineno-61-7" name="__codelineno-61-7"></a><a href="#__codelineno-61-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="cp">&lt;?php</span>
+</span><span id="__span-61-8"><a id="__codelineno-61-8" name="__codelineno-61-8"></a><a href="#__codelineno-61-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="k">include</span><span class="p">(</span><span class="s2">&quot;pie.html&quot;</span><span class="p">);</span>
+</span><span id="__span-61-9"><a id="__codelineno-61-9" name="__codelineno-61-9"></a><a href="#__codelineno-61-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="cp">?&gt;</span>
+</span><span id="__span-61-10"><a id="__codelineno-61-10" name="__codelineno-61-10"></a><a href="#__codelineno-61-10"><span class="linenos" data-linenos="10 "></span></a><span class="x">&lt;/body&gt;</span>
 </span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Más sobre plantillas</p>
+<p>A lo largo del módulo se tratará este tema con más profundidad, y será una parte fundamental del mismo. Se verá cómo se puede separar el código de la vista (HTML) del procesamiento (controladores). Para ello se utilizará el concepto de <code>plantilla</code>.<br>
+Los <code>template engines</code> como <em>Twig</em> o <em>Blade</em> permiten el uso avanzado de plantillas llevando su utilización a otro nivel.<br>
+En Laravel, por ejemplo, se utiliza <em>Blade</em> como motor de plantillas.</p>
+</div>
 <h2 id="funciones-predefinidas">Funciones predefinidas<a class="headerlink" href="#funciones-predefinidas" title="Permanent link">&para;</a></h2>
 <p>El lenguaje ofrece un abanico de funciones ya definidas, agrupadas por su funcionalidad: <a href="https://www.php.net/manual/es/funcref.php">https://www.php.net/manual/es/funcref.php</a></p>
 <h3 id="cadenas">Cadenas<a class="headerlink" href="#cadenas" title="Permanent link">&para;</a></h3>
