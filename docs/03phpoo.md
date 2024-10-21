@@ -253,7 +253,7 @@ Los *getters* y *setters* son una forma de acceder a las propiedades de una clas
 
 **Por qué NO usar getters y setters en PHP. Patrón Tell don't Ask**
 
-Bajo este titular, la idea que subyace es que no tengo que utilizar el `get{Atributo}` para acceder o `set{Atributo}` para modificar una propiedad de una clase, siempre como norma general. De hecho es muy mala práctica el hacer esto, principalmente los *setters*, por varios motivos:
+Bajo este titular, la idea que subyace es que no tengo que utilizar el `get{Atributo}` para acceder o `set{Atributo}` para modificar una propiedad de una clase, *siempre como norma general*. De hecho es muy mala práctica el hacer esto, principalmente los *setters*, por varios motivos:
 
 - Mucho código boilerplate: se generan muchos métodos que no aportan nada, y solo ensucian la legibilidad del código.
 - Los *setters* rompen la lógida de negocio, en lugar de cambiar propiedad a propiedad, se debería cambiar el estado del objeto a través de un método que tenga coherencia, cambiando todas las propiedades que se requieran.
@@ -309,7 +309,177 @@ class User {
     }
 }
 ```	
+#### Mejoras en PHP 8
 
+> *Propiedades de solo lectura*
+
+Siguiendo con la idea del punto anterior, PHP 8 ha introducido nuevas mejoras que permiten no tener que utilizar los *getters*, y siguiendo la línea de la inmutabilidad de los objetos, se pueden definir las propiedades como `readonly`:
+
+Si un atributo se define como `readonly`, se puede asignar el valor en el constructor, pero no se puede modificar después, es decir, que ese atributo no se podrá cambiar posteriormente en ningún momento.
+
+Este tipo de sintaxis es muy útil para definir propiedades inmutables, y que no se puedan cambiar una vez se han creado, ni siquiera dentro de la propia clase, una vez se han definido.
+
+De esta forma se pueden tener atributos públicos, que solo se inicializan en el constructor, y que no se pueden modificar posteriormente, siendo accesibles desde fuera de la clase, sin posiblidad de modificación.
+
+!!! example "Propiedades readonly"
+    En el siguiente ejemplo, se tiene una clase `User` que tiene un atributo `uid` que es `readonly`, es decir, una vez se ha creado el objeto, no se puede modificar.
+
+    ``` php
+    class User {
+        public readonly int $uid;
+
+        public function __construct(int $uid) {
+            $this->uid = $uid;
+        }
+    }
+
+    $user = new User(42);
+
+    echo $user->uid; // 42 -> Daría un error.  
+    ```
+
+> *Clases de solo lectura*
+
+También es posible indicar que una clase es de solo lectura, es decir, que una vez se ha creado un objeto de esa clase, no se puede modificar. Para ello, se utiliza la palabra clave `readonly` antes de la definición de la clase.
+Este tipo de clases son muy útiles para los llamados DTO (Data Transfer Object), que son objetos que se utilizan para transferir datos entre diferentes partes de la aplicación, y que no contienen lógica de negocio.
+
+!!! example "Propiedades y clases readonly"
+    En el siguiente ejemplo, se define una clase `RepoDTO` que es de solo lectura, y contiene la información de un repositorio de GitHub.<br>
+    Un objeto de solo lectura, se puede definir de 2 formas:
+
+    - Todas las propiedades readonly
+    - Marcar la clase como readonly, y las propiedades normal
+
+    ``` php
+    //A. Todoas las propiedades readonly
+    final class RepoDTO
+    {
+        public function __construct(
+            public readonly int $id,
+            public readonly string $name,
+            public readonly string $fullName,
+            public readonly bool $isPrivate,
+            public readonly string $description,
+            public readonly CarbonInterface $createdAt,
+        ) {
+            //
+        }
+    }
+
+    //B. Marcar la clase como readonly, y las propiedades normal
+    final readonly class RepoDTO
+    {
+        public function __construct(
+            public int $id,
+            public string $name,
+            public string $fullName,
+            public bool $isPrivate,
+            public string $description,
+            public CarbonInterface $createdAt,
+        ) {
+            //
+        }
+    }
+
+    //Uso de la clase
+    $repo = new Repo(
+        id: 123,
+        name: 'short-url',
+        fullName: 'ash-jc-allen/short-url',
+        isPrivate: false,
+        description: 'A URL shortener',
+        createdAt: Carbon::now(),
+    );
+    
+    $repo->name = 'short-url-2';  // Error
+    ```
+
+??? abstract "En profundidad: Casos de uso para las propiedades `readonly`"
+
+    Casos de uso para las propiedades `readonly`:
+
+    **DTOs**: Data Transfer Object, son objetos que se utilizan para transferir datos entre diferentes partes de la aplicación, y que no contienen lógica de negocio.
+
+    **Value Objets**
+    Value Objetcs (el concepto proviene del mundo de DDD - Domain Driven Design) son objetos que representan un valor, y que no tienen identidad propia. Por ejemplo, un objeto que representa un rango de fechas, un objeto que representa un color o una moneda, etc.
+
+    ``` php	
+    final class DateRange
+    {
+        public function __construct(
+            public readonly DateTime $start,
+            public readonly DateTime $end,
+        ) {}
+    }
+
+    class Currency {
+        public readonly string $code;
+        public readonly float $value;
+
+        public function __construct(string $code, float $value) {
+            $this->code = $code;
+            $this->value = $value;
+        }
+    }
+    ```
+
+    **Clases de Configuración Inmutables**
+
+    Las clases de configuración son un buen ejemplo de clases que deberían ser inmutables. Una vez que se ha creado un objeto de configuración, no debería cambiar durante la vida de la aplicación.
+
+    ``` php
+
+    class AppConfig {
+        public readonly string $appName;
+        public readonly bool $debugMode;
+
+        public function __construct(string $appName, bool $debugMode) {
+            $this->appName = $appName;
+            $this->debugMode = $debugMode;
+        }
+    }
+
+    $config = new AppConfig('MyApp', true);
+    ```
+    y en cualquier caso que se requiera la integridad de los datos, y que no se puedan modificar una vez se han creado.
+
+
+> *Promoción de propiedades*
+
+En PHP 8, se ha introducido una nueva característica que permite *promocionar las propiedades* de una clase directamente en el constructor, lo que simplifica la definición de las propiedades y su asignación en el constructor.
+
+En lugar de tener que definir las propiedades de la clase, y luego asignarlas en el constructor, se pueden definir directamente en el constructor, y se asignan automáticamente.
+
+En muchas ocasiones, las clases son simples contenedores de información, sin lógica, y son para este tipo de clases las que está pensado esta característica, donde nos evita el Boilerplate de tener que definir las propiedades y asignarlas en el constructor, de esta forma se realiza todo en una sola línea.
+
+!!! example "Promoción de propiedades"
+    En el siguiente ejemplo, se tiene una clase `Punto` que tiene 3 propiedades `x`, `y` y `z`, que se definen directamente en el constructor, y se asignan automáticamente.
+
+    ``` php
+    class Punto {
+        public function __construct(
+            public float $x = 0.0,
+            public float $y = 0.0,
+            public float $z = 0.0,
+        ) {}
+    }
+
+    $punto = new Punto(1.0, 2.0, 3.0);
+    echo $punto->x; // 1.0
+    ```
+
+    También se puede combinar con la promoción de propiedades `readonly`:
+
+    ``` php
+    class Punto {
+        public function __construct(
+            public readonly float $x = 0.0,
+            public readonly float $y = 0.0,
+            public readonly float $z = 0.0,
+        ) {}
+    }
+    ```	
+Para más información revisa este [Post](https://stitcher.io/blog/constructor-promotion-in-php-8)
 
 ### Clases estáticas
 
@@ -400,6 +570,50 @@ echo Producto::getNumeroProductos();
       - Ruptura con el modelo purista de la POO.
       - Acoplamiento. Lo que deriva en poca cambiabilidad y dificultan el testing
       - Ocultación de dependencias.
+
+#### $this vs self
+
+En PHP, existe `this` como en otros lenguajes de programación, pero también existe `self`. La diferencia entre ambos es que:
+
+- `$this` This hace referencia al *objeto actual*, es decir, cuando una *clase sí tiene instancia*. No se puede hacer referencia a métodos estáticos usando this pero *si a métodos públicos, privados y protegidos*.
+- `Self` hace referencia a la clase actual y se usando cuando instancia dicha clase, es decir se usan métodos estáticos.
+
+!!! example "Ejemplos del uso de This y Self"
+
+    ``` php
+    class Saludos{
+
+    static function textoSaludo(string $nombre): string {
+        return 'HOLA ' . $nombre;
+    }
+
+    static function mostrarSaludo(string $nombre){
+        //Método estático hace referencia a la clase actual, y a un método estático	
+        echo self::textoSaludo($nombre);
+    }
+    }
+
+    //Acceso a un método estático
+    Saludos::mostrarSaludo('Gonzalo');
+
+
+    class Saludos2{
+
+    private function textoSaludo(string $nombre): string {
+        return 'HOLA ' . $nombre;
+    }
+
+    public function mostrarSaludo(string $nombre){
+        //Método de instancia hace referencia al objeto actual, y a un método de instancia
+        echo $this->textoSaludo($nombre);
+    }
+    }
+
+    //Aqui se instancia la clase, y se accede a un método de instancia
+    $saludos = new Saludos2();
+    $saludos->mostrarSaludo('Gonzalo');
+    ```	
+
 
 
 #### Introspección
