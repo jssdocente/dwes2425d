@@ -20,6 +20,9 @@ nav:
   - "Anexo":
     - "Anexo I. Arquitecturas Web": "extra/ArquitecturasWebExtendido.md"
 
+  - "Guias":
+    - "Configuración entorno desarrollo PHP con Laravel Herd": "extra/guias/02.config_devenv_laravel_herd.md"
+
 theme:
   language: es
   favicon: imagenes/favicon.png
