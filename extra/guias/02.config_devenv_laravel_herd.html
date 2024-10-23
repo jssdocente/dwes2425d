@@ -8,8 +8,10 @@
       
       
       
-        <link rel="canonical" href="https://jssdocente.github.io/dwes2425/extra/guias/01.php_multiversion_manual.html">
+        <link rel="canonical" href="https://jssdocente.github.io/dwes2425/extra/guias/02.config_devenv_laravel_herd.html">
       
+      
+        <link rel="prev" href="../ArquitecturasWebExtendido.html">
       
       
       
@@ -18,7 +20,7 @@
     
     
       
-        <title>PHP: Múltiples versiones en un mismo PC - 2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25</title>
+        <title>Configuración entorno desarrollo PHP con Laravel Herd - 2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25</title>
       
     
     
@@ -85,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#php-multiples-versiones-en-un-mismo-pc" class="md-skip">
+        <a href="#configuracion-entorno-desarrollo-php-con-laravel-herd" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -120,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              PHP: Múltiples versiones en un mismo PC
+              Configuración entorno desarrollo PHP con Laravel Herd
             
           </span>
         </div>
@@ -486,17 +488,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -510,7 +514,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Guias
@@ -521,10 +525,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="02.config_devenv_laravel_herd.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Configuración entorno desarrollo PHP con Laravel Herd
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="02.config_devenv_laravel_herd.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -533,6 +557,71 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#laravel-herd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Laravel Herd
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uso-basico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso básico
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debug-con-xdebug-en-phpstorm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debug con XDebug en PHPStorm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -560,65 +649,153 @@
                   
 
 
-<h1 id="php-multiples-versiones-en-un-mismo-pc">PHP: Múltiples versiones en un mismo PC<a class="headerlink" href="#php-multiples-versiones-en-un-mismo-pc" title="Permanent link">&para;</a></h1>
-<p>En numerosas ocasiones, necesitamos tener varias versiones de PHP en nuestro PC. Por ejemplo, si estamos desarrollando una aplicación que debe ser compatible con PHP 5.6 y PHP 7.0, necesitaremos tener ambas versiones instaladas en nuestro PC.</p>
-<p>En este tutorial, vamos a ver cómo instalar varias versiones de PHP en un mismo PC.</p>
-<h2 id="instalar-en-windows">Instalar en Windows<a class="headerlink" href="#instalar-en-windows" title="Permanent link">&para;</a></h2>
-<p>En Windows, podemos instalar varias versiones de PHP de forma sencilla. Para ello, podemos descargar los binarios de PHP desde la <a href="https://windows.php.net/download/">página oficial de PHP</a>. En esta página, podemos encontrar los binarios de PHP para Windows.</p>
+<h1 id="configuracion-entorno-desarrollo-php-con-laravel-herd">Configuración entorno desarrollo PHP con Laravel Herd<a class="headerlink" href="#configuracion-entorno-desarrollo-php-con-laravel-herd" title="Permanent link">&para;</a></h1>
+<p>Laravel Herd es una nueva opción disponible (2024) para facilitarnos la configuración del entorno de desarrollo para PHP.</p>
+<p>El nivel de sofisticación de la configuración grande, utilizando Docker o otras herramientas más avanzadas, pero a un usuario principiante esto puede ser muy intimidante y difícil de configurar.</p>
+<p>Las herramientas existentes son:</p>
+<ul>
+<li>XAMP: Antigua, sin soporte y sin actualizaciones hace tiempo.</li>
+<li>DevilBox (Docker). Funciona sobre Docker y está también obsoleta.</li>
+<li>Laragon:  Alternativa muy buena sobre Windows, mejora mucho a XAMP.</li>
+<li>Valet (para MacOS)</li>
+</ul>
+<p><strong>¿Qué se necesita para desarrollar PHP?</strong></p>
+<ul>
+<li>PHP. Instalar el interprete de PHP (hay diferentes versiones).</li>
+<li>Servidor Web. (Apache, Nginx, ...) no es necesario al principio, pero para desarrollos más grandes es necesario.</li>
+<li>Base de datos. (MySQL, MariaDB, SQLite, ...)</li>
+<li>Otros servicios: Mail, Redis, ...</li>
+</ul>
+<p>Aparte de estos otras características son deseables:</p>
+<ul>
+<li>Depuración e integración con los principales IDEs (PHPStorm, VSCode).</li>
+<li>Gestión automáticas de Sitios. (facilitad administración de múltiples proyectos).</li>
+<li>Acceso con DNS. (nombre de dominio local), por ejemplo myproyecto.test. </li>
+<li>Visualización de Logs, monitorización de peticiones, volcados con dump...</li>
+</ul>
+<h3 id="recursos">Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://herd.laravel.com/windows">Laravel Herd</a></li>
+<li><a href="xdebug.org">XDebug</a></li>
+<li><a href="https://blog.stackademic.com/debugging-in-phpstorm-2024-with-laravel-herd-you-dont-need-pro-e40ce131de21">Depurando en PHPStrom 2024 con Laravel Herd sin ser PRO</a></li>
+</ul>
+<h3 id="laravel-herd">Laravel Herd<a class="headerlink" href="#laravel-herd" title="Permanent link">&para;</a></h3>
+<p><a href="https://herd.laravel.com/windows">Laravel Herd</a></p>
+<p>Como su nombre indica <code>Laravel</code> ya nos dice para qué está principalmente pensado, y efectivamente, para trabajar con el framework Laravel, pero no por eso no lo podemos utilizar fuera de este framework, y en proyectos menores.</p>
+<p>Herd es una herramienta que nos permite configurar un entorno de desarrollo para PHP, con las características que hemos mencionado anteriormente.</p>
+<p>Laravel Herd ofrece un interfaz muy completo, con una interfaz gráfica que nos permite gestionar los proyectos, las versiones de PHP, los servicios, etc. Todo desde un único lugar. Además también ofrece un <code>sercicio</code> y una <code>CLI</code> para gestionar los proyectos. </p>
+<p>Sus principales características son:</p>
+<ul>
+<li><strong>Configuración sencilla</strong>: Se instala con un solo comando.</li>
+<li><strong>Gestión de múltiples proyectos</strong>: Podemos tener varios proyectos y cambiar entre ellos.</li>
+<li><strong>Gestión versiones de PHP</strong>: Descarga, actualiza y cambia de versión de PHP. Elige qué versión de PHP utilizar para cada proyecto.</li>
+<li><strong>Control de otros servicios con facilidad</strong>: MySQL, Redis, ... desde su consola se puede gestionar la mayoria de los servios que incluye, y otros que podemos incorporar.</li>
+<li><strong>Ficheros de Log</strong>: Visualización de logs de los servicios.</li>
+<li><strong>Integración muy sencilla con XDebug</strong>: Depuración con XDebug de forma muy sencilla.</li>
+</ul>
+<p>Aunque es una herramienta de Pago, ofrece una capa gratuita muy importante y suficiente para utilizarla en proyectos pequeños.</p>
+<h4 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h4>
+<p>Laravel Herd está disponible para MacOS y Windows.</p>
+<p>La instalación depende del SO, y se puede encontrar en la página oficial de Laravel Herd.</p>
+<ul>
+<li><a href="https://herd.laravel.com/docs/windows/1/getting-started/installation">Instalación para Windows</a></li>
+<li><a href="https://herd.laravel.com/docs/1/getting-started/installation">Instalación para MacOS</a></li>
+</ul>
+<h3 id="uso-basico">Uso básico<a class="headerlink" href="#uso-basico" title="Permanent link">&para;</a></h3>
+<h4 id="sitios">Sitios<a class="headerlink" href="#sitios" title="Permanent link">&para;</a></h4>
+<p>Herd utiliza el concepto de rutas <em>aparcadas</em> y directorios <em>vinculados</em> para ofrecer servicios a los sitios. Puede acceder a todos los sitios en una ruta aparcada a través de <code>http://&lt;directory-name&gt;.test</code>. De forma predeterminada, Herd aparcará automáticamente el <code>%USERPROFILE%\Herd</code>directorio por usted. Cualquier aplicación PHP en este directorio está disponible automáticamente a través de su <code>.test</code>dominio. Si tiene otras ubicaciones para sus proyectos, puede agregarlas como rutas aparcadas en la configuración general o vincular proyectos individuales como un directorio vinculado.</p>
+<p>Un sitio se puede crear bien a través de comandos, o más fácil a través de su interfaz, donde paso a paso le indicamos:</p>
+<ul>
+<li>Nombre del proyecto.</li>
+<li>Directorio donde se encuentra.</li>
+<li>Versión de PHP.</li>
+</ul>
+<p>Y con esto nos crea un <code>sitio</code> que podemos acceder a través de un dominio local. <code>http://&lt;nombre-proyecto&gt;.test</code>.</p>
+<h4 id="versiones-de-php">Versiones de PHP<a class="headerlink" href="#versiones-de-php" title="Permanent link">&para;</a></h4>
+<p>Desde su interfaz también podemos revisar, instalar/actualizar, activar/desactivar, y eliminar las diferentes versiones de PHP.</p>
+<p>Además de poder indicar a nivel de proyecto qué versión de PHP utilizar.</p>
+<p>Todo en uno, y muy fácil de trabajar.</p>
+<h4 id="control-servicios">Control Servicios<a class="headerlink" href="#control-servicios" title="Permanent link">&para;</a></h4>
+<p>Desde la interfaz, tambiénn podemos parar, iniciar y reiniciar los servicios, todos a la vez o de forma individual.</p>
+<h3 id="debug-con-xdebug-en-phpstorm">Debug con XDebug en PHPStorm<a class="headerlink" href="#debug-con-xdebug-en-phpstorm" title="Permanent link">&para;</a></h3>
+<p>Esto es una de las principales ventajas que nos permite y facilita Laravel Herd, pero es una opción de pago. Pero se puede solucionar con algo de trabajo.</p>
+<p>Puntos clave:</p>
+<ul>
+<li>Configurar XDebug en la versión de PHP específica.</li>
+<li>Indicar a PHP qué interprete utilizar y que conincida con el proyecto a depurar.</li>
+<li>Configurar PHPStorm para que escuche las peticiones de XDebug.</li>
+<li>Configurar el sitio en Laravel Herd con https (punto opcional pero importante).</li>
+</ul>
+<p>En la siguiente <a href="https://blog.stackademic.com/debugging-in-phpstorm-2024-with-laravel-herd-you-dont-need-pro-e40ce131de21">guía</a>, nos indica paso a paso, pero aquí lo veremos de forma resumida.</p>
+<h4 id="configuracion-xdebug">Configuración XDebug<a class="headerlink" href="#configuracion-xdebug" title="Permanent link">&para;</a></h4>
+<p>XDebug es un binario, que es necesario descargar, pero que Laravel Herd ya lo tiene instalado por nosotros. </p>
+<p><strong>Configurar php.ini</strong></p>
+<p><code>php.ini</code> es el fichero donde se almacena la configuración de PHP, y tiene muchas, muchas.
+Pero para nuestro caso, lo único que necesitamos es configurar las siguientes:</p>
 <blockquote>
-<p>💡 Siempre es aconsejable tener una ubicación en mi PC dentro de la <code>home</code> del usuario, para evitar errores de permisos en la ejecución de PHP.<br>
-Para esta guía vamos a crear una carpeta, <code>tools</code>, en la la home del usuario, por ejemplo, <code>C:\Users\miusuario\tools\php</code>.</p>
+<p>💡 Consultala <a href="https://xdebug.org/docs/step_debug">documentación de XDebug</a>, referente a depuración paso a paso</p>
 </blockquote>
-<p><strong>Instalar PHP 7.4</strong></p>
-<p>Para instalar PHP 7.4 en Windows, podemos seguir los siguientes pasos:</p>
-<ol>
-<li>Descargar los binarios de PHP 7.4 desde la <a href="https://windows.php.net/download/">página oficial de PHP</a>.</li>
-<li>Descomprimir los binarios en una carpeta, por ejemplo, <code>...\tools\php\7.4</code>.</li>
-</ol>
-<p><strong>Instalar PHP 8.1</strong></p>
-<p>Para instalar PHP 8.1 en Windows, podemos seguir los siguientes pasos:</p>
-<ol>
-<li>Descargar los binarios de PHP 8.1 desde la <a href="https://windows.php.net/download/">página oficial de PHP</a>.</li>
-<li>Descomprimir los binarios en una carpeta, por ejemplo, <code>...\tools\php\8.1</code>.</li>
-</ol>
-<h3 id="configurar-las-variables-de-entorno">Configurar las variables de entorno<a class="headerlink" href="#configurar-las-variables-de-entorno" title="Permanent link">&para;</a></h3>
-<p>Para poder ejecutar PHP desde la línea de comandos, necesitamos configurar las variables de entorno. Para ello, podemos seguir los siguientes pasos:</p>
-<ol>
-<li>Abrir el editor de variables de entorno.</li>
-<li>En las variables de usuario, añadir la variable <code>PHP_HOME</code> con el valor de la ruta de la carpeta de PHP, por ejemplo, <code>C:\Users\miusuario\tools\php\7.4</code>.</li>
-<li>Añadir a la variable <code>PATH</code> la ruta, con el valor <code>%PHP_HOME%</code>.</li>
-</ol>
-<p>Ahora, para que la configuración sea efectiva, debemos cerrar y abrir la consola de comandos. Si no funciona, podemos cerrar la sesión del usuario.</p>
-<p><strong>Probar la configuración</strong></p>
-<p>Ahora podemos ejecutar PHP desde la línea de comandos. Para ello, podemos abrir una consola de comandos y ejecutar el siguiente comando:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a>php<span class="w"> </span>--version
-</span></code></pre></div>
-<p>Y debe mostrar la versión php 7.4 (en este caso)</p>
-<p><strong>Cambiar de versión</strong></p>
-<p>Si queremos cambiar de versión, podemos cambiar la variable <code>PHP_HOME</code> a la ruta de la carpeta de la versión que queremos usar. Por ejemplo, si queremos usar PHP 8.1, podemos cambiar la variable <code>PHP_HOME</code> a la ruta de la carpeta de PHP 8.1, por ejemplo, <code>C:\Users\miusuario\tools\php\8.1</code>.</p>
-<p>Podemos probar que el cambio ha funcionando, simplemente cerrando la consola de comandos y abriéndola de nuevo.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a>php<span class="w"> </span>--version
-</span></code></pre></div>
-<p>Y debe mostrar la versión php 8.1 (en este caso)</p>
-<h3 id="automatizar-el-cambio-de-version">Automatizar el cambio de versión<a class="headerlink" href="#automatizar-el-cambio-de-version" title="Permanent link">&para;</a></h3>
-<p>Para cambiar de versión de PHP de forma automática, vamos a crear una carpeta <code>default</code> y esta apuntará, mediante un enlace simbólico, a la versión de PHP que queremos usar por defecto.</p>
-<p>Por ejemplo, si queremos que la versión por defecto sea PHP 7.4, podemos crear un enlace simbólico de la siguiente forma:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="nb">cd</span><span class="w"> </span>%userprofile%<span class="se">\t</span>ools<span class="se">\p</span>hp
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a>rm<span class="w"> </span>default
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a>mklink<span class="w"> </span>/D<span class="w"> </span>%userprofile%<span class="se">\t</span>ools<span class="se">\p</span>hp<span class="se">\d</span>efault<span class="w"> </span>%userprofile%<span class="se">\t</span>ools<span class="se">\p</span>hp<span class="se">\7</span>.4
-</span></code></pre></div>
-<p>Y guardar el script en un archivo <code>.bat</code> con el nombre php74.bat, dentro de la carpeta <code>tools</code>.</p>
-<p>Para la versión, PHP 8.1, podemos crear otro script con el nombre php81.bat, con el siguiente contenido:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a><span class="nb">cd</span><span class="w"> </span>%userprofile%<span class="se">\t</span>ools<span class="se">\p</span>hp
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos="2 "></span></a>rm<span class="w"> </span>default
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos="3 "></span></a>mklink<span class="w"> </span>/D<span class="w"> </span>%userprofile%<span class="se">\t</span>ools<span class="se">\p</span>hp<span class="se">\d</span>efault<span class="w"> </span>%userprofile%<span class="se">\t</span>ools<span class="se">\p</span>hp<span class="se">\8</span>.1
-</span></code></pre></div>
-<h3 id="cambiar-de-version-de-php">Cambiar de versión de PHP<a class="headerlink" href="#cambiar-de-version-de-php" title="Permanent link">&para;</a></h3>
-<p>Para cambiar de versión de PHP, simplemente debemos ejecutar el script correspondiente, a la versión que queramos usar. Por ejemplo, si queremos usar PHP 8.1, podemos ejecutar el script <code>php81.bat</code>.</p>
+<p>Opciones:</p>
+<ul>
+<li>
+<p><strong>zend_extension</strong>= Ruta al binario de XDebug, en Herd está ubicado en la siguiente carpeta."C:\Program Files\Herd\resources\app.asar.unpacked\resources\bin\xdebug\xdebug-8.3.dll"
+<br>Cambiar a la versión de php específica según el ini.</p>
+</li>
+<li>
+<p><strong>xdebug.mode</strong>: debug,develop. Indica el modo de depuración. Debug es paso a paso.</p>
+</li>
+<li><strong>xdebug.client_host</strong>=127.0.0.1 (Dirección de IP del IDE)</li>
+<li><strong>xdebug.client_port</strong>=9003  (Puerto donde escucha el IDE)</li>
+</ul>
+<p>Estas son opciones, pero importantes:</p>
+<ul>
+<li><strong>xdebug.idekey</strong> = PHPSTORM  (Indicando el IDE que estamos utilizando).</li>
+<li><strong>xdebug.start_with_request</strong>=yes (Indica que se inicie con cada petición), si no se indica esto, se debe indicar en la URL <code>XDEBUG_SESSION_START=PHPSTORM</code>. Y esto es poco práctico. Existe un plugin para Chrome y Firefox que nos facilita esto, pero que no suele funcionar muy bien en las últimas versiones.<br> 
+  MEjor solución. Activar esta opción (yes), y controlar desde PHPStorm, si escuchamos las peticiones o no. Si la activamos cada petición se iniciará una sesión de depuración, si no lo vamos a requerir o queremos desactivarlo, lo ponemos a <code>no</code>.</li>
+<li><strong>xdebug.start_upon_error</strong>=yes  Si queremos que se activo o no sobre errores</li>
+</ul>
 <blockquote>
-<p>💡 IMPORTANTE:<br>
-Se debe ejecutar el script en la consola de comandos, con permisos de administrador.</p>
+<p>💡 Una vez aplicado este cambio, es necesario reiniciar PHP. Esto lo podemos hacer desde la consola de Laravel Herd.</p>
 </blockquote>
+<p>Si no funciona, o no se activa, podemos indicar que xdebug nos muestra un log, indicando si se activa o no.</p>
+<ul>
+<li>xdebug.log = "~.config\herd\Log\xdebug.log"  (La ruta puede ser cualquier y el nombre del fichero también.)</li>
+</ul>
+<p><strong>¿Cómo funciona XDebug?</strong></p>
+<p>XDebug debe comunicarse con el IDE en cuestión, y lo hace a través de una IP y un puerto. Si estamos en la misma red, y mismo ordenador, es más fácil.</p>
+<p>Una vez hemos configurado todo, nos vamos a PHPStorm.</p>
+<p><strong>Configurar PHPStorm</strong></p>
+<p>Esta configuración es por proyecto, y se almacena dentro de la carpeta <code>.idea</code> que PHPStorm guarda en la carpeta del proyecto.</p>
+<p>Puntos importantes:</p>
+<ul>
+<li>En Settins, PHP, indicar el Interprete de PHP. En el punto <a href="https://blog.stackademic.com/debugging-in-phpstorm-2024-with-laravel-herd-you-dont-need-pro-e40ce131de21">Configuring PHPStorm</a> indica cómo hacerlo.</li>
+<li>Indicar <code>Start Listening for PHP Debug Connections</code>. Esto está disponible en el menu <code>Run</code> y también visible en la parte superior.</li>
+<li>Configurar el puerto, y las opciones de configuración.</li>
+<li>Si parar en la primera línea o no.</li>
+<li>Si escuchar conexiones externas o no.</li>
+</ul>
+<p>En nuestro caso, y con la configuración de Laravel Herd, que se basa en un Ngix, necesitamos indicar lo siguiente en Settings\PHP\Debug:</p>
+<ul>
+<li>Debug port: 9003 (configurado en pho.ini)</li>
+<li>(Quitar) Force break at first line when no path mapping specified. (Si ya funciona quitar, si no, dejarlo).</li>
+<li>(Quitar) Force breat at first line when a script is outside the proyecto (Muy importante, para no depurar script fuera del proyecto)</li>
+</ul>
+<p>También quitar <code>Break at first line in PHP scripts</code> para que se detenga en los <code>breakpoints</code> que indiquemos. (Si no, se parará en la primera línea de nuestro Script.)<br>
+Configurar esto según necesidad.</p>
+<h3 id="recursos_1">Recursos<a class="headerlink" href="#recursos_1" title="Permanent link">&para;</a></h3>
+<p><strong>Abrir PHPStorm desde Laravel Herd</strong></p>
+<p>Para que funcione es necesario configurar un protocolo, es decir, que Windows conozca que un enlace prefijado con un protocolo está enlzada a un programa específico.</p>
+<p>Para ello, seguir esta guía.</p>
+<ul>
+<li><a href="https://github.com/aik099/PhpStormProtocol">Abrir PHPStorm desde Laravel Herd</a></li>
+</ul>
+<p><strong>Rutas a Laravel Herd</strong></p>
+<ul>
+<li>ProgramFiles: C:\Program Files\Herd</li>
+<li>xUSuario: ~\Herd  (General)</li>
+<li>xUSuario avanzada: ~.config\herd</li>
+</ul>
+<p>En estas carpetas, estan las configuraciones de Herd, en la configuración avanzada podemos tocar y revisar configuraciones más avanzadas que nos permiten configurar y revisar errores.</p>
 
 
 
