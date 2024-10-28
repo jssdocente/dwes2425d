@@ -727,6 +727,26 @@
 <li>Configurar el sitio en Laravel Herd con https (punto opcional pero importante).</li>
 </ul>
 <p>En la siguiente <a href="https://blog.stackademic.com/debugging-in-phpstorm-2024-with-laravel-herd-you-dont-need-pro-e40ce131de21">guía</a>, nos indica paso a paso, pero aquí lo veremos de forma resumida.</p>
+<h4 id="instalacion-de-xdebug-sin-laravel-herd">Instalación de XDebug sin Laravel Herd<a class="headerlink" href="#instalacion-de-xdebug-sin-laravel-herd" title="Permanent link">&para;</a></h4>
+<p>XDebug es un binario que se instala en la versión de PHP que estamos utilizando. Laravel Herd ya lo tiene instalado, pero si no lo tuviera, se puede instalar con el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a>herd<span class="w"> </span>php:install<span class="w"> </span>xdebug
+</span></code></pre></div>
+<p>En caso de que lo queramos instalar de forma independiente directamente descargandolo de su Web, dependerá de la SO que estemos utilizando.</p>
+<p><strong>Windows</strong></p>
+<p>Si es Windows, es sencillo, descargamos el binario y lo copiamos en la carpeta de extensiones de PHP. La ubicación de esta carpeta dependerá de la versión de PHP que estemos utilizando.</p>
+<p>Para saber qué versión de XDebug hay que descargar, podemos utilizar la herramienta que nos ofrece la página de XDebug, que nos indica qué versión de XDebug necesitamos para nuestra versión de PHP.</p>
+<ol>
+<li>Abrir la página de <a href="https://xdebug.org/wizard">XDebug</a></li>
+<li>Copiar el contenido de <code>phpinfo()</code> en la página, o a través del comando <code>php -i</code> en la consola.</li>
+<li>Pegar el contenido en la página y nos indicará qué versión de XDebug necesitamos.</li>
+</ol>
+<p><strong>Linux</strong></p>
+<p>En Linux, la instalación es un poco más complicada, pero no mucho. Se puede instalar a través de <code>pecl</code> o <code>apt-get</code> según la distribución que estemos utilizando.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>php-xdebug
+</span></code></pre></div>
+<p>Para indicar una versión específica, se puede indicar con el nombre del paquete.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>php-xdebug-8.3
+</span></code></pre></div>
 <h4 id="configuracion-xdebug">Configuración XDebug<a class="headerlink" href="#configuracion-xdebug" title="Permanent link">&para;</a></h4>
 <p>XDebug es un binario, que es necesario descargar, pero que Laravel Herd ya lo tiene instalado por nosotros. </p>
 <p><strong>Configurar php.ini</strong></p>
