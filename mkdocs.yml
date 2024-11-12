@@ -11,7 +11,7 @@ nav:
     - "PHP Avanzado": 02.2_php_avanzado.md
     - "PHP evolución": 02.3_php_versiones_evolucion.md
   - "3. PHP Orientado a Objetos": "03phpoo.md"
-  # - "4.- Programación Web": "04web.md"
+  - "4.- Programación Web": "04web.md"
   # - "5.- Herramientas Web": "05herramientas.md"
   # - "6.- Acceso a Datos": "06accesoDatos.md"
   # - "7.- Frameworks PHP - Laravel": "07frameworks.md"
