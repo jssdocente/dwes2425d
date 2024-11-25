@@ -161,7 +161,7 @@ foreach ($lenguajes as $lenguaje) {
 
 Un *sticky form* es un formulario que recuerda sus valores. Para ello, hemos de rellenar los atributos `value` de los elementos HTML con la información que contenían:
 
-``` html+php
+```php
 <?php
 if (!empty($_POST['modulos']) && !empty($_POST['nombre'])) {
   // Aquí se incluye el código a ejecutar cuando los datos son correctos
@@ -461,7 +461,7 @@ if (isset($_POST['enviar'])) {
 
 Dependiendo del usuario que se haya logueado, vamos a ir a una vista o a otra. Por ejemplo, en `main.php` tendríamos:
 
-``` html+php
+```php
 <?php
     // Recuperamos la información de la sesión
     if(!isset($_SESSION)) {

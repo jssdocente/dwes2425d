@@ -29,21 +29,24 @@ Funcionalmente, es similar a Maven (Java) / npm (JS).
 
 ### Instalación
 
-Si estamos usando XAMPP, hemos de instalar *Composer* en el propio sistema operativo. Se recomienda seguir las [instrucciones oficiales](https://getcomposer.org/doc/00-intro.md) según el sistema operativo a emplear.
+- Si estamos usando XAMPP, hemos de instalar *Composer* en el propio sistema operativo. Se recomienda seguir las [instrucciones oficiales](https://getcomposer.org/doc/00-intro.md) según el sistema operativo a emplear.
 
-En cambio, si usamos *Docker*, necesitamos modificar la configuración de nuestro contenedor. En nuestro caso, hemos decidido modificar el archivo `Dockerfile` y añadir el siguiente comando:
+- si usamos *Docker*, necesitamos modificar la configuración de nuestro contenedor. En nuestro caso, hemos decidido modificar el archivo `Dockerfile` y añadir el siguiente comando:
 
-``` docker
-COPY --from=composer:2.0 /usr/bin/composer /usr/local/bin/composer
-```
+    ``` docker
+    COPY --from=composer:2.0 /usr/bin/composer /usr/local/bin/composer
+    ```
 
-Para facilitar el trabajo, hemos creado una [plantilla ya preparada](recursos/plantilla-APC.zip).
+    Es importante que dentro del contenedor comprobemos que tenemos la v2:
 
-Es importante que dentro del contenedor comprobemos que tenemos la v2:
+    ``` bash
+    composer -V
+    ```
 
-``` bash
-composer -V
-```
+- Si usamos *Laravel Herd* ya viene instalado por defecto.
+
+!!! tip "Ver capítulo: Composer y PSR-4"
+    En este [capítulo](https://drive.google.com/file/d/1dADn_w8VDr4NOvUav7P0Npj_nJYCIoTz/view?usp=sharing) del curso "Crear aplicación Web" se explica el concepto de Composer y cómo utilizarlo para el autoload de clases.
 
 ### Primeros pasos
 
@@ -222,6 +225,8 @@ en nuestro caso el archivo `error.log` de *Apache* utilizaremos como ruta la sal
 <?php
 // error.log
 $log->pushHandler(new StreamHandler("php://stderr", Logger::DEBUG));
+//Consola
+$log->pushHandler(new StreamHandler("php://stdout", Logger::DEBUG));
 ```
 
 !!! tip "FirePHP"
@@ -353,7 +358,7 @@ class LogFactory {
 
     public static function getLogger(string $canal = "miApp") : LoggerInterface {
         $log = new Logger($canal);
-        $log->pushHandler(new StreamHandler("log/miApp.log", Logger::DEBUG));
+        $log->pushHandler(new StreamHandler(__DIR__ . "/log/miApp.log", Logger::DEBUG));
 
         return $log;
     }
@@ -385,6 +390,168 @@ class Cliente {
     /// ... resto del código
 }
 ```
+
+**Rotando ficheros de log**
+
+El principal problema con logging en un archivo es que, con el tiempo, el archivo puede volverse demasiado grande y complicado de administrar, además de ocupar una gran cantidad de almacenamiento. Este problema se resuelve tradicionalmente mediante la rotación de archivos.
+
+Monolog también ofrece una solución integrada para rotar registros, aunque no está pensada para su uso en entornos de producción. 
+
+En el siguiente ejemplo, se ha utilizado un `RotatingFileHandler` que rotará el archivo de log si el fichero es más antiguo de 30 días. También es posible especificar otros criterios de rotación, para ello consulta la documentación de Monolog.
+
+```php	
+<?php
+
+. . .
+use Monolog\Handler\RotatingFileHandler;
+
+$rotating_handler = new RotatingFileHandler(__DIR__ . "/log/debug.log", 30, Level::Debug);
+$logger->pushHandler($rotating_handler);
+
+$logger->info("This file has been executed.");
+?>
+```
+
+**Captura y logando excepciones**
+
+En PHP las excepciones son controladoras por `try, catch, finally`. Si queremos logar una excepción, podemos hacerlo de la siguiente manera:
+
+```php
+$logger = new Logger("exceptions");
+
+$stream_handler = new StreamHandler(__DIR__ . "/log/exception.log", Level::Debug);
+$stream_handler->setFormatter(new JsonFormatter());
+
+$logger->pushHandler($stream_handler);
+
+try {
+    $username = readline("Choose your username: ");
+    if (strlen($username) < 6) {
+        throw new Exception("The username $username is too short.");
+    }
+} catch (exception $e) {
+    // Log el mensaje de la excepción
+    $logger->error($e->getMessage());
+    //Si queremos logar todo el objeto de la excepción
+    $logger->error($e);
+    //También es posible combinar las 2 opciones, logar el mensaje y el objeto de la excepción.
+    // array('exception' => $e) es un contexto adicional que se añade al log.
+    $logger->error($e->getMessage(), array('exception' => $e));
+}
+```
+
+**Tratando con excepciones no capturadas**
+
+Si una excepción no es capturada por un bloque `try, catch`, la excepción "burbujeará" hasta el script principal y si no existe un `block` en este nivel, PHP terminará la ejecución del script inmediatamente con un error "Fatal".
+
+Podemos manejar este tipo de errores utilizando un manejador de excepciones personalizado. Para ello, debemos implementar la interfaz `Throwable` y capturar la excepción en el método `handle`:
+
+```php
+<?php
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+class ExceptionHandler implements Throwable
+{
+    public function handle(Throwable $e)
+    {
+        $logger = new Logger("exceptions");
+        $stream_handler = new StreamHandler(__DIR__ . "/log/exception.log", Level::Debug);
+        $stream_handler->setFormatter(new JsonFormatter());
+        $logger->pushHandler($stream_handler);
+        $logger->error($e->getMessage());
+    }
+}
+
+// Registramos el manejador de excepciones, e indicamos que el método handle será el encargado de gestionar las excepciones.
+set_exception_handler([new ExceptionHandler(), 'handle']);
+```
+
+Ahora el `ExceptionHandler` se encargará de gestionar todas las excepciones no capturadas en el script. Cuando se produzca una excepción, el método `handle` se encargará de logar el mensaje de la excepción en el archivo `exception.log`, y PHP no mostrará una excepción fatal pero *Sí* terminará el script. 
+
+Para el caso de una Web, la `Request` se terminará y debemos ser nosotros los que tratemos la respuesta al cliente.
+
+
+**Enviar logs a múltiples destinos**
+
+Monolog permite enviar logs a múltiples destinos, normalmente a través del tipo de severidad, podemos indicar un destino u otro. En el siguiente ejemplo, se envían los logs de nivel `DEBUG` a un fichero, los de nivel `NOTICE` a otro fichero y los de nivel `ALERT` a una base de datos.
+
+```php
+<?php
+
+require __DIR__ . "/vendor/autoload.php";
+require "./DBHandler.php";
+
+use Monolog\Level;
+use Monolog\Logger;
+use Monolog\Formatter\JsonFormatter;
+use Monolog\Handler\StreamHandler;
+use Monolog\Handler\RotatingFileHandler;
+
+// New Logger instance
+$logger = new Logger("my_logger");
+$formatter = new JsonFormatter();
+
+// Create new handler
+$rotating_handler = new RotatingFileHandler(__DIR__ . "/log/debug.log", 30, Level::Debug);
+$stream_handler = new StreamHandler(__DIR__ . "/log/notice.log", Level::Notice);
+$db_handler = new DBHandler(new PDO('sqlite:alert.sqlite'), Level::Alert);
+
+$stream_handler->setFormatter($formatter);
+$db_handler->setFormatter($formatter);
+$rotating_handler->setFormatter($formatter);
+
+// Push the handler to the log channel
+$logger->pushHandler($stream_handler);
+$logger->pushHandler($rotating_handler);
+$logger->pushHandler($db_handler);
+
+// Log the message
+$logger->info("This file has been executed.");
+$logger->error("An error occurred.");
+$logger->critical("This application is in critical condition!!");
+$logger->emergency("This is an EMERGENCY!!!");
+?>
+```
+
+Aunque esta aproximación está bien, en un sistema medianamente complejo puede ser muy complicado tener que monitorizar tantos lugares. En estos casos, es recomendable utilizar un sistema de monitorización de logs, como *BetterStack*, *Loggly*, *Papertrail* o *Logstash*.
+
+
+En este ejemplo, vamos a utilizar la plataforma *BetterStack* para enviar los logs de nuestra aplicación. Para ello, sigue los siguientes pasos:
+
+1. Instalar la librería cliente de BetterStack en tu proyecto:
+    ```bash
+    composer require logtail/monolog-logtail
+    ```
+2. Configurar el logger de Monolog con BetterStack.
+   ```php
+    require "../vendor/autoload.php";
+
+    use Monolog\Logger;
+    use Logtail\Monolog\LogtailHandlerBuilder;
+
+    $logger = new Logger("example-app");
+    //Reempalzar $SOURCE_TOKEN por el token de tu proyecto en BetterStack
+    $handler = LogtailHandlerBuilder::withSourceToken("$SOURCE_TOKEN")
+    ->build();
+    $logger->pushHandler($handler);
+    ```	
+3. Utilizar el logger de Monolog como de costumbre.
+   ```php
+    $logger->info("This file has been executed.");
+    $logger->error("An error occurred.");
+    $logger->critical("This application is in critical condition!!");
+    $logger->emergency("This is an EMERGENCY!!!");
+    ```
+
+Para obtener un `token` de BetterStack, simplemente registrar una cuenta (tienen un plan gratuito) y obteneer un token para tu proyecto desde el siguiente [enlace](https://telemetry.betterstack.com/team/0/sources?_gl=1*po1zew*_gcl_au*MjEwOTk2Mzg4My4xNzMyNTU5MzE5*_ga*MTkwMDUwNTQwNy4xNzMyNTU5MzE4*_ga_9FLKD0MQYY*MTczMjU2MjgyNC4yLjEuMTczMjU2MzIwNC4wLjAuMA..).
+
+!!! tip "Ver capítulo: Configurando un logger con Monolog"
+    En este [capítulo](https://drive.google.com/file/d/1dADn_w8VDr4NOvUav7P0Npj_nJYCIoTz/view?usp=sharing) del curso "Crear aplicación Web" vemos como configurar un logger en nuestra aplicación y como enviar los logs a un servidor de logs.
+
+
+
 
 ## Documentación con *phpDocumentor*
 
