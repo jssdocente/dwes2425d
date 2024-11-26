@@ -444,34 +444,15 @@ try {
 
 Si una excepción no es capturada por un bloque `try, catch`, la excepción "burbujeará" hasta el script principal y si no existe un `block` en este nivel, PHP terminará la ejecución del script inmediatamente con un error "Fatal".
 
-Podemos manejar este tipo de errores utilizando un manejador de excepciones personalizado. Para ello, debemos implementar la interfaz `Throwable` y capturar la excepción en el método `handle`:
-
+Podemos manejar este tipo de errores utilizando una función anónima y el método `set_exception_handler` de PHP.
 ```php
 <?php
+...
 
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
-
-class ExceptionHandler implements Throwable
-{
-    public function handle(Throwable $e)
-    {
-        $logger = new Logger("exceptions");
-        $stream_handler = new StreamHandler(__DIR__ . "/log/exception.log", Level::Debug);
-        $stream_handler->setFormatter(new JsonFormatter());
-        $logger->pushHandler($stream_handler);
-        $logger->error($e->getMessage());
-    }
-}
-
-// Registramos el manejador de excepciones, e indicamos que el método handle será el encargado de gestionar las excepciones.
-set_exception_handler([new ExceptionHandler(), 'handle']);
+set_exception_handler(function($ex) {
+  $log->error("Fatal error ocurred: " . $ex->getMessage(), array('exception' => $ex));
+})
 ```
-
-Ahora el `ExceptionHandler` se encargará de gestionar todas las excepciones no capturadas en el script. Cuando se produzca una excepción, el método `handle` se encargará de logar el mensaje de la excepción en el archivo `exception.log`, y PHP no mostrará una excepción fatal pero *Sí* terminará el script. 
-
-Para el caso de una Web, la `Request` se terminará y debemos ser nosotros los que tratemos la respuesta al cliente.
-
 
 **Enviar logs a múltiples destinos**
 
@@ -521,13 +502,14 @@ Aunque esta aproximación está bien, en un sistema medianamente complejo puede 
 En este ejemplo, vamos a utilizar la plataforma *BetterStack* para enviar los logs de nuestra aplicación. Para ello, sigue los siguientes pasos:
 
 1. Instalar la librería cliente de BetterStack en tu proyecto:
+   
     ```bash
     composer require logtail/monolog-logtail
     ```
-2. Configurar el logger de Monolog con BetterStack.
-   ```php
-    require "../vendor/autoload.php";
 
+2. Configurar el logger de Monolog con BetterStack.
+    
+    ```php
     use Monolog\Logger;
     use Logtail\Monolog\LogtailHandlerBuilder;
 
@@ -537,8 +519,10 @@ En este ejemplo, vamos a utilizar la plataforma *BetterStack* para enviar los lo
     ->build();
     $logger->pushHandler($handler);
     ```	
+
 3. Utilizar el logger de Monolog como de costumbre.
-   ```php
+    
+    ```php
     $logger->info("This file has been executed.");
     $logger->error("An error occurred.");
     $logger->critical("This application is in critical condition!!");
@@ -548,7 +532,7 @@ En este ejemplo, vamos a utilizar la plataforma *BetterStack* para enviar los lo
 Para obtener un `token` de BetterStack, simplemente registrar una cuenta (tienen un plan gratuito) y obteneer un token para tu proyecto desde el siguiente [enlace](https://telemetry.betterstack.com/team/0/sources?_gl=1*po1zew*_gcl_au*MjEwOTk2Mzg4My4xNzMyNTU5MzE5*_ga*MTkwMDUwNTQwNy4xNzMyNTU5MzE4*_ga_9FLKD0MQYY*MTczMjU2MjgyNC4yLjEuMTczMjU2MzIwNC4wLjAuMA..).
 
 !!! tip "Ver capítulo: Configurando un logger con Monolog"
-    En este [capítulo](https://drive.google.com/file/d/1dADn_w8VDr4NOvUav7P0Npj_nJYCIoTz/view?usp=sharing) del curso "Crear aplicación Web" vemos como configurar un logger en nuestra aplicación y como enviar los logs a un servidor de logs.
+    En este [capítulo](https://drive.google.com/file/d/1CHFCWle9ozwxoxZdsBOmyNetz5aU_ERv/view?usp=sharing) del curso "Crear aplicación Web" vemos como configurar un logger en nuestra aplicación y como enviar los logs a un servidor de logs.
 
 
 
@@ -675,112 +659,6 @@ Si generamos la documentación y abrimos con un navegador el archivo `docs/api/i
     <figcaption>phpDocumentor de Cliente</figcaption>
 </figure>
 
-## *Web Scraping*
-
-Consiste en navegar a una página web y extraer información automáticamente, a partir del código HTML generado, y organizar la información pública disponible en Internet.
-
-Esta práctica requiere el uso de una librería que facilite la descarga de la información deseada imitando la interacción de un navegador web. Este "robot" puede acceder a varias páginas simultáneamente.
-
-!!! question "¿Es legal?"
-    Si el sitio web indica que tiene el contenido protegido por derechos de autor o en las normas de acceso via usuario/contraseña nos avisa de su prohibición, estaríamos incurriendo en un delito.
-    Es recomendable estudiar el archivo `robots.txt` que se encuentra en el raíz de cada sitio web.
-    Más información en el artículo [El manual completo para el web scraping legal y ético en 2021](https://ichi.pro/es/el-manual-completo-para-el-web-scraping-legal-y-etico-en-2021-69178542830388)
-
-### Goutte
-
-[Goutte](https://github.com/FriendsOfPHP/Goutte) es un sencillo cliente HTTP para PHP creado específicamente para hacer web scraping. Lo desarrolló el mismo autor del framework *Symfony* y ofrece un API sencilla para extraer datos de las respuestas HTML/XML de los sitios web.
-
-FIXME: Revisar https://godofredo.ninja/web-scraping-con-php-utilizando-goutte/
-
-Los componentes principales que abstrae *Goutte* sobre *Symfony* son:
-
-* `BrowserKit`: simula el comportamiento de un navegador web.
-* `CssSelector`: traduce consultas CSS en consultas XPath.
-* `DomCrawler`: facilita el uso del DOM y XPath.
-
-Para poder utilizar *Goutte* en nuestro proyecto, ejecutaremos el siguiente comando en el terminal:
-
-``` bash
-composer require fabpot/goutte
-```
-
-### Goutte con selectores CSS
-
-A continuación vamos a hacer un ejemplo muy sencillo utilizando los selectores CSS, extrayendo información de la web `https://books.toscrape.com/`, la cual es una página para pruebas que no rechazará nuestras peticiones.
-
-Tras crear un cliente con *Goutte*, hemos de realizar un petición a una URL. Con la respuesta obtenida, podemos utilizar el método `filter` para indicarle la ruta CSS que queremos recorrer e iterar sobre los resultados mediante una función anónima. Una vez estamos dentro de un determinado nodo, el método `text()` nos devolverá el contenido del propio nodo.
-
-En concreto, vamos a meter en un array asociativo el título y el precio de todos los libros de la categoría *Classics*.
-
-``` php
-<?php
-require '../vendor/autoload.php';
-
-$httpClient = new \Goutte\Client();
-$response = $httpClient->request('GET', 'https://books.toscrape.com/catalogue/category/books/classics_6/index.html');
-// colocamos los precios en un array
-$precios = [];
-$response->filter('.row li article div.product_price p.price_color')->each(
-    // le pasamos $precios por referencia para poder editarla dentro del closure
-    function ($node) use (&$precios) {
-        $precios[] = $node->text();
-    }
-);
-
-// colocamos el nombre y el precio en un array asociativo
-$contadorPrecios = 0;
-$libros = [];
-$response->filter('.row li article h3 a')->each(
-    function ($node) use ($precios, &$contadorPrecios, &$libros) {
-        $libros[$node->text()] = $precios[$contadorPrecios];
-        $contadorPrecios++;
-    }
-);
-```
-
-### Crawler
-
-Un caso muy común es obtener la información de una página que tiene los resultados paginados, de manera que vayamos recorriendo los enlaces y accediendo a cada uno de los resultados.
-
-En este caso vamos a coger todos los precios de los libros de fantasía, y vamos a sumarlos:
-
-``` php
-<?php
-require '../vendor/autoload.php';
-
-use Goutte\Client;
-use Symfony\Component\HttpClient\HttpClient;
-
-$client = new Client(HttpClient::create(['timeout' => 60]));
-$crawler = $client->request('GET', 'https://books.toscrape.com/catalogue/category/books/fantasy_19/index.html');
-
-$salir = false;
-
-$precios = [];
-while (!$salir) {
-    $crawler->filter('.row li article div.product_price p.price_color')->each(
-        function ($node) use (&$precios) {
-            $texto = $node->text();
-            $cantidad = substr($texto, 2); // Le quitamos las libras ¿2 posiciones?
-            $precios[] = floatval($cantidad);
-        }
-    );
-
-    $enlace = $crawler->selectLink('next');
-    if ($enlace->count() != 0) {
-        // el enlace next existe
-        $sigPag = $crawler->selectLink('next')->link();
-        $crawler = $client->click($sigPag); // hacemos click
-    } else {
-        // ya no hay enlace next
-        $salir = true;
-    }
-}
-
-$precioTotal = array_sum($precios);
-echo $precioTotal;
-```
-
 ## Pruebas con PHPUnit
 
 El curso pasado, dentro del módulo de *Entornos de Desarrollo*, estudiamos la importancia de la realización de pruebas, así como las pruebas unitarias mediante [JUnit](https://junit.org/junit5/).
@@ -796,9 +674,14 @@ A día de hoy es de gran importancia seguir una buena metodología de pruebas, s
 2. Escribir el código de aplicación para que la prueba funcione (verde).
 3. Refactorizar el código de la aplicación con la ayuda de la prueba para comprobar que no rompemos nada (refactor).
 
-En el caso de PHP, la herramienta que se utiliza es *PHPUnit* (<https://phpunit.de/>), que como su nombre indica, está basada en JUnit. La versión actual es la 9.0
+En el caso de PHP, la herramienta que se utiliza es *PHPUnit* (<https://phpunit.de/>), que como su nombre indica, está basada en JUnit. 
 
-Se recomienda consultar su documentación en <https://phpunit.readthedocs.io/es/latest/index.html>.
+Aunque hay una nueva utilidad llamada **[Pest](https://pestphp.com/)** que está ganando popularidad. Pest es una alternativa a PHPUnit que ofrece una sintaxis más limpia y moderna. Está inspirado en Jest, el popular marco de pruebas de JavaScript.
+
+!!! info "PHPUnit / Pest"
+    - documentación [PHPUnit](https://phpunit.de/documentation.html)
+    - documentación [Pest](https://pestphp.com/docs/overview)
+
 
 ### Puesta en marcha
 
@@ -862,6 +745,10 @@ Tenemos diferentes formas de ejecutar una prueba:
 ./vendor/bin/phpunit --testdox --colors tests
 ```
 
+!!! danger "Trabajando con Pest"
+    Revisa el [capítulo](https://drive.google.com/file/d/1OHTVuOEU8rdN5k6RglQ641JShOk_KOeH/view?usp=sharing) para ver cómo se instala Pest
+
+
 ### Diseñando pruebas
 
 Tal como hemos visto en el ejemplo, la clase de prueba debe heredar de `TestCase`, y el nombre de la clase debe acabar en `Test`, de ahí que hayamos llamado la clase de prueba como `PilaTest`.
@@ -878,15 +765,29 @@ Las aserciones permiten comprobar el resultado de los métodos que queremos prob
 
 PHPUnit ofrece las siguiente aserciones:
 
-* `assertTrue` / `assertFalse`: Comprueba que la condición dada sea evaluada como true / false
-* `assertEquals` / `assertSame`: Comprueba que dos variables sean iguales
-* `assertNotEquals` / `assertNotSame`: Comprueba que dos variables NO sean iguales
-    * `Same` → comprueba los tipos. Si no coinciden los tipos y los valores, la aserción fallará
-    * `Equals` → sin comprobación estricta
-* `assertArrayHasKey` / `assertArrayNotHasKey`: Comprueba que un array posea un *key* determinado / o NO lo posea
-* `assertArraySubset`: Comprueba que un array posea otro array como subset del mismo
-* `assertAttributeContains` / `assertAttributeNotContains`: Comprueba que un atributo de una clase contenga una variable determinada / o NO contenga una variable determinada
-* `assertAttributeEquals`: Comprueba que un atributo de una clase sea igual a una variable determinada.
+- `assertTrue` / `assertFalse`: Comprueba que la condición dada sea evaluada como true / false
+- `assertEquals` / `assertSame`: Comprueba que dos variables sean iguales
+- `assertNotEquals` / `assertNotSame`: Comprueba que dos variables NO sean iguales
+    - `Same` → comprueba los tipos. Si no coinciden los tipos y los valores, la aserción fallará
+    - `Equals` → sin comprobación estricta
+- `assertArrayHasKey` / `assertArrayNotHasKey`: Comprueba que un array posea un *key* determinado / o NO lo posea
+- `assertArraySubset`: Comprueba que un array posea otro array como subset del mismo
+- `assertAttributeContains` / `assertAttributeNotContains`: Comprueba que un atributo de una clase contenga una variable determinada / o NO contenga una variable determinada
+- `assertAttributeEquals`: Comprueba que un atributo de una clase sea igual a una variable determinada.
+
+
+**Pest** ofrece las siguientes aserciones, que son equivalentes a las de PHPUnit:
+
+- `expect()->toBe(true)`
+- `expect()->toBeFalse()`
+- `expect()->toBeTrue()`
+- `expect()->toBeNull()`
+- `expect()->toBeEmpty()`
+- `expect()->toBeNotEmpty()`
+- `expect()->toBeInstanceOf(Clase::class)`
+- `expect()->toBeArray()`
+
+para conocer todos los tipos de [Expections](https://pestphp.com/docs/expectations) consulta la documentación de Pest.
 
 ### Comparando la salida
 
@@ -955,6 +856,19 @@ public function cintasProvider() {
 }
 ```
 
+En Pest esto se consigue con el método `with`:
+
+``` php
+it('muestra resumen con provider', function($titulo, $id, $precio, $duracion, $esperado) {
+    $cinta = new CintaVideo($titulo, $id, $precio, $duracion);
+    expect($cinta->muestraResumen())->toBe($esperado);
+
+})->with([
+    ["Los cazafantasmas", 23, 3.5, 107, "<br>Película en VHS:<br>Los cazafantasmas<br>3.5 €(IVA no incluido)<br>Duración: 107 minutos"],
+    ["Superman", 24, 3, 188, "<br>Película en VHS:<br>Superman<br>3 € (IVA no incluido)<br>Duración: 188 minutos"],
+]);
+```
+
 ### Probando excepciones
 
 Las pruebas además de comprobar que las clases funcionan como se espera,  han de cubrir todos los casos posibles. Así pues, debemos poder hacer pruebas que esperen que se lance una excepción (y que el mensaje contenga cierta información):
@@ -985,6 +899,33 @@ public function testAlquilarCupoLleno() {
 }
 ```
 
+Para **Pest**, la sintaxis es similar, pero con un estilo más limpio y moderno:
+
+``` php
+it('throws an exception when trying to divide by zero', function () {
+    expect(function () {
+        divide(2, 0);
+    })->toThrow(DivideByZeroException::class);
+});
+
+it('throws an exception when cliente cupo superado', function() {
+
+    $soporte1 = new CintaVideo("Los cazafantasmas", 23, 3.5, 107); 
+    $soporte2 = new Juego("The Last of Us Part II", 26, 49.99, "PS4", 1, 1);
+    $soporte3 = new Dvd("Origen", 24, 15, "es,en,fr", "16:9"); 
+    $soporte4 = new Dvd("El Imperio Contraataca", 4, 3, "es,en","16:9"); 
+
+    $cliente1 = new Cliente("Bruce Wayne", 23); 
+    $cliente1->alquilar($soporte1); 
+    $cliente1->alquilar($soporte2); 
+    $cliente1->alquilar($soporte3); 
+
+})->throws(CupoSuperadoException::class);
+```
+
+!!! tip "Ver capítulo: Instalar 2 paquetes. Collections y Pest"
+    En este [capítulo](https://drive.google.com/file/d/1OHTVuOEU8rdN5k6RglQ641JShOk_KOeH/view?usp=sharing) del curso "Crear aplicación Web" vemos como instalar Pest y configurarlo para realizar nuestros primeros test.
+
 ### Cobertura de código
 
 La cobertura de pruebas indica la cantidad de código que las pruebas cubren, siendo recomendable que cubran entre el 95 y el 100%.
@@ -1013,15 +954,9 @@ Por ejemplo, si accedemos a la clase `CintaVideo` con la prueba que habíamos re
     <figcaption>Informe de cobertura de la clase CintaVideo</figcaption>
 </figure>
 
-!!! warning "Temas pendientes"
-    * Dependencia entre casos de prueba con el atributo `@depends`
-    * Completamente configurable mediante el archivo `phpxml.xml`: <https://phpunit.readthedocs.io/es/latest/configuration.html>
-    * Preparando las pruebas con `setUpBeforeClass()` y `tearDownAfterClass()`
-    * Objetos y pruebas *Mock* (dobles) con `createMock()`
 
 ## Referencias
 
 * [Tutorial de Composer](https://desarrolloweb.com/manuales/tutorial-composer.html)
-* [Web Scraping with PHP – How to Crawl Web Pages Using Open Source Tools](https://www.freecodecamp.org/news/web-scraping-with-php-crawl-web-pages/)
 * [PHP Monolog](https://zetcode.com/php/monolog/)
 * [Unit Testing con PHPUnit — Parte 1](https://medium.com/@emilianozublena/unit-testing-con-phpunit-parte-1-148c6d73e822), de Emiliano Zublena.
