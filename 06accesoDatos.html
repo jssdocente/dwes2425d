@@ -11,14 +11,18 @@
         <link rel="canonical" href="https://jssdocente.github.io/dwes2425/06accesoDatos.html">
       
       
+        <link rel="prev" href="05herramientas.html">
+      
+      
+        <link rel="next" href="extra/ArquitecturasWebExtendido.html">
       
       
       <link rel="icon" href="imagenes/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
-        <title>06accesoDatos - 2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25</title>
+        <title>6.- Acceso a Datos - 2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25</title>
       
     
     
@@ -120,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              06accesoDatos
+              6.- Acceso a Datos
             
           </span>
         </div>
@@ -463,6 +467,315 @@
       
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    6.- Acceso a Datos
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="06accesoDatos.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    6.- Acceso a Datos
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-una-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura de una base de datos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chollosevero" class="md-nav__link">
+    <span class="md-ellipsis">
+      CholloSevero
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phpmyadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      phpMyAdmin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="phpMyAdmin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creando-una-base-de-datos-dentro-de-phpmyadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creando una base de datos dentro de phpMyAdmin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opciones-en-phpmyadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opciones en phpMyAdmin
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysqli" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQLi
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MySQLi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recuperando-datos-de-una-bd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recuperando datos de una BD
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-data-objects-pdo" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHP Data Objects :: PDO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PHP Data Objects :: PDO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fichero-de-configuracion-de-la-bd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fichero de configuración de la BD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentencias-preparadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sentencias preparadas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo parámetros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-bindparam" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo bindParam
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bindparam-vs-bindvalue" class="md-nav__link">
+    <span class="md-ellipsis">
+      bindParam VS bindValue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertando-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insertando registros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consultando-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consultando registros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consultas-con-modelos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consultas con modelos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consultas-con-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consultas con LIKE
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#login-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login &amp; Password
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceso-a-ficheros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceso a ficheros
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Acceso a ficheros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modos-de-apertura-de-ficheros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modos de apertura de ficheros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operaciones-con-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operaciones con archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informacion-de-un-fichero" class="md-nav__link">
+    <span class="md-ellipsis">
+      Información de un fichero
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archivos-pdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos PDF
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     
@@ -473,10 +786,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -487,8 +800,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Anexo
           </label>
@@ -536,10 +849,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -550,8 +863,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             Guias
           </label>
@@ -1450,7 +1763,7 @@ Hay muchos ejemplos y tutoriales, así como documentación de la clase FPDF en l
     <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "toc.integrate", "content.tabs.link", "content.code.copy", "content.code.select", "navigation.top", "content.code.annotate"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
