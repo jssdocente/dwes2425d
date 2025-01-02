@@ -14,8 +14,32 @@ nav:
   - "4.- Programación Web": "04web.md"
   - "5.- Herramientas Web": "05herramientas.md"
   - "6.- Acceso a Datos": "06accesoDatos.md"
-  # - "7.- Frameworks PHP - Laravel": "07frameworks.md"
-  # - "8.- Uso avanzado de Frameworks": "08frameworks2.md"
+  - "7.- Frameworks PHP - Laravel":
+    - "Introducción": temas/07/index.md
+    - "1. Instalar Laravel": "temas/07/01.instalar-laravel.md"
+    - "2. Configurar Tailwind": "temas/07/02.configurar-tailwind.md"
+    - "3. Layouts con Blade": "temas/07/03.layouts-con-blade.md"
+    - "4. Primer componente": "temas/07/04.primer-componente.md"
+    - "5. Estilando componente": "temas/07/05.estilando-nav-link.md"
+    - "6. Pasar datos a las vistas": "temas/07/06.pasar-datos-vista-y-rutas.md"
+    - "7. Autloading y namespaces": "temas/07/07.autoloading-namespaces-y-models.md"
+    - "8. Introducción a las migraciones": "temas/07/08.intro-migraciones.md"
+    - "9. Introducción a Eloquent": "temas/07/09.intro-eloquent.md"
+    - "10. Eloquent: Factorias": "temas/07/10.eloquent-factories.md"
+    - "11. Eloquent: relaciones básicas": "temas/07/11.eloquent-relations-basic.md"
+    - "12. Eloquent: relación many-to-many": "temas/07/12.eloquent-relations-many-to-many.md"
+    - "13. Eloquent: relación many-has-many-throught": "temas/07/13.eloquent-relations-has-many-throught.md"
+  - "8.- Frameworks PHP - Laravel avanzado":
+    - "Introducción": temas/08/index.md
+    - "14. Database Seeders": "temas/08/14.database-seeders.md"
+    - "15. Formularios con Laravel y CRSF": "temas/08/15.forms-csrf.md"
+    - "16. Validación": "temas/08/16.forms-always-validate.md"
+    - "17. Formularios CRUD": "temas/08/17.forms-edit-update-delete.md"
+    - "18. Mejorando las rutas": "temas/08/18.mejorar-rutas.md"
+    - "19. Autenticación: crear sistema": "temas/08/19.create-login-register-system.md"
+    - "20. Autorización: proteger rutas": "temas/08/20.proteger-rutas-middleware.md"
+    - "21. Informando al usuario": "temas/08/21.flash-messages.md"
+
   # - "8.- Servicios REST": "09rest.md"
   - "Anexo":
     - "Anexo I. Arquitecturas Web": "extra/ArquitecturasWebExtendido.md"
