@@ -1,0 +1,1972 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jssdocente.github.io/dwes2425/temas/08/19.create-login-register-system.html">
+      
+      
+        <link rel="prev" href="18.mejorar-rutas.html">
+      
+      
+        <link rel="next" href="20.proteger-rutas-middleware.html">
+      
+      
+      <link rel="icon" href="../../imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>19. Autenticación: crear sistema - 2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 13h-4v4h-2v-4H7v-2h4V7h2v4h4m-5-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#19-crear-un-sistema-de-login-y-registro" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../index.html" title="2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25" class="md-header__button md-logo" aria-label="2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25" data-md-component="logo">
+      
+  <img src="../../imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              19. Autenticación: crear sistema
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="Teal"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25" class="md-nav__button md-logo" aria-label="2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25" data-md-component="logo">
+      
+  <img src="../../imagenes/logofp.png" alt="logo">
+
+    </a>
+    2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01arquitecturas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2.- El lenguaje PHP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            2.- El lenguaje PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.1_php_basico.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP Básico
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.2_php_avanzado.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP Avanzado
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.3_php_versiones_evolucion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP evolución
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03phpoo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. PHP Orientado a Objetos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04web.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.- Programación Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.- Herramientas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06accesoDatos.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.- Acceso a Datos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    7.- Frameworks PHP - Laravel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            7.- Frameworks PHP - Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/01.instalar-laravel.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Instalar Laravel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/02.configurar-tailwind.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Configurar Tailwind
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/03.layouts-con-blade.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Layouts con Blade
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/04.primer-componente.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Primer componente
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/05.estilando-nav-link.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Estilando componente
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/06.pasar-datos-vista-y-rutas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Pasar datos a las vistas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/07.autoloading-namespaces-y-models.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Autloading y namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/08.intro-migraciones.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Introducción a las migraciones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/09.intro-eloquent.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Introducción a Eloquent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/10.eloquent-factories.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Eloquent: Factorias
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/11.eloquent-relations-basic.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Eloquent: relaciones básicas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/12.eloquent-relations-many-to-many.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Eloquent: relación many-to-many
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/13.eloquent-relations-has-many-throught.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Eloquent: relación many-has-many-throught
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    8.- Frameworks PHP - Laravel avanzado
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            8.- Frameworks PHP - Laravel avanzado
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14.database-seeders.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Database Seeders
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15.forms-csrf.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Formularios con Laravel y CRSF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16.forms-always-validate.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Validación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17.forms-edit-update-delete.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Formularios CRUD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18.mejorar-rutas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Mejorando las rutas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    19. Autenticación: crear sistema
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="19.create-login-register-system.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    19. Autenticación: crear sistema
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crear-componentes-para-los-controles-de-formulario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crear componentes para los controles de formulario
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Crear componentes para los controles de formulario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buttonbladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      button.blade.php
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errorbladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      error.blade.php
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-groupbladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      field-group.blade.php
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputbladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      input.blade.php
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labelbladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      label.blade.php
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agregar-menus-para-login-y-register" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agregar menús para Login y Register
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agregar-vista-para-login-y-register" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agregar vista para Login y Register
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agregar vista para Login y Register">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mejora-en-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejora en Layout
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crear-el-controlador-para-login-y-register" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crear el controlador para Login y Register
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crear-las-rutas-para-login-y-register" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crear las rutas para Login y Register
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aplicar-logica-a-los-controladores-register-y-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicar lógica a los controladores Register y Session
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aplicar lógica a los controladores Register y Session">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registar-un-nuevo-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registar un nuevo Usuario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iniciar-sesion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iniciar sesión
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cerrar-sesion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cerrar sesión
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cambiar-menus-segun-el-estado-de-la-sesion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cambiar menús según el estado de la sesión
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="20.proteger-rutas-middleware.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. Autorización: proteger rutas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="21.flash-messages.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Informando al usuario
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="22.Manejando-excepciones.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. Control y Gestión de excepciones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Anexo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Anexo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extra/ArquitecturasWebExtendido.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anexo I. Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Guias
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Guias
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extra/guias/02.config_devenv_laravel_herd.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuración entorno desarrollo PHP con Laravel Herd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="19-crear-un-sistema-de-login-y-registro">19. Crear un sistema de login y registro<a class="headerlink" href="#19-crear-un-sistema-de-login-y-registro" title="Permanent link">&para;</a></h1>
+<p>En esta 19ª lección, vamos a ver cómo crear un sistema de login y registro en Laravel. Laravel nos proporciona una forma muy sencilla de hacerlo, a través de starter kits, que nos permiten tener un sistema de login y registro en pocos minutos, pero nosotros lo vamos a haer manualmente, para entender cómo funciona por dentro.</p>
+<h3 id="recursos">Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://laravel-news.com/laravel-route-organization-tips">6 Tips to Organize Routes</a></li>
+</ul>
+<h2 id="crear-componentes-para-los-controles-de-formulario">Crear componentes para los controles de formulario<a class="headerlink" href="#crear-componentes-para-los-controles-de-formulario" title="Permanent link">&para;</a></h2>
+<p>Hemos realizado ya algunos formularios, y vemos que se repiten constantemente los mismos controles, además como utilizamos Tailwind, los estilos también se repiten. Vamos a crear componentes para los controles de formulario.</p>
+<p>Tendremos los siguientes controles:</p>
+<ul>
+<li>form-button: botón de formulario</li>
+<li>form-input: input de formulario</li>
+<li>form-label: label de formulario</li>
+<li>form-input: agrupa un label y un input</li>
+<li>form-error: muestra los errores de validación</li>
+</ul>
+<p>Lo primero, para mejorar la organización de los mismos, vamos a crear dentro de la carpeta <code>components</code> un subdirectorio llamado <code>forms</code>. Dentro de este subdirectorio, vamos a crear los siguientes archivos:</p>
+<ul>
+<li>button.blade.php</li>
+<li>input.blade.php</li>
+<li>label.blade.php</li>
+<li>group.blade.php</li>
+<li>error.blade.php</li>
+</ul>
+<p>Para ello, vamos a utilizar cualquier de los formularios, para copiar el contenido de los controles. Todos estos controles los vamos a crear en la carpeta <code>resources/views/components/forms</code>.</p>
+<h3 id="buttonbladephp">button.blade.php<a class="headerlink" href="#buttonbladephp" title="Permanent link">&para;</a></h3>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="o">@</span><span class="nx">props</span><span class="p">([</span><span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">])</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos=" 2 "></span></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos=" 4 "></span></a>  <span class="nv">$attributes</span> <span class="o">=</span> <span class="nv">$attributes</span><span class="o">-&gt;</span><span class="na">merge</span><span class="p">([</span><span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="nv">$className</span><span class="p">,</span><span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;submit&#39;</span><span class="p">])</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos=" 5 "></span></a>  <span class="o">-&gt;</span><span class="na">class</span><span class="p">([</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="s1">&#39;rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600&#39;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos=" 7 "></span></a>  <span class="p">])</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="cp">?&gt;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos=" 9 "></span></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><a href="#__codelineno-0-10"><span class="linenos" data-linenos="10 "></span></a><span class="x">&lt;button {{ $attributes }}&gt;</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><a href="#__codelineno-0-11"><span class="linenos" data-linenos="11 "></span></a><span class="x">  {{ $slot }}</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><a href="#__codelineno-0-12"><span class="linenos" data-linenos="12 "></span></a><span class="x">&lt;/button&gt;</span>
+</span></code></pre></div>
+<p>Este botón permite recibir una serie de clases para poder personalizarlo.</p>
+<h3 id="errorbladephp">error.blade.php<a class="headerlink" href="#errorbladephp" title="Permanent link">&para;</a></h3>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">&lt;</span><span class="nx">label</span> <span class="p">{{</span> <span class="nv">$attributes</span><span class="o">-&gt;</span><span class="na">merge</span><span class="p">([</span><span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;block text-sm font-medium leading-6 text-gray-900&#39;</span><span class="p">])</span> <span class="p">}}</span><span class="o">&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a>  <span class="p">{{</span> <span class="nv">$slot</span> <span class="p">}}</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a><span class="o">&lt;/</span><span class="nx">label</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<h3 id="field-groupbladephp">field-group.blade.php<a class="headerlink" href="#field-groupbladephp" title="Permanent link">&para;</a></h3>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;sm:col-span-4&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a>  <span class="p">{{</span> <span class="nv">$slot</span> <span class="p">}}</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a><span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<h3 id="inputbladephp">input.blade.php<a class="headerlink" href="#inputbladephp" title="Permanent link">&para;</a></h3>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos="2 "></span></a>  <span class="o">&lt;</span><span class="nx">input</span> <span class="p">{{</span> <span class="nv">$attributes</span><span class="o">-&gt;</span><span class="na">merge</span><span class="p">([</span><span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6&#39;</span><span class="p">])</span> <span class="p">}}</span><span class="o">&gt;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos="3 "></span></a><span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<h3 id="labelbladephp">label.blade.php<a class="headerlink" href="#labelbladephp" title="Permanent link">&para;</a></h3>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">&lt;</span><span class="nx">label</span> <span class="p">{{</span> <span class="nv">$attributes</span><span class="o">-&gt;</span><span class="na">merge</span><span class="p">([</span><span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;block text-sm font-medium leading-6 text-gray-900&#39;</span><span class="p">])</span> <span class="p">}}</span><span class="o">&gt;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos="2 "></span></a>  <span class="p">{{</span> <span class="nv">$slot</span> <span class="p">}}</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos="3 "></span></a><span class="o">&lt;/</span><span class="nx">label</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<h2 id="agregar-menus-para-login-y-register">Agregar menús para Login y Register<a class="headerlink" href="#agregar-menus-para-login-y-register" title="Permanent link">&para;</a></h2>
+<p>Antes de nada, necesitamos crear los menús necesarios para que el usuario pueda registrarse y si ya está registrado, pueda hacer login.</p>
+<p>Al fichero <code>layout.blade.php</code> añadimos los siguientes enlaces:</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;flex h-16 items-center justify-between&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos=" 2 "></span></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;flex items-center&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos=" 3 "></span></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;shrink-0&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><a href="#__codelineno-5-4"><span class="linenos" data-linenos=" 4 "></span></a>      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;size-8&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&amp;shade=500&quot;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><a href="#__codelineno-5-5"><span class="linenos" data-linenos=" 5 "></span></a>            <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Your Company&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><a href="#__codelineno-5-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><a href="#__codelineno-5-7"><span class="linenos" data-linenos=" 7 "></span></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hidden md:block&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><a href="#__codelineno-5-8"><span class="linenos" data-linenos=" 8 "></span></a>      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;ml-10 flex items-baseline space-x-4&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a><a href="#__codelineno-5-9"><span class="linenos" data-linenos=" 9 "></span></a>        <span class="p">&lt;</span><span class="nt">x-nav-link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/&quot;</span> <span class="na">:active</span><span class="o">=</span><span class="s">&quot;request()-&gt;is(&#39;/&#39;)&quot;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">x-nav-link</span><span class="p">&gt;</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a><a href="#__codelineno-5-10"><span class="linenos" data-linenos="10 "></span></a>        <span class="p">&lt;</span><span class="nt">x-nav-link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/contact&quot;</span> <span class="na">:active</span><span class="o">=</span><span class="s">&quot;request()-&gt;is(&#39;contact&#39;)&quot;</span><span class="p">&gt;</span>Contact<span class="p">&lt;/</span><span class="nt">x-nav-link</span><span class="p">&gt;</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a><a href="#__codelineno-5-11"><span class="linenos" data-linenos="11 "></span></a>        <span class="p">&lt;</span><span class="nt">x-nav-link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/notes&quot;</span> <span class="na">:active</span><span class="o">=</span><span class="s">&quot;request()-&gt;is(&#39;notes&#39;)&quot;</span><span class="p">&gt;</span>Notes<span class="p">&lt;/</span><span class="nt">x-nav-link</span><span class="p">&gt;</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a><a href="#__codelineno-5-12"><span class="linenos" data-linenos="12 "></span></a>        <span class="p">&lt;</span><span class="nt">x-nav-link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/about&quot;</span> <span class="na">:active</span><span class="o">=</span><span class="s">&quot;request()-&gt;is(&#39;about&#39;)&quot;</span><span class="p">&gt;</span>About<span class="p">&lt;/</span><span class="nt">x-nav-link</span><span class="p">&gt;</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13"></a><a href="#__codelineno-5-13"><span class="linenos" data-linenos="13 "></span></a>      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14"></a><a href="#__codelineno-5-14"><span class="linenos" data-linenos="14 "></span></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15"></a><a href="#__codelineno-5-15"><span class="linenos" data-linenos="15 "></span></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16"></a><a href="#__codelineno-5-16"><span class="linenos" data-linenos="16 "></span></a>  <span class="cm">&lt;!-- Enlaces para login/register --&gt;</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17"></a><a href="#__codelineno-5-17"><span class="linenos" data-linenos="17 "></span></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hidden md:block&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18"></a><a href="#__codelineno-5-18"><span class="linenos" data-linenos="18 "></span></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;ml-4 flex items-center md:ml-6&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19"></a><a href="#__codelineno-5-19"><span class="linenos" data-linenos="19 "></span></a>        <span class="p">&lt;</span><span class="nt">x-nav-link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/login&quot;</span> <span class="na">:active</span><span class="o">=</span><span class="s">&quot;request()-&gt;is(&#39;login&#39;)&quot;</span><span class="p">&gt;</span>Log In<span class="p">&lt;/</span><span class="nt">x-nav-link</span><span class="p">&gt;</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20"></a><a href="#__codelineno-5-20"><span class="linenos" data-linenos="20 "></span></a>        <span class="p">&lt;</span><span class="nt">x-nav-link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/register&quot;</span> <span class="na">:active</span><span class="o">=</span><span class="s">&quot;request()-&gt;is(&#39;register&#39;)&quot;</span><span class="p">&gt;</span>Register<span class="p">&lt;/</span><span class="nt">x-nav-link</span><span class="p">&gt;</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21"></a><a href="#__codelineno-5-21"><span class="linenos" data-linenos="21 "></span></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22"></a><a href="#__codelineno-5-22"><span class="linenos" data-linenos="22 "></span></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23"></a><a href="#__codelineno-5-23"><span class="linenos" data-linenos="23 "></span></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<h2 id="agregar-vista-para-login-y-register">Agregar vista para Login y Register<a class="headerlink" href="#agregar-vista-para-login-y-register" title="Permanent link">&para;</a></h2>
+<p>En nuestra anterior aplicación creamos una vista para Login y Register. Vamos a utilizar estas vistas y las vamos a convertir a Blade.</p>
+<p>Estas vistas las vamos a crear dentro de una nueva carpeta, llamada <code>auth</code>, dentro de la carpeta <code>resources/views</code>.</p>
+<p>Dentro de la carpeta <code>auth</code>, creamos dos archivos: <code>login.blade.php</code> y <code>register.blade.php</code>.</p>
+<p>Para la vista <code>register.blade.php</code> vamos a utilizar el <code>layout.blade.php</code> que hemos creado anteriormente, y vamos a colocar dentro del <code>slot</code> el contenido de la vista.</p>
+<p><div class="language-php highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">layout</span><span class="o">&gt;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos=" 2 "></span></a>  <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><a href="#__codelineno-6-3"><span class="linenos" data-linenos=" 3 "></span></a>    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;w-full max-w-md space-y-8&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><a href="#__codelineno-6-4"><span class="linenos" data-linenos=" 4 "></span></a>      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><a href="#__codelineno-6-5"><span class="linenos" data-linenos=" 5 "></span></a>        <span class="o">&lt;</span><span class="nx">h2</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;mt-6 text-center text-3xl font-bold tracking-tight text-gray-900&quot;</span><span class="o">&gt;</span><span class="nx">Register</span><span class="o">&lt;/</span><span class="nx">h2</span><span class="o">&gt;</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><a href="#__codelineno-6-6"><span class="linenos" data-linenos=" 6 "></span></a>      <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><a href="#__codelineno-6-7"><span class="linenos" data-linenos=" 7 "></span></a>      <span class="o">&lt;</span><span class="nx">form</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&quot;POST&quot;</span> <span class="nx">action</span><span class="o">=</span><span class="s2">&quot;/register&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><a href="#__codelineno-6-8"><span class="linenos" data-linenos=" 8 "></span></a>        <span class="o">@</span><span class="nx">csrf</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><a href="#__codelineno-6-9"><span class="linenos" data-linenos=" 9 "></span></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><a href="#__codelineno-6-10"><span class="linenos" data-linenos="10 "></span></a>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;space-y-12&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a><a href="#__codelineno-6-11"><span class="linenos" data-linenos="11 "></span></a>          <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;border-b border-gray-900/10 pb-12&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a><a href="#__codelineno-6-12"><span class="linenos" data-linenos="12 "></span></a>            <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;flex flex-col gap-3&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a><a href="#__codelineno-6-13"><span class="linenos" data-linenos="13 "></span></a>              <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">field</span><span class="o">-</span><span class="nx">group</span><span class="o">&gt;</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a><a href="#__codelineno-6-14"><span class="linenos" data-linenos="14 "></span></a>                <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="o">&gt;</span><span class="nx">Name</span><span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">label</span><span class="o">&gt;</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15"></a><a href="#__codelineno-6-15"><span class="linenos" data-linenos="15 "></span></a>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16"></a><a href="#__codelineno-6-16"><span class="linenos" data-linenos="16 "></span></a>                <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;mt-2&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17"></a><a href="#__codelineno-6-17"><span class="linenos" data-linenos="17 "></span></a>                  <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;name&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;name&quot;</span> <span class="nx">required</span><span class="o">/&gt;</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18"></a><a href="#__codelineno-6-18"><span class="linenos" data-linenos="18 "></span></a>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19"></a><a href="#__codelineno-6-19"><span class="linenos" data-linenos="19 "></span></a>                  <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">error</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="o">/&gt;</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20"></a><a href="#__codelineno-6-20"><span class="linenos" data-linenos="20 "></span></a>                <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21"></a><a href="#__codelineno-6-21"><span class="linenos" data-linenos="21 "></span></a>              <span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">field</span><span class="o">-</span><span class="nx">group</span><span class="o">&gt;</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22"></a><a href="#__codelineno-6-22"><span class="linenos" data-linenos="22 "></span></a>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23"></a><a href="#__codelineno-6-23"><span class="linenos" data-linenos="23 "></span></a>              <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">field</span><span class="o">-</span><span class="nx">group</span><span class="o">&gt;</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24"></a><a href="#__codelineno-6-24"><span class="linenos" data-linenos="24 "></span></a>                <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;email&quot;</span><span class="o">&gt;</span><span class="nx">Email</span><span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">label</span><span class="o">&gt;</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25"></a><a href="#__codelineno-6-25"><span class="linenos" data-linenos="25 "></span></a>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26"></a><a href="#__codelineno-6-26"><span class="linenos" data-linenos="26 "></span></a>                <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;mt-2&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27"></a><a href="#__codelineno-6-27"><span class="linenos" data-linenos="27 "></span></a>                  <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;email&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;email&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;email&quot;</span> <span class="nx">required</span><span class="o">/&gt;</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28"></a><a href="#__codelineno-6-28"><span class="linenos" data-linenos="28 "></span></a>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29"></a><a href="#__codelineno-6-29"><span class="linenos" data-linenos="29 "></span></a>                  <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">error</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;email&quot;</span><span class="o">/&gt;</span>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30"></a><a href="#__codelineno-6-30"><span class="linenos" data-linenos="30 "></span></a>                <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31"></a><a href="#__codelineno-6-31"><span class="linenos" data-linenos="31 "></span></a>              <span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">field</span><span class="o">-</span><span class="nx">group</span><span class="o">&gt;</span>
+</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32"></a><a href="#__codelineno-6-32"><span class="linenos" data-linenos="32 "></span></a>
+</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33"></a><a href="#__codelineno-6-33"><span class="linenos" data-linenos="33 "></span></a>              <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">field</span><span class="o">-</span><span class="nx">group</span><span class="o">&gt;</span>
+</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34"></a><a href="#__codelineno-6-34"><span class="linenos" data-linenos="34 "></span></a>                <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="o">&gt;</span><span class="nx">Password</span><span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">label</span><span class="o">&gt;</span>
+</span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35"></a><a href="#__codelineno-6-35"><span class="linenos" data-linenos="35 "></span></a>
+</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36"></a><a href="#__codelineno-6-36"><span class="linenos" data-linenos="36 "></span></a>                <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;mt-2&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37"></a><a href="#__codelineno-6-37"><span class="linenos" data-linenos="37 "></span></a>                  <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="nx">required</span><span class="o">/&gt;</span>
+</span><span id="__span-6-38"><a id="__codelineno-6-38" name="__codelineno-6-38"></a><a href="#__codelineno-6-38"><span class="linenos" data-linenos="38 "></span></a>
+</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39"></a><a href="#__codelineno-6-39"><span class="linenos" data-linenos="39 "></span></a>                  <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">error</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="o">/&gt;</span>
+</span><span id="__span-6-40"><a id="__codelineno-6-40" name="__codelineno-6-40"></a><a href="#__codelineno-6-40"><span class="linenos" data-linenos="40 "></span></a>                <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-6-41"><a id="__codelineno-6-41" name="__codelineno-6-41"></a><a href="#__codelineno-6-41"><span class="linenos" data-linenos="41 "></span></a>              <span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">field</span><span class="o">-</span><span class="nx">group</span><span class="o">&gt;</span>
+</span><span id="__span-6-42"><a id="__codelineno-6-42" name="__codelineno-6-42"></a><a href="#__codelineno-6-42"><span class="linenos" data-linenos="42 "></span></a>
+</span><span id="__span-6-43"><a id="__codelineno-6-43" name="__codelineno-6-43"></a><a href="#__codelineno-6-43"><span class="linenos" data-linenos="43 "></span></a>              <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">field</span><span class="o">-</span><span class="nx">group</span><span class="o">&gt;</span>
+</span><span id="__span-6-44"><a id="__codelineno-6-44" name="__codelineno-6-44"></a><a href="#__codelineno-6-44"><span class="linenos" data-linenos="44 "></span></a>                <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;password_confirmation&quot;</span><span class="o">&gt;</span><span class="nx">Confirm</span> <span class="nx">Password</span><span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">label</span><span class="o">&gt;</span>
+</span><span id="__span-6-45"><a id="__codelineno-6-45" name="__codelineno-6-45"></a><a href="#__codelineno-6-45"><span class="linenos" data-linenos="45 "></span></a>
+</span><span id="__span-6-46"><a id="__codelineno-6-46" name="__codelineno-6-46"></a><a href="#__codelineno-6-46"><span class="linenos" data-linenos="46 "></span></a>                <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;mt-2&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-6-47"><a id="__codelineno-6-47" name="__codelineno-6-47"></a><a href="#__codelineno-6-47"><span class="linenos" data-linenos="47 "></span></a>                  <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;password_confirmation&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;password_confirmation&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="nx">required</span><span class="o">/&gt;</span>
+</span><span id="__span-6-48"><a id="__codelineno-6-48" name="__codelineno-6-48"></a><a href="#__codelineno-6-48"><span class="linenos" data-linenos="48 "></span></a>
+</span><span id="__span-6-49"><a id="__codelineno-6-49" name="__codelineno-6-49"></a><a href="#__codelineno-6-49"><span class="linenos" data-linenos="49 "></span></a>                  <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">error</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;password_confirmation&quot;</span><span class="o">/&gt;</span>
+</span><span id="__span-6-50"><a id="__codelineno-6-50" name="__codelineno-6-50"></a><a href="#__codelineno-6-50"><span class="linenos" data-linenos="50 "></span></a>                <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-6-51"><a id="__codelineno-6-51" name="__codelineno-6-51"></a><a href="#__codelineno-6-51"><span class="linenos" data-linenos="51 "></span></a>              <span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">field</span><span class="o">-</span><span class="nx">group</span><span class="o">&gt;</span>
+</span><span id="__span-6-52"><a id="__codelineno-6-52" name="__codelineno-6-52"></a><a href="#__codelineno-6-52"><span class="linenos" data-linenos="52 "></span></a>            <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-6-53"><a id="__codelineno-6-53" name="__codelineno-6-53"></a><a href="#__codelineno-6-53"><span class="linenos" data-linenos="53 "></span></a>          <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-6-54"><a id="__codelineno-6-54" name="__codelineno-6-54"></a><a href="#__codelineno-6-54"><span class="linenos" data-linenos="54 "></span></a>        <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-6-55"><a id="__codelineno-6-55" name="__codelineno-6-55"></a><a href="#__codelineno-6-55"><span class="linenos" data-linenos="55 "></span></a>
+</span><span id="__span-6-56"><a id="__codelineno-6-56" name="__codelineno-6-56"></a><a href="#__codelineno-6-56"><span class="linenos" data-linenos="56 "></span></a>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;mt-6 flex items-center justify-end gap-x-6&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-6-57"><a id="__codelineno-6-57" name="__codelineno-6-57"></a><a href="#__codelineno-6-57"><span class="linenos" data-linenos="57 "></span></a>          <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;/&quot;</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;text-sm font-semibold leading-6 text-gray-900&quot;</span><span class="o">&gt;</span><span class="nx">Cancel</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;</span>
+</span><span id="__span-6-58"><a id="__codelineno-6-58" name="__codelineno-6-58"></a><a href="#__codelineno-6-58"><span class="linenos" data-linenos="58 "></span></a>          <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">button</span><span class="o">&gt;</span><span class="nx">Register</span><span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">button</span><span class="o">&gt;</span>
+</span><span id="__span-6-59"><a id="__codelineno-6-59" name="__codelineno-6-59"></a><a href="#__codelineno-6-59"><span class="linenos" data-linenos="59 "></span></a>        <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-6-60"><a id="__codelineno-6-60" name="__codelineno-6-60"></a><a href="#__codelineno-6-60"><span class="linenos" data-linenos="60 "></span></a>      <span class="o">&lt;/</span><span class="nx">form</span><span class="o">&gt;</span>
+</span><span id="__span-6-61"><a id="__codelineno-6-61" name="__codelineno-6-61"></a><a href="#__codelineno-6-61"><span class="linenos" data-linenos="61 "></span></a>    <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-6-62"><a id="__codelineno-6-62" name="__codelineno-6-62"></a><a href="#__codelineno-6-62"><span class="linenos" data-linenos="62 "></span></a>  <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-6-63"><a id="__codelineno-6-63" name="__codelineno-6-63"></a><a href="#__codelineno-6-63"><span class="linenos" data-linenos="63 "></span></a><span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">layout</span><span class="o">&gt;</span>
+</span></code></pre></div>
+Para el usuario, se han creado los campos <code>name</code>, <code>email</code>, <code>password</code> y <code>password_confirmation</code>.<br>
+Y se ha indicado con la ruta <code>action="/register"</code>.</p>
+<p>y para la vista <code>login.blade.php</code>:</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">layout</span> <span class="o">:</span><span class="nx">header_btn</span><span class="o">=</span><span class="s2">&quot;false&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos=" 2 "></span></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos=" 3 "></span></a>  <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><a href="#__codelineno-7-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;w-full max-w-md space-y-8&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><a href="#__codelineno-7-5"><span class="linenos" data-linenos=" 5 "></span></a>      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><a href="#__codelineno-7-6"><span class="linenos" data-linenos=" 6 "></span></a>        <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;mx-auto h-12 w-auto&quot;</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&amp;shade=600&quot;</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><a href="#__codelineno-7-7"><span class="linenos" data-linenos=" 7 "></span></a>             <span class="nx">alt</span><span class="o">=</span><span class="s2">&quot;Your Company&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a><a href="#__codelineno-7-8"><span class="linenos" data-linenos=" 8 "></span></a>        <span class="o">&lt;</span><span class="nx">h2</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;mt-6 text-center text-3xl font-bold tracking-tight text-gray-900&quot;</span><span class="o">&gt;</span><span class="nx">Log</span> <span class="nx">In</span><span class="o">&lt;/</span><span class="nx">h2</span><span class="o">&gt;</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a><a href="#__codelineno-7-9"><span class="linenos" data-linenos=" 9 "></span></a>      <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a><a href="#__codelineno-7-10"><span class="linenos" data-linenos="10 "></span></a>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a><a href="#__codelineno-7-11"><span class="linenos" data-linenos="11 "></span></a>      <span class="o">&lt;</span><span class="nx">form</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;flex-[0.5]&quot;</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&quot;POST&quot;</span> <span class="nx">action</span><span class="o">=</span><span class="s2">&quot;/login&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a><a href="#__codelineno-7-12"><span class="linenos" data-linenos="12 "></span></a>        <span class="o">@</span><span class="nx">csrf</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a><a href="#__codelineno-7-13"><span class="linenos" data-linenos="13 "></span></a>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a><a href="#__codelineno-7-14"><span class="linenos" data-linenos="14 "></span></a>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;space-y-12&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15"></a><a href="#__codelineno-7-15"><span class="linenos" data-linenos="15 "></span></a>          <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;border-b border-gray-900/10 pb-12&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16"></a><a href="#__codelineno-7-16"><span class="linenos" data-linenos="16 "></span></a>            <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;flex flex-col gap-3&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17"></a><a href="#__codelineno-7-17"><span class="linenos" data-linenos="17 "></span></a>              <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">field</span><span class="o">-</span><span class="nx">group</span><span class="o">&gt;</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18"></a><a href="#__codelineno-7-18"><span class="linenos" data-linenos="18 "></span></a>                <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;email&quot;</span><span class="o">&gt;</span><span class="nx">Email</span><span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">label</span><span class="o">&gt;</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19"></a><a href="#__codelineno-7-19"><span class="linenos" data-linenos="19 "></span></a>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20"></a><a href="#__codelineno-7-20"><span class="linenos" data-linenos="20 "></span></a>                <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;mt-2&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21"></a><a href="#__codelineno-7-21"><span class="linenos" data-linenos="21 "></span></a>                  <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;email&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;email&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;email&quot;</span> <span class="o">:</span><span class="nx">value</span><span class="o">=</span><span class="s2">&quot;old(&#39;email&#39;)&quot;</span> <span class="nx">required</span><span class="o">/&gt;</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22"></a><a href="#__codelineno-7-22"><span class="linenos" data-linenos="22 "></span></a>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23"></a><a href="#__codelineno-7-23"><span class="linenos" data-linenos="23 "></span></a>                  <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">error</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;email&quot;</span><span class="o">/&gt;</span>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24"></a><a href="#__codelineno-7-24"><span class="linenos" data-linenos="24 "></span></a>                <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25"></a><a href="#__codelineno-7-25"><span class="linenos" data-linenos="25 "></span></a>              <span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">field</span><span class="o">-</span><span class="nx">group</span><span class="o">&gt;</span>
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26"></a><a href="#__codelineno-7-26"><span class="linenos" data-linenos="26 "></span></a>
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27"></a><a href="#__codelineno-7-27"><span class="linenos" data-linenos="27 "></span></a>              <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">field</span><span class="o">-</span><span class="nx">group</span><span class="o">&gt;</span>
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28"></a><a href="#__codelineno-7-28"><span class="linenos" data-linenos="28 "></span></a>                <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="o">&gt;</span><span class="nx">Password</span><span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">label</span><span class="o">&gt;</span>
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29"></a><a href="#__codelineno-7-29"><span class="linenos" data-linenos="29 "></span></a>
+</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30"></a><a href="#__codelineno-7-30"><span class="linenos" data-linenos="30 "></span></a>                <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;mt-2&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31"></a><a href="#__codelineno-7-31"><span class="linenos" data-linenos="31 "></span></a>                  <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="nx">required</span><span class="o">/&gt;</span>
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32"></a><a href="#__codelineno-7-32"><span class="linenos" data-linenos="32 "></span></a>
+</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33"></a><a href="#__codelineno-7-33"><span class="linenos" data-linenos="33 "></span></a>                  <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">error</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="o">/&gt;</span>
+</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34"></a><a href="#__codelineno-7-34"><span class="linenos" data-linenos="34 "></span></a>                <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35"></a><a href="#__codelineno-7-35"><span class="linenos" data-linenos="35 "></span></a>              <span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">field</span><span class="o">-</span><span class="nx">group</span><span class="o">&gt;</span>
+</span><span id="__span-7-36"><a id="__codelineno-7-36" name="__codelineno-7-36"></a><a href="#__codelineno-7-36"><span class="linenos" data-linenos="36 "></span></a>            <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-7-37"><a id="__codelineno-7-37" name="__codelineno-7-37"></a><a href="#__codelineno-7-37"><span class="linenos" data-linenos="37 "></span></a>          <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-7-38"><a id="__codelineno-7-38" name="__codelineno-7-38"></a><a href="#__codelineno-7-38"><span class="linenos" data-linenos="38 "></span></a>        <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-7-39"><a id="__codelineno-7-39" name="__codelineno-7-39"></a><a href="#__codelineno-7-39"><span class="linenos" data-linenos="39 "></span></a>
+</span><span id="__span-7-40"><a id="__codelineno-7-40" name="__codelineno-7-40"></a><a href="#__codelineno-7-40"><span class="linenos" data-linenos="40 "></span></a>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;mt-6 flex items-center justify-end gap-x-6&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-7-41"><a id="__codelineno-7-41" name="__codelineno-7-41"></a><a href="#__codelineno-7-41"><span class="linenos" data-linenos="41 "></span></a>          <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;/&quot;</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;text-sm font-semibold leading-6 text-gray-900&quot;</span><span class="o">&gt;</span><span class="nx">Cancel</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;</span>
+</span><span id="__span-7-42"><a id="__codelineno-7-42" name="__codelineno-7-42"></a><a href="#__codelineno-7-42"><span class="linenos" data-linenos="42 "></span></a>          <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">button</span><span class="o">&gt;</span><span class="nx">Log</span> <span class="nx">In</span><span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">button</span><span class="o">&gt;</span>
+</span><span id="__span-7-43"><a id="__codelineno-7-43" name="__codelineno-7-43"></a><a href="#__codelineno-7-43"><span class="linenos" data-linenos="43 "></span></a>        <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-7-44"><a id="__codelineno-7-44" name="__codelineno-7-44"></a><a href="#__codelineno-7-44"><span class="linenos" data-linenos="44 "></span></a>      <span class="o">&lt;/</span><span class="nx">form</span><span class="o">&gt;</span>
+</span><span id="__span-7-45"><a id="__codelineno-7-45" name="__codelineno-7-45"></a><a href="#__codelineno-7-45"><span class="linenos" data-linenos="45 "></span></a>    <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-7-46"><a id="__codelineno-7-46" name="__codelineno-7-46"></a><a href="#__codelineno-7-46"><span class="linenos" data-linenos="46 "></span></a>  <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span id="__span-7-47"><a id="__codelineno-7-47" name="__codelineno-7-47"></a><a href="#__codelineno-7-47"><span class="linenos" data-linenos="47 "></span></a><span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">layout</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<p>Para el inicio-sesión, se utilizan los campos <code>email</code> y <code>password</code>.
+Y se ha indicado con la ruta <code>action="/login"</code>.</p>
+<h3 id="mejora-en-layout">Mejora en Layout<a class="headerlink" href="#mejora-en-layout" title="Permanent link">&para;</a></h3>
+<p>En el layout la propiedad <code>heading</code> se le ha asignado un valor por defecto, y además se ha agregado otra propiedad <code>header_btn</code> para poder mostrar o no el botón en la cabecera.
+Por tanto, las props del layout son: <code>@props(['heading' =&gt; '', 'header_btn' =&gt; false])</code>. La propiedad <code>header_btn</code> se utiliza para mostrar o no el botón en la cabecera. Aplica este cambio en el layout.</p>
+<h2 id="crear-el-controlador-para-login-y-register">Crear el controlador para Login y Register<a class="headerlink" href="#crear-el-controlador-para-login-y-register" title="Permanent link">&para;</a></h2>
+<p>Ahora tendremos que crear un controlador para el Login y otro para el registro de un usuario.</p>
+<p>Para este caso, vamos a crear manualmente el controlador, dentro de la carpeta <code>app/Http/Controllers</code>, y lo llamaremos <code>RegisterUserController.php</code>. Y le vamos a agregar 2 métodos: <code>create</code> y <code>store</code>.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="k">class</span> <span class="nc">RegisterUserController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><a href="#__codelineno-8-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="p">{</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><a href="#__codelineno-8-3"><span class="linenos" data-linenos=" 3 "></span></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">()</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><a href="#__codelineno-8-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="p">{</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><a href="#__codelineno-8-5"><span class="linenos" data-linenos=" 5 "></span></a>        <span class="c1">//Visualizar la vista del formulario de registro </span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a><a href="#__codelineno-8-6"><span class="linenos" data-linenos=" 6 "></span></a>        <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">&#39;auth.register&#39;</span><span class="p">);</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a><a href="#__codelineno-8-7"><span class="linenos" data-linenos=" 7 "></span></a>    <span class="p">}</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a><a href="#__codelineno-8-8"><span class="linenos" data-linenos=" 8 "></span></a>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9"></a><a href="#__codelineno-8-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">store</span><span class="p">()</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10"></a><a href="#__codelineno-8-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="p">{</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11"></a><a href="#__codelineno-8-11"><span class="linenos" data-linenos="11 "></span></a>        <span class="c1">//Validación</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12"></a><a href="#__codelineno-8-12"><span class="linenos" data-linenos="12 "></span></a>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13"></a><a href="#__codelineno-8-13"><span class="linenos" data-linenos="13 "></span></a>        <span class="c1">//Creación del usuario</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14"></a><a href="#__codelineno-8-14"><span class="linenos" data-linenos="14 "></span></a>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15"></a><a href="#__codelineno-8-15"><span class="linenos" data-linenos="15 "></span></a>        <span class="c1">//Iniciar sesión</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16"></a><a href="#__codelineno-8-16"><span class="linenos" data-linenos="16 "></span></a>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17"></a><a href="#__codelineno-8-17"><span class="linenos" data-linenos="17 "></span></a>        <span class="c1">//Redirección a página de inicio</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18"></a><a href="#__codelineno-8-18"><span class="linenos" data-linenos="18 "></span></a>    <span class="p">}</span>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19"></a><a href="#__codelineno-8-19"><span class="linenos" data-linenos="19 "></span></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Y para el controlador de Login, vamos a crear otro controlador, llamado <code>SessionController.php</code>, y le vamos a agregar 3 métodos: <code>create</code>, <code>store</code> y <code>destroy</code>. Este controlador va a ser el encargado de iniciar y cerrar la sesión del usuario.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><a href="#__codelineno-9-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="k">class</span> <span class="nc">SessionController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a><a href="#__codelineno-9-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="p">{</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><a href="#__codelineno-9-3"><span class="linenos" data-linenos=" 3 "></span></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">()</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><a href="#__codelineno-9-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="p">{</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><a href="#__codelineno-9-5"><span class="linenos" data-linenos=" 5 "></span></a>        <span class="c1">//Visualizar la vista del formulario de login</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a><a href="#__codelineno-9-6"><span class="linenos" data-linenos=" 6 "></span></a>        <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">&#39;auth.login&#39;</span><span class="p">);</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><a href="#__codelineno-9-7"><span class="linenos" data-linenos=" 7 "></span></a>    <span class="p">}</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a><a href="#__codelineno-9-8"><span class="linenos" data-linenos=" 8 "></span></a>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a><a href="#__codelineno-9-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="c1">//Iniciar sesión</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a><a href="#__codelineno-9-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">store</span><span class="p">()</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a><a href="#__codelineno-9-11"><span class="linenos" data-linenos="11 "></span></a>    <span class="p">{</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a><a href="#__codelineno-9-12"><span class="linenos" data-linenos="12 "></span></a>       <span class="c1">//Validar los datos email y password</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a><a href="#__codelineno-9-13"><span class="linenos" data-linenos="13 "></span></a>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a><a href="#__codelineno-9-14"><span class="linenos" data-linenos="14 "></span></a>       <span class="c1">//Verificar que existe un usuario con esos datos</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15"></a><a href="#__codelineno-9-15"><span class="linenos" data-linenos="15 "></span></a>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16"></a><a href="#__codelineno-9-16"><span class="linenos" data-linenos="16 "></span></a>       <span class="c1">//iniciar sesión</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17"></a><a href="#__codelineno-9-17"><span class="linenos" data-linenos="17 "></span></a>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18"></a><a href="#__codelineno-9-18"><span class="linenos" data-linenos="18 "></span></a>       <span class="c1">//Redirección a la página de inicio</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19"></a><a href="#__codelineno-9-19"><span class="linenos" data-linenos="19 "></span></a>    <span class="p">}</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20"></a><a href="#__codelineno-9-20"><span class="linenos" data-linenos="20 "></span></a>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21"></a><a href="#__codelineno-9-21"><span class="linenos" data-linenos="21 "></span></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">destroy</span><span class="p">()</span>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22"></a><a href="#__codelineno-9-22"><span class="linenos" data-linenos="22 "></span></a>    <span class="p">{</span>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23"></a><a href="#__codelineno-9-23"><span class="linenos" data-linenos="23 "></span></a>        <span class="c1">//Cerrar sesión</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24"></a><a href="#__codelineno-9-24"><span class="linenos" data-linenos="24 "></span></a>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25"></a><a href="#__codelineno-9-25"><span class="linenos" data-linenos="25 "></span></a>        <span class="c1">//Redirección a la página de inicio</span>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26"></a><a href="#__codelineno-9-26"><span class="linenos" data-linenos="26 "></span></a>    <span class="p">}</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27"></a><a href="#__codelineno-9-27"><span class="linenos" data-linenos="27 "></span></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="crear-las-rutas-para-login-y-register">Crear las rutas para Login y Register<a class="headerlink" href="#crear-las-rutas-para-login-y-register" title="Permanent link">&para;</a></h2>
+<p>Ahora que ya tenemos los controladores, vamos a crear las rutas para acceder al formulario de registro y de login.</p>
+<p>En el fichero de rutas <code>web.php</code>, vamos a agregar las siguientes rutas:</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><a href="#__codelineno-10-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1">//RUTAS AUTH</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><a href="#__codelineno-10-2"><span class="linenos" data-linenos="2 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/register&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">RegisterUserController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">]);</span>  <span class="c1">//Formulario de registro</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><a href="#__codelineno-10-3"><span class="linenos" data-linenos="3 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/register&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">RegisterUserController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;store&#39;</span><span class="p">]);</span>  <span class="c1">//Registrar usuario</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><a href="#__codelineno-10-4"><span class="linenos" data-linenos="4 "></span></a>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><a href="#__codelineno-10-5"><span class="linenos" data-linenos="5 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">SessionController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">]);</span>  <span class="c1">//Formulario de login</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a><a href="#__codelineno-10-6"><span class="linenos" data-linenos="6 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">SessionController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;store&#39;</span><span class="p">]);</span>  <span class="c1">//Iniciar sesión</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a><a href="#__codelineno-10-7"><span class="linenos" data-linenos="7 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/logout&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">SessionController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;destroy&#39;</span><span class="p">]);</span>  <span class="c1">//Cerrar sesión</span>
+</span></code></pre></div>
+<p>Ahora, después de todo esto, vamos a comprobar que funciona. El resultado debería ser algo así.</p>
+<p><a class="glightbox" href="img/22.register-login-views.gif" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Register-login-views" src="img/22.register-login-views.gif" /></a></p>
+<h2 id="aplicar-logica-a-los-controladores-register-y-session">Aplicar lógica a los controladores Register y Session<a class="headerlink" href="#aplicar-logica-a-los-controladores-register-y-session" title="Permanent link">&para;</a></h2>
+<h3 id="registar-un-nuevo-usuario">Registar un nuevo Usuario<a class="headerlink" href="#registar-un-nuevo-usuario" title="Permanent link">&para;</a></h3>
+<p>Como has comprobado, en el controlador <code>RegisterUserController</code> hemos creado un método <code>store</code> que se encargará de registrar un nuevo usuario, y se ha indicado una serie de pasos a seguir. Vamos a ver cómo hacerlo.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><a href="#__codelineno-11-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">//app/Http/Controllers/RegisterUserController.php</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><a href="#__codelineno-11-2"><span class="linenos" data-linenos=" 2 "></span></a> <span class="k">public</span> <span class="k">function</span> <span class="nf">store</span><span class="p">()</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><a href="#__codelineno-11-3"><span class="linenos" data-linenos=" 3 "></span></a>  <span class="p">{</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><a href="#__codelineno-11-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="c1">//Validación</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><a href="#__codelineno-11-5"><span class="linenos" data-linenos=" 5 "></span></a>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a><a href="#__codelineno-11-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="c1">//Creación del usuario</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a><a href="#__codelineno-11-7"><span class="linenos" data-linenos=" 7 "></span></a>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a><a href="#__codelineno-11-8"><span class="linenos" data-linenos=" 8 "></span></a>    <span class="c1">//Iniciar sesión</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9"></a><a href="#__codelineno-11-9"><span class="linenos" data-linenos=" 9 "></span></a>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10"></a><a href="#__codelineno-11-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="c1">//Redirección a página de inicio</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11"></a><a href="#__codelineno-11-11"><span class="linenos" data-linenos="11 "></span></a>  <span class="p">}</span>
+</span></code></pre></div>
+<h4 id="pasos">Pasos:<a class="headerlink" href="#pasos" title="Permanent link">&para;</a></h4>
+<p><strong>Validación</strong>:</p>
+<p>Laravel nos proporciona una forma muy sencilla de validar los datos, a través de <code>Validation Rules</code>, como vimos en alguna lección anterior.</p>
+<p>En base a los campos que hemos creado en el formulario de registro, vamos a validar que los campos <code>name</code>, <code>email</code>, <code>password</code> y <code>password_confirmation</code> sean obligatorios, y que <code>email</code> sea un email válido, y que <code>password</code> y <code>password_confirmation</code> sean iguales.</p>
+<p>De todos estos campos, el más complejo es el <code>password</code> ya que podemos imponer una serie de reglas, como que tenga un mínimo de caracteres, que tenga al menos un número, una mayúscula, una minúscula, etc. Laravel nos proporciona una regla llamada <code>password</code> que nos permite validar la contraseña de una forma muy sencilla.</p>
+<p>Por ejemplo, si queremos que la contraseña tenga un mínimo de 8 caracteres, y que tenga al menos una mayúscula, una minúscula y un número y un simbolo, podemos hacerlo de la siguiente manera: <code>Password::min(8)-&gt;mixedCase()-&gt;numbers()-&gt;symbols</code>. También debemos comprobar que <code>password</code> y <code>password_confirmation</code> sean iguales, para ello, utilizar la regla <code>confirmed</code>. Con la regla <code>confirmed</code>, Laravel buscará un campo llamado <code>password_confirmation</code> y comprobará que sea igual al campo <code>password</code>. Si el campo no se llama <code>password_confirmation</code>, se le puede pasar después de dos puntos <code>:</code> el nombre del campo.</p>
+<p><em>En el formulario de registro, hemos creado un campo <code>password_confirmation</code>, revisa que este campo se llame así, si no es así, cámbialo.</em></p>
+<p><div class="language-php highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><a href="#__codelineno-12-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">request</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">([</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><a href="#__codelineno-12-2"><span class="linenos" data-linenos="2 "></span></a>    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;required&#39;</span><span class="p">,</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><a href="#__codelineno-12-3"><span class="linenos" data-linenos="3 "></span></a>    <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;required|email&#39;</span><span class="p">,</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a><a href="#__codelineno-12-4"><span class="linenos" data-linenos="4 "></span></a>    <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;required&#39;</span><span class="p">,</span><span class="nx">Password</span><span class="o">::</span><span class="na">min</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">mixedCase</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">numbers</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">symbols</span><span class="p">(),</span> <span class="s1">&#39;confirmed:password_confirmation&#39;</span><span class="p">],</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a><a href="#__codelineno-12-5"><span class="linenos" data-linenos="5 "></span></a>  <span class="p">]);</span>
+</span></code></pre></div>
+En nuestro caso, y para facilitar las pruebas, solo pondremos que tenga al menos 6 caracteres.</p>
+<p><strong>Crear el usuario</strong>:</p>
+<p>Para crear un usuario, utilizamos el modelo <code>User</code>, y llamamos al método <code>create</code>, pasándole un array asociativo con los campos que queremos guardar en la base de datos. Estos datos son los mismos que hemos validado anteriormente. El método <code>validate</code> nos devuelve un array con los datos validados, por lo que podemos utilizar este array para crear el usuario.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><a href="#__codelineno-13-1"><span class="linenos" data-linenos="1 "></span></a><span class="nv">$validatedAttributes</span> <span class="o">=</span> <span class="nx">request</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">([</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><a href="#__codelineno-13-2"><span class="linenos" data-linenos="2 "></span></a>    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;required&#39;</span><span class="p">,</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><a href="#__codelineno-13-3"><span class="linenos" data-linenos="3 "></span></a>    <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;required|email&#39;</span><span class="p">,</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a><a href="#__codelineno-13-4"><span class="linenos" data-linenos="4 "></span></a>    <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;required&#39;</span><span class="p">,</span><span class="nx">Password</span><span class="o">::</span><span class="na">min</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">mixedCase</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">numbers</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">symbols</span><span class="p">(),</span> <span class="s1">&#39;confirmed:password_confirmation&#39;</span><span class="p">],</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a><a href="#__codelineno-13-5"><span class="linenos" data-linenos="5 "></span></a>  <span class="p">]);</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6"></a><a href="#__codelineno-13-6"><span class="linenos" data-linenos="6 "></span></a>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7"></a><a href="#__codelineno-13-7"><span class="linenos" data-linenos="7 "></span></a>  <span class="c1">//Y para crear el usuario, utilizamos el modelo User</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8"></a><a href="#__codelineno-13-8"><span class="linenos" data-linenos="8 "></span></a><span class="nv">$user</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="nv">$validatedAttributes</span><span class="p">);</span> 
+</span></code></pre></div>
+<p><strong>Iniciar sesión</strong>:</p>
+<p>Si todo es correcto, el usuario se habrá creado correctamente (en caso contrario, Laravel nos devolverá un error), y ahora debemos iniciar sesión. Para iniciar sesión, vamos a utilizar el método <code>login</code> que nos proporciona Laravel. Este método recibe un usuario como parámetro, y este usuario será el que se logueará en la aplicación.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><a href="#__codelineno-14-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1">//Iniciar sesión</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><a href="#__codelineno-14-2"><span class="linenos" data-linenos="2 "></span></a><span class="nx">Auth</span><span class="o">::</span><span class="na">login</span><span class="p">(</span><span class="nv">$user</span><span class="p">);</span>
+</span></code></pre></div>
+<p>Por último, redirigimos al usuario a la página de inicio.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><a href="#__codelineno-15-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1">//Redirección a página de inicio</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a><a href="#__codelineno-15-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+</span></code></pre></div>
+<p>Y con todo esto, ya tendríamos el método <code>store</code> completo.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><a href="#__codelineno-16-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">//app/Http/Controllers/RegisterUserController.php</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a><a href="#__codelineno-16-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="k">public</span> <span class="k">function</span> <span class="nf">store</span><span class="p">()</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><a href="#__codelineno-16-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="p">{</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a><a href="#__codelineno-16-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="c1">//Validación</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a><a href="#__codelineno-16-5"><span class="linenos" data-linenos=" 5 "></span></a>    <span class="nv">$validatedAttributes</span> <span class="o">=</span> <span class="nx">request</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">([</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a><a href="#__codelineno-16-6"><span class="linenos" data-linenos=" 6 "></span></a>      <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;required&#39;</span><span class="p">,</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7"></a><a href="#__codelineno-16-7"><span class="linenos" data-linenos=" 7 "></span></a>      <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;required|email&#39;</span><span class="p">,</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8"></a><a href="#__codelineno-16-8"><span class="linenos" data-linenos=" 8 "></span></a>      <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;required&#39;</span><span class="p">,</span><span class="nx">Password</span><span class="o">::</span><span class="na">min</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span> <span class="s1">&#39;confirmed:password_confirmation&#39;</span><span class="p">],</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9"></a><a href="#__codelineno-16-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="p">]);</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10"></a><a href="#__codelineno-16-10"><span class="linenos" data-linenos="10 "></span></a>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11"></a><a href="#__codelineno-16-11"><span class="linenos" data-linenos="11 "></span></a>    <span class="c1">//Creación del usuario</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12"></a><a href="#__codelineno-16-12"><span class="linenos" data-linenos="12 "></span></a>    <span class="nv">$user</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="nv">$validatedAttributes</span><span class="p">);</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13"></a><a href="#__codelineno-16-13"><span class="linenos" data-linenos="13 "></span></a>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14"></a><a href="#__codelineno-16-14"><span class="linenos" data-linenos="14 "></span></a>    <span class="c1">//Iniciar sesión</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15"></a><a href="#__codelineno-16-15"><span class="linenos" data-linenos="15 "></span></a>    <span class="nx">Auth</span><span class="o">::</span><span class="na">login</span><span class="p">(</span><span class="nv">$user</span><span class="p">);</span>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16"></a><a href="#__codelineno-16-16"><span class="linenos" data-linenos="16 "></span></a>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17"></a><a href="#__codelineno-16-17"><span class="linenos" data-linenos="17 "></span></a>    <span class="c1">//Redirección a página de inicio</span>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18"></a><a href="#__codelineno-16-18"><span class="linenos" data-linenos="18 "></span></a>    <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19"></a><a href="#__codelineno-16-19"><span class="linenos" data-linenos="19 "></span></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="iniciar-sesion">Iniciar sesión<a class="headerlink" href="#iniciar-sesion" title="Permanent link">&para;</a></h3>
+<p>Para iniciar sesión, vamos a utilizar el controlador <code>SessionController</code>, y el método <code>store</code>, siguiendo la convención de Laravel, aunque no creamos nada, de alguna forma estamos (creando) almacenando la sesión del usuario. Al igual que para registrar un usuario, vamos a seguir una serie de pasos.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><a href="#__codelineno-17-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">//app/Http/Controllers/SessionController.php</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a><a href="#__codelineno-17-2"><span class="linenos" data-linenos=" 2 "></span></a> <span class="k">public</span> <span class="k">function</span> <span class="nf">store</span><span class="p">()</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a><a href="#__codelineno-17-3"><span class="linenos" data-linenos=" 3 "></span></a>  <span class="p">{</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4"></a><a href="#__codelineno-17-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="c1">//Validar los datos email y password</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5"></a><a href="#__codelineno-17-5"><span class="linenos" data-linenos=" 5 "></span></a>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6"></a><a href="#__codelineno-17-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="c1">//Verificar que existe un usuario con esos datos</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7"></a><a href="#__codelineno-17-7"><span class="linenos" data-linenos=" 7 "></span></a>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8"></a><a href="#__codelineno-17-8"><span class="linenos" data-linenos=" 8 "></span></a>    <span class="c1">//Regegistrar sesión</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9"></a><a href="#__codelineno-17-9"><span class="linenos" data-linenos=" 9 "></span></a>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10"></a><a href="#__codelineno-17-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="c1">//Redirección a la página de inicio</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11"></a><a href="#__codelineno-17-11"><span class="linenos" data-linenos="11 "></span></a>  <span class="p">}</span>
+</span></code></pre></div>
+<h4 id="pasos_1">Pasos:<a class="headerlink" href="#pasos_1" title="Permanent link">&para;</a></h4>
+<p><strong>Validar los datos</strong>:</p>
+<p>La validación de los datos es muy similar a la que hemos hecho para el registro de un usuario, solo que en este caso, solo necesitamos validar los campos <code>email</code> y <code>password</code>.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><a href="#__codelineno-18-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">request</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">([</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a><a href="#__codelineno-18-2"><span class="linenos" data-linenos="2 "></span></a>    <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;required|email&#39;</span><span class="p">,</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a><a href="#__codelineno-18-3"><span class="linenos" data-linenos="3 "></span></a>    <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;required&#39;</span><span class="p">,</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a><a href="#__codelineno-18-4"><span class="linenos" data-linenos="4 "></span></a>  <span class="p">]);</span>
+</span></code></pre></div>
+<p><strong>Verificar que existe un usuario con esos datos</strong>:</p>
+<p>Para verificar que existe un usuario con esos datos, vamos a utilizar el método <code>attempt</code> que nos proporciona Laravel. Este método recibe un array asociativo con los campos <code>email</code> y <code>password</code>, y si existe un usuario con esos datos, directamente iniciará sesión. Pero en caso de que el usuario no exista, vamos a lanzar una excepción, concretamente una excepción de tipo <code>ValidationException</code>, que es la que Laravel utiliza para mostrar los mensajes de error, incluyendo un mensaje de error personalizado.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><a href="#__codelineno-19-1"><span class="linenos" data-linenos="1 "></span></a> <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">Auth</span><span class="o">::</span><span class="na">attempt</span><span class="p">(</span><span class="nv">$attributes</span><span class="p">))</span> <span class="p">{</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a><a href="#__codelineno-19-2"><span class="linenos" data-linenos="2 "></span></a>    <span class="k">throw</span> <span class="nx">ValidationException</span><span class="o">::</span><span class="na">withMessages</span><span class="p">([</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a><a href="#__codelineno-19-3"><span class="linenos" data-linenos="3 "></span></a>        <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Sorry, those credentials do not match.&#39;</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4"></a><a href="#__codelineno-19-4"><span class="linenos" data-linenos="4 "></span></a>    <span class="p">]);</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5"></a><a href="#__codelineno-19-5"><span class="linenos" data-linenos="5 "></span></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Regenerar el id de la sesión</strong></p>
+<p>Es fundamental, por seguridad, regenerar el id de la sesión, para evitar ataques de tipo <code>session fixation</code>, es decir, que un atacante pueda obtener la sesión de un usuario y hacerse pasar por él. Si regeneramos el id de la sesión, Laravel creará una nueva sesión, y la antigua será invalidada.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><a href="#__codelineno-20-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">request</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">session</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">regenerate</span><span class="p">();</span>
+</span></code></pre></div>
+<p>De tal forma, que el método <code>store</code> quedaría así:</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><a href="#__codelineno-21-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">//app/Http/Controllers/SessionController.php</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a><a href="#__codelineno-21-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="k">public</span> <span class="k">function</span> <span class="nf">store</span><span class="p">()</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3"></a><a href="#__codelineno-21-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="p">{</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4"></a><a href="#__codelineno-21-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="c1">//Validar los datos email y password</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5"></a><a href="#__codelineno-21-5"><span class="linenos" data-linenos=" 5 "></span></a>    <span class="nx">request</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">([</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6"></a><a href="#__codelineno-21-6"><span class="linenos" data-linenos=" 6 "></span></a>        <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;required|email&#39;</span><span class="p">,</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7"></a><a href="#__codelineno-21-7"><span class="linenos" data-linenos=" 7 "></span></a>        <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;required&#39;</span><span class="p">,</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8"></a><a href="#__codelineno-21-8"><span class="linenos" data-linenos=" 8 "></span></a>    <span class="p">]);</span>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9"></a><a href="#__codelineno-21-9"><span class="linenos" data-linenos=" 9 "></span></a>
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10"></a><a href="#__codelineno-21-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="nv">$attributes</span> <span class="o">=</span> <span class="nx">request</span><span class="p">([</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">]);</span>
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11"></a><a href="#__codelineno-21-11"><span class="linenos" data-linenos="11 "></span></a>
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12"></a><a href="#__codelineno-21-12"><span class="linenos" data-linenos="12 "></span></a>    <span class="c1">//Verificar que existe un usuario con esos datos</span>
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13"></a><a href="#__codelineno-21-13"><span class="linenos" data-linenos="13 "></span></a>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">Auth</span><span class="o">::</span><span class="na">attempt</span><span class="p">(</span><span class="nv">$attributes</span><span class="p">))</span> <span class="p">{</span>
+</span><span id="__span-21-14"><a id="__codelineno-21-14" name="__codelineno-21-14"></a><a href="#__codelineno-21-14"><span class="linenos" data-linenos="14 "></span></a>        <span class="k">throw</span> <span class="nx">ValidationException</span><span class="o">::</span><span class="na">withMessages</span><span class="p">([</span>
+</span><span id="__span-21-15"><a id="__codelineno-21-15" name="__codelineno-21-15"></a><a href="#__codelineno-21-15"><span class="linenos" data-linenos="15 "></span></a>            <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Sorry, those credentials do not match.&#39;</span>
+</span><span id="__span-21-16"><a id="__codelineno-21-16" name="__codelineno-21-16"></a><a href="#__codelineno-21-16"><span class="linenos" data-linenos="16 "></span></a>        <span class="p">]);</span>
+</span><span id="__span-21-17"><a id="__codelineno-21-17" name="__codelineno-21-17"></a><a href="#__codelineno-21-17"><span class="linenos" data-linenos="17 "></span></a>    <span class="p">}</span>
+</span><span id="__span-21-18"><a id="__codelineno-21-18" name="__codelineno-21-18"></a><a href="#__codelineno-21-18"><span class="linenos" data-linenos="18 "></span></a>
+</span><span id="__span-21-19"><a id="__codelineno-21-19" name="__codelineno-21-19"></a><a href="#__codelineno-21-19"><span class="linenos" data-linenos="19 "></span></a>    <span class="c1">//Regenerar el id de la sesión</span>
+</span><span id="__span-21-20"><a id="__codelineno-21-20" name="__codelineno-21-20"></a><a href="#__codelineno-21-20"><span class="linenos" data-linenos="20 "></span></a>    <span class="nx">request</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">session</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">regenerate</span><span class="p">();</span>
+</span><span id="__span-21-21"><a id="__codelineno-21-21" name="__codelineno-21-21"></a><a href="#__codelineno-21-21"><span class="linenos" data-linenos="21 "></span></a>
+</span><span id="__span-21-22"><a id="__codelineno-21-22" name="__codelineno-21-22"></a><a href="#__codelineno-21-22"><span class="linenos" data-linenos="22 "></span></a>    <span class="c1">//Redirección a la página de inicio</span>
+</span><span id="__span-21-23"><a id="__codelineno-21-23" name="__codelineno-21-23"></a><a href="#__codelineno-21-23"><span class="linenos" data-linenos="23 "></span></a>    <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+</span><span id="__span-21-24"><a id="__codelineno-21-24" name="__codelineno-21-24"></a><a href="#__codelineno-21-24"><span class="linenos" data-linenos="24 "></span></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="cerrar-sesion">Cerrar sesión<a class="headerlink" href="#cerrar-sesion" title="Permanent link">&para;</a></h3>
+<p>Por último, para cerrar sesión, vamos a utilizar el método <code>destroy</code> del controlador <code>SessionController</code>. Este método simplemente cerrará la sesión del usuario y lo redirigirá a la página de inicio.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a><a href="#__codelineno-22-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1">//app/Http/Controllers/SessionController.php</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2"></a><a href="#__codelineno-22-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">public</span> <span class="k">function</span> <span class="nf">destroy</span><span class="p">()</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3"></a><a href="#__codelineno-22-3"><span class="linenos" data-linenos="3 "></span></a><span class="p">{</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4"></a><a href="#__codelineno-22-4"><span class="linenos" data-linenos="4 "></span></a>    <span class="c1">//Cerrar sesión</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5"></a><a href="#__codelineno-22-5"><span class="linenos" data-linenos="5 "></span></a>    <span class="nx">Auth</span><span class="o">::</span><span class="na">logout</span><span class="p">();</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6"></a><a href="#__codelineno-22-6"><span class="linenos" data-linenos="6 "></span></a>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7"></a><a href="#__codelineno-22-7"><span class="linenos" data-linenos="7 "></span></a>    <span class="c1">//Redirección a la página de inicio</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8"></a><a href="#__codelineno-22-8"><span class="linenos" data-linenos="8 "></span></a>    <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9"></a><a href="#__codelineno-22-9"><span class="linenos" data-linenos="9 "></span></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="cambiar-menus-segun-el-estado-de-la-sesion">Cambiar menús según el estado de la sesión<a class="headerlink" href="#cambiar-menus-segun-el-estado-de-la-sesion" title="Permanent link">&para;</a></h2>
+<p>Si recordamos, en el layout, hemos creado un menú para el login y el registro. Ahora, vamos a cambiar estos menús, dependiendo de si el usuario está logueado o no. Si el usuario está logueado, habrá que mostrar un menú diferente, con un enlace para cerrar sesión.</p>
+<p>Vamos a ello.</p>
+<p>Laravel nos proporciona 2 directivas que nos hacen la vida muy fácil, <code>@auth</code> y <code>@guest</code>. La primera, <code>@auth</code>, nos permite mostrar contenido solo si el usuario está logueado, y la segunda, <code>@guest</code>, nos permite mostrar contenido solo si el usuario no está logueado. Realmente son un <code>if</code> encubierto, donde simplemente se comprueba si existe un usuairo logueado o no.</p>
+<p>Por tanto, en el layout vamos a incluir los menús login y register, dentro de 2 etiquetas <code>@guest</code>, indicando que solo se mostrarán si el usuario no está logueado, y el menú de logout, dentro de una etiqueta <code>@auth</code>, indicando que solo se mostrará si el usuario está logueado.</p>
+<p>También y muy importante, para poder realizar el Logout es neceario un formulario, ya es muy recomendable, para evitar ataques CSRF y otro tipo de problemas, realizar el logout por POST, por lo que el botón del menú logout será de tipo submit, y estará dentro de un formulario.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a><a href="#__codelineno-23-1"><span class="linenos" data-linenos=" 1 "></span></a> <span class="o">@</span><span class="nx">guest</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a><a href="#__codelineno-23-2"><span class="linenos" data-linenos=" 2 "></span></a>  <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">nav</span><span class="o">-</span><span class="nb">link</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;/login&quot;</span> <span class="o">:</span><span class="nx">active</span><span class="o">=</span><span class="s2">&quot;request()-&gt;is(&#39;login&#39;)&quot;</span><span class="o">&gt;</span><span class="nx">Log</span> <span class="nx">In</span><span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">nav</span><span class="o">-</span><span class="nb">link</span><span class="o">&gt;</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3"></a><a href="#__codelineno-23-3"><span class="linenos" data-linenos=" 3 "></span></a>  <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">nav</span><span class="o">-</span><span class="nb">link</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;/register&quot;</span> <span class="o">:</span><span class="nx">active</span><span class="o">=</span><span class="s2">&quot;request()-&gt;is(&#39;register&#39;)&quot;</span><span class="o">&gt;</span><span class="nx">Register</span><span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">nav</span><span class="o">-</span><span class="nb">link</span><span class="o">&gt;</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4"></a><a href="#__codelineno-23-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="o">@</span><span class="nx">endguest</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5"></a><a href="#__codelineno-23-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="o">@</span><span class="nx">auth</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6"></a><a href="#__codelineno-23-6"><span class="linenos" data-linenos=" 6 "></span></a>  <span class="o">&lt;</span><span class="nx">form</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&quot;POST&quot;</span> <span class="nx">action</span><span class="o">=</span><span class="s2">&quot;/logout&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7"></a><a href="#__codelineno-23-7"><span class="linenos" data-linenos=" 7 "></span></a>    <span class="o">@</span><span class="nx">csrf</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8"></a><a href="#__codelineno-23-8"><span class="linenos" data-linenos=" 8 "></span></a>    <span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">button</span> <span class="nx">class</span><span class="o">-</span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;text-gray-300 hover:text-white bg-transparent hover:bg-transparent&quot;</span><span class="o">&gt;</span><span class="nx">Logout</span><span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">forms</span><span class="o">.</span><span class="nx">button</span><span class="o">&gt;</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9"></a><a href="#__codelineno-23-9"><span class="linenos" data-linenos=" 9 "></span></a>  <span class="o">&lt;/</span><span class="nx">form</span><span class="o">&gt;</span>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10"></a><a href="#__codelineno-23-10"><span class="linenos" data-linenos="10 "></span></a><span class="o">@</span><span class="nx">endauth</span>
+</span></code></pre></div>
+<p>Por último y para darle un toque más personal, en la página de inicio, vamos a mostrar un mensaje de bienvenida, si el usuario está logueado, y un mensaje genérico si no lo está. Para ello vamos a utiliza el helper <code>auth()</code>, que nos proporciona Laravel, y que nos permite acceder al usuario logueado.</p>
+<p>En la vista <code>home.blade.php</code>, vamos a mostrar un mensaje de bienvenida, si el usuario está logueado, y un mensaje genérico si no lo está.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a><a href="#__codelineno-24-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">&lt;</span><span class="nx">x</span><span class="o">-</span><span class="nx">layout</span> <span class="nx">heading</span><span class="o">=</span><span class="s2">&quot;Home&quot;</span><span class="o">&gt;</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2"></a><a href="#__codelineno-24-2"><span class="linenos" data-linenos="2 "></span></a>  <span class="o">@</span><span class="nx">auth</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3"></a><a href="#__codelineno-24-3"><span class="linenos" data-linenos="3 "></span></a>    <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{{</span><span class="nv">$greeting</span> <span class="o">??</span> <span class="s1">&#39;hello&#39;</span><span class="p">}}</span> <span class="p">{{</span> <span class="nx">auth</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">}}</span><span class="o">.</span> <span class="nx">Bienvenido</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4"></a><a href="#__codelineno-24-4"><span class="linenos" data-linenos="4 "></span></a>  <span class="o">@</span><span class="nx">endauth</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5"></a><a href="#__codelineno-24-5"><span class="linenos" data-linenos="5 "></span></a>  <span class="o">@</span><span class="nx">guest</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6"></a><a href="#__codelineno-24-6"><span class="linenos" data-linenos="6 "></span></a>    <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{{</span><span class="nv">$greeting</span> <span class="o">??</span> <span class="s1">&#39;hello&#39;</span><span class="p">}}</span> <span class="nx">from</span> <span class="nx">de</span> <span class="nx">Home</span> <span class="nx">Page</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7"></a><a href="#__codelineno-24-7"><span class="linenos" data-linenos="7 "></span></a>  <span class="o">@</span><span class="nx">endguest</span>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8"></a><a href="#__codelineno-24-8"><span class="linenos" data-linenos="8 "></span></a><span class="o">&lt;/</span><span class="nx">x</span><span class="o">-</span><span class="nx">layout</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<p>Y con esto, ya tendríamos nuestra aplicación con un sistema de login y registro.</p>
+<p>El resultado final debería ser algo así.</p>
+<p><a class="glightbox" href="img/23.register-login-complete.gif" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Register-login-complete" src="img/23.register-login-complete.gif" /></a></p>
+<hr />
+<blockquote>
+<p>ℹ️ Alguna duda? puedes ver los <a href="https://laracasts.com/series/30-days-to-learn-laravel-11/episodes/21">video parte-1</a> y <a href="https://laracasts.com/series/30-days-to-learn-laravel-11/episodes/22">video parte-2</a> que explica estos pasos con más detalle.</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2024-2025 Jesús García - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/aitormedrano" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.2 4.2 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.52 8.52 0 0 1-5.33 1.84q-.51 0-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<a.medrano@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.13c-.15.01-.29.06-.39.17l-1 1 2.05 2 1-1c.22-.21.22-.56 0-.77l-1.24-1.23a.56.56 0 0 0-.38-.17m-2 1.75L13 19.94V22h2.06l6.06-6.07M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7v-.89l8.24-8.22c.47-.49 1.12-.76 1.8-.76.34 0 .68.06 1 .19V6c0-1.12-.92-2-2.04-2m0 4-8 5-8-5V6l8 5 8-5"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "toc.integrate", "content.tabs.link", "content.code.copy", "content.code.select", "navigation.top", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

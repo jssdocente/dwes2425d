@@ -1,0 +1,1815 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jssdocente.github.io/dwes2425/temas/08/18.mejorar-rutas.html">
+      
+      
+        <link rel="prev" href="17.forms-edit-update-delete.html">
+      
+      
+        <link rel="next" href="19.create-login-register-system.html">
+      
+      
+      <link rel="icon" href="../../imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>18. Mejorando las rutas - 2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 13h-4v4h-2v-4H7v-2h4V7h2v4h4m-5-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#18-mejorar-rutas" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../index.html" title="2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25" class="md-header__button md-logo" aria-label="2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25" data-md-component="logo">
+      
+  <img src="../../imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              18. Mejorando las rutas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="Teal"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25" class="md-nav__button md-logo" aria-label="2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25" data-md-component="logo">
+      
+  <img src="../../imagenes/logofp.png" alt="logo">
+
+    </a>
+    2º DAW - Desarrollo Web en Entorno Servidor - Curso 24/25
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01arquitecturas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2.- El lenguaje PHP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            2.- El lenguaje PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.1_php_basico.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP Básico
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.2_php_avanzado.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP Avanzado
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.3_php_versiones_evolucion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP evolución
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03phpoo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. PHP Orientado a Objetos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04web.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.- Programación Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.- Herramientas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06accesoDatos.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.- Acceso a Datos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    7.- Frameworks PHP - Laravel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            7.- Frameworks PHP - Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/01.instalar-laravel.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Instalar Laravel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/02.configurar-tailwind.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Configurar Tailwind
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/03.layouts-con-blade.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Layouts con Blade
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/04.primer-componente.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Primer componente
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/05.estilando-nav-link.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Estilando componente
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/06.pasar-datos-vista-y-rutas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Pasar datos a las vistas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/07.autoloading-namespaces-y-models.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Autloading y namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/08.intro-migraciones.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Introducción a las migraciones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/09.intro-eloquent.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Introducción a Eloquent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/10.eloquent-factories.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Eloquent: Factorias
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/11.eloquent-relations-basic.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Eloquent: relaciones básicas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/12.eloquent-relations-many-to-many.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Eloquent: relación many-to-many
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/13.eloquent-relations-has-many-throught.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Eloquent: relación many-has-many-throught
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    8.- Frameworks PHP - Laravel avanzado
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            8.- Frameworks PHP - Laravel avanzado
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14.database-seeders.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. Database Seeders
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15.forms-csrf.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. Formularios con Laravel y CRSF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16.forms-always-validate.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. Validación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17.forms-edit-update-delete.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Formularios CRUD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    18. Mejorando las rutas
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="18.mejorar-rutas.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    18. Mejorando las rutas
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tecnicas-para-mejorar-las-rutas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Técnicas para mejorar las rutas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Técnicas para mejorar las rutas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-route-model-binding" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Route Model Binding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-controladores-como-clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Controladores como Clases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-rutas-con-nombre" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Rutas con nombre
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-agrupar-las-rutas" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Agrupar las rutas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19.create-login-register-system.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Autenticación: crear sistema
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="20.proteger-rutas-middleware.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. Autorización: proteger rutas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="21.flash-messages.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. Informando al usuario
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="22.Manejando-excepciones.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. Control y Gestión de excepciones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Anexo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Anexo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extra/ArquitecturasWebExtendido.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anexo I. Arquitecturas Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Guias
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Guias
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extra/guias/02.config_devenv_laravel_herd.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuración entorno desarrollo PHP con Laravel Herd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="18-mejorar-rutas">18. Mejorar rutas<a class="headerlink" href="#18-mejorar-rutas" title="Permanent link">&para;</a></h1>
+<p>En esta 18ª lección, vamos a ver cómo podemos mejorar nuestras rutas, utilizando distintas opciones que nos da Laravel, como controladores, rutas con nombres, etc ..</p>
+<h3 id="recursos">Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://laravel-news.com/laravel-route-organization-tips">6 Tips to Organize Routes</a></li>
+</ul>
+<h2 id="tecnicas-para-mejorar-las-rutas">Técnicas para mejorar las rutas<a class="headerlink" href="#tecnicas-para-mejorar-las-rutas" title="Permanent link">&para;</a></h2>
+<p>Existen diferentes opciones en laravel para mejorar nuestras rutas, dependiendo de la complejidad de nuestra aplicación, podemos utilizar una u otra.</p>
+<p>Las veremos de más sencillas a más complejas.</p>
+<h3 id="1-route-model-binding">1. Route Model Binding<a class="headerlink" href="#1-route-model-binding" title="Permanent link">&para;</a></h3>
+<p>Laravel nos permite obtener un modelo directamente desde la ruta, sin tener que hacer la consulta manualmente. Esto se llama <code>Route Model Binding</code>.</p>
+<blockquote>
+<p>🪧 Para más info consulta la <a href="https://laravel.com/docs/11.x/folio#route-model-binding">documentación de Laravel</a> sobre este tema.</p>
+</blockquote>
+<p>Para aplicar esta ténnica, el parámetro <code>wilcard</code> de la ruta debe coincidir con el nombre de un modelo, y Laravel sabrá cúal es el campo ID de ese módelo y por tanto, cómo debe hacer la consulta.</p>
+<p>En nuestro fichero de rutas <code>web.php</code>, vamos a aplicar esta técnica para visualizar una ruta:</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1">//show</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/notes/{note}&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Note</span> <span class="nv">$note</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a>    <span class="c1">//{note} es el parámetro wildcard que coincide con el nombre del modelo. La función recibe el modelo directamente.</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a>    <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">&#39;notes.show&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;note&#39;</span> <span class="o">=&gt;</span> <span class="nv">$note</span><span class="p">]);</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a><span class="p">});</span>
+</span></code></pre></div>
+<p>También puede ocurrir, que queramos buscar por otro campo distinto al ID. En este caso, debemos sobreescribir el método <code>getRouteKeyName</code> en el modelo. Imaginemos que nuestra nota tiene un campo único, texto, llamado <code>slug</code>. Un slug es una cadena de texto que identifica de forma única una nota, ejemplo: <code>mi-nota</code>.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">class</span> <span class="nc">Note</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">getRouteKeyName</span><span class="p">()</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos="4 "></span></a>    <span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos="5 "></span></a>        <span class="k">return</span> <span class="s1">&#39;slug&#39;</span><span class="p">;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos="6 "></span></a>    <span class="p">}</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos="7 "></span></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Otra opción más directa, es indicar el nombre del campo en la ruta:</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/notes/{note:slug}&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Note</span> <span class="nv">$note</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a>    <span class="c1">//Laravel buscará la nota por el campo slug en lugar de por el campo id</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a>    <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">&#39;notes.show&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;note&#39;</span> <span class="o">=&gt;</span> <span class="nv">$note</span><span class="p">]);</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos="4 "></span></a><span class="p">});</span>
+</span></code></pre></div>
+<p>De esta forma, Laravel buscará la nota por el campo <code>slug</code> en lugar de por el campo <code>id</code>.</p>
+<p>También vamos a aplicar esto, a la ruta de edición, y a la de Update y Delete.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1">//edit</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos="2 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/notes/{note}/edit&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Note</span> <span class="nv">$note</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos="3 "></span></a>    <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">&#39;notes.edit&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;note&#39;</span> <span class="o">=&gt;</span> <span class="nv">$note</span><span class="p">]);</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos="4 "></span></a><span class="p">});</span>
+</span></code></pre></div>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">//update</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">put</span><span class="p">(</span><span class="s1">&#39;/notes/{note}&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Note</span> <span class="nv">$note</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos=" 3 "></span></a>    <span class="c1">//Validar los datos</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><a href="#__codelineno-4-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="nx">request</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">([</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><a href="#__codelineno-4-5"><span class="linenos" data-linenos=" 5 "></span></a>        <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;required&#39;</span><span class="p">,</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><a href="#__codelineno-4-6"><span class="linenos" data-linenos=" 6 "></span></a>        <span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;required|max:255&#39;</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><a href="#__codelineno-4-7"><span class="linenos" data-linenos=" 7 "></span></a>    <span class="p">]);</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a><a href="#__codelineno-4-8"><span class="linenos" data-linenos=" 8 "></span></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a><a href="#__codelineno-4-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="c1">//Actualizar la nota</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a><a href="#__codelineno-4-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">([</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11"></a><a href="#__codelineno-4-11"><span class="linenos" data-linenos="11 "></span></a>        <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="nx">request</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">),</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a><a href="#__codelineno-4-12"><span class="linenos" data-linenos="12 "></span></a>        <span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="nx">request</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a><a href="#__codelineno-4-13"><span class="linenos" data-linenos="13 "></span></a>    <span class="p">]);</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14"></a><a href="#__codelineno-4-14"><span class="linenos" data-linenos="14 "></span></a>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15"></a><a href="#__codelineno-4-15"><span class="linenos" data-linenos="15 "></span></a>    <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/notes&#39;</span><span class="p">);</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16"></a><a href="#__codelineno-4-16"><span class="linenos" data-linenos="16 "></span></a><span class="p">});</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17"></a><a href="#__codelineno-4-17"><span class="linenos" data-linenos="17 "></span></a>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18"></a><a href="#__codelineno-4-18"><span class="linenos" data-linenos="18 "></span></a><span class="c1">//delete</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19"></a><a href="#__codelineno-4-19"><span class="linenos" data-linenos="19 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;/notes/{note}&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Note</span> <span class="nv">$note</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20"></a><a href="#__codelineno-4-20"><span class="linenos" data-linenos="20 "></span></a>    <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">();</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21"></a><a href="#__codelineno-4-21"><span class="linenos" data-linenos="21 "></span></a>    <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/notes&#39;</span><span class="p">);</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22"></a><a href="#__codelineno-4-22"><span class="linenos" data-linenos="22 "></span></a><span class="p">});</span>
+</span></code></pre></div>
+<blockquote>
+<p>💡 En caso de que no encuentre la nota, mostrará un error 404 NotFound.</p>
+</blockquote>
+<p>Aplica estos cambios y comprueba que todo sigue funcionando correctamente.</p>
+<h3 id="2-controladores-como-clases">2. Controladores como Clases<a class="headerlink" href="#2-controladores-como-clases" title="Permanent link">&para;</a></h3>
+<p>Si nuestra aplicación es más compleja, y tenemos muchas rutas, y las rutas requieren de lógica más compleja, es recomendable encapsular esa lógica en un controlador.</p>
+<p>Los controladores son clases, que contendrán un método para cada acción que queramos realizar. </p>
+<p>Van a existir 2 tipos de controlares principalemente:</p>
+<ul>
+<li>Controladores de recursos (Que contienen la lógica para las 7 acciones CRUD)</li>
+<li>Controladores invocables (que contienen un único método <code>__invoke</code>, para una sola acción)</li>
+</ul>
+<p>Para crear un controlador, lo podemos hacer manualmente, o utilizando artisan:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a>php<span class="w"> </span>artisan<span class="w"> </span>make:controller<span class="w"> </span>NoteController
+</span></code></pre></div>
+<p>o, la forma recomendada, es como se muestra en el siguiente video.</p>
+<p><a class="glightbox" href="img/21.make-controller-1.gif" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="make controller" src="img/21.make-controller-1.gif" /></a></p>
+<p>Como se muestra en el video, vamos a crear un controlador de recursos, que contendrá la lógica para todas las acciones CRUD. El nuevo controlador estará ubicado en la carpeta <code>app/Http/Controllers</code>.</p>
+<p>Si lo revisamos, comprobaremos que es una clase que contiene los siguientes métodos:</p>
+<ul>
+<li>public function index()</li>
+<li>public function create()</li>
+<li>public function store(Request $request)</li>
+<li>public function show(Note $note)</li>
+<li>public function edit(Note $note)</li>
+<li>public function update(Request $request, Note $note)</li>
+<li>public function destroy(Note $note)</li>
+</ul>
+<blockquote>
+<p>💡 Al asociar un modelo en la creación del controlador, Laravel automaticamente indica el tipo del modelo en los diferentes métodos. 👌🏼</p>
+</blockquote>
+<p>Ahora vamos a convertir nuestras rutas en rutas de recursos, que apuntarán a los métodos del controlador. Para ello, podemos utilizar 2 diferentes sintaxis, si tenemos un controlador con todas las acciones CRUD, o existen algunas acciones no disponibles.</p>
+<ol>
+<li>Opción 1: Todas las acciones CRUD</li>
+</ol>
+<p>Laraval se encargará de instanciar el controlador, y de llamar al método correspondiente. Recuerda Laravel funciona por convención sobre configuración.</p>
+<p><div class="language-php highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">resource</span><span class="p">(</span><span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span></code></pre></div>
+2. Opción 2: Algunas acciones no disponibles</p>
+<p>En este caso, debemos indicar las acciones que no queremos que se realicen, y Laravel no creará las rutas para esas acciones.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">resource</span><span class="p">(</span><span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">except</span><span class="p">([</span><span class="s1">&#39;destroy&#39;</span><span class="p">]);</span>
+</span></code></pre></div>
+<p>o si existen solo algunas acciones que queremos que se realicen:</p>
+<p><div class="language-php highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">resource</span><span class="p">(</span><span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">only</span><span class="p">([</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="s1">&#39;show&#39;</span><span class="p">]);</span>
+</span></code></pre></div>
+3. Opción 3: Controladores invocables</p>
+<p>Utilizar una ruta por acción, e indicar el controlador y el método a ejecutar.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><a href="#__codelineno-9-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/notes&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">]);</span>
+</span></code></pre></div>
+<p>En nuestro caso, ya que tenemos todas las acciones CRUD, vamos a utilizar la opción 1.</p>
+<p><strong>Convertir las rutas en rutas de recursos</strong></p>
+<p>Con esta opción, ahora en el fichero de rutas <code>web.php</code>, todo se hace mucho más simple.</p>
+<p>Comenta las rutas que teníamos antes, y añade la siguiente línea:</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><a href="#__codelineno-10-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">//NOTAS</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><a href="#__codelineno-10-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">resource</span><span class="p">(</span><span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><a href="#__codelineno-10-3"><span class="linenos" data-linenos=" 3 "></span></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><a href="#__codelineno-10-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="c1">// ** NOTAS forma anterior **</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><a href="#__codelineno-10-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="c1">//index</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a><a href="#__codelineno-10-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="c1">//Route::get(&#39;/notes&#39;, function () {</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a><a href="#__codelineno-10-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="c1">//    return view(&#39;notes.index&#39;, [&#39;items&#39; =&gt; Note::all()]);</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8"></a><a href="#__codelineno-10-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="c1">//});</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9"></a><a href="#__codelineno-10-9"><span class="linenos" data-linenos=" 9 "></span></a>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10"></a><a href="#__codelineno-10-10"><span class="linenos" data-linenos="10 "></span></a><span class="c1">//create</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11"></a><a href="#__codelineno-10-11"><span class="linenos" data-linenos="11 "></span></a><span class="c1">//Route::get(&#39;/notes/create&#39;, function ()  {</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12"></a><a href="#__codelineno-10-12"><span class="linenos" data-linenos="12 "></span></a><span class="c1">//    return view(&#39;notes.create&#39;, []);</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13"></a><a href="#__codelineno-10-13"><span class="linenos" data-linenos="13 "></span></a><span class="c1">//});</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14"></a><a href="#__codelineno-10-14"><span class="linenos" data-linenos="14 "></span></a>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15"></a><a href="#__codelineno-10-15"><span class="linenos" data-linenos="15 "></span></a><span class="c1">//edit</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16"></a><a href="#__codelineno-10-16"><span class="linenos" data-linenos="16 "></span></a><span class="c1">//Route::get(&#39;/notes/{note}/edit&#39;, function (Note $note) {</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17"></a><a href="#__codelineno-10-17"><span class="linenos" data-linenos="17 "></span></a><span class="c1">//    return view(&#39;notes.edit&#39;, [&#39;note&#39; =&gt; $note]);</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18"></a><a href="#__codelineno-10-18"><span class="linenos" data-linenos="18 "></span></a><span class="c1">//});</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19"></a><a href="#__codelineno-10-19"><span class="linenos" data-linenos="19 "></span></a>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20"></a><a href="#__codelineno-10-20"><span class="linenos" data-linenos="20 "></span></a><span class="c1">//show</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21"></a><a href="#__codelineno-10-21"><span class="linenos" data-linenos="21 "></span></a><span class="c1">//Route::get(&#39;/notes/{note}&#39;, function (Note $note) {</span>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22"></a><a href="#__codelineno-10-22"><span class="linenos" data-linenos="22 "></span></a><span class="c1">//    return view(&#39;notes.show&#39;, [&#39;note&#39; =&gt; $note]);</span>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23"></a><a href="#__codelineno-10-23"><span class="linenos" data-linenos="23 "></span></a><span class="c1">//});</span>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24"></a><a href="#__codelineno-10-24"><span class="linenos" data-linenos="24 "></span></a>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25"></a><a href="#__codelineno-10-25"><span class="linenos" data-linenos="25 "></span></a><span class="c1">//store</span>
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26"></a><a href="#__codelineno-10-26"><span class="linenos" data-linenos="26 "></span></a><span class="c1">//Route::post(&#39;/notes&#39;, function ()  {</span>
+</span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27"></a><a href="#__codelineno-10-27"><span class="linenos" data-linenos="27 "></span></a><span class="c1">//</span>
+</span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28"></a><a href="#__codelineno-10-28"><span class="linenos" data-linenos="28 "></span></a><span class="c1">//    //2. Validar los datos</span>
+</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29"></a><a href="#__codelineno-10-29"><span class="linenos" data-linenos="29 "></span></a><span class="c1">//    request()-&gt;validate([</span>
+</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30"></a><a href="#__codelineno-10-30"><span class="linenos" data-linenos="30 "></span></a><span class="c1">//        &#39;title&#39; =&gt; [&#39;required&#39;],</span>
+</span><span id="__span-10-31"><a id="__codelineno-10-31" name="__codelineno-10-31"></a><a href="#__codelineno-10-31"><span class="linenos" data-linenos="31 "></span></a><span class="c1">//        &#39;body&#39; =&gt; [&#39;required&#39;, &#39;max:255&#39;]</span>
+</span><span id="__span-10-32"><a id="__codelineno-10-32" name="__codelineno-10-32"></a><a href="#__codelineno-10-32"><span class="linenos" data-linenos="32 "></span></a><span class="c1">//    ]);</span>
+</span><span id="__span-10-33"><a id="__codelineno-10-33" name="__codelineno-10-33"></a><a href="#__codelineno-10-33"><span class="linenos" data-linenos="33 "></span></a><span class="c1">//</span>
+</span><span id="__span-10-34"><a id="__codelineno-10-34" name="__codelineno-10-34"></a><a href="#__codelineno-10-34"><span class="linenos" data-linenos="34 "></span></a><span class="c1">//    //3. Crear la nota</span>
+</span><span id="__span-10-35"><a id="__codelineno-10-35" name="__codelineno-10-35"></a><a href="#__codelineno-10-35"><span class="linenos" data-linenos="35 "></span></a><span class="c1">//    Note::create([</span>
+</span><span id="__span-10-36"><a id="__codelineno-10-36" name="__codelineno-10-36"></a><a href="#__codelineno-10-36"><span class="linenos" data-linenos="36 "></span></a><span class="c1">//        &#39;title&#39; =&gt; request(&#39;title&#39;),</span>
+</span><span id="__span-10-37"><a id="__codelineno-10-37" name="__codelineno-10-37"></a><a href="#__codelineno-10-37"><span class="linenos" data-linenos="37 "></span></a><span class="c1">//        &#39;body&#39; =&gt; request(&#39;body&#39;),</span>
+</span><span id="__span-10-38"><a id="__codelineno-10-38" name="__codelineno-10-38"></a><a href="#__codelineno-10-38"><span class="linenos" data-linenos="38 "></span></a><span class="c1">//        &#39;user_id&#39; =&gt; 1  //por ahora lo dejamos fijo</span>
+</span><span id="__span-10-39"><a id="__codelineno-10-39" name="__codelineno-10-39"></a><a href="#__codelineno-10-39"><span class="linenos" data-linenos="39 "></span></a><span class="c1">//    ]);</span>
+</span><span id="__span-10-40"><a id="__codelineno-10-40" name="__codelineno-10-40"></a><a href="#__codelineno-10-40"><span class="linenos" data-linenos="40 "></span></a><span class="c1">//</span>
+</span><span id="__span-10-41"><a id="__codelineno-10-41" name="__codelineno-10-41"></a><a href="#__codelineno-10-41"><span class="linenos" data-linenos="41 "></span></a><span class="c1">//    //4. Retornar la vista de la lista de notas</span>
+</span><span id="__span-10-42"><a id="__codelineno-10-42" name="__codelineno-10-42"></a><a href="#__codelineno-10-42"><span class="linenos" data-linenos="42 "></span></a><span class="c1">//    return redirect(&#39;/notes&#39;);</span>
+</span><span id="__span-10-43"><a id="__codelineno-10-43" name="__codelineno-10-43"></a><a href="#__codelineno-10-43"><span class="linenos" data-linenos="43 "></span></a><span class="c1">//});</span>
+</span><span id="__span-10-44"><a id="__codelineno-10-44" name="__codelineno-10-44"></a><a href="#__codelineno-10-44"><span class="linenos" data-linenos="44 "></span></a>
+</span><span id="__span-10-45"><a id="__codelineno-10-45" name="__codelineno-10-45"></a><a href="#__codelineno-10-45"><span class="linenos" data-linenos="45 "></span></a><span class="c1">//update</span>
+</span><span id="__span-10-46"><a id="__codelineno-10-46" name="__codelineno-10-46"></a><a href="#__codelineno-10-46"><span class="linenos" data-linenos="46 "></span></a><span class="c1">//Route::patch(&#39;/notes/{note}&#39;, function (Note $note)  {</span>
+</span><span id="__span-10-47"><a id="__codelineno-10-47" name="__codelineno-10-47"></a><a href="#__codelineno-10-47"><span class="linenos" data-linenos="47 "></span></a><span class="c1">//</span>
+</span><span id="__span-10-48"><a id="__codelineno-10-48" name="__codelineno-10-48"></a><a href="#__codelineno-10-48"><span class="linenos" data-linenos="48 "></span></a><span class="c1">//  //2. Validar los datos</span>
+</span><span id="__span-10-49"><a id="__codelineno-10-49" name="__codelineno-10-49"></a><a href="#__codelineno-10-49"><span class="linenos" data-linenos="49 "></span></a><span class="c1">//  request()-&gt;validate([</span>
+</span><span id="__span-10-50"><a id="__codelineno-10-50" name="__codelineno-10-50"></a><a href="#__codelineno-10-50"><span class="linenos" data-linenos="50 "></span></a><span class="c1">//    &#39;title&#39; =&gt; [&#39;required&#39;, &#39;min:5&#39;],</span>
+</span><span id="__span-10-51"><a id="__codelineno-10-51" name="__codelineno-10-51"></a><a href="#__codelineno-10-51"><span class="linenos" data-linenos="51 "></span></a><span class="c1">//    &#39;body&#39; =&gt; [&#39;required&#39;, &#39;max:255&#39;]</span>
+</span><span id="__span-10-52"><a id="__codelineno-10-52" name="__codelineno-10-52"></a><a href="#__codelineno-10-52"><span class="linenos" data-linenos="52 "></span></a><span class="c1">//  ]);</span>
+</span><span id="__span-10-53"><a id="__codelineno-10-53" name="__codelineno-10-53"></a><a href="#__codelineno-10-53"><span class="linenos" data-linenos="53 "></span></a><span class="c1">//</span>
+</span><span id="__span-10-54"><a id="__codelineno-10-54" name="__codelineno-10-54"></a><a href="#__codelineno-10-54"><span class="linenos" data-linenos="54 "></span></a><span class="c1">//  //3. Autorizar (próximamente)</span>
+</span><span id="__span-10-55"><a id="__codelineno-10-55" name="__codelineno-10-55"></a><a href="#__codelineno-10-55"><span class="linenos" data-linenos="55 "></span></a><span class="c1">//</span>
+</span><span id="__span-10-56"><a id="__codelineno-10-56" name="__codelineno-10-56"></a><a href="#__codelineno-10-56"><span class="linenos" data-linenos="56 "></span></a><span class="c1">//  //4. Obtener y actualizar la nota</span>
+</span><span id="__span-10-57"><a id="__codelineno-10-57" name="__codelineno-10-57"></a><a href="#__codelineno-10-57"><span class="linenos" data-linenos="57 "></span></a><span class="c1">//</span>
+</span><span id="__span-10-58"><a id="__codelineno-10-58" name="__codelineno-10-58"></a><a href="#__codelineno-10-58"><span class="linenos" data-linenos="58 "></span></a><span class="c1">//  $note-&gt;update([</span>
+</span><span id="__span-10-59"><a id="__codelineno-10-59" name="__codelineno-10-59"></a><a href="#__codelineno-10-59"><span class="linenos" data-linenos="59 "></span></a><span class="c1">//    &#39;title&#39; =&gt; request(&#39;title&#39;),</span>
+</span><span id="__span-10-60"><a id="__codelineno-10-60" name="__codelineno-10-60"></a><a href="#__codelineno-10-60"><span class="linenos" data-linenos="60 "></span></a><span class="c1">//    &#39;body&#39; =&gt; request(&#39;body&#39;),</span>
+</span><span id="__span-10-61"><a id="__codelineno-10-61" name="__codelineno-10-61"></a><a href="#__codelineno-10-61"><span class="linenos" data-linenos="61 "></span></a><span class="c1">//  ]);</span>
+</span><span id="__span-10-62"><a id="__codelineno-10-62" name="__codelineno-10-62"></a><a href="#__codelineno-10-62"><span class="linenos" data-linenos="62 "></span></a><span class="c1">//</span>
+</span><span id="__span-10-63"><a id="__codelineno-10-63" name="__codelineno-10-63"></a><a href="#__codelineno-10-63"><span class="linenos" data-linenos="63 "></span></a><span class="c1">//  //5. Retornar la vista de la lista de notas</span>
+</span><span id="__span-10-64"><a id="__codelineno-10-64" name="__codelineno-10-64"></a><a href="#__codelineno-10-64"><span class="linenos" data-linenos="64 "></span></a><span class="c1">//  return redirect(&#39;/notes&#39;);</span>
+</span><span id="__span-10-65"><a id="__codelineno-10-65" name="__codelineno-10-65"></a><a href="#__codelineno-10-65"><span class="linenos" data-linenos="65 "></span></a><span class="c1">//</span>
+</span><span id="__span-10-66"><a id="__codelineno-10-66" name="__codelineno-10-66"></a><a href="#__codelineno-10-66"><span class="linenos" data-linenos="66 "></span></a><span class="c1">//});</span>
+</span><span id="__span-10-67"><a id="__codelineno-10-67" name="__codelineno-10-67"></a><a href="#__codelineno-10-67"><span class="linenos" data-linenos="67 "></span></a>
+</span><span id="__span-10-68"><a id="__codelineno-10-68" name="__codelineno-10-68"></a><a href="#__codelineno-10-68"><span class="linenos" data-linenos="68 "></span></a><span class="c1">//destroy</span>
+</span><span id="__span-10-69"><a id="__codelineno-10-69" name="__codelineno-10-69"></a><a href="#__codelineno-10-69"><span class="linenos" data-linenos="69 "></span></a><span class="c1">//Route::delete(&#39;/notes/{note}&#39;, function (Note $note)  {</span>
+</span><span id="__span-10-70"><a id="__codelineno-10-70" name="__codelineno-10-70"></a><a href="#__codelineno-10-70"><span class="linenos" data-linenos="70 "></span></a><span class="c1">//</span>
+</span><span id="__span-10-71"><a id="__codelineno-10-71" name="__codelineno-10-71"></a><a href="#__codelineno-10-71"><span class="linenos" data-linenos="71 "></span></a><span class="c1">//  //2. Obtener nota nota, y si no existe, lanzar un error 404</span>
+</span><span id="__span-10-72"><a id="__codelineno-10-72" name="__codelineno-10-72"></a><a href="#__codelineno-10-72"><span class="linenos" data-linenos="72 "></span></a><span class="c1">//</span>
+</span><span id="__span-10-73"><a id="__codelineno-10-73" name="__codelineno-10-73"></a><a href="#__codelineno-10-73"><span class="linenos" data-linenos="73 "></span></a><span class="c1">//</span>
+</span><span id="__span-10-74"><a id="__codelineno-10-74" name="__codelineno-10-74"></a><a href="#__codelineno-10-74"><span class="linenos" data-linenos="74 "></span></a><span class="c1">//  //3. Autorizar (próximamente)</span>
+</span><span id="__span-10-75"><a id="__codelineno-10-75" name="__codelineno-10-75"></a><a href="#__codelineno-10-75"><span class="linenos" data-linenos="75 "></span></a><span class="c1">//</span>
+</span><span id="__span-10-76"><a id="__codelineno-10-76" name="__codelineno-10-76"></a><a href="#__codelineno-10-76"><span class="linenos" data-linenos="76 "></span></a><span class="c1">//  //4. Eliminar la nota</span>
+</span><span id="__span-10-77"><a id="__codelineno-10-77" name="__codelineno-10-77"></a><a href="#__codelineno-10-77"><span class="linenos" data-linenos="77 "></span></a><span class="c1">//  $note-&gt;delete();</span>
+</span><span id="__span-10-78"><a id="__codelineno-10-78" name="__codelineno-10-78"></a><a href="#__codelineno-10-78"><span class="linenos" data-linenos="78 "></span></a><span class="c1">//</span>
+</span><span id="__span-10-79"><a id="__codelineno-10-79" name="__codelineno-10-79"></a><a href="#__codelineno-10-79"><span class="linenos" data-linenos="79 "></span></a><span class="c1">//  //5. Redireccionar a la lista de notas</span>
+</span><span id="__span-10-80"><a id="__codelineno-10-80" name="__codelineno-10-80"></a><a href="#__codelineno-10-80"><span class="linenos" data-linenos="80 "></span></a><span class="c1">//  return redirect(&#39;/notes&#39;);</span>
+</span><span id="__span-10-81"><a id="__codelineno-10-81" name="__codelineno-10-81"></a><a href="#__codelineno-10-81"><span class="linenos" data-linenos="81 "></span></a><span class="c1">//});</span>
+</span></code></pre></div>
+<p>Y el controller <code>NoteController</code> quedaría así:</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><a href="#__codelineno-11-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><a href="#__codelineno-11-2"><span class="linenos" data-linenos=" 2 "></span></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><a href="#__codelineno-11-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><a href="#__codelineno-11-4"><span class="linenos" data-linenos=" 4 "></span></a>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><a href="#__codelineno-11-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="k">use</span> <span class="nx">App\Models\Note</span><span class="p">;</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a><a href="#__codelineno-11-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a><a href="#__codelineno-11-7"><span class="linenos" data-linenos=" 7 "></span></a>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a><a href="#__codelineno-11-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="k">class</span> <span class="nc">NoteController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9"></a><a href="#__codelineno-11-9"><span class="linenos" data-linenos=" 9 "></span></a>  <span class="sd">/**</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10"></a><a href="#__codelineno-11-10"><span class="linenos" data-linenos="10 "></span></a><span class="sd">   * Display a listing of the resource.</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11"></a><a href="#__codelineno-11-11"><span class="linenos" data-linenos="11 "></span></a><span class="sd">   */</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12"></a><a href="#__codelineno-11-12"><span class="linenos" data-linenos="12 "></span></a>  <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span> <span class="p">{</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13"></a><a href="#__codelineno-11-13"><span class="linenos" data-linenos="13 "></span></a>    <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">&#39;notes.index&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;items&#39;</span> <span class="o">=&gt;</span> <span class="nx">Note</span><span class="o">::</span><span class="na">all</span><span class="p">()]);</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14"></a><a href="#__codelineno-11-14"><span class="linenos" data-linenos="14 "></span></a>  <span class="p">}</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15"></a><a href="#__codelineno-11-15"><span class="linenos" data-linenos="15 "></span></a>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16"></a><a href="#__codelineno-11-16"><span class="linenos" data-linenos="16 "></span></a>  <span class="sd">/**</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17"></a><a href="#__codelineno-11-17"><span class="linenos" data-linenos="17 "></span></a><span class="sd">   * Store a newly created resource in storage.</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18"></a><a href="#__codelineno-11-18"><span class="linenos" data-linenos="18 "></span></a><span class="sd">   */</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19"></a><a href="#__codelineno-11-19"><span class="linenos" data-linenos="19 "></span></a>  <span class="k">public</span> <span class="k">function</span> <span class="nf">store</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20"></a><a href="#__codelineno-11-20"><span class="linenos" data-linenos="20 "></span></a>    <span class="c1">//2. Validar los datos</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21"></a><a href="#__codelineno-11-21"><span class="linenos" data-linenos="21 "></span></a>    <span class="nx">request</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">([</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22"></a><a href="#__codelineno-11-22"><span class="linenos" data-linenos="22 "></span></a>      <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;required&#39;</span><span class="p">],</span>
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23"></a><a href="#__codelineno-11-23"><span class="linenos" data-linenos="23 "></span></a>      <span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;required&#39;</span><span class="p">,</span> <span class="s1">&#39;max:255&#39;</span><span class="p">]</span>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24"></a><a href="#__codelineno-11-24"><span class="linenos" data-linenos="24 "></span></a>    <span class="p">]);</span>
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25"></a><a href="#__codelineno-11-25"><span class="linenos" data-linenos="25 "></span></a>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26"></a><a href="#__codelineno-11-26"><span class="linenos" data-linenos="26 "></span></a>    <span class="c1">//3. Crear la nota</span>
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27"></a><a href="#__codelineno-11-27"><span class="linenos" data-linenos="27 "></span></a>    <span class="nx">Note</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28"></a><a href="#__codelineno-11-28"><span class="linenos" data-linenos="28 "></span></a>      <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="nx">request</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">),</span>
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29"></a><a href="#__codelineno-11-29"><span class="linenos" data-linenos="29 "></span></a>      <span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="nx">request</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">),</span>
+</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30"></a><a href="#__codelineno-11-30"><span class="linenos" data-linenos="30 "></span></a>      <span class="s1">&#39;user_id&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span>  <span class="c1">//por ahora lo dejamos fijo</span>
+</span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31"></a><a href="#__codelineno-11-31"><span class="linenos" data-linenos="31 "></span></a>    <span class="p">]);</span>
+</span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32"></a><a href="#__codelineno-11-32"><span class="linenos" data-linenos="32 "></span></a>
+</span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33"></a><a href="#__codelineno-11-33"><span class="linenos" data-linenos="33 "></span></a>    <span class="c1">//4. Retornar la vista de la lista de notas</span>
+</span><span id="__span-11-34"><a id="__codelineno-11-34" name="__codelineno-11-34"></a><a href="#__codelineno-11-34"><span class="linenos" data-linenos="34 "></span></a>    <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/notes&#39;</span><span class="p">);</span>
+</span><span id="__span-11-35"><a id="__codelineno-11-35" name="__codelineno-11-35"></a><a href="#__codelineno-11-35"><span class="linenos" data-linenos="35 "></span></a>  <span class="p">}</span>
+</span><span id="__span-11-36"><a id="__codelineno-11-36" name="__codelineno-11-36"></a><a href="#__codelineno-11-36"><span class="linenos" data-linenos="36 "></span></a>
+</span><span id="__span-11-37"><a id="__codelineno-11-37" name="__codelineno-11-37"></a><a href="#__codelineno-11-37"><span class="linenos" data-linenos="37 "></span></a>  <span class="sd">/**</span>
+</span><span id="__span-11-38"><a id="__codelineno-11-38" name="__codelineno-11-38"></a><a href="#__codelineno-11-38"><span class="linenos" data-linenos="38 "></span></a><span class="sd">   * Show the form for creating a new resource.</span>
+</span><span id="__span-11-39"><a id="__codelineno-11-39" name="__codelineno-11-39"></a><a href="#__codelineno-11-39"><span class="linenos" data-linenos="39 "></span></a><span class="sd">   */</span>
+</span><span id="__span-11-40"><a id="__codelineno-11-40" name="__codelineno-11-40"></a><a href="#__codelineno-11-40"><span class="linenos" data-linenos="40 "></span></a>  <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">()</span> <span class="p">{</span>
+</span><span id="__span-11-41"><a id="__codelineno-11-41" name="__codelineno-11-41"></a><a href="#__codelineno-11-41"><span class="linenos" data-linenos="41 "></span></a>    <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">&#39;notes.create&#39;</span><span class="p">,</span> <span class="p">[]);</span>
+</span><span id="__span-11-42"><a id="__codelineno-11-42" name="__codelineno-11-42"></a><a href="#__codelineno-11-42"><span class="linenos" data-linenos="42 "></span></a>  <span class="p">}</span>
+</span><span id="__span-11-43"><a id="__codelineno-11-43" name="__codelineno-11-43"></a><a href="#__codelineno-11-43"><span class="linenos" data-linenos="43 "></span></a>
+</span><span id="__span-11-44"><a id="__codelineno-11-44" name="__codelineno-11-44"></a><a href="#__codelineno-11-44"><span class="linenos" data-linenos="44 "></span></a>  <span class="sd">/**</span>
+</span><span id="__span-11-45"><a id="__codelineno-11-45" name="__codelineno-11-45"></a><a href="#__codelineno-11-45"><span class="linenos" data-linenos="45 "></span></a><span class="sd">   * Display the specified resource.</span>
+</span><span id="__span-11-46"><a id="__codelineno-11-46" name="__codelineno-11-46"></a><a href="#__codelineno-11-46"><span class="linenos" data-linenos="46 "></span></a><span class="sd">   */</span>
+</span><span id="__span-11-47"><a id="__codelineno-11-47" name="__codelineno-11-47"></a><a href="#__codelineno-11-47"><span class="linenos" data-linenos="47 "></span></a>  <span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">(</span><span class="nx">Note</span> <span class="nv">$note</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-11-48"><a id="__codelineno-11-48" name="__codelineno-11-48"></a><a href="#__codelineno-11-48"><span class="linenos" data-linenos="48 "></span></a>    <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">&#39;notes.show&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;note&#39;</span> <span class="o">=&gt;</span> <span class="nv">$note</span><span class="p">]);</span>
+</span><span id="__span-11-49"><a id="__codelineno-11-49" name="__codelineno-11-49"></a><a href="#__codelineno-11-49"><span class="linenos" data-linenos="49 "></span></a>  <span class="p">}</span>
+</span><span id="__span-11-50"><a id="__codelineno-11-50" name="__codelineno-11-50"></a><a href="#__codelineno-11-50"><span class="linenos" data-linenos="50 "></span></a>
+</span><span id="__span-11-51"><a id="__codelineno-11-51" name="__codelineno-11-51"></a><a href="#__codelineno-11-51"><span class="linenos" data-linenos="51 "></span></a>  <span class="sd">/**</span>
+</span><span id="__span-11-52"><a id="__codelineno-11-52" name="__codelineno-11-52"></a><a href="#__codelineno-11-52"><span class="linenos" data-linenos="52 "></span></a><span class="sd">   * Show the form for editing the specified resource.</span>
+</span><span id="__span-11-53"><a id="__codelineno-11-53" name="__codelineno-11-53"></a><a href="#__codelineno-11-53"><span class="linenos" data-linenos="53 "></span></a><span class="sd">   */</span>
+</span><span id="__span-11-54"><a id="__codelineno-11-54" name="__codelineno-11-54"></a><a href="#__codelineno-11-54"><span class="linenos" data-linenos="54 "></span></a>  <span class="k">public</span> <span class="k">function</span> <span class="nf">edit</span><span class="p">(</span><span class="nx">Note</span> <span class="nv">$note</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-11-55"><a id="__codelineno-11-55" name="__codelineno-11-55"></a><a href="#__codelineno-11-55"><span class="linenos" data-linenos="55 "></span></a>    <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">&#39;notes.edit&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;note&#39;</span> <span class="o">=&gt;</span> <span class="nv">$note</span><span class="p">]);</span>
+</span><span id="__span-11-56"><a id="__codelineno-11-56" name="__codelineno-11-56"></a><a href="#__codelineno-11-56"><span class="linenos" data-linenos="56 "></span></a>  <span class="p">}</span>
+</span><span id="__span-11-57"><a id="__codelineno-11-57" name="__codelineno-11-57"></a><a href="#__codelineno-11-57"><span class="linenos" data-linenos="57 "></span></a>
+</span><span id="__span-11-58"><a id="__codelineno-11-58" name="__codelineno-11-58"></a><a href="#__codelineno-11-58"><span class="linenos" data-linenos="58 "></span></a>  <span class="sd">/**</span>
+</span><span id="__span-11-59"><a id="__codelineno-11-59" name="__codelineno-11-59"></a><a href="#__codelineno-11-59"><span class="linenos" data-linenos="59 "></span></a><span class="sd">   * Update the specified resource in storage.</span>
+</span><span id="__span-11-60"><a id="__codelineno-11-60" name="__codelineno-11-60"></a><a href="#__codelineno-11-60"><span class="linenos" data-linenos="60 "></span></a><span class="sd">   */</span>
+</span><span id="__span-11-61"><a id="__codelineno-11-61" name="__codelineno-11-61"></a><a href="#__codelineno-11-61"><span class="linenos" data-linenos="61 "></span></a>  <span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">Note</span> <span class="nv">$note</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-11-62"><a id="__codelineno-11-62" name="__codelineno-11-62"></a><a href="#__codelineno-11-62"><span class="linenos" data-linenos="62 "></span></a>    <span class="c1">//2. Validar los datos</span>
+</span><span id="__span-11-63"><a id="__codelineno-11-63" name="__codelineno-11-63"></a><a href="#__codelineno-11-63"><span class="linenos" data-linenos="63 "></span></a>    <span class="nx">request</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">([</span>
+</span><span id="__span-11-64"><a id="__codelineno-11-64" name="__codelineno-11-64"></a><a href="#__codelineno-11-64"><span class="linenos" data-linenos="64 "></span></a>      <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;required&#39;</span><span class="p">,</span> <span class="s1">&#39;min:5&#39;</span><span class="p">],</span>
+</span><span id="__span-11-65"><a id="__codelineno-11-65" name="__codelineno-11-65"></a><a href="#__codelineno-11-65"><span class="linenos" data-linenos="65 "></span></a>      <span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;required&#39;</span><span class="p">,</span> <span class="s1">&#39;max:255&#39;</span><span class="p">]</span>
+</span><span id="__span-11-66"><a id="__codelineno-11-66" name="__codelineno-11-66"></a><a href="#__codelineno-11-66"><span class="linenos" data-linenos="66 "></span></a>    <span class="p">]);</span>
+</span><span id="__span-11-67"><a id="__codelineno-11-67" name="__codelineno-11-67"></a><a href="#__codelineno-11-67"><span class="linenos" data-linenos="67 "></span></a>
+</span><span id="__span-11-68"><a id="__codelineno-11-68" name="__codelineno-11-68"></a><a href="#__codelineno-11-68"><span class="linenos" data-linenos="68 "></span></a>    <span class="c1">//3. Autorizar (próximamente)</span>
+</span><span id="__span-11-69"><a id="__codelineno-11-69" name="__codelineno-11-69"></a><a href="#__codelineno-11-69"><span class="linenos" data-linenos="69 "></span></a>
+</span><span id="__span-11-70"><a id="__codelineno-11-70" name="__codelineno-11-70"></a><a href="#__codelineno-11-70"><span class="linenos" data-linenos="70 "></span></a>    <span class="c1">//4. Obtener y actualizar la nota</span>
+</span><span id="__span-11-71"><a id="__codelineno-11-71" name="__codelineno-11-71"></a><a href="#__codelineno-11-71"><span class="linenos" data-linenos="71 "></span></a>
+</span><span id="__span-11-72"><a id="__codelineno-11-72" name="__codelineno-11-72"></a><a href="#__codelineno-11-72"><span class="linenos" data-linenos="72 "></span></a>    <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">([</span>
+</span><span id="__span-11-73"><a id="__codelineno-11-73" name="__codelineno-11-73"></a><a href="#__codelineno-11-73"><span class="linenos" data-linenos="73 "></span></a>      <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="nx">request</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">),</span>
+</span><span id="__span-11-74"><a id="__codelineno-11-74" name="__codelineno-11-74"></a><a href="#__codelineno-11-74"><span class="linenos" data-linenos="74 "></span></a>      <span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="nx">request</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">),</span>
+</span><span id="__span-11-75"><a id="__codelineno-11-75" name="__codelineno-11-75"></a><a href="#__codelineno-11-75"><span class="linenos" data-linenos="75 "></span></a>    <span class="p">]);</span>
+</span><span id="__span-11-76"><a id="__codelineno-11-76" name="__codelineno-11-76"></a><a href="#__codelineno-11-76"><span class="linenos" data-linenos="76 "></span></a>
+</span><span id="__span-11-77"><a id="__codelineno-11-77" name="__codelineno-11-77"></a><a href="#__codelineno-11-77"><span class="linenos" data-linenos="77 "></span></a>    <span class="c1">//5. Retornar la vista de la lista de notas</span>
+</span><span id="__span-11-78"><a id="__codelineno-11-78" name="__codelineno-11-78"></a><a href="#__codelineno-11-78"><span class="linenos" data-linenos="78 "></span></a>    <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/notes&#39;</span><span class="p">);</span>
+</span><span id="__span-11-79"><a id="__codelineno-11-79" name="__codelineno-11-79"></a><a href="#__codelineno-11-79"><span class="linenos" data-linenos="79 "></span></a>  <span class="p">}</span>
+</span><span id="__span-11-80"><a id="__codelineno-11-80" name="__codelineno-11-80"></a><a href="#__codelineno-11-80"><span class="linenos" data-linenos="80 "></span></a>
+</span><span id="__span-11-81"><a id="__codelineno-11-81" name="__codelineno-11-81"></a><a href="#__codelineno-11-81"><span class="linenos" data-linenos="81 "></span></a>  <span class="sd">/**</span>
+</span><span id="__span-11-82"><a id="__codelineno-11-82" name="__codelineno-11-82"></a><a href="#__codelineno-11-82"><span class="linenos" data-linenos="82 "></span></a><span class="sd">   * Remove the specified resource from storage.</span>
+</span><span id="__span-11-83"><a id="__codelineno-11-83" name="__codelineno-11-83"></a><a href="#__codelineno-11-83"><span class="linenos" data-linenos="83 "></span></a><span class="sd">   */</span>
+</span><span id="__span-11-84"><a id="__codelineno-11-84" name="__codelineno-11-84"></a><a href="#__codelineno-11-84"><span class="linenos" data-linenos="84 "></span></a>  <span class="k">public</span> <span class="k">function</span> <span class="nf">destroy</span><span class="p">(</span><span class="nx">Note</span> <span class="nv">$note</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-11-85"><a id="__codelineno-11-85" name="__codelineno-11-85"></a><a href="#__codelineno-11-85"><span class="linenos" data-linenos="85 "></span></a>    <span class="c1">//3. Autorizar (próximamente)</span>
+</span><span id="__span-11-86"><a id="__codelineno-11-86" name="__codelineno-11-86"></a><a href="#__codelineno-11-86"><span class="linenos" data-linenos="86 "></span></a>
+</span><span id="__span-11-87"><a id="__codelineno-11-87" name="__codelineno-11-87"></a><a href="#__codelineno-11-87"><span class="linenos" data-linenos="87 "></span></a>    <span class="c1">//4. Eliminar la nota</span>
+</span><span id="__span-11-88"><a id="__codelineno-11-88" name="__codelineno-11-88"></a><a href="#__codelineno-11-88"><span class="linenos" data-linenos="88 "></span></a>    <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">();</span>
+</span><span id="__span-11-89"><a id="__codelineno-11-89" name="__codelineno-11-89"></a><a href="#__codelineno-11-89"><span class="linenos" data-linenos="89 "></span></a>
+</span><span id="__span-11-90"><a id="__codelineno-11-90" name="__codelineno-11-90"></a><a href="#__codelineno-11-90"><span class="linenos" data-linenos="90 "></span></a>    <span class="c1">//5. Redireccionar a la lista de notas</span>
+</span><span id="__span-11-91"><a id="__codelineno-11-91" name="__codelineno-11-91"></a><a href="#__codelineno-11-91"><span class="linenos" data-linenos="91 "></span></a>    <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/notes&#39;</span><span class="p">);</span>
+</span><span id="__span-11-92"><a id="__codelineno-11-92" name="__codelineno-11-92"></a><a href="#__codelineno-11-92"><span class="linenos" data-linenos="92 "></span></a>
+</span><span id="__span-11-93"><a id="__codelineno-11-93" name="__codelineno-11-93"></a><a href="#__codelineno-11-93"><span class="linenos" data-linenos="93 "></span></a>  <span class="p">}</span>
+</span><span id="__span-11-94"><a id="__codelineno-11-94" name="__codelineno-11-94"></a><a href="#__codelineno-11-94"><span class="linenos" data-linenos="94 "></span></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Haz estos cambios, y comprueba que todo sigue funcionando correctamente.</p>
+<p><em>La pregunta interesante que te estarás preguntando, ¿porqué sigue todo funcionando si las rutas han cambiado? La respuesta es que Laravel sigue funcionando por convención sobre configuración, y cómo nuestro código seguía las convecciones de Laravel, todo sigue funcionando correctamente.</em></p>
+<p>Si por algún motivo no hubieramos seguido las convecciones, aún podríamos utilizar un controlador de recursos, pero tendríamos que indicar las rutas manualmente.</p>
+<p>De esa forma, quedaría así:</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><a href="#__codelineno-12-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1">//NOTAS</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><a href="#__codelineno-12-2"><span class="linenos" data-linenos="2 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/notes&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">]);</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><a href="#__codelineno-12-3"><span class="linenos" data-linenos="3 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/notes/create&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">]);</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a><a href="#__codelineno-12-4"><span class="linenos" data-linenos="4 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/notes&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;store&#39;</span><span class="p">]);</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a><a href="#__codelineno-12-5"><span class="linenos" data-linenos="5 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/notes/{note}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;show&#39;</span><span class="p">]);</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a><a href="#__codelineno-12-6"><span class="linenos" data-linenos="6 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/notes/{note}/edit&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;edit&#39;</span><span class="p">]);</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a><a href="#__codelineno-12-7"><span class="linenos" data-linenos="7 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">patch</span><span class="p">(</span><span class="s1">&#39;/notes/{note}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">]);</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a><a href="#__codelineno-12-8"><span class="linenos" data-linenos="8 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;/notes/{note}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;destroy&#39;</span><span class="p">]);</span>
+</span></code></pre></div>
+<p>En ambos casos, al utilizar un controlador, el fichero de rutas <code>web.php</code> queda mucho más limpio y fácil de leer.</p>
+<p><strong>Listar las rutas</strong></p>
+<p>Cuando una aplicación crece, es posible que tengamos muchas rutas, y no sepamos exactamente cuáles son. Para listar todas las rutas de nuestra aplicación, podemos utilizar el comando artisan <code>route:list</code>.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><a href="#__codelineno-13-1"><span class="linenos" data-linenos="1 "></span></a>php<span class="w"> </span>artisan<span class="w"> </span>route:list
+</span></code></pre></div>
+<p>En nuestro caso el resultado sería el siguiente:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><a href="#__codelineno-14-1"><span class="linenos" data-linenos=" 1 "></span></a>+--------+-----------+------------------------+-----------------+-------------------------------------------------+------------+
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><a href="#__codelineno-14-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="p">|</span><span class="w"> </span>Domain<span class="w"> </span><span class="p">|</span><span class="w"> </span>Method<span class="w">    </span><span class="p">|</span><span class="w"> </span>URI<span class="w">                    </span><span class="p">|</span><span class="w"> </span>Name<span class="w">            </span><span class="p">|</span><span class="w"> </span>Action<span class="w">                                          </span><span class="p">|</span><span class="w"> </span>Middleware<span class="w"> </span><span class="p">|</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><a href="#__codelineno-14-3"><span class="linenos" data-linenos=" 3 "></span></a>+--------+-----------+------------------------+-----------------+-------------------------------------------------+------------+
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><a href="#__codelineno-14-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="p">|</span><span class="w">        </span><span class="p">|</span><span class="w"> </span>GET<span class="p">|</span>HEAD<span class="w">  </span><span class="p">|</span><span class="w"> </span>/<span class="w">                      </span><span class="p">|</span><span class="w">                 </span><span class="p">|</span><span class="w"> </span>Closure<span class="w">                                          </span><span class="p">|</span><span class="w"> </span>web<span class="w">        </span><span class="p">|</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><a href="#__codelineno-14-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="p">|</span><span class="w">        </span><span class="p">|</span><span class="w"> </span>GET<span class="p">|</span>HEAD<span class="w">  </span><span class="p">|</span><span class="w"> </span>/about<span class="w">                 </span><span class="p">|</span><span class="w">                 </span><span class="p">|</span><span class="w"> </span>Closure<span class="w">                                          </span><span class="p">|</span><span class="w"> </span>web<span class="w">        </span><span class="p">|</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a><a href="#__codelineno-14-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="p">|</span><span class="w">        </span><span class="p">|</span><span class="w"> </span>GET<span class="p">|</span>HEAD<span class="w">  </span><span class="p">|</span><span class="w"> </span>/contact<span class="w">               </span><span class="p">|</span><span class="w">                 </span><span class="p">|</span><span class="w"> </span>Closure<span class="w">                                          </span><span class="p">|</span><span class="w"> </span>web<span class="w">        </span><span class="p">|</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a><a href="#__codelineno-14-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="p">|</span><span class="w">        </span><span class="p">|</span><span class="w"> </span>GET<span class="p">|</span>HEAD<span class="w">  </span><span class="p">|</span><span class="w"> </span>notes<span class="w">                  </span><span class="p">|</span><span class="w"> </span>notes.index<span class="w">     </span><span class="p">|</span><span class="w"> </span>App<span class="se">\H</span>ttp<span class="se">\C</span>ontrollers<span class="se">\N</span>oteController@index<span class="w">        </span><span class="p">|</span><span class="w"> </span>web<span class="w">        </span><span class="p">|</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8"></a><a href="#__codelineno-14-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="p">|</span><span class="w">        </span><span class="p">|</span><span class="w"> </span>POST<span class="w">      </span><span class="p">|</span><span class="w"> </span>notes<span class="w">                  </span><span class="p">|</span><span class="w"> </span>notes.store<span class="w">     </span><span class="p">|</span><span class="w"> </span>App<span class="se">\H</span>ttp<span class="se">\C</span>ontrollers<span class="se">\N</span>oteController@store<span class="w">        </span><span class="p">|</span><span class="w"> </span>web<span class="w">        </span><span class="p">|</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9"></a><a href="#__codelineno-14-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="p">|</span><span class="w">        </span><span class="p">|</span><span class="w"> </span>GET<span class="p">|</span>HEAD<span class="w">  </span><span class="p">|</span><span class="w"> </span>notes/create<span class="w">           </span><span class="p">|</span><span class="w"> </span>notes.create<span class="w">    </span><span class="p">|</span><span class="w"> </span>App<span class="se">\H</span>ttp<span class="se">\C</span>ontrollers<span class="se">\N</span>oteController@create<span class="w">       </span><span class="p">|</span><span class="w"> </span>web<span class="w">        </span><span class="p">|</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10"></a><a href="#__codelineno-14-10"><span class="linenos" data-linenos="10 "></span></a><span class="p">|</span><span class="w">        </span><span class="p">|</span><span class="w"> </span>GET<span class="p">|</span>HEAD<span class="w">  </span><span class="p">|</span><span class="w"> </span>notes/<span class="o">{</span>note<span class="o">}</span><span class="w">           </span><span class="p">|</span><span class="w"> </span>notes.show<span class="w">      </span><span class="p">|</span><span class="w"> </span>App<span class="se">\H</span>ttp<span class="se">\C</span>ontrollers<span class="se">\N</span>oteController@show<span class="w">         </span><span class="p">|</span><span class="w"> </span>web<span class="w">        </span><span class="p">|</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11"></a><a href="#__codelineno-14-11"><span class="linenos" data-linenos="11 "></span></a><span class="p">|</span><span class="w">        </span><span class="p">|</span><span class="w"> </span>PUT<span class="p">|</span>PATCH<span class="w"> </span><span class="p">|</span><span class="w"> </span>notes/<span class="o">{</span>note<span class="o">}</span><span class="w">           </span><span class="p">|</span><span class="w"> </span>notes.update<span class="w">    </span><span class="p">|</span><span class="w"> </span>App<span class="se">\H</span>ttp<span class="se">\C</span>ontrollers<span class="se">\N</span>oteController@update<span class="w">       </span><span class="p">|</span><span class="w"> </span>web<span class="w">        </span><span class="p">|</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12"></a><a href="#__codelineno-14-12"><span class="linenos" data-linenos="12 "></span></a><span class="p">|</span><span class="w">        </span><span class="p">|</span><span class="w"> </span>DELETE<span class="w">    </span><span class="p">|</span><span class="w"> </span>notes/<span class="o">{</span>note<span class="o">}</span><span class="w">           </span><span class="p">|</span><span class="w"> </span>notes.destroy<span class="w">   </span><span class="p">|</span><span class="w"> </span>App<span class="se">\H</span>ttp<span class="se">\C</span>ontrollers<span class="se">\N</span>oteController@destroy<span class="w">      </span><span class="p">|</span><span class="w"> </span>web<span class="w">        </span><span class="p">|</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13"></a><a href="#__codelineno-14-13"><span class="linenos" data-linenos="13 "></span></a><span class="p">|</span><span class="w">        </span><span class="p">|</span><span class="w"> </span>GET<span class="p">|</span>HEAD<span class="w">  </span><span class="p">|</span><span class="w"> </span>notes/<span class="o">{</span>note<span class="o">}</span>/edit<span class="w">      </span><span class="p">|</span><span class="w"> </span>notes.edit<span class="w">      </span><span class="p">|</span><span class="w"> </span>App<span class="se">\H</span>ttp<span class="se">\C</span>ontrollers<span class="se">\N</span>oteController@edit<span class="w">         </span><span class="p">|</span><span class="w"> </span>web<span class="w">        </span><span class="p">|</span>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14"></a><a href="#__codelineno-14-14"><span class="linenos" data-linenos="14 "></span></a>+--------+-----------+------------------------+-----------------+-------------------------------------------------+------------+
+</span></code></pre></div>
+<p>Si no queremos ver rutas de terceros, podemos utilizar la opción <code>--except-vendor</code>.:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><a href="#__codelineno-15-1"><span class="linenos" data-linenos="1 "></span></a>php<span class="w"> </span>artisan<span class="w"> </span>route:list<span class="w"> </span>-except-vendor
+</span></code></pre></div>
+<h3 id="3-rutas-con-nombre">3. Rutas con nombre<a class="headerlink" href="#3-rutas-con-nombre" title="Permanent link">&para;</a></h3>
+<p>Las rutas con nombre, nos permiten nombrar una ruta, y utilizar ese nombre en lugar de la URL en nuestros enlaces, redirecciones, etc. Esto es muy útil, ya que nos permiten nombrar a la ruta con un nombre más descriptivo, y si en algún momento cambiamos la URL, no tendremos que cambiar en todos los lugares donde se utiliza.</p>
+<p>Para nombrar una ruta, simplemente añadimos el método <code>name</code> a la definición de la ruta.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><a href="#__codelineno-16-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/about&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a><a href="#__codelineno-16-2"><span class="linenos" data-linenos=" 2 "></span></a>    <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">&#39;about&#39;</span><span class="p">);</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><a href="#__codelineno-16-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="p">})</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;about&#39;</span><span class="p">);</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a><a href="#__codelineno-16-4"><span class="linenos" data-linenos=" 4 "></span></a>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a><a href="#__codelineno-16-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/contact&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a><a href="#__codelineno-16-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">&#39;contact&#39;</span><span class="p">);</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7"></a><a href="#__codelineno-16-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="p">})</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;contact&#39;</span><span class="p">);</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8"></a><a href="#__codelineno-16-8"><span class="linenos" data-linenos=" 8 "></span></a>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9"></a><a href="#__codelineno-16-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/notes&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.index&#39;</span><span class="p">);</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10"></a><a href="#__codelineno-16-10"><span class="linenos" data-linenos="10 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/notes/create&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.create&#39;</span><span class="p">);</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11"></a><a href="#__codelineno-16-11"><span class="linenos" data-linenos="11 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/notes&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;store&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.store&#39;</span><span class="p">);</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12"></a><a href="#__codelineno-16-12"><span class="linenos" data-linenos="12 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/notes/{note}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;show&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.show&#39;</span><span class="p">);</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13"></a><a href="#__codelineno-16-13"><span class="linenos" data-linenos="13 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/notes/{note}/edit&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;edit&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.edit&#39;</span><span class="p">);</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14"></a><a href="#__codelineno-16-14"><span class="linenos" data-linenos="14 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">put</span><span class="p">(</span><span class="s1">&#39;/notes/{note}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.update&#39;</span><span class="p">);</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15"></a><a href="#__codelineno-16-15"><span class="linenos" data-linenos="15 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;/notes/{note}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;destroy&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.destroy&#39;</span><span class="p">);</span>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16"></a><a href="#__codelineno-16-16"><span class="linenos" data-linenos="16 "></span></a>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17"></a><a href="#__codelineno-16-17"><span class="linenos" data-linenos="17 "></span></a><span class="c1">//Para un ruta tipo resource</span>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18"></a><a href="#__codelineno-16-18"><span class="linenos" data-linenos="18 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">resource</span><span class="p">(</span><span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">names</span><span class="p">([</span>
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19"></a><a href="#__codelineno-16-19"><span class="linenos" data-linenos="19 "></span></a>    <span class="s1">&#39;index&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;notes.index&#39;</span><span class="p">,</span>
+</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20"></a><a href="#__codelineno-16-20"><span class="linenos" data-linenos="20 "></span></a>    <span class="s1">&#39;create&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;notes.create&#39;</span><span class="p">,</span>
+</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21"></a><a href="#__codelineno-16-21"><span class="linenos" data-linenos="21 "></span></a>    <span class="s1">&#39;store&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;notes.store&#39;</span><span class="p">,</span>
+</span><span id="__span-16-22"><a id="__codelineno-16-22" name="__codelineno-16-22"></a><a href="#__codelineno-16-22"><span class="linenos" data-linenos="22 "></span></a>    <span class="s1">&#39;show&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;notes.show&#39;</span><span class="p">,</span>
+</span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23"></a><a href="#__codelineno-16-23"><span class="linenos" data-linenos="23 "></span></a>    <span class="s1">&#39;edit&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;notes.edit&#39;</span><span class="p">,</span>
+</span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24"></a><a href="#__codelineno-16-24"><span class="linenos" data-linenos="24 "></span></a>    <span class="s1">&#39;update&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;notes.update&#39;</span><span class="p">,</span>
+</span><span id="__span-16-25"><a id="__codelineno-16-25" name="__codelineno-16-25"></a><a href="#__codelineno-16-25"><span class="linenos" data-linenos="25 "></span></a>    <span class="s1">&#39;destroy&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;notes.destroy&#39;</span>
+</span><span id="__span-16-26"><a id="__codelineno-16-26" name="__codelineno-16-26"></a><a href="#__codelineno-16-26"><span class="linenos" data-linenos="26 "></span></a><span class="p">]);</span>
+</span></code></pre></div>
+<p>Ahora podemos utilizar esta nomenclatura en nuestros enlaces, redirecciones, etc.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><a href="#__codelineno-17-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;{{ route(&#39;about&#39;) }}&quot;</span><span class="o">&gt;</span><span class="nx">About</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a><a href="#__codelineno-17-2"><span class="linenos" data-linenos="2 "></span></a><span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;{{ route(&#39;contact&#39;) }}&quot;</span><span class="o">&gt;</span><span class="nx">Contact</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<p>y también en las redirecciones:</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><a href="#__codelineno-18-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">return</span> <span class="nx">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">route</span><span class="p">(</span><span class="s1">&#39;notes.index&#39;</span><span class="p">);</span>
+</span></code></pre></div>
+<p>y para saber si una ruta es la actual, podemos utilizar el método <code>is</code>:</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><a href="#__codelineno-19-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">request</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">routeIs</span><span class="p">(</span><span class="s1">&#39;notes.index&#39;</span><span class="p">);</span>
+</span></code></pre></div>
+<p>Como podemos comprobar, las rutas con nombre, nos permiten tener un código más limpio y fácil de leer.</p>
+<h3 id="4-agrupar-las-rutas">4. Agrupar las rutas<a class="headerlink" href="#4-agrupar-las-rutas" title="Permanent link">&para;</a></h3>
+<p>Si tenemos rutas que comparten un prefijo, por ejemplo, en nuestras rutas de notas, todas empiezan por <code>/notes</code>, podemos agruparlas, y de esa forma, no tener que repetir ese prefijo en todas las rutas.</p>
+<p>Para agrupar las rutas, utilizamos el método <code>Route::controller</code>, y dentro de ese método, definimos las rutas que queremos agrupar.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><a href="#__codelineno-20-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">controller</span><span class="p">(</span><span class="s1">&#39;notes&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">group</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a><a href="#__codelineno-20-2"><span class="linenos" data-linenos=" 2 "></span></a>    <span class="c1">//El controlador ya no es necesario indicarlo.</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a><a href="#__codelineno-20-3"><span class="linenos" data-linenos=" 3 "></span></a>    <span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/notes&#39;</span><span class="p">,</span><span class="s1">&#39;index&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.index&#39;</span><span class="p">);</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4"></a><a href="#__codelineno-20-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/notes/create&#39;</span><span class="p">,</span><span class="s1">&#39;create&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.create&#39;</span><span class="p">);</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5"></a><a href="#__codelineno-20-5"><span class="linenos" data-linenos=" 5 "></span></a>    <span class="nx">Route</span><span class="o">::</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/notes&#39;</span><span class="p">,</span><span class="s1">&#39;store&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.store&#39;</span><span class="p">);</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6"></a><a href="#__codelineno-20-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/notes/{note}&#39;</span><span class="p">,</span><span class="s1">&#39;show&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.show&#39;</span><span class="p">);</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7"></a><a href="#__codelineno-20-7"><span class="linenos" data-linenos=" 7 "></span></a>    <span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/notes/{note}/edit&#39;</span><span class="p">,</span><span class="s1">&#39;edit&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.edit&#39;</span><span class="p">);</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8"></a><a href="#__codelineno-20-8"><span class="linenos" data-linenos=" 8 "></span></a>    <span class="nx">Route</span><span class="o">::</span><span class="na">put</span><span class="p">(</span><span class="s1">&#39;/notes/{note}&#39;</span><span class="p">,</span><span class="s1">&#39;update&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.update&#39;</span><span class="p">);</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9"></a><a href="#__codelineno-20-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="nx">Route</span><span class="o">::</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;/notes/{note}&#39;</span><span class="p">,</span><span class="s1">&#39;destroy&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.destroy&#39;</span><span class="p">);</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10"></a><a href="#__codelineno-20-10"><span class="linenos" data-linenos="10 "></span></a><span class="p">});</span>
+</span></code></pre></div>
+<p>También podemos utilizar el método <code>prefix</code> para indicar un prefijo común a todas las rutas, y de esa forma, no tener que repetirlo en todas las rutas:</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><a href="#__codelineno-21-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">Route</span><span class="o">::</span><span class="na">prefix</span><span class="p">(</span><span class="s1">&#39;notes&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">group</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a><a href="#__codelineno-21-2"><span class="linenos" data-linenos="2 "></span></a>  <span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.index&#39;</span><span class="p">);</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3"></a><a href="#__codelineno-21-3"><span class="linenos" data-linenos="3 "></span></a>  <span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/create&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.create&#39;</span><span class="p">);</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4"></a><a href="#__codelineno-21-4"><span class="linenos" data-linenos="4 "></span></a>  <span class="nx">Route</span><span class="o">::</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;store&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.store&#39;</span><span class="p">);</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5"></a><a href="#__codelineno-21-5"><span class="linenos" data-linenos="5 "></span></a>  <span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/{note}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;show&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.show&#39;</span><span class="p">);</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6"></a><a href="#__codelineno-21-6"><span class="linenos" data-linenos="6 "></span></a>  <span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/{note}/edit&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;edit&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.edit&#39;</span><span class="p">);</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7"></a><a href="#__codelineno-21-7"><span class="linenos" data-linenos="7 "></span></a>  <span class="nx">Route</span><span class="o">::</span><span class="na">put</span><span class="p">(</span><span class="s1">&#39;/{note}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.update&#39;</span><span class="p">);</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8"></a><a href="#__codelineno-21-8"><span class="linenos" data-linenos="8 "></span></a>  <span class="nx">Route</span><span class="o">::</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;/{note}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">NoteController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;destroy&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;notes.destroy&#39;</span><span class="p">);</span>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9"></a><a href="#__codelineno-21-9"><span class="linenos" data-linenos="9 "></span></a><span class="p">});</span>
+</span></code></pre></div>
+<p>Existen otras formas más avanzadas de agrupación de rutas, para más información consulta el siguiente artículo: <a href="https://laravel-news.com/laravel-route-organization-tips">6 Tips to Organize Routes</a></p>
+<p>Con estas técnicas, hemos mejorado nuestras rutas, y hemos hecho nuestro código más limpio y fácil de leer.</p>
+<p>🏁 ¡Enhorabuena! ¡Has completado la lección! ¡Vamos a la siguiente!</p>
+<hr />
+<blockquote>
+<p>ℹ️ Alguna duda? puedes ver el siguiente <a href="https://laracasts.com/series/30-days-to-learn-laravel-11/episodes/19">video</a> que explica estos pasos con más detalle.</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2024-2025 Jesús García - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/aitormedrano" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.2 4.2 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.52 8.52 0 0 1-5.33 1.84q-.51 0-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<a.medrano@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.13c-.15.01-.29.06-.39.17l-1 1 2.05 2 1-1c.22-.21.22-.56 0-.77l-1.24-1.23a.56.56 0 0 0-.38-.17m-2 1.75L13 19.94V22h2.06l6.06-6.07M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7v-.89l8.24-8.22c.47-.49 1.12-.76 1.8-.76.34 0 .68.06 1 .19V6c0-1.12-.92-2-2.04-2m0 4-8 5-8-5V6l8 5 8-5"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "toc.integrate", "content.tabs.link", "content.code.copy", "content.code.select", "navigation.top", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
