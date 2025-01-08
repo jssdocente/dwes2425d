@@ -39,6 +39,7 @@ nav:
     - "19. Autenticación: crear sistema": "temas/08/19.create-login-register-system.md"
     - "20. Autorización: proteger rutas": "temas/08/20.proteger-rutas-middleware.md"
     - "21. Informando al usuario": "temas/08/21.flash-messages.md"
+    - "22. Control y Gestión de excepciones": "temas/08/22.Manejando-excepciones.md"
 
   # - "8.- Servicios REST": "09rest.md"
   - "Anexo":

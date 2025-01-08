@@ -12,4 +12,5 @@ Las lecciones disponibles para este tema son las siguientes:
 6. [Autenticación: crear sistema](19.create-login-register-system.md)
 7. [Autorización: proteger rutas](20.proteger-rutas-middleware.md)
 8. [Informando al usuario](21.flash-messages.md)
+9. [Control y Gestión de excepciones](22.Manejando-excepciones.md)
 
