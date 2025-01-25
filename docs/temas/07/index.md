@@ -8,7 +8,9 @@ Para estudiar Laravel, vamos a dividirlo en 2 partes, este tema para Laravel bá
 
 En este tema vamos a continuar con el proyecto que nos ha acompañado durante los temas 4,5 y 6, que es una aplicación de notas, pero esta vez vamos a desarrollarla con Laravel. Dividiremos este tema en una serie de pasos, donde cada paso corresponderá a una lección.
 
-Las lecciones disponibles para este tema son las siguientes:
+### Lecciones:
+
+Las lecciones disponibles para este tema son las siguientes
 
 1. [Instalar Laravel](01.instalar-laravel.md)
 2. [Configurar Tailwind](02.configurar-tailwind.md)
@@ -23,6 +25,12 @@ Las lecciones disponibles para este tema son las siguientes:
 11. [Eloquent: Relaciones básicas](11.eloquent-relations-basic.md)
 12. [Eloquent: Relación many-to-many](12.eloquent-relations-many-to-many.md)
 13. [Eloquent: Relación has-many-throught](13.eloquent-relations-has-many-throught.md)
+
+### Conceptos clave Laravel
+
+Para comprender Laravel es necessario conocer una serie de conceptos:
+
+1. [Conceptos clave Laravel](extra-laravel-conceptos-clave.md)
 
 
 <!-- 7. [Usabilidad](2b.3_colores.md) -->
