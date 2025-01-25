@@ -14,3 +14,9 @@ Las lecciones disponibles para este tema son las siguientes:
 8. [Informando al usuario](21.flash-messages.md)
 9. [Control y Gestión de excepciones](22.Manejando-excepciones.md)
 
+
+### Curso y guías
+
+Además de lo visto en las lecciones anteriores, puedes seguir estas guías en video para profundizar en aspectos importantes
+
+1. [Autenticación con paquetes](extra/autentication/auth-packages.md)
