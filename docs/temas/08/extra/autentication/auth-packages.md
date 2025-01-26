@@ -38,6 +38,22 @@
 
 <iframe src="https://1drv.ms/v/c/c1d9ecea1bbc140a/IQQmsuoU1a3BQa83z69qNAnHAYFvxP_xNg3nQXPvvAgF82M" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen></iframe>
 
-### 8. Laravel Breeze: Passwrod confimation
+### 9. Laravel Breeze: Password confimation
 
 <iframe src="https://1drv.ms/v/c/c1d9ecea1bbc140a/IQRxgFYfMOc4R4StpxS7ztsTAbbfbJTOt-FuZ2wXEpTRF6Y" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen></iframe>
+
+### 10. Laravel Breeze: Password reset
+
+<iframe src="https://1drv.ms/v/c/c1d9ecea1bbc140a/IQS_hIxN524PQImka-AcWAJqAWYyj4_fm2ZbWyy7eBKO8rs" width="640" height="360"  frameborder="0" scrolling="no" allowfullscreen></iframe>
+
+### 11. Laravel Breeze: Testing Laravel Brezze
+
+<iframe src="https://1drv.ms/v/c/c1d9ecea1bbc140a/IQR4h2pbizV-R6wSCVMV5yeuAU9crXL1kS0jWjNn3naC2bg" width="640" height="360"  frameborder="0" scrolling="no" allowfullscreen></iframe>
+
+### 12. Laravel Breeze: Fortify instalación y revisión
+
+<iframe src="https://1drv.ms/v/c/c1d9ecea1bbc140a/IQTK6YAFaonoR4Xt1GadQR31AQK4nL1betIVEArAMZqIg_k" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen></iframe>
+
+### 13. Login y Logout con Fortify
+
+<iframe src="https://1drv.ms/v/c/c1d9ecea1bbc140a/IQT2AKeprDD8T5aXghVzXh2oAfvs6L-nPVaNc_pb2rSVjnM" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen></iframe>
