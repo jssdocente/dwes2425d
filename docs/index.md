@@ -153,7 +153,7 @@ La primera evaluación contendría las unidades comprendidas entre la 1 y 5, y p
     9. Servicios REST (12h)
         * Producción y consumo.
         * *AJAX* con *JSON*.
-        * Interacción con *Vue.js*.
+        * Interacción con *SPA* applications.
 
 
 ### Evaluación

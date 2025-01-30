@@ -31,6 +31,7 @@ Las lecciones disponibles para este tema son las siguientes
 Para comprender Laravel es necessario conocer una serie de conceptos:
 
 1. [Conceptos clave Laravel](extra-laravel-conceptos-clave.md)
+2. [Pildoras fundamentales](extra-laravel-pildoras.md)
 
 
 <!-- 7. [Usabilidad](2b.3_colores.md) -->
