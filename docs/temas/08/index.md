@@ -20,3 +20,5 @@ Las lecciones disponibles para este tema son las siguientes:
 Además de lo visto en las lecciones anteriores, puedes seguir estas guías en video para profundizar en aspectos importantes
 
 1. [Autenticación con paquetes](extra/autentication/auth-packages.md)
+2. [Relaciones con Eloquent](extra/Eloquent/eloquent-videos.md)
+3. [Fundamentos de Tailwind](extra/tailwind/fundamentos-tailwind.md)
